@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const FRAME_PATH = (index) => `scroll animation/ezgif-frame-${String(index).padStart(3, '0')}.jpg`;
 
   const canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
   const ctx = canvas.getContext('2d', { alpha: false });
   const heroIntro = document.getElementById('heroIntro');
   const heroLoader = document.getElementById('heroLoader');
@@ -33,7 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
      2. RESIZE & HI-DPI CRISP CANVAS RENDERING
      ========================================================================== */
   function resizeCanvas() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2.5);
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
     const rect = canvas.getBoundingClientRect();
     
     // Set actual render buffer to match device physical pixels

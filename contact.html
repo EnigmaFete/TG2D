@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="fr" class="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact & Demande de Devis BTP | TG2B Maroc</title>
+  <meta name="description" content="Contactez la Direction Technique TG2B Maroc pour une étude de projet de construction, terrassement lourd ou génie civil. Réponse sous 24h ouvrées." />
+
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ==================== MAIN NAVIGATION ==================== -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="index.html" class="brand" aria-label="TG2B Accueil">
+        <div class="brand-monogram">
+          <svg viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="monogram-svg">
+            <path d="M10 70V35L26 25V70" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M26 70V10L50 2V70" stroke="#0284C7" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M50 70V45L66 52V70" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="33" y1="18" x2="33" y2="24" stroke="#0284C7" stroke-width="2" stroke-linecap="round"/>
+            <line x1="42" y1="18" x2="42" y2="24" stroke="#0284C7" stroke-width="2" stroke-linecap="round"/>
+            <line x1="33" y1="32" x2="33" y2="38" stroke="#0284C7" stroke-width="2" stroke-linecap="round"/>
+            <line x1="42" y1="32" x2="42" y2="38" stroke="#0284C7" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="brand-name-group">
+          <span class="brand-title">TG2B</span>
+          <span class="brand-tag">MAROC</span>
+        </div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="nav" aria-label="Navigation Principale">
+        <a href="index.html" class="nav-item">Accueil</a>
+        <a href="a-propos.html" class="nav-item">À Propos</a>
+        <a href="expertises.html" class="nav-item">Expertises</a>
+        <a href="flotte.html" class="nav-item">Flotte & Matériel</a>
+        <a href="projets.html" class="nav-item">Réalisations</a>
+        <a href="contact.html" class="nav-item active">Contact</a>
+      </nav>
+
+      <!-- Action Button -->
+      <div class="header-cta">
+        <a href="contact.html" class="btn-primary">
+          <span>Étude de Projet</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu Mobile">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobileDrawer">
+      <a href="index.html" class="mob-link">Accueil</a>
+      <a href="a-propos.html" class="mob-link">À Propos de TG2B</a>
+      <a href="expertises.html" class="mob-link">Nos Pôles d'Ingénierie</a>
+      <a href="flotte.html" class="mob-link">Flotte & Engins Lourds</a>
+      <a href="projets.html" class="mob-link">Projets Emblématiques</a>
+      <a href="contact.html" class="mob-link active">Contact & Devis</a>
+    </div>
+  </header>
+
+  <!-- ==================== SUBPAGE PAGE-HERO ==================== -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumbs">
+        <a href="index.html">Accueil</a>
+        <span>/</span>
+        <span>Contact & Demande de Devis</span>
+      </div>
+      <h1 class="page-hero-title">INITIONS VOTRE PROCHAIN OUVRAGE</h1>
+      <p class="page-hero-lead">
+        Maîtres d'ouvrage, promoteurs ou industriels : transmettez votre dossier technique pour une analyse de faisabilité et un chiffrage rigoureux sous 24h ouvrées.
+      </p>
+    </div>
+  </section>
+
+  <!-- ==================== CONSULTATION & FORM ==================== -->
+  <section class="section contact-section">
+    <div class="container-narrow">
+      
+      <div class="contact-card">
+        <div class="contact-header">
+          <div class="eyebrow">CONSULTATION & APPELS D'OFFRES</div>
+          <h2 class="title-lg">DOSSIER D'ÉTUDE DE PROJET</h2>
+          <p class="contact-sub">
+            Remplissez le formulaire ci-dessous pour être mis en relation directe avec notre Direction Technique.
+          </p>
+        </div>
+
+        <form class="rfp-form" id="rfpForm" onsubmit="return false;">
+          <div class="form-grid">
+            
+            <div class="form-group">
+              <label for="rfpName">Nom & Prénom *</label>
+              <input type="text" id="rfpName" required placeholder="Ex: Karim Benjelloun" />
+            </div>
+
+            <div class="form-group">
+              <label for="rfpCompany">Société / Maître d'Ouvrage</label>
+              <input type="text" id="rfpCompany" placeholder="Ex: Groupe Immobilier / Entreprise..." />
+            </div>
+
+            <div class="form-group">
+              <label for="rfpPhone">Téléphone Professionnel *</label>
+              <input type="tel" id="rfpPhone" required placeholder="+212 6 XX XX XX XX" />
+            </div>
+
+            <div class="form-group">
+              <label for="rfpEmail">E-mail Professionnel *</label>
+              <input type="email" id="rfpEmail" required placeholder="direction@groupe.ma" />
+            </div>
+
+            <div class="form-group">
+              <label for="rfpType">Typologie du Projet</label>
+              <select id="rfpType">
+                <option value="residential">Résidentiel Haut Standing / Complexe Urbain</option>
+                <option value="commercial">Immeuble Tertiaire & Centre d'Affaires</option>
+                <option value="industrial">Plateforme Industrielle & Logistique</option>
+                <option value="earthwork">Terrassement de Grande Masse & Déroctage</option>
+                <option value="fleet">Location d'Engins Lourds (Komatsu/CAT)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="rfpCity">Ville / Région du Chantier *</label>
+              <input type="text" id="rfpCity" required placeholder="Ex: Casablanca, Tanger, Rabat, Marrakech..." />
+            </div>
+
+            <div class="form-group full-width">
+              <label for="rfpMessage">Spécifications & Délais Souhaités *</label>
+              <textarea id="rfpMessage" rows="5" required placeholder="Indiquez la superficie estimée (m²), la date prévisionnelle de démarrage, vos contraintes techniques et les pièces disponibles..."></textarea>
+            </div>
+
+          </div>
+
+          <button type="submit" class="btn-submit" id="rfpSubmit">
+            <span>Transmettre le Dossier pour Étude</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+
+          <div class="form-alert hidden" id="rfpAlert">
+            ✓ Votre dossier technique a été transmis avec succès à la Direction Technique TG2B. Nos ingénieurs vous contacteront sous 24h ouvrées.
+          </div>
+        </form>
+      </div>
+
+      <!-- Regional Offices Grid -->
+      <div class="offices-grid">
+        
+        <div class="office-card">
+          <div class="office-city">Casablanca</div>
+          <div class="office-role">Siège Social & Direction</div>
+          <p class="office-address">
+            Boulevard d'Anfa, 20000 Casablanca<br />
+            Tél : +212 (0) 522 00 00 00
+          </p>
+        </div>
+
+        <div class="office-card">
+          <div class="office-city">Rabat</div>
+          <div class="office-role">Direction Régionale</div>
+          <p class="office-address">
+            Centre d'Affaires Hay Riad, Rabat<br />
+            Tél : +212 (0) 537 00 00 00
+          </p>
+        </div>
+
+        <div class="office-card">
+          <div class="office-city">Tanger Med</div>
+          <div class="office-role">Chantiers Industriels</div>
+          <p class="office-address">
+            Zone Franche Automotive City, Tanger<br />
+            Tél : +212 (0) 539 00 00 00
+          </p>
+        </div>
+
+        <div class="office-card">
+          <div class="office-city">Marrakech</div>
+          <div class="office-role">Direction Régionale Sud</div>
+          <p class="office-address">
+            Zone Touristique Palmeraie, Marrakech<br />
+            Tél : +212 (0) 524 00 00 00
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CORPORATE FOOTER (ULTRA-LUXURIOUS ARCHITECTURAL) ==================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        
+        <div class="footer-brand-pane">
+          <div class="brand">
+            <div class="brand-monogram">
+              <svg viewBox="0 0 100 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="monogram-svg">
+                <path d="M10 70V35L26 25V70" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M26 70V10L50 2V70" stroke="#0284C7" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M50 70V45L66 52V70" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="brand-name-group">
+              <span class="brand-title">TG2B</span>
+              <span class="brand-tag">MAROC</span>
+            </div>
+          </div>
+          <p class="footer-motto">« L'Excellence de l'Acte de Bâtir au Maroc. »</p>
+          <p class="footer-legal-copy">
+            Entreprise Générale de Bâtiment, Génie Civil, Terrassement de Masse et Réalisation Clé en Main au Maroc.
+          </p>
+          <div class="footer-cert-badges">
+            <span>Agrément BTP Classe 1</span>
+            <span>Garantie Décennale SMABTP</span>
+            <span>Normes Parasismiques RPS 2011</span>
+          </div>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Pôles d'Ingénierie</h4>
+          <ul>
+            <li><a href="expertises.html#terrassement">Terrassement & Déroctage</a></li>
+            <li><a href="expertises.html#gros-oeuvre">Gros Œuvre & Génie Civil</a></li>
+            <li><a href="expertises.html#second-oeuvre">Second Œuvre & Façades</a></li>
+            <li><a href="expertises.html#flotte">Logistique & VRD</a></li>
+            <li><a href="flotte.html">Flotte Lourde (Komatsu HD785)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="a-propos.html">À Propos du Groupe</a></li>
+            <li><a href="expertises.html">Nos Expertises</a></li>
+            <li><a href="flotte.html">Parc Matériel & Engins</a></li>
+            <li><a href="projets.html">Projets Emblématiques</a></li>
+            <li><a href="contact.html">Contact & Appel d'Offres</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-col">
+          <h4>Direction & Chantiers</h4>
+          <ul class="footer-contact-list">
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              <span>Boulevard d'Anfa, Casablanca, Maroc</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <span>+212 (0) 522 00 00 00</span>
+            </li>
+            <li>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              <span>contact@tg2b-maroc.com</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom-bar">
+        <p>&copy; 2026 TG2B Maroc. Tous droits réservés. Entreprise Générale de Construction & BTP.</p>
+        <div style="display: flex; gap: 24px;">
+          <a href="contact.html">Mentions Légales</a>
+          <a href="contact.html">Charte HSE & Sécurité</a>
+          <a href="contact.html">Politique RSE</a>
+          <a href="contact.html">Plan du Site</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    if (menuToggle && mobileDrawer) {
+      menuToggle.addEventListener('click', () => mobileDrawer.classList.toggle('open'));
+    }
+
+    // Form Submission Handling
+    const rfpForm = document.getElementById('rfpForm');
+    const rfpSubmit = document.getElementById('rfpSubmit');
+    const rfpAlert = document.getElementById('rfpAlert');
+
+    if (rfpForm) {
+      rfpForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (rfpSubmit) {
+          rfpSubmit.disabled = true;
+          rfpSubmit.innerHTML = '<span>Traitement en cours...</span>';
+        }
+
+        setTimeout(() => {
+          if (rfpAlert) rfpAlert.classList.remove('hidden');
+          rfpForm.reset();
+          if (rfpSubmit) {
+            rfpSubmit.disabled = false;
+            rfpSubmit.innerHTML = '<span>Dossier Transmis avec Succès ✓</span>';
+          }
+        }, 700);
+      });
+    }
+  </script>
+</body>
+</html>
