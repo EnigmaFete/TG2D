@@ -1,5 +1,5 @@
 /* ==========================================================================
-   TG2B MAROC — SWISS ARCHITECTURAL CORPORATE DESIGN SYSTEM (WHITE / LIGHT)
+   TG2D MAROC — SWISS ARCHITECTURAL CORPORATE DESIGN SYSTEM (WHITE / LIGHT)
    Layout Inspired by orsap.ma | Palette: Architectural Pure White, Blueprint Cyan, Deep Graphite
    Typography: Inter (Universal Clean Swiss Corporate Sans-Serif)
    ========================================================================== */
@@ -234,6 +234,23 @@ button, input, select, textarea {
   display: flex;
   align-items: center;
   gap: 12px;
+  text-decoration: none;
+}
+.brand-logo-img {
+  height: 38px;
+  width: auto;
+  max-width: 170px;
+  object-fit: contain;
+  display: block;
+  transition: transform 0.25s var(--ease-editorial);
+}
+.brand:hover .brand-logo-img {
+  transform: scale(1.03);
+}
+.brand-logo-img.footer-logo {
+  height: 46px;
+  max-width: 210px;
+  margin-bottom: 8px;
 }
 .brand-monogram {
   width: 32px;

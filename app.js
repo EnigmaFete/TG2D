@@ -1,5 +1,5 @@
 /**
- * TG2B MAROC — Fixed Head Page Interactive Scroll Engine
+ * TG2D MAROC — Fixed Head Page Interactive Scroll Engine
  * Locks the head page completely in place until the 300-frame animation is 100% finished.
  * Once frame 300 is reached, allows natural downward scrolling through the rest of the website.
  */
