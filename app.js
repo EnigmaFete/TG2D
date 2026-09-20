@@ -9,336 +9,587 @@ document.addEventListener('DOMContentLoaded', () => {
      1. CONSTANTS & DOM REFERENCES
      ========================================================================== */
   const TOTAL_FRAMES = 300;
-  const FRAME_PATH = (index) => `scroll animation/ezgif-frame-${String(index).padStart(3, '0')}.jpg`;
+  const FRAME_PATH = (index) => `scroll-frames-webp/ezgif-frame-${String(index).padStart(3, '0')}.webp`;
 
   const canvas = document.getElementById('heroCanvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d', { alpha: false });
-  const heroIntro = document.getElementById('heroIntro');
-  const heroLoader = document.getElementById('heroLoader');
-  const loaderFill = document.getElementById('loaderFill');
-  const hudPhase = document.getElementById('hudPhase');
-  const hudFrame = document.getElementById('hudFrame');
-  const heroCompleteHint = document.getElementById('heroCompleteHint');
-  const header = document.getElementById('header');
+  if (canvas) {
+    const ctx = canvas.getContext('2d', { alpha: false });
+    const heroIntro = document.getElementById('heroIntro');
+    const heroLoader = document.getElementById('heroLoader');
+    const loaderFill = document.getElementById('loaderFill');
 
-  // Images cache
-  const images = new Array(TOTAL_FRAMES + 1);
-  let loadedCount = 0;
-  let currentFrame = 1;
-  let targetFrame = 1;
-  let lastDrawnFrame = -1;
-  let isAnimationFinished = false;
+    // Images cache
+    const images = new Array(TOTAL_FRAMES + 1);
+    let loadedCount = 0;
+    let currentFrame = 1;
+    let targetFrame = 1;
+    let lastDrawnFrame = -1;
+    let isAnimationFinished = false;
 
-  /* ==========================================================================
-     2. RESIZE & HI-DPI CRISP CANVAS RENDERING
-     ========================================================================== */
-  function resizeCanvas() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    const rect = canvas.getBoundingClientRect();
-    
-    // Set actual render buffer to match device physical pixels
-    canvas.width = Math.round(rect.width * dpr);
-    canvas.height = Math.round(rect.height * dpr);
-
-    if (images[Math.round(currentFrame)] && images[Math.round(currentFrame)].complete) {
-      drawFrame(Math.round(currentFrame));
-    }
-  }
-
-  function drawFrame(frameIndex) {
-    const img = images[frameIndex];
-    if (!img || !img.complete || img.naturalWidth === 0) return;
-
-    const w = canvas.width;
-    const h = canvas.height;
-
-    // Enable ultra-crisp bicubic interpolation
-    ctx.imageSmoothingEnabled = true;
-    ctx.imageSmoothingQuality = 'high';
-
-    // Mathematical Object-fit: Cover algorithm in physical pixels
-    const imgAspect = img.naturalWidth / img.naturalHeight;
-    const canvasAspect = w / h;
-
-    let renderW, renderH, offsetX, offsetY;
-
-    if (canvasAspect > imgAspect) {
-      renderW = w;
-      renderH = Math.round(w / imgAspect);
-      offsetX = 0;
-      offsetY = Math.round((h - renderH) / 2);
-    } else {
-      renderH = h;
-      renderW = Math.round(h * imgAspect);
-      offsetX = Math.round((w - renderW) / 2);
-      offsetY = 0;
-    }
-
-    ctx.fillStyle = '#06070a';
-    ctx.fillRect(0, 0, w, h);
-    ctx.drawImage(img, offsetX, offsetY, renderW, renderH);
-    lastDrawnFrame = frameIndex;
-  }
-
-  /* ==========================================================================
-     3. PROGRESSIVE FRAME PRELOADER
-     ========================================================================== */
-  function preloadFrames() {
-    const firstImg = new Image();
-    firstImg.src = FRAME_PATH(1);
-    images[1] = firstImg;
-
-    firstImg.onload = () => {
-      loadedCount++;
-      resizeCanvas();
-      drawFrame(1);
+    /* ==========================================================================
+       2. RESIZE & HI-DPI CRISP CANVAS RENDERING
+       ========================================================================== */
+    function resizeCanvas() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = canvas.getBoundingClientRect();
       
-      streamRemainingBatches(2, 30);
-    };
+      // Set actual render buffer to match device physical pixels
+      canvas.width = Math.round(rect.width * dpr);
+      canvas.height = Math.round(rect.height * dpr);
 
-    function streamRemainingBatches(startIdx, batchSize) {
-      const endIdx = Math.min(startIdx + batchSize, TOTAL_FRAMES);
+      if (images[Math.round(currentFrame)] && images[Math.round(currentFrame)].complete) {
+        drawFrame(Math.round(currentFrame));
+      }
+    }
 
-      for (let i = startIdx; i <= endIdx; i++) {
-        if (!images[i]) {
-          const img = new Image();
-          img.src = FRAME_PATH(i);
-          img.onload = img.onerror = () => {
-            loadedCount++;
-            updatePreloaderBar();
-          };
-          images[i] = img;
+    function drawFrame(frameIndex) {
+      const img = images[frameIndex];
+      if (!img || !img.complete || img.naturalWidth === 0) return;
+
+      const w = canvas.width;
+      const h = canvas.height;
+
+      // Enable ultra-crisp bicubic interpolation
+      ctx.imageSmoothingEnabled = true;
+      ctx.imageSmoothingQuality = 'high';
+
+      // Mathematical Object-fit: Cover algorithm in physical pixels
+      const imgAspect = img.naturalWidth / img.naturalHeight;
+      const canvasAspect = w / h;
+
+      let renderW, renderH, offsetX, offsetY;
+
+      if (canvasAspect > imgAspect) {
+        renderW = w;
+        renderH = Math.round(w / imgAspect);
+        offsetX = 0;
+        offsetY = Math.round((h - renderH) / 2);
+      } else {
+        renderH = h;
+        renderW = Math.round(h * imgAspect);
+        offsetX = Math.round((w - renderW) / 2);
+        offsetY = 0;
+      }
+
+      ctx.fillStyle = '#06070a';
+      ctx.fillRect(0, 0, w, h);
+      ctx.drawImage(img, offsetX, offsetY, renderW, renderH);
+      lastDrawnFrame = frameIndex;
+    }
+
+    /* ==========================================================================
+       3. HIGH-RESILIENCE FRAME PRELOADER
+       ========================================================================== */
+    function preloadFrames() {
+      // 1. Immediately load & render Frame 1
+      const firstImg = new Image();
+      firstImg.src = FRAME_PATH(1);
+      images[1] = firstImg;
+
+      firstImg.onload = () => {
+        loadedCount++;
+        resizeCanvas();
+        drawFrame(1);
+        updatePreloaderBar();
+        preloadMilestones();
+      };
+      firstImg.onerror = () => {
+        preloadMilestones();
+      };
+
+      // 2. Preload distributed milestone frames across 1..300 so scrubbing is immediately responsive
+      function preloadMilestones() {
+        const milestones = [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300];
+        let pending = milestones.length;
+
+        milestones.forEach(idx => {
+          if (!images[idx]) {
+            const img = new Image();
+            img.src = FRAME_PATH(idx);
+            img.onload = img.onerror = () => {
+              loadedCount++;
+              updatePreloaderBar();
+              pending--;
+              if (pending <= 0) {
+                streamRemainingBatches(2, 25);
+              }
+            };
+            images[idx] = img;
+          }
+        });
+      }
+
+      // 3. Stream all remaining frames smoothly
+      function streamRemainingBatches(startIdx, batchSize) {
+        const endIdx = Math.min(startIdx + batchSize - 1, TOTAL_FRAMES);
+
+        for (let i = startIdx; i <= endIdx; i++) {
+          if (!images[i]) {
+            const img = new Image();
+            img.src = FRAME_PATH(i);
+            img.onload = img.onerror = () => {
+              loadedCount++;
+              updatePreloaderBar();
+            };
+            images[i] = img;
+          }
+        }
+
+        if (endIdx < TOTAL_FRAMES) {
+          setTimeout(() => {
+            streamRemainingBatches(endIdx + 1, batchSize);
+          }, 12);
         }
       }
 
-      if (endIdx < TOTAL_FRAMES) {
-        setTimeout(() => {
-          streamRemainingBatches(endIdx + 1, batchSize);
-        }, 15);
+      function updatePreloaderBar() {
+        const pct = Math.min(Math.round((loadedCount / TOTAL_FRAMES) * 100), 100);
+        if (loaderFill) loaderFill.style.width = `${pct}%`;
+
+        if (loadedCount >= 15 && heroLoader && !heroLoader.classList.contains('hidden')) {
+          heroLoader.classList.add('hidden');
+        }
       }
     }
 
-    function updatePreloaderBar() {
-      const pct = Math.min(Math.round((loadedCount / TOTAL_FRAMES) * 100), 100);
-      if (loaderFill) loaderFill.style.width = `${pct}%`;
+    /* ==========================================================================
+       4. CINEMATIC RENDER LOOP WITH ZERO-STALL FALLBACK
+       ========================================================================== */
+    function renderLoop() {
+      const lerpFactor = 0.25;
+      currentFrame += (targetFrame - currentFrame) * lerpFactor;
 
-      if (loadedCount >= 40 && heroLoader && !heroLoader.classList.contains('hidden')) {
-        heroLoader.classList.add('hidden');
+      if (Math.abs(targetFrame - currentFrame) < 0.04) {
+        currentFrame = targetFrame;
+      }
+
+      const roundedFrame = Math.max(1, Math.min(TOTAL_FRAMES, Math.round(currentFrame)));
+
+      // If requested frame is still buffering, locate the nearest loaded frame
+      let frameToDraw = roundedFrame;
+      if (!images[frameToDraw] || !images[frameToDraw].complete || images[frameToDraw].naturalWidth === 0) {
+        for (let offset = 1; offset <= 30; offset++) {
+          const prev = roundedFrame - offset;
+          if (prev >= 1 && images[prev] && images[prev].complete && images[prev].naturalWidth > 0) {
+            frameToDraw = prev;
+            break;
+          }
+          const next = roundedFrame + offset;
+          if (next <= TOTAL_FRAMES && images[next] && images[next].complete && images[next].naturalWidth > 0) {
+            frameToDraw = next;
+            break;
+          }
+        }
+      }
+
+      if (frameToDraw !== lastDrawnFrame && images[frameToDraw] && images[frameToDraw].complete && images[frameToDraw].naturalWidth > 0) {
+        drawFrame(frameToDraw);
+      }
+
+      requestAnimationFrame(renderLoop);
+    }
+
+    /* ==========================================================================
+       5. STRICT BULLETPROOF TOP-PINNED ENGINE (ZERO PAGE SCROLL UNTIL FRAME 300)
+       ========================================================================== */
+    function setScrollLock(locked) {
+      if (locked) {
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+      } else {
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
       }
     }
-  }
 
-  /* ==========================================================================
-     4. RENDER LOOP WITH EXTENDED CINEMATIC LERP
-     ========================================================================== */
-  function renderLoop() {
-    // Smoother, weighted cinematic interpolation (0.12)
-    const lerpFactor = 0.12;
-    currentFrame += (targetFrame - currentFrame) * lerpFactor;
-
-    if (Math.abs(targetFrame - currentFrame) < 0.05) {
-      currentFrame = targetFrame;
+    // Start with page strictly locked at the top
+    if (window.scrollY <= 5) {
+      window.scrollTo(0, 0);
+      setScrollLock(true);
     }
 
-    const roundedFrame = Math.max(1, Math.min(TOTAL_FRAMES, Math.round(currentFrame)));
+    function applyFrame(newTarget) {
+      targetFrame = Math.max(1, Math.min(TOTAL_FRAMES, newTarget));
+      const rounded = Math.round(targetFrame);
 
-    if (roundedFrame !== lastDrawnFrame && images[roundedFrame] && images[roundedFrame].complete) {
-      drawFrame(roundedFrame);
+      if (images[rounded] && images[rounded].complete && images[rounded].naturalWidth > 0) {
+        currentFrame = targetFrame;
+        drawFrame(rounded);
+      }
+
+      // Intro Typography Fade during first ~25 frames
+      if (heroIntro) {
+        if (targetFrame > 3) {
+          const fade = Math.min((targetFrame - 3) / 25, 1);
+          heroIntro.style.opacity = (1 - fade).toFixed(3);
+          heroIntro.style.transform = `translateY(-${(fade * 30).toFixed(1)}px)`;
+          heroIntro.style.pointerEvents = fade >= 0.8 ? 'none' : 'auto';
+        } else {
+          heroIntro.style.opacity = '1';
+          heroIntro.style.transform = 'translateY(0)';
+          heroIntro.style.pointerEvents = 'auto';
+        }
+      }
     }
 
-    updateHUD(roundedFrame);
+    function handleWheel(e) {
+      // 1. While animation is not finished, COMPLETELY PREVENT PAGE SCROLL
+      if (!isAnimationFinished) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.scrollTo(0, 0);
+
+        if (e.deltaY > 0) {
+          const step = Math.max(1.5, Math.abs(e.deltaY) * 0.22);
+          applyFrame(targetFrame + step);
+
+          if (targetFrame >= TOTAL_FRAMES) {
+            targetFrame = TOTAL_FRAMES;
+            isAnimationFinished = true;
+            setScrollLock(false);
+          }
+        } else if (e.deltaY < 0) {
+          const step = Math.max(1.5, Math.abs(e.deltaY) * 0.22);
+          applyFrame(targetFrame - step);
+        }
+        return false;
+      }
+
+      // 2. If animation finished and user scrolled back to top and scrolls UP:
+      if (isAnimationFinished && window.scrollY <= 0 && e.deltaY < 0) {
+        e.preventDefault();
+        isAnimationFinished = false;
+        setScrollLock(true);
+        window.scrollTo(0, 0);
+        applyFrame(targetFrame - Math.max(1.5, Math.abs(e.deltaY) * 0.22));
+        return false;
+      }
+    }
+
+    window.addEventListener('wheel', handleWheel, { passive: false, capture: true });
+
+    // Ensure scroll position is pinned at 0 while animation is running
+    window.addEventListener('scroll', () => {
+      if (!isAnimationFinished && window.scrollY > 0) {
+        window.scrollTo(0, 0);
+      }
+    }, { passive: false });
+
+    // Touch events for mobile/tablets
+    let touchStartY = 0;
+    function handleTouchStart(e) {
+      if (e.touches && e.touches.length > 0) {
+        touchStartY = e.touches[0].clientY;
+      }
+    }
+
+    function handleTouchMove(e) {
+      if (!isAnimationFinished) {
+        e.preventDefault();
+        e.stopPropagation();
+        window.scrollTo(0, 0);
+
+        if (!e.touches || e.touches.length === 0) return false;
+        const currentY = e.touches[0].clientY;
+        const deltaY = touchStartY - currentY;
+        touchStartY = currentY;
+
+        if (deltaY > 0) {
+          const step = Math.max(1, deltaY * 0.35);
+          applyFrame(targetFrame + step);
+
+          if (targetFrame >= TOTAL_FRAMES) {
+            targetFrame = TOTAL_FRAMES;
+            isAnimationFinished = true;
+            setScrollLock(false);
+          }
+        } else if (deltaY < 0) {
+          const step = Math.max(1, Math.abs(deltaY) * 0.35);
+          applyFrame(targetFrame - step);
+        }
+        return false;
+      }
+
+      if (isAnimationFinished && window.scrollY <= 0 && e.touches && e.touches.length > 0) {
+        const currentY = e.touches[0].clientY;
+        const deltaY = touchStartY - currentY;
+        if (deltaY < 0) {
+          e.preventDefault();
+          isAnimationFinished = false;
+          setScrollLock(true);
+          window.scrollTo(0, 0);
+          applyFrame(targetFrame - Math.max(1, Math.abs(deltaY) * 0.35));
+          return false;
+        }
+      }
+    }
+
+    window.addEventListener('touchstart', handleTouchStart, { passive: true });
+    window.addEventListener('touchmove', handleTouchMove, { passive: false, capture: true });
+
+    // Keyboard navigation (ArrowDown, PageDown, Space)
+    window.addEventListener('keydown', (e) => {
+      if (!isAnimationFinished) {
+        if (['ArrowDown', 'PageDown', ' ', 'Spacebar'].includes(e.key)) {
+          e.preventDefault();
+          applyFrame(targetFrame + 18);
+          if (targetFrame >= TOTAL_FRAMES) {
+            targetFrame = TOTAL_FRAMES;
+            isAnimationFinished = true;
+            setScrollLock(false);
+          }
+        } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
+          e.preventDefault();
+          applyFrame(targetFrame - 18);
+        }
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+    });
+
+    function unlockAndScroll() {
+      applyFrame(TOTAL_FRAMES);
+      isAnimationFinished = true;
+      setScrollLock(false);
+      const manifesto = document.getElementById('manifesto');
+      if (manifesto) {
+        manifesto.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    const scrollPrompt = document.querySelector('.hero-scroll-prompt');
+    if (scrollPrompt) {
+      scrollPrompt.style.cursor = 'pointer';
+      scrollPrompt.addEventListener('click', unlockAndScroll);
+    }
+
+    preloadFrames();
+    resizeCanvas();
+    applyFrame(1);
     requestAnimationFrame(renderLoop);
   }
 
-  /* ==========================================================================
-     5. HARD FIXED SCROLL LOCK ON HEAD PAGE (CALIBRATED EXTENDED DURATION)
-     ========================================================================== */
-  function handleWheel(e) {
-    const atTop = window.scrollY <= 10;
-
-    if (atTop) {
-      // 1. If user is scrolling DOWN and animation is NOT finished yet:
-      if (e.deltaY > 0 && targetFrame < TOTAL_FRAMES) {
-        e.preventDefault();
-        
-        // Calibrated speed (0.16) adds ~4 seconds of deliberate, luxurious scrubbing duration
-        const speed = 0.16;
-        targetFrame = Math.min(TOTAL_FRAMES, targetFrame + Math.abs(e.deltaY) * speed);
-
-        // Hide intro text immediately
-        if (heroIntro && targetFrame > 3) {
-          heroIntro.classList.add('fade-out');
+  // Header scroll state
+  const header = document.getElementById('header');
+  const heroElem = document.getElementById('hero');
+  if (header) {
+    function updateHeader() {
+      if (heroElem) {
+        const heroBottom = heroElem.getBoundingClientRect().bottom;
+        if (heroBottom <= 80) {
+          header.classList.add('scrolled-past-hero');
+        } else {
+          header.classList.remove('scrolled-past-hero');
         }
-
-        if (targetFrame >= TOTAL_FRAMES) {
-          targetFrame = TOTAL_FRAMES;
-          isAnimationFinished = true;
-          if (heroCompleteHint) heroCompleteHint.classList.remove('hidden');
-        }
-        return;
       }
-
-      // 2. If user is at top and scrolling UP:
-      if (e.deltaY < 0 && targetFrame > 1) {
-        e.preventDefault();
-        const speed = 0.16;
-        targetFrame = Math.max(1, targetFrame - Math.abs(e.deltaY) * speed);
-
-        if (targetFrame <= 3 && heroIntro) {
-          heroIntro.classList.remove('fade-out');
-        }
-        if (targetFrame < TOTAL_FRAMES) {
-          isAnimationFinished = false;
-          if (heroCompleteHint) heroCompleteHint.classList.add('hidden');
-        }
-        return;
-      }
-    }
-  }
-
-  // Touch Support for Mobile
-  let touchStartY = 0;
-  function handleTouchStart(e) {
-    if (e.touches.length > 0) {
-      touchStartY = e.touches[0].clientY;
-    }
-  }
-
-  function handleTouchMove(e) {
-    const atTop = window.scrollY <= 10;
-    if (!atTop || e.touches.length === 0) return;
-
-    const currentY = e.touches[0].clientY;
-    const deltaY = touchStartY - currentY;
-
-    if (deltaY > 0 && targetFrame < TOTAL_FRAMES) {
-      e.preventDefault();
-      targetFrame = Math.min(TOTAL_FRAMES, targetFrame + deltaY * 0.22);
-      touchStartY = currentY;
-
-      if (heroIntro && targetFrame > 3) heroIntro.classList.add('fade-out');
-      if (targetFrame >= TOTAL_FRAMES) {
-        targetFrame = TOTAL_FRAMES;
-        isAnimationFinished = true;
-        if (heroCompleteHint) heroCompleteHint.classList.remove('hidden');
-      }
-    } else if (deltaY < 0 && targetFrame > 1 && window.scrollY <= 10) {
-      e.preventDefault();
-      targetFrame = Math.max(1, targetFrame - Math.abs(deltaY) * 0.22);
-      touchStartY = currentY;
-
-      if (targetFrame <= 3 && heroIntro) heroIntro.classList.remove('fade-out');
-      if (targetFrame < TOTAL_FRAMES) {
-        isAnimationFinished = false;
-        if (heroCompleteHint) heroCompleteHint.classList.add('hidden');
-      }
-    }
-  }
-
-  window.addEventListener('wheel', handleWheel, { passive: false });
-  window.addEventListener('touchstart', handleTouchStart, { passive: true });
-  window.addEventListener('touchmove', handleTouchMove, { passive: false });
-
-  // Header and scroll listener for rest of page
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 40) {
-      header.classList.add('scrolled');
-    } else {
-      header.classList.remove('scrolled');
-    }
-  }, { passive: true });
-
-  window.addEventListener('resize', resizeCanvas);
-
-  function updateHUD(frame) {
-    if (hudFrame) {
-      hudFrame.textContent = `${String(frame).padStart(3, '0')} / ${TOTAL_FRAMES}`;
-    }
-
-    if (hudPhase) {
-      if (frame < 100) {
-        hudPhase.textContent = '01 / FONDATIONS & TERRASSEMENT';
-      } else if (frame < 220) {
-        hudPhase.textContent = '02 / STRUCTURE & FAÇADES';
+      if (window.scrollY > 30) {
+        header.classList.add('scrolled');
       } else {
-        hudPhase.textContent = '03 / LIVRAISON CLÉ EN MAIN';
+        header.classList.remove('scrolled');
       }
     }
+    window.addEventListener('scroll', updateHeader, { passive: true });
+    updateHeader();
   }
 
   /* ==========================================================================
-     6. METRIC NUMBER ANIMATION ON VIEW
+     6. METRIC NUMBER ANIMATION (RESTARTS EVERY TIME ON SCROLL INTO VIEW)
      ========================================================================== */
-  let metricsCounted = false;
-  function checkMetricsInView() {
-    if (metricsCounted) return;
+  function initMetricsAnimation() {
+    const metricCards = document.querySelectorAll('.metric-value');
     const metricsSec = document.querySelector('.metrics-section');
-    if (!metricsSec) return;
+    if (!metricCards.length || !metricsSec) return;
 
-    const rect = metricsSec.getBoundingClientRect();
-    if (rect.top < window.innerHeight * 0.85) {
-      metricsCounted = true;
-      document.querySelectorAll('.metric-value').forEach(el => {
-        const target = parseInt(el.getAttribute('data-target'), 10);
-        const duration = 1600;
-        const stepTime = 20;
-        const totalSteps = duration / stepTime;
-        const increment = target / totalSteps;
-        let current = 0;
+    // Track active requestAnimationFrame IDs per element to avoid overlaps
+    const animMap = new Map();
 
-        const timer = setInterval(() => {
-          current += increment;
-          if (current >= target) {
-            el.textContent = target.toLocaleString('fr-FR');
-            clearInterval(timer);
+    function animateMetric(el) {
+      const rawTarget = el.getAttribute('data-target') || el.textContent.replace(/\s+/g, '');
+      const target = parseInt(rawTarget, 10);
+      if (isNaN(target)) return;
+
+      // Cancel any ongoing animation for this element
+      if (animMap.has(el)) {
+        cancelAnimationFrame(animMap.get(el));
+        animMap.delete(el);
+      }
+
+      const duration = 1600; // ms duration for counting
+      let startTime = null;
+
+      function step(timestamp) {
+        if (!startTime) startTime = timestamp;
+        const elapsed = timestamp - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+
+        // Smooth cubic ease-out curve
+        const easeOut = 1 - Math.pow(1 - progress, 3);
+        const currentVal = Math.round(easeOut * target);
+
+        el.textContent = currentVal.toLocaleString('fr-FR');
+
+        if (progress < 1) {
+          const frameId = requestAnimationFrame(step);
+          animMap.set(el, frameId);
+        } else {
+          el.textContent = target.toLocaleString('fr-FR');
+          animMap.delete(el);
+        }
+      }
+
+      // Reset to 0 before counting up
+      el.textContent = '0';
+      const frameId = requestAnimationFrame(step);
+      animMap.set(el, frameId);
+    }
+
+    function resetMetric(el) {
+      if (animMap.has(el)) {
+        cancelAnimationFrame(animMap.get(el));
+        animMap.delete(el);
+      }
+      el.textContent = '0';
+    }
+
+    if ('IntersectionObserver' in window) {
+      let wasIntersecting = false;
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            if (!wasIntersecting) {
+              wasIntersecting = true;
+              metricCards.forEach(el => animateMetric(el));
+            }
           } else {
-            el.textContent = Math.floor(current).toLocaleString('fr-FR');
+            if (wasIntersecting) {
+              wasIntersecting = false;
+              metricCards.forEach(el => resetMetric(el));
+            }
           }
-        }, stepTime);
+        });
+      }, {
+        threshold: 0.15,
+        rootMargin: '0px 0px -40px 0px'
       });
+
+      observer.observe(metricsSec);
+    } else {
+      // Fallback scroll listener
+      let isVisible = false;
+      function checkView() {
+        const rect = metricsSec.getBoundingClientRect();
+        const inView = rect.top < window.innerHeight * 0.85 && rect.bottom > 50;
+        if (inView && !isVisible) {
+          isVisible = true;
+          metricCards.forEach(el => animateMetric(el));
+        } else if (!inView && isVisible) {
+          isVisible = false;
+          metricCards.forEach(el => resetMetric(el));
+        }
+      }
+      window.addEventListener('scroll', checkView, { passive: true });
+      checkView();
     }
   }
 
-  window.addEventListener('scroll', checkMetricsInView, { passive: true });
+  initMetricsAnimation();
 
   /* ==========================================================================
-     7. MOBILE DRAWER & NAV ACTIVE STATE
+     7. LUXURY MOBILE DRAWER & BODY SCROLL LOCK
      ========================================================================== */
   const menuToggle = document.getElementById('menuToggle');
   const mobileDrawer = document.getElementById('mobileDrawer');
+
+  function openMobileMenu() {
+    if (!mobileDrawer || !menuToggle) return;
+    mobileDrawer.classList.add('open');
+    menuToggle.classList.add('active');
+    document.body.classList.add('menu-open');
+    menuToggle.setAttribute('aria-expanded', 'true');
+  }
+
+  function closeMobileMenu() {
+    if (!mobileDrawer || !menuToggle) return;
+    mobileDrawer.classList.remove('open');
+    menuToggle.classList.remove('active');
+    document.body.classList.remove('menu-open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+  }
+
   if (menuToggle && mobileDrawer) {
-    menuToggle.addEventListener('click', () => {
-      mobileDrawer.classList.toggle('open');
+    menuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (mobileDrawer.classList.contains('open')) {
+        closeMobileMenu();
+      } else {
+        openMobileMenu();
+      }
     });
-    document.querySelectorAll('.mob-link').forEach(link => {
+
+    // Close when clicking any drawer link
+    mobileDrawer.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
-        mobileDrawer.classList.remove('open');
+        closeMobileMenu();
+      });
+    });
+
+    // Close when pressing Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
+        closeMobileMenu();
+      }
+    });
+  }
+
+  // Active Nav Links on Homepage Scroll
+  const navItems = document.querySelectorAll('.nav-item');
+  const sections = ['hero', 'manifesto', 'expertise', 'fleet', 'portfolio', 'contact'];
+
+  if (navItems.length && document.getElementById('hero')) {
+    window.addEventListener('scroll', () => {
+      const scrollPos = window.scrollY + 200;
+      sections.forEach((id, idx) => {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            navItems.forEach(item => item.classList.remove('active'));
+            if (navItems[idx]) navItems[idx].classList.add('active');
+          }
+        }
+      });
+    }, { passive: true });
+  }
+
+  /* ==========================================================================
+     8. PORTFOLIO CATEGORY FILTER (projets.html)
+     ========================================================================== */
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const projectItems = document.querySelectorAll('.project-item');
+
+  if (filterBtns.length && projectItems.length) {
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+        projectItems.forEach(item => {
+          if (filter === 'all' || item.getAttribute('data-category') === filter) {
+            item.style.display = 'flex';
+          } else {
+            item.style.display = 'none';
+          }
+        });
       });
     });
   }
 
-  // Active Nav Links
-  const navItems = document.querySelectorAll('.nav-item');
-  const sections = ['hero', 'manifesto', 'expertise', 'fleet', 'portfolio', 'contact'];
-
-  window.addEventListener('scroll', () => {
-    const scrollPos = window.scrollY + 200;
-    sections.forEach((id, idx) => {
-      const el = document.getElementById(id);
-      if (el) {
-        const top = el.offsetTop;
-        const height = el.offsetHeight;
-        if (scrollPos >= top && scrollPos < top + height) {
-          navItems.forEach(item => item.classList.remove('active'));
-          if (navItems[idx]) navItems[idx].classList.add('active');
-        }
-      }
-    });
-  }, { passive: true });
-
   /* ==========================================================================
-     8. RFP FORM SUBMISSION
+     9. RFP FORM SUBMISSION (contact.html & index.html)
      ========================================================================== */
   const rfpForm = document.getElementById('rfpForm');
   const rfpSubmit = document.getElementById('rfpSubmit');
@@ -349,7 +600,7 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       if (rfpSubmit) {
         rfpSubmit.disabled = true;
-        rfpSubmit.innerHTML = '<span>Traitement en cours...</span>';
+        rfpSubmit.innerHTML = '<span>Traitement du dossier en cours...</span>';
       }
 
       setTimeout(() => {
@@ -362,11 +613,4 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 700);
     });
   }
-
-  /* ==========================================================================
-     9. BOOTSTRAP
-     ========================================================================== */
-  preloadFrames();
-  resizeCanvas();
-  requestAnimationFrame(renderLoop);
 });
