@@ -1786,15 +1786,14 @@ body.menu-open {
 .footer-brand-pane .brand-title {
   color: #FFFFFF;
 }
-.footer-brand-pane .monogram-svg {
-  color: #FFFFFF;
-}
 .footer-motto {
   font-family: var(--font-heading);
   font-size: 0.95rem;
   font-weight: 600;
   color: #38BDF8;
   margin-bottom: 12px;
+  white-space: nowrap;
+  text-wrap: balance;
 }
 .footer-legal-copy {
   font-size: 0.88rem;
@@ -2402,10 +2401,10 @@ body.menu-open {
   }
   .footer-brand-pane .brand-logo-img.footer-logo {
     height: 38px;
-    max-width: 180px;
-  }
   .footer-motto {
     font-size: 0.9rem;
+    white-space: normal;
+    text-wrap: balance;
   }
   .footer-legal-copy {
     font-size: 0.84rem;
