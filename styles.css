@@ -995,59 +995,6 @@ body.menu-open {
   pointer-events: none;
 }
 
-.expertise-badge-group {
-  position: absolute;
-  top: 16px;
-  left: 16px;
-  right: 16px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.expertise-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: rgba(15, 23, 42, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  padding: 5px 12px;
-  border-radius: var(--radius-full);
-  color: #ffffff;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-.badge-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #38bdf8;
-  box-shadow: 0 0 8px #38bdf8;
-  display: inline-block;
-}
-
-.expertise-index {
-  background: rgba(15, 23, 42, 0.65);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  padding: 4px 10px;
-  border-radius: var(--radius-full);
-  color: rgba(255, 255, 255, 0.85);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-}
-
 .expertise-body {
   padding: 28px 32px 28px;
   display: flex;
@@ -2113,14 +2060,6 @@ body.menu-open {
   }
   .expertise-media {
     height: 205px;
-  }
-  .expertise-badge {
-    font-size: 0.68rem;
-    padding: 4px 10px;
-  }
-  .expertise-index {
-    font-size: 0.66rem;
-    padding: 3px 8px;
   }
   .expertise-body {
     padding: 22px 18px;
