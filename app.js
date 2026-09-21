@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', () => {
        4. CINEMATIC RENDER LOOP WITH ZERO-STALL FALLBACK
        ========================================================================== */
     function renderLoop() {
-      const lerpFactor = 0.25;
+      const lerpFactor = 0.18;
       currentFrame += (targetFrame - currentFrame) * lerpFactor;
 
       if (Math.abs(targetFrame - currentFrame) < 0.04) {
@@ -217,10 +217,10 @@ document.addEventListener('DOMContentLoaded', () => {
         drawFrame(rounded);
       }
 
-      // Intro Typography Fade during first ~25 frames
+      // Intro Typography Fade during first ~30 frames
       if (heroIntro) {
         if (targetFrame > 3) {
-          const fade = Math.min((targetFrame - 3) / 25, 1);
+          const fade = Math.min((targetFrame - 3) / 30, 1);
           heroIntro.style.opacity = (1 - fade).toFixed(3);
           heroIntro.style.transform = `translateY(-${(fade * 30).toFixed(1)}px)`;
           heroIntro.style.pointerEvents = fade >= 0.8 ? 'none' : 'auto';
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         window.scrollTo(0, 0);
 
         if (e.deltaY > 0) {
-          const step = Math.max(1.5, Math.abs(e.deltaY) * 0.22);
+          const step = Math.max(0.5, Math.abs(e.deltaY) * 0.08);
           applyFrame(targetFrame + step);
 
           if (targetFrame >= TOTAL_FRAMES) {
@@ -249,7 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setScrollLock(false);
           }
         } else if (e.deltaY < 0) {
-          const step = Math.max(1.5, Math.abs(e.deltaY) * 0.22);
+          const step = Math.max(0.5, Math.abs(e.deltaY) * 0.08);
           applyFrame(targetFrame - step);
         }
         return false;
@@ -261,7 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isAnimationFinished = false;
         setScrollLock(true);
         window.scrollTo(0, 0);
-        applyFrame(targetFrame - Math.max(1.5, Math.abs(e.deltaY) * 0.22));
+        applyFrame(targetFrame - Math.max(0.5, Math.abs(e.deltaY) * 0.08));
         return false;
       }
     }
@@ -295,7 +295,7 @@ document.addEventListener('DOMContentLoaded', () => {
         touchStartY = currentY;
 
         if (deltaY > 0) {
-          const step = Math.max(1, deltaY * 0.35);
+          const step = Math.max(0.5, deltaY * 0.14);
           applyFrame(targetFrame + step);
 
           if (targetFrame >= TOTAL_FRAMES) {
@@ -304,7 +304,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setScrollLock(false);
           }
         } else if (deltaY < 0) {
-          const step = Math.max(1, Math.abs(deltaY) * 0.35);
+          const step = Math.max(0.5, Math.abs(deltaY) * 0.14);
           applyFrame(targetFrame - step);
         }
         return false;
@@ -318,7 +318,7 @@ document.addEventListener('DOMContentLoaded', () => {
           isAnimationFinished = false;
           setScrollLock(true);
           window.scrollTo(0, 0);
-          applyFrame(targetFrame - Math.max(1, Math.abs(deltaY) * 0.35));
+          applyFrame(targetFrame - Math.max(0.5, Math.abs(deltaY) * 0.14));
           return false;
         }
       }
@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!isAnimationFinished) {
         if (['ArrowDown', 'PageDown', ' ', 'Spacebar'].includes(e.key)) {
           e.preventDefault();
-          applyFrame(targetFrame + 18);
+          applyFrame(targetFrame + 6);
           if (targetFrame >= TOTAL_FRAMES) {
             targetFrame = TOTAL_FRAMES;
             isAnimationFinished = true;
@@ -340,7 +340,7 @@ document.addEventListener('DOMContentLoaded', () => {
           }
         } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
           e.preventDefault();
-          applyFrame(targetFrame - 18);
+          applyFrame(targetFrame - 6);
         }
       }
     });
