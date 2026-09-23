@@ -1,370 +1,251 @@
 <!DOCTYPE html>
-<html lang="fr" class="light">
+<html lang="fr" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>À Propos | TG2D — Entreprise Générale de Construction & BTP Maroc</title>
   <meta name="description" content="Découvrez TG2D Maroc : plus de 18 ans d'expertise en génie civil, terrassement lourd et construction de bâtiments au Maroc. Nos valeurs, engagements HSE et certifications." />
 
-  <!-- Google Fonts: Inter -->
+  <!-- Preconnect Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2026" />
 </head>
 <body>
 
-  <!-- ==================== MAIN STICKY NAVIGATION ==================== -->
-  <header class="header" id="header">
-    <div class="header-inner">
-            <a href="index.html" class="brand" aria-label="TG2D Accueil">
-        <img src="assets/images/tg2d-logo-light.png" alt="TG2D Maroc" class="brand-logo-img" />
-      </a>
+  <!-- Editorial Grid Vertical Guide Rails -->
+  <div class="egrid" aria-hidden="true">
+    <i></i><i></i><i></i><i></i>
+  </div>
 
-      <!-- Navigation Links -->
-      <nav class="nav" aria-label="Navigation Principale">
-        <a href="index.html" class="nav-item">Accueil</a>
-        <a href="a-propos.html" class="nav-item active">À Propos</a>
-        <a href="expertises.html" class="nav-item">Expertises</a>
-        <a href="flotte.html" class="nav-item">Flotte & Matériel</a>
-        <a href="projets.html" class="nav-item">Réalisations</a>
-        <a href="contact.html" class="nav-item">Contact</a>
-      </nav>
-
-      <!-- Action Button -->
-      <div class="header-cta">
-        <a href="contact.html" class="btn-primary">
-          <span>Étude de Projet</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  <!-- ==================== HEADER & NAVIGATION ==================== -->
+  <div class="header-lockup" id="headerLockup">
+    <nav class="nav">
+      <div class="wrap">
+        <a href="index.html" class="nav-logo" aria-label="TG2D Accueil">
+          <img src="assets/images/tg2d-logo-light.png" alt="TG2D Maroc" class="nav-logo-img" id="navLogo" />
         </a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Menu Mobile">
-          <span></span><span></span>
-        </button>
+
+        <div class="nav-links">
+          <a href="index.html">Accueil</a>
+
+          <div class="nav-dd">
+            <a href="a-propos.html" class="nav-dd-btn is-active">Entreprise</a>
+            <div class="nav-dd-menu">
+              <a href="a-propos.html">Mot de la Direction</a>
+              <a href="a-propos.html#valeurs">Nos Valeurs & RSE</a>
+              <a href="a-propos.html#engagements">Engagements HSE</a>
+            </div>
+          </div>
+
+          <div class="nav-dd">
+            <a href="expertises.html" class="nav-dd-btn">Pôles d'Ingénierie</a>
+            <div class="nav-dd-menu">
+              <a href="expertises.html#terrassement">Terrassement & Déroctage</a>
+              <a href="expertises.html#gros-oeuvre">Gros Œuvre & Génie Civil</a>
+              <a href="expertises.html#second-oeuvre">Second Œuvre & Façades</a>
+              <a href="expertises.html#vrd">Voiries & VRD</a>
+            </div>
+          </div>
+
+          <a href="flotte.html">Flotte & Matériel</a>
+
+          <div class="nav-dd">
+            <a href="projets.html" class="nav-dd-btn">Réalisations</a>
+            <div class="nav-dd-menu">
+              <a href="projets.html#residentiel">Résidentiel Prestige</a>
+              <a href="projets.html#tertiaire">Tertiaire & Corporate</a>
+              <a href="projets.html#industriel">Industriel & Logistique</a>
+              <a href="projets.html#hotellerie">Hôtellerie & Loisirs</a>
+            </div>
+          </div>
+
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="nav-right">
+          <a href="contact.html" class="nav-cta">
+            <span>Étude de projet</span>
+            <span class="arr" aria-hidden="true">→</span>
+          </a>
+
+          <button class="nav-burger" id="navBurger" aria-label="Ouvrir le menu">
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
-    </div>
+    </nav>
+  </div>
 
-    <!-- Mobile Luxury Drawer -->
-    <div class="mobile-drawer" id="mobileDrawer">
-      <ul class="mob-nav-list">
-        <li>
-          <a href="index.html" class="mob-link">
-            <span class="mob-link-content">
-              <span class="mob-num">01</span>
-              <span>Accueil</span>
-            </span>
-            <svg class="mob-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="a-propos.html" class="mob-link active">
-            <span class="mob-link-content">
-              <span class="mob-num">02</span>
-              <span>À Propos de TG2D</span>
-            </span>
-            <svg class="mob-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="expertises.html" class="mob-link">
-            <span class="mob-link-content">
-              <span class="mob-num">03</span>
-              <span>Pôles d'Ingénierie</span>
-            </span>
-            <svg class="mob-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="flotte.html" class="mob-link">
-            <span class="mob-link-content">
-              <span class="mob-num">04</span>
-              <span>Flotte & Engins Lourds</span>
-            </span>
-            <svg class="mob-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="projets.html" class="mob-link">
-            <span class="mob-link-content">
-              <span class="mob-num">05</span>
-              <span>Projets Emblématiques</span>
-            </span>
-            <svg class="mob-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="contact.html" class="mob-link">
-            <span class="mob-link-content">
-              <span class="mob-num">06</span>
-              <span>Contact & Devis</span>
-            </span>
-            <svg class="mob-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </li>
-      </ul>
-
-      <div class="mob-drawer-footer">
-        <a href="contact.html" class="mob-drawer-cta">
-          <span>Étude de Projet & Devis</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a href="tel:+212522000000" class="mob-drawer-phone">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <span>+212 (0) 522 00 00 00</span>
-        </a>
-        <div class="mob-drawer-meta">Casablanca • Rabat • Tanger Med</div>
-      </div>
+  <!-- Mobile Luxury Drawer -->
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <div class="mob-head">
+      <img src="assets/images/tg2d-logo-light.png" alt="TG2D" style="height: 32px;" />
+      <button class="mob-close" id="mobClose">&times;</button>
     </div>
-  </header>
+    <div class="mob-links">
+      <a href="index.html"><span>Accueil</span> <span class="num">01</span></a>
+      <a href="a-propos.html"><span>Entreprise</span> <span class="num">02</span></a>
+      <a href="expertises.html"><span>Pôles d'Ingénierie</span> <span class="num">03</span></a>
+      <a href="flotte.html"><span>Flotte & Matériel</span> <span class="num">04</span></a>
+      <a href="projets.html"><span>Réalisations</span> <span class="num">05</span></a>
+      <a href="contact.html"><span>Contact & Devis</span> <span class="num">06</span></a>
+    </div>
+    <div class="mob-foot">
+      <a href="contact.html" class="btn-gold" style="width: 100%; justify-content: center;">Étude de Projet & Devis →</a>
+    </div>
+  </div>
 
   <!-- ==================== SUBPAGE PAGE-HERO ==================== -->
   <section class="page-hero">
-    <div class="container">
+    <div class="wrap">
       <div class="breadcrumbs">
         <a href="index.html">Accueil</a>
         <span>/</span>
         <span>À Propos de l'Entreprise</span>
       </div>
-      <h1 class="page-hero-title">DES FONDATIONS SOLIDES POUR L'AVENIR DU MAROC</h1>
+      <h1 class="page-hero-title">DES FONDATIONS SOLIDES <em>POUR L'AVENIR</em></h1>
       <p class="page-hero-lead">
-        Partenaire de confiance des plus grands donneurs d'ordres institutionnels, industriels et promoteurs immobiliers depuis 2008.
+        Partenaire de confiance des plus grands donneurs d'ordres institutionnels, industriels et promoteurs immobiliers au Maroc depuis 2008.
       </p>
     </div>
   </section>
 
   <!-- ==================== HISTOIRE & VISION ==================== -->
-  <section class="section">
-    <div class="container">
+  <section class="section" style="background: var(--c-cream-bg);">
+    <div class="wrap">
       <div class="pole-detail-row">
         <div class="pole-detail-info">
           <div class="eyebrow">NOTRE HISTOIRE & IDENTITÉ</div>
-          <h3>18 Années d'Excellence Technique et de Croissance Continue</h3>
+          <h3>18 Ans d'Ingénierie & de Rigueur Constructive</h3>
           <p>
-            Fondée au Maroc avec la volonté de hisser l'ingénierie du BTP aux standards internationaux, <strong>TG2D</strong> a bâti sa réputation sur une rigueur d'exécution sans compromis et une maîtrise intégrée de l'ensemble des corps d'état.
+            Créée avec l'ambition de répondre aux exigences croissantes des infrastructures marocaines, TG2D s'est imposée comme une entreprise générale de premier plan.
           </p>
           <p>
-            Des terrassements rocheux les plus complexes aux ouvrages résidentiels et tertiaires d'exception, nous mobilisons nos équipes d'ingénieurs, notre flotte d'engins lourds propriétaire et nos compagnons qualifiés pour concrétiser les visions de nos clients dans le respect absolu des délais et des budgets.
+            Nous allions la force de frappe d'un parc matériel lourd intégré à la finesse d'un bureau d'études capable d'optimiser les choix techniques et structurels de vos projets.
           </p>
-          <div style="margin-top: 24px;">
-            <a href="expertises.html" class="btn-primary">
-              <span>Découvrir Nos Pôles d'Activité</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-          </div>
+          <a href="contact.html" class="btn-gold">Échanger avec notre direction →</a>
         </div>
         <div class="pole-detail-media">
-          <img src="assets/images/site-heavy-1.jpg" alt="Chantier de construction TG2D Maroc" />
+          <img src="assets/images/site-workers.jpg" alt="Équipes TG2D Maroc" loading="lazy" />
+        </div>
+      </div>
+
+      <!-- Nos Valeurs Card Grid -->
+      <div id="valeurs" style="margin-top: 80px;">
+        <div class="partenaires-head">
+          <span class="eyebrow">Piliers Fondateurs</span>
+          <h2 class="section-title">Nos valeurs d'<em>entreprise</em></h2>
+        </div>
+
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="v-num">01 · INTÉGRITÉ</div>
+            <h4>Respect des Engagements</h4>
+            <p>Tenir les délais et les budgets annoncés fait partie intégrante de notre culture d'entreprise.</p>
+          </div>
+
+          <div class="value-card">
+            <div class="v-num">02 · EXCELLENCE</div>
+            <h4>Qualité d'Exécution</h4>
+            <p>Contrôle continu des bétons, des aciers et des finitions en partenariat avec les laboratoires agréés.</p>
+          </div>
+
+          <div class="value-card">
+            <div class="v-num">03 · SÉCURITÉ</div>
+            <h4>HSE & Zéro Accident</h4>
+            <p>Protection rigoureuse de nos collaborateurs et des intervenants sur chacun de nos chantiers.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ==================== NOS 3 PILIERS FONDAMENTAUX ==================== -->
-  <section class="section" style="background-color: var(--bg-surface-1); border-top: 1px solid var(--border-hairline); border-bottom: 1px solid var(--border-hairline);">
-    <div class="container">
-      <div class="section-top center">
-        <div class="eyebrow">NOS ENGAGEMENTS</div>
-        <h2 class="title-lg">LES 3 PILIERS DE LA PERFORMANCE TG2D</h2>
-        <p class="section-subtitle">
-          Chaque projet confié à TG2D bénéficie d'une méthodologie éprouvée et d'une gouvernance rigoureuse.
-        </p>
-      </div>
-
-      <div class="values-grid">
-        
-        <div class="value-card">
-          <div class="value-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          </div>
-          <h3 class="value-title">Sécurité & Normes HSE</h3>
-          <p class="value-desc">
-            Politique « Zéro Accident » stricte sur tous nos chantiers. Formations continues aux protocoles de sécurité, équipements EPI normés et audits de conformité hebdomadaires.
+  <!-- ==================== CORPORATE FOOTER (5 COLUMNS) ==================== -->
+  <footer class="ft">
+    <div class="wrap">
+      <div class="ft-in">
+        <!-- Col 1: Brand & Bio -->
+        <div class="ft-brand">
+          <img src="assets/images/tg2d-logo-light.png" alt="TG2D Maroc" class="ft-logo" />
+          <p class="ft-desc">
+            Entreprise générale de Bâtiment et de Travaux Publics au Maroc. Nos équipes maîtrisent l'ensemble des corps d'état, du terrassement minier aux façades de prestige.
           </p>
-        </div>
-
-        <div class="value-card">
-          <div class="value-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <h3 class="value-title">Respect des Délais Contractuels</h3>
-          <p class="value-desc">
-            Grâce à notre flotte d'engins en propre et notre bureau des méthodes intégré, nous planifions les cadences au jour près et absorbons les imprévus géotechniques sans retard.
-          </p>
-        </div>
-
-        <div class="value-card">
-          <div class="value-icon-wrap">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          </div>
-          <h3 class="value-title">Garantie & Qualité Décennale</h3>
-          <p class="value-desc">
-            Contrôles systématiques par laboratoires agréés (LPEE/équivalents) pour les bétons, aciers et compacités. Tous nos ouvrages sont couverts par une assurance décennale marocaine.
-          </p>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== KEY NUMBERS ==================== -->
-  <section class="metrics-section">
-    <div class="container">
-      <div class="metrics-grid">
-        <div class="metric-card">
-          <div class="metric-value-wrap">
-            <span class="metric-value" data-target="150000">0</span>
-            <span class="metric-unit">m²</span>
-          </div>
-          <div class="metric-title">Surfaces Réalisées</div>
-          <div class="metric-desc">Complexes résidentiels, bureaux et plateformes logistiques livrés.</div>
-        </div>
-
-        <div class="metric-card">
-          <div class="metric-value-wrap">
-            <span class="metric-value" data-target="45">0</span>
-            <span class="metric-unit">+</span>
-          </div>
-          <div class="metric-title">Engins Lourds en Parc</div>
-          <div class="metric-desc">Tombereaux Komatsu HD785, pelles CAT, grues et niveleuses.</div>
-        </div>
-
-        <div class="metric-card">
-          <div class="metric-value-wrap">
-            <span class="metric-value" data-target="100">0</span>
-            <span class="metric-unit">%</span>
-          </div>
-          <div class="metric-title">Conformité aux Normes</div>
-          <div class="metric-desc">RPS 2011, Eurocodes et chartes de sécurité environnementales.</div>
-        </div>
-
-        <div class="metric-card">
-          <div class="metric-value-wrap">
-            <span class="metric-value" data-target="18">0</span>
-            <span class="metric-unit">ans</span>
-          </div>
-          <div class="metric-title">d'Expérience au Maroc</div>
-          <div class="metric-desc">Une présence affirmée à Casablanca, Rabat, Tanger et Marrakech.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== CTA BANNER (ULTRA-LUXURIOUS ARCHITECTURAL) ==================== -->
-  <section class="cta-banner">
-    <div class="container">
-      <div class="cta-banner-card">
-        <div class="cta-banner-inner">
-          <div class="cta-banner-text">
-            <div class="cta-eyebrow">Consultation Technique & Chiffrage BTP</div>
-            <h2>Vous préparez un appel d'offres ou un projet BTP ?</h2>
-            <p>
-              Nos ingénieurs et directeurs de chantiers étudient votre cahier des charges et vous transmettent un chiffrage rigoureux sous 24h ouvrées.
-            </p>
-            <div class="cta-reassurances">
-              <span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Bureau d'études & ingénierie intégrée
-              </span>
-              <span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Flotte lourde mobilisable immédiatement
-              </span>
-              <span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Garantie Décennale & Respect des Délais
-              </span>
-            </div>
-          </div>
-          <div class="cta-actions-group">
-            <a href="contact.html" class="cta-banner-btn">
-              <span>Demander une Étude Technique</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-            <a href="tel:+212522000000" class="cta-banner-phone">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>+212 (0) 522 00 00 00</span>
+          <div class="ft-social">
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="ft-soc" aria-label="LinkedIn">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.34 17v-7H6v7h2.34zM7.17 8.9a1.36 1.36 0 100-2.72 1.36 1.36 0 000 2.72zM18 17v-3.86c0-2.06-1.1-3.02-2.57-3.02-1.19 0-1.72.65-2.02 1.11V10H11.1v7h2.31v-3.9c0-.21.02-.41.08-.56.16-.41.54-.84 1.17-.84.83 0 1.16.63 1.16 1.55V17H18z"/></svg>
             </a>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- ==================== CORPORATE FOOTER (ULTRA-LUXURIOUS ARCHITECTURAL) ==================== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        
-                <div class="footer-brand-pane">
-          <a href="index.html" class="brand" aria-label="TG2D Accueil" style="margin-bottom: 16px;">
-            <img src="assets/images/tg2d-logo-dark.png" alt="TG2D Maroc" class="brand-logo-img footer-logo" />
-          </a>
-          <p class="footer-motto">«&nbsp;Des fondations solides pour un avenir&nbsp;meilleur.&nbsp;»</p>
-          <p class="footer-legal-copy">
-            Entreprise Générale de Bâtiment, Génie Civil, Terrassement de Masse et Réalisation Clé en Main au Maroc.
-          </p>
-          <div class="footer-cert-badges">
-            <span>Agrément BTP Classe 1</span>
-            <span>Garantie Décennale SMABTP</span>
-            <span>Normes Parasismiques RPS 2011</span>
+        <!-- Col 2: Navigation -->
+        <div class="ft-col">
+          <h2 class="ft-h">Plan du Site</h2>
+          <div class="ft-links">
+            <a href="index.html">Accueil</a>
+            <a href="a-propos.html">À Propos</a>
+            <a href="expertises.html">Pôles d'Ingénierie</a>
+            <a href="flotte.html">Flotte & Matériel</a>
+            <a href="projets.html">Réalisations</a>
+            <a href="contact.html">Contact</a>
           </div>
         </div>
 
-        <div class="footer-links-col">
-          <h4>Pôles d'Ingénierie</h4>
-          <ul>
-            <li><a href="expertises.html#terrassement">Terrassement & Déroctage</a></li>
-            <li><a href="expertises.html#gros-oeuvre">Gros Œuvre & Génie Civil</a></li>
-            <li><a href="expertises.html#second-oeuvre">Second Œuvre & Façades</a></li>
-            <li><a href="expertises.html#flotte">Logistique & VRD</a></li>
-            <li><a href="flotte.html">Flotte Lourde (Komatsu HD785)</a></li>
-          </ul>
+        <!-- Col 3: Pôles d'Ingénierie -->
+        <div class="ft-col">
+          <h2 class="ft-h">Nos Métiers</h2>
+          <div class="ft-links">
+            <a href="expertises.html#terrassement">Terrassement Lourd</a>
+            <a href="expertises.html#gros-oeuvre">Gros Œuvre & Génie Civil</a>
+            <a href="expertises.html#second-oeuvre">Second Œuvre & Façades</a>
+            <a href="expertises.html#vrd">Voiries & VRD</a>
+            <a href="flotte.html">Komatsu HD785</a>
+          </div>
         </div>
 
-        <div class="footer-links-col">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="a-propos.html">À Propos du Groupe</a></li>
-            <li><a href="expertises.html">Nos Expertises</a></li>
-            <li><a href="flotte.html">Parc Matériel & Engins</a></li>
-            <li><a href="projets.html">Projets Emblématiques</a></li>
-            <li><a href="contact.html">Contact & Appel d'Offres</a></li>
-          </ul>
+        <!-- Col 4: Villes d'intervention -->
+        <div class="ft-col">
+          <h2 class="ft-h">Chantiers au Maroc</h2>
+          <div class="ft-links">
+            <a href="projets.html">Casablanca</a>
+            <a href="projets.html">Rabat</a>
+            <a href="projets.html">Tanger Med</a>
+            <a href="projets.html">Marrakech</a>
+            <a href="projets.html">Agadir</a>
+          </div>
         </div>
 
-        <div class="footer-links-col">
-          <h4>Direction & Chantiers</h4>
-          <ul class="footer-contact-list">
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>Boulevard d'Anfa, Casablanca, Maroc</span>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>+212 (0) 522 00 00 00</span>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span>contact@tg2d-maroc.com</span>
-            </li>
-          </ul>
+        <!-- Col 5: Contact -->
+        <div class="ft-contact-col">
+          <h2 class="ft-h">Contact</h2>
+          <div class="ft-c">
+            <span class="k">Téléphone</span>
+            <a href="tel:+212522000000">+212 (0) 522 00 00 00</a>
+          </div>
+          <div class="ft-c">
+            <span class="k">Courriel</span>
+            <a href="mailto:contact@tg2d-maroc.com">contact@tg2d-maroc.com</a>
+          </div>
+          <div class="ft-c">
+            <span class="k">Siège Social</span>
+            <span class="v">Boulevard d'Anfa, Casablanca, Maroc</span>
+          </div>
         </div>
-
       </div>
 
-      <div class="footer-bottom-bar">
-        <p>&copy; 2026 TG2D Maroc. Tous droits réservés. Entreprise Générale de Construction & BTP.</p>
-        <div style="display: flex; gap: 24px;">
+      <div class="ft-bottom">
+        <p>&copy; 2026 TG2D Maroc. Tous droits réservés. Entreprise Générale BTP & Génie Civil.</p>
+        <div class="ft-bottom-links">
           <a href="contact.html">Mentions Légales</a>
-          <a href="contact.html">Charte HSE & Sécurité</a>
-          <a href="contact.html">Politique RSE</a>
-          <a href="contact.html">Plan du Site</a>
+          <a href="contact.html">Charte HSE</a>
+          <a href="contact.html">Politique Qualité</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=2026"></script>
 </body>
 </html>

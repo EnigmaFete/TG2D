@@ -1,39 +1,89 @@
 /**
- * TG2D MAROC — Fixed Head Page Interactive Scroll Engine
- * Locks the head page completely in place until the 300-frame animation is 100% finished.
- * Once frame 300 is reached, allows natural downward scrolling through the rest of the website.
+ * TG2D MAROC — LUXURY EDITORIAL INTERACTIVE ENGINE (AHMA BTP UX/UI)
+ * Pinned 300-frame interactive canvas engine, smooth text fade-out after first 10 images,
+ * animated odometers, interactive project rail, and luxury frosted navbar.
  */
 
 document.addEventListener('DOMContentLoaded', () => {
   /* ==========================================================================
-     1. CONSTANTS & DOM REFERENCES
+     1. NAVIGATION & SCROLL LISTENER (GLASSMORPHISM)
      ========================================================================== */
-  const TOTAL_FRAMES = 300;
-  const FRAME_PATH = (index) => `scroll-frames-webp/ezgif-frame-${String(index).padStart(3, '0')}.webp`;
+  const header = document.getElementById('headerLockup');
+  const navLogo = document.getElementById('navLogo');
+  const navBurger = document.getElementById('navBurger');
+  const mobClose = document.getElementById('mobClose');
+  const mobileDrawer = document.getElementById('mobileDrawer');
+  const heroTrack = document.getElementById('heroTrack');
 
+  function updateHeaderOnScroll() {
+    if (!header) return;
+    const scrollY = window.scrollY;
+
+    if (scrollY > 40) {
+      header.classList.add('scrolled');
+      // When we scroll past the pinned hero track into the light presentation section
+      const trackHeight = heroTrack ? heroTrack.offsetHeight - window.innerHeight : 800;
+      if (scrollY > trackHeight + 40) {
+        header.classList.add('scrolled-light');
+        if (navLogo) navLogo.src = 'assets/images/tg2d-logo-dark.png';
+      } else {
+        header.classList.remove('scrolled-light');
+        if (navLogo) navLogo.src = 'assets/images/tg2d-logo-light.png';
+      }
+    } else {
+      header.classList.remove('scrolled');
+      header.classList.remove('scrolled-light');
+      if (navLogo) navLogo.src = 'assets/images/tg2d-logo-light.png';
+    }
+  }
+
+  window.addEventListener('scroll', updateHeaderOnScroll, { passive: true });
+  updateHeaderOnScroll();
+
+  /* Mobile Drawer Toggle */
+  if (navBurger && mobileDrawer) {
+    navBurger.addEventListener('click', () => {
+      mobileDrawer.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    });
+  }
+
+  if (mobClose && mobileDrawer) {
+    mobClose.addEventListener('click', () => {
+      mobileDrawer.classList.remove('is-open');
+      document.body.style.overflow = '';
+    });
+  }
+
+  if (mobileDrawer) {
+    mobileDrawer.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileDrawer.classList.remove('is-open');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  /* ==========================================================================
+     2. PINNED HERO 300-FRAME ENGINE & SMOOTH TEXT FADE-OUT
+     ========================================================================== */
   const canvas = document.getElementById('heroCanvas');
+  const heroContent = document.getElementById('heroContent');
+  const heroFoot = document.getElementById('heroFoot');
+
   if (canvas) {
     const ctx = canvas.getContext('2d', { alpha: false });
-    const heroIntro = document.getElementById('heroIntro');
-    const heroLoader = document.getElementById('heroLoader');
-    const loaderFill = document.getElementById('loaderFill');
-
-    // Images cache
+    const TOTAL_FRAMES = 300;
+    const FRAME_PATH = (idx) => `scroll-frames-webp/ezgif-frame-${String(idx).padStart(3, '0')}.webp`;
     const images = new Array(TOTAL_FRAMES + 1);
-    let loadedCount = 0;
+
     let currentFrame = 1;
     let targetFrame = 1;
-    let lastDrawnFrame = -1;
-    let isAnimationFinished = false;
+    let lastDrawn = -1;
 
-    /* ==========================================================================
-       2. RESIZE & HI-DPI CRISP CANVAS RENDERING
-       ========================================================================== */
     function resizeCanvas() {
       const dpr = Math.min(window.devicePixelRatio || 1, 2);
       const rect = canvas.getBoundingClientRect();
-      
-      // Set actual render buffer to match device physical pixels
       canvas.width = Math.round(rect.width * dpr);
       canvas.height = Math.round(rect.height * dpr);
 
@@ -42,575 +92,268 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    function drawFrame(frameIndex) {
-      const img = images[frameIndex];
+    function drawFrame(frameIdx) {
+      const img = images[frameIdx];
       if (!img || !img.complete || img.naturalWidth === 0) return;
 
       const w = canvas.width;
       const h = canvas.height;
 
-      // Enable ultra-crisp bicubic interpolation
       ctx.imageSmoothingEnabled = true;
       ctx.imageSmoothingQuality = 'high';
 
-      // Mathematical Object-fit: Cover algorithm in physical pixels
       const imgAspect = img.naturalWidth / img.naturalHeight;
       const canvasAspect = w / h;
 
-      let renderW, renderH, offsetX, offsetY;
-
+      let rw, rh, ox, oy;
       if (canvasAspect > imgAspect) {
-        renderW = w;
-        renderH = Math.round(w / imgAspect);
-        offsetX = 0;
-        offsetY = Math.round((h - renderH) / 2);
+        rw = w;
+        rh = Math.round(w / imgAspect);
+        ox = 0;
+        oy = Math.round((h - rh) / 2);
       } else {
-        renderH = h;
-        renderW = Math.round(h * imgAspect);
-        offsetX = Math.round((w - renderW) / 2);
-        offsetY = 0;
+        rh = h;
+        rw = Math.round(h * imgAspect);
+        ox = Math.round((w - rw) / 2);
+        oy = 0;
       }
 
-      ctx.fillStyle = '#06070a';
+      ctx.fillStyle = '#070B16';
       ctx.fillRect(0, 0, w, h);
-      ctx.drawImage(img, offsetX, offsetY, renderW, renderH);
-      lastDrawnFrame = frameIndex;
+      ctx.drawImage(img, ox, oy, rw, rh);
+      lastDrawn = frameIdx;
     }
 
-    /* ==========================================================================
-       3. HIGH-RESILIENCE FRAME PRELOADER
-       ========================================================================== */
     function preloadFrames() {
-      // 1. Immediately load & render Frame 1
-      const firstImg = new Image();
-      firstImg.src = FRAME_PATH(1);
-      images[1] = firstImg;
-
-      firstImg.onload = () => {
-        loadedCount++;
+      // First frame loaded eagerly
+      const first = new Image();
+      first.src = FRAME_PATH(1);
+      first.onload = () => {
+        images[1] = first;
         resizeCanvas();
         drawFrame(1);
-        updatePreloaderBar();
-        preloadMilestones();
-      };
-      firstImg.onerror = () => {
-        preloadMilestones();
+        loadMilestones();
       };
 
-      // 2. Preload distributed milestone frames across 1..300 so scrubbing is immediately responsive
-      function preloadMilestones() {
-        const milestones = [25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300];
-        let pending = milestones.length;
-
-        milestones.forEach(idx => {
-          if (!images[idx]) {
-            const img = new Image();
-            img.src = FRAME_PATH(idx);
-            img.onload = img.onerror = () => {
-              loadedCount++;
-              updatePreloaderBar();
-              pending--;
-              if (pending <= 0) {
-                streamRemainingBatches(2, 25);
-              }
-            };
-            images[idx] = img;
+      function loadMilestones() {
+        // Milestone frames for responsive scrub
+        const miles = [10, 25, 50, 75, 100, 125, 150, 175, 200, 225, 250, 275, 300];
+        miles.forEach(i => {
+          if (!images[i]) {
+            const m = new Image();
+            m.src = FRAME_PATH(i);
+            m.onload = () => { images[i] = m; };
           }
         });
-      }
 
-      // 3. Stream all remaining frames smoothly
-      function streamRemainingBatches(startIdx, batchSize) {
-        const endIdx = Math.min(startIdx + batchSize - 1, TOTAL_FRAMES);
-
-        for (let i = startIdx; i <= endIdx; i++) {
+        // Load rest of frames progressively
+        for (let i = 2; i <= TOTAL_FRAMES; i++) {
           if (!images[i]) {
-            const img = new Image();
-            img.src = FRAME_PATH(i);
-            img.onload = img.onerror = () => {
-              loadedCount++;
-              updatePreloaderBar();
-            };
-            images[i] = img;
+            const im = new Image();
+            im.src = FRAME_PATH(i);
+            images[i] = im;
           }
-        }
-
-        if (endIdx < TOTAL_FRAMES) {
-          setTimeout(() => {
-            streamRemainingBatches(endIdx + 1, batchSize);
-          }, 12);
-        }
-      }
-
-      function updatePreloaderBar() {
-        const pct = Math.min(Math.round((loadedCount / TOTAL_FRAMES) * 100), 100);
-        if (loaderFill) loaderFill.style.width = `${pct}%`;
-
-        if (loadedCount >= 15 && heroLoader && !heroLoader.classList.contains('hidden')) {
-          heroLoader.classList.add('hidden');
         }
       }
     }
 
-    /* ==========================================================================
-       4. CINEMATIC RENDER LOOP WITH ZERO-STALL FALLBACK
-       ========================================================================== */
-    function renderLoop() {
-      const lerpFactor = 0.18;
-      currentFrame += (targetFrame - currentFrame) * lerpFactor;
+    /* Update text opacity and displacement based on frame progression */
+    function updateTextFade(frame) {
+      // Smooth fade-out strictly during the first 10 images (frames 1 -> 10)
+      const fadeLimit = 10;
+      if (frame <= fadeLimit) {
+        const progress = (frame - 1) / (fadeLimit - 1); // 0 at frame 1, 1 at frame 10
+        const opacity = Math.max(0, 1 - progress);
+        const translateY = -30 * progress;
 
-      if (Math.abs(targetFrame - currentFrame) < 0.04) {
-        currentFrame = targetFrame;
+        if (heroContent) {
+          heroContent.style.opacity = opacity.toFixed(3);
+          heroContent.style.transform = `translateY(${translateY.toFixed(1)}px)`;
+          heroContent.style.pointerEvents = opacity <= 0.05 ? 'none' : 'auto';
+        }
+        if (heroFoot) {
+          heroFoot.style.opacity = opacity.toFixed(3);
+          heroFoot.style.transform = `translateY(${translateY.toFixed(1)}px)`;
+          heroFoot.style.pointerEvents = opacity <= 0.05 ? 'none' : 'auto';
+        }
+      } else {
+        if (heroContent) {
+          heroContent.style.opacity = '0';
+          heroContent.style.transform = 'translateY(-30px)';
+          heroContent.style.pointerEvents = 'none';
+        }
+        if (heroFoot) {
+          heroFoot.style.opacity = '0';
+          heroFoot.style.transform = 'translateY(-30px)';
+          heroFoot.style.pointerEvents = 'none';
+        }
       }
+    }
 
-      const roundedFrame = Math.max(1, Math.min(TOTAL_FRAMES, Math.round(currentFrame)));
+    function renderLoop() {
+      // Smooth lerp towards target frame
+      currentFrame += (targetFrame - currentFrame) * 0.18;
+      const rounded = Math.max(1, Math.min(TOTAL_FRAMES, Math.round(currentFrame)));
 
-      // If requested frame is still buffering, locate the nearest loaded frame
-      let frameToDraw = roundedFrame;
-      if (!images[frameToDraw] || !images[frameToDraw].complete || images[frameToDraw].naturalWidth === 0) {
-        for (let offset = 1; offset <= 30; offset++) {
-          const prev = roundedFrame - offset;
-          if (prev >= 1 && images[prev] && images[prev].complete && images[prev].naturalWidth > 0) {
-            frameToDraw = prev;
-            break;
-          }
-          const next = roundedFrame + offset;
-          if (next <= TOTAL_FRAMES && images[next] && images[next].complete && images[next].naturalWidth > 0) {
-            frameToDraw = next;
-            break;
-          }
+      // Find nearest loaded frame if current isn't ready
+      let toDraw = rounded;
+      if (!images[toDraw] || !images[toDraw].complete) {
+        for (let off = 1; off <= 25; off++) {
+          if (images[rounded - off] && images[rounded - off].complete) { toDraw = rounded - off; break; }
+          if (images[rounded + off] && images[rounded + off].complete) { toDraw = rounded + off; break; }
         }
       }
 
-      if (frameToDraw !== lastDrawnFrame && images[frameToDraw] && images[frameToDraw].complete && images[frameToDraw].naturalWidth > 0) {
-        drawFrame(frameToDraw);
+      if (toDraw !== lastDrawn && images[toDraw] && images[toDraw].complete) {
+        drawFrame(toDraw);
       }
 
+      updateTextFade(currentFrame);
       requestAnimationFrame(renderLoop);
     }
 
-    /* ==========================================================================
-       5. STRICT BULLETPROOF TOP-PINNED ENGINE (ZERO PAGE SCROLL UNTIL FRAME 300)
-       ========================================================================== */
-    function setScrollLock(locked) {
-      if (locked) {
-        document.documentElement.style.overflow = 'hidden';
-        document.body.style.overflow = 'hidden';
-      } else {
-        document.documentElement.style.overflow = '';
-        document.body.style.overflow = '';
+    /* Scrub based on scroll within the pinned hero track */
+    function syncHeroScrub() {
+      if (!heroTrack) return;
+      const rect = heroTrack.getBoundingClientRect();
+      const trackHeight = heroTrack.offsetHeight - window.innerHeight;
+
+      if (trackHeight > 0) {
+        const scrolled = -rect.top;
+        const progress = Math.min(Math.max(scrolled / trackHeight, 0), 1);
+        targetFrame = Math.max(1, Math.min(TOTAL_FRAMES, 1 + progress * (TOTAL_FRAMES - 1)));
       }
     }
 
-    // Start with page strictly locked at the top
-    if (window.scrollY <= 5) {
-      window.scrollTo(0, 0);
-      setScrollLock(true);
-    }
-
-    function applyFrame(newTarget) {
-      targetFrame = Math.max(1, Math.min(TOTAL_FRAMES, newTarget));
-      const rounded = Math.round(targetFrame);
-
-      if (images[rounded] && images[rounded].complete && images[rounded].naturalWidth > 0) {
-        currentFrame = targetFrame;
-        drawFrame(rounded);
-      }
-
-      // Intro Typography Fade during first ~30 frames
-      if (heroIntro) {
-        if (targetFrame > 3) {
-          const fade = Math.min((targetFrame - 3) / 30, 1);
-          heroIntro.style.opacity = (1 - fade).toFixed(3);
-          heroIntro.style.transform = `translateY(-${(fade * 30).toFixed(1)}px)`;
-          heroIntro.style.pointerEvents = fade >= 0.8 ? 'none' : 'auto';
-        } else {
-          heroIntro.style.opacity = '1';
-          heroIntro.style.transform = 'translateY(0)';
-          heroIntro.style.pointerEvents = 'auto';
-        }
-      }
-    }
-
-    function handleWheel(e) {
-      // 1. While animation is not finished, COMPLETELY PREVENT PAGE SCROLL
-      if (!isAnimationFinished) {
-        e.preventDefault();
-        e.stopPropagation();
-        window.scrollTo(0, 0);
-
-        if (e.deltaY > 0) {
-          const step = Math.max(0.5, Math.abs(e.deltaY) * 0.08);
-          applyFrame(targetFrame + step);
-
-          if (targetFrame >= TOTAL_FRAMES) {
-            targetFrame = TOTAL_FRAMES;
-            isAnimationFinished = true;
-            setScrollLock(false);
-          }
-        } else if (e.deltaY < 0) {
-          const step = Math.max(0.5, Math.abs(e.deltaY) * 0.08);
-          applyFrame(targetFrame - step);
-        }
-        return false;
-      }
-
-      // 2. If animation finished and user scrolled back to top and scrolls UP:
-      if (isAnimationFinished && window.scrollY <= 0 && e.deltaY < 0) {
-        e.preventDefault();
-        isAnimationFinished = false;
-        setScrollLock(true);
-        window.scrollTo(0, 0);
-        applyFrame(targetFrame - Math.max(0.5, Math.abs(e.deltaY) * 0.08));
-        return false;
-      }
-    }
-
-    window.addEventListener('wheel', handleWheel, { passive: false, capture: true });
-
-    // Ensure scroll position is pinned at 0 while animation is running
-    window.addEventListener('scroll', () => {
-      if (!isAnimationFinished && window.scrollY > 0) {
-        window.scrollTo(0, 0);
-      }
-    }, { passive: false });
-
-    // Touch events for mobile/tablets
-    let touchStartY = 0;
-    function handleTouchStart(e) {
-      if (e.touches && e.touches.length > 0) {
-        touchStartY = e.touches[0].clientY;
-      }
-    }
-
-    function handleTouchMove(e) {
-      if (!isAnimationFinished) {
-        e.preventDefault();
-        e.stopPropagation();
-        window.scrollTo(0, 0);
-
-        if (!e.touches || e.touches.length === 0) return false;
-        const currentY = e.touches[0].clientY;
-        const deltaY = touchStartY - currentY;
-        touchStartY = currentY;
-
-        if (deltaY > 0) {
-          const step = Math.max(0.5, deltaY * 0.14);
-          applyFrame(targetFrame + step);
-
-          if (targetFrame >= TOTAL_FRAMES) {
-            targetFrame = TOTAL_FRAMES;
-            isAnimationFinished = true;
-            setScrollLock(false);
-          }
-        } else if (deltaY < 0) {
-          const step = Math.max(0.5, Math.abs(deltaY) * 0.14);
-          applyFrame(targetFrame - step);
-        }
-        return false;
-      }
-
-      if (isAnimationFinished && window.scrollY <= 0 && e.touches && e.touches.length > 0) {
-        const currentY = e.touches[0].clientY;
-        const deltaY = touchStartY - currentY;
-        if (deltaY < 0) {
-          e.preventDefault();
-          isAnimationFinished = false;
-          setScrollLock(true);
-          window.scrollTo(0, 0);
-          applyFrame(targetFrame - Math.max(0.5, Math.abs(deltaY) * 0.14));
-          return false;
-        }
-      }
-    }
-
-    window.addEventListener('touchstart', handleTouchStart, { passive: true });
-    window.addEventListener('touchmove', handleTouchMove, { passive: false, capture: true });
-
-    // Keyboard navigation (ArrowDown, PageDown, Space)
-    window.addEventListener('keydown', (e) => {
-      if (!isAnimationFinished) {
-        if (['ArrowDown', 'PageDown', ' ', 'Spacebar'].includes(e.key)) {
-          e.preventDefault();
-          applyFrame(targetFrame + 6);
-          if (targetFrame >= TOTAL_FRAMES) {
-            targetFrame = TOTAL_FRAMES;
-            isAnimationFinished = true;
-            setScrollLock(false);
-          }
-        } else if (['ArrowUp', 'PageUp'].includes(e.key)) {
-          e.preventDefault();
-          applyFrame(targetFrame - 6);
-        }
-      }
-    });
-
-    window.addEventListener('resize', () => {
-      resizeCanvas();
-    });
-
-    function unlockAndScroll() {
-      applyFrame(TOTAL_FRAMES);
-      isAnimationFinished = true;
-      setScrollLock(false);
-      const manifesto = document.getElementById('manifesto');
-      if (manifesto) {
-        manifesto.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-
-    const scrollPrompt = document.querySelector('.hero-scroll-prompt');
-    if (scrollPrompt) {
-      scrollPrompt.style.cursor = 'pointer';
-      scrollPrompt.addEventListener('click', unlockAndScroll);
-    }
+    window.addEventListener('scroll', syncHeroScrub, { passive: true });
+    window.addEventListener('resize', resizeCanvas, { passive: true });
 
     preloadFrames();
     resizeCanvas();
-    applyFrame(1);
-    requestAnimationFrame(renderLoop);
-  }
-
-  // Header scroll state
-  const header = document.getElementById('header');
-  const heroElem = document.getElementById('hero');
-  if (header) {
-    function updateHeader() {
-      if (heroElem) {
-        const heroBottom = heroElem.getBoundingClientRect().bottom;
-        if (heroBottom <= 80) {
-          header.classList.add('scrolled-past-hero');
-        } else {
-          header.classList.remove('scrolled-past-hero');
-        }
-      }
-      if (window.scrollY > 30) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    }
-    window.addEventListener('scroll', updateHeader, { passive: true });
-    updateHeader();
+    renderLoop();
+    syncHeroScrub();
   }
 
   /* ==========================================================================
-     6. METRIC NUMBER ANIMATION (RESTARTS EVERY TIME ON SCROLL INTO VIEW)
+     3. ANIMATED NUMBER ODOMETERS (COUNT-UP)
      ========================================================================== */
-  function initMetricsAnimation() {
-    const metricCards = document.querySelectorAll('.metric-value');
-    const metricsSec = document.querySelector('.metrics-section');
-    if (!metricCards.length || !metricsSec) return;
+  const odometers = document.querySelectorAll('.odo');
+  if (odometers.length > 0) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const targetNum = parseInt(el.getAttribute('data-count'), 10);
+          if (!isNaN(targetNum) && !el.classList.contains('counted')) {
+            el.classList.add('counted');
+            animateCount(el, targetNum);
+          }
+        }
+      });
+    }, { threshold: 0.2 });
 
-    // Track active requestAnimationFrame IDs per element to avoid overlaps
-    const animMap = new Map();
+    odometers.forEach(odo => observer.observe(odo));
 
-    function animateMetric(el) {
-      const rawTarget = el.getAttribute('data-target') || el.textContent.replace(/\s+/g, '');
-      const target = parseInt(rawTarget, 10);
-      if (isNaN(target)) return;
+    function animateCount(el, target) {
+      const duration = 1600;
+      const startTime = performance.now();
 
-      // Cancel any ongoing animation for this element
-      if (animMap.has(el)) {
-        cancelAnimationFrame(animMap.get(el));
-        animMap.delete(el);
-      }
-
-      const duration = 1600; // ms duration for counting
-      let startTime = null;
-
-      function step(timestamp) {
-        if (!startTime) startTime = timestamp;
-        const elapsed = timestamp - startTime;
+      function step(now) {
+        const elapsed = now - startTime;
         const progress = Math.min(elapsed / duration, 1);
-
-        // Smooth cubic ease-out curve
         const easeOut = 1 - Math.pow(1 - progress, 3);
-        const currentVal = Math.round(easeOut * target);
+        const currentVal = Math.floor(easeOut * target);
 
-        el.textContent = currentVal.toLocaleString('fr-FR');
+        if (target >= 1000) {
+          el.textContent = currentVal.toLocaleString('fr-FR');
+        } else {
+          el.textContent = currentVal;
+        }
 
         if (progress < 1) {
-          const frameId = requestAnimationFrame(step);
-          animMap.set(el, frameId);
+          requestAnimationFrame(step);
         } else {
-          el.textContent = target.toLocaleString('fr-FR');
-          animMap.delete(el);
+          el.textContent = target >= 1000 ? target.toLocaleString('fr-FR') : target;
         }
       }
 
-      // Reset to 0 before counting up
-      el.textContent = '0';
-      const frameId = requestAnimationFrame(step);
-      animMap.set(el, frameId);
-    }
-
-    function resetMetric(el) {
-      if (animMap.has(el)) {
-        cancelAnimationFrame(animMap.get(el));
-        animMap.delete(el);
-      }
-      el.textContent = '0';
-    }
-
-    if ('IntersectionObserver' in window) {
-      let wasIntersecting = false;
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            if (!wasIntersecting) {
-              wasIntersecting = true;
-              metricCards.forEach(el => animateMetric(el));
-            }
-          } else {
-            if (wasIntersecting) {
-              wasIntersecting = false;
-              metricCards.forEach(el => resetMetric(el));
-            }
-          }
-        });
-      }, {
-        threshold: 0.15,
-        rootMargin: '0px 0px -40px 0px'
-      });
-
-      observer.observe(metricsSec);
-    } else {
-      // Fallback scroll listener
-      let isVisible = false;
-      function checkView() {
-        const rect = metricsSec.getBoundingClientRect();
-        const inView = rect.top < window.innerHeight * 0.85 && rect.bottom > 50;
-        if (inView && !isVisible) {
-          isVisible = true;
-          metricCards.forEach(el => animateMetric(el));
-        } else if (!inView && isVisible) {
-          isVisible = false;
-          metricCards.forEach(el => resetMetric(el));
-        }
-      }
-      window.addEventListener('scroll', checkView, { passive: true });
-      checkView();
+      requestAnimationFrame(step);
     }
   }
-
-  initMetricsAnimation();
 
   /* ==========================================================================
-     7. LUXURY MOBILE DRAWER & BODY SCROLL LOCK
+     4. PROJETS EMBLÉMATIQUES HORIZONTAL RAIL (DYNAMIC SIDE PANEL)
      ========================================================================== */
-  const menuToggle = document.getElementById('menuToggle');
-  const mobileDrawer = document.getElementById('mobileDrawer');
+  const frRail = document.getElementById('frRail');
+  const frIdx = document.getElementById('frIdx');
+  const frCat = document.getElementById('frCat');
+  const frTitle = document.getElementById('frTitle');
+  const frDesc = document.getElementById('frDesc');
 
-  function openMobileMenu() {
-    if (!mobileDrawer || !menuToggle) return;
-    mobileDrawer.classList.add('open');
-    menuToggle.classList.add('active');
-    document.body.classList.add('menu-open');
-    menuToggle.setAttribute('aria-expanded', 'true');
-  }
+  if (frRail && frIdx && frCat && frTitle && frDesc) {
+    const cards = frRail.querySelectorAll('.fr-card');
 
-  function closeMobileMenu() {
-    if (!mobileDrawer || !menuToggle) return;
-    mobileDrawer.classList.remove('open');
-    menuToggle.classList.remove('active');
-    document.body.classList.remove('menu-open');
-    menuToggle.setAttribute('aria-expanded', 'false');
-  }
+    function updateActiveProject(card) {
+      const idx = card.getAttribute('data-idx') || '01';
+      const cat = card.getAttribute('data-cat') || 'Résidentiel';
+      const title = card.getAttribute('data-title') || '';
+      const desc = card.getAttribute('data-desc') || '';
 
-  if (menuToggle && mobileDrawer) {
-    menuToggle.addEventListener('click', (e) => {
-      e.stopPropagation();
-      if (mobileDrawer.classList.contains('open')) {
-        closeMobileMenu();
-      } else {
-        openMobileMenu();
-      }
+      frIdx.textContent = idx;
+      frCat.textContent = cat;
+      frTitle.textContent = title;
+      frDesc.textContent = desc;
+
+      cards.forEach(c => c.style.borderColor = '');
+      card.style.borderColor = 'var(--c-gold)';
+    }
+
+    cards.forEach(card => {
+      card.addEventListener('mouseenter', () => updateActiveProject(card));
+      card.addEventListener('click', () => updateActiveProject(card));
     });
 
-    // Close when clicking any drawer link
-    mobileDrawer.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        closeMobileMenu();
-      });
-    });
+    frRail.addEventListener('scroll', () => {
+      let closestCard = cards[0];
+      let minDistance = Infinity;
+      const railCenter = frRail.scrollLeft + frRail.clientWidth / 2;
 
-    // Close when pressing Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
-        closeMobileMenu();
-      }
-    });
-  }
-
-  // Active Nav Links on Homepage Scroll
-  const navItems = document.querySelectorAll('.nav-item');
-  const sections = ['hero', 'manifesto', 'expertise', 'fleet', 'portfolio', 'contact'];
-
-  if (navItems.length && document.getElementById('hero')) {
-    window.addEventListener('scroll', () => {
-      const scrollPos = window.scrollY + 200;
-      sections.forEach((id, idx) => {
-        const el = document.getElementById(id);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPos >= top && scrollPos < top + height) {
-            navItems.forEach(item => item.classList.remove('active'));
-            if (navItems[idx]) navItems[idx].classList.add('active');
-          }
+      cards.forEach(card => {
+        const cardCenter = card.offsetLeft + card.offsetWidth / 2;
+        const distance = Math.abs(railCenter - cardCenter);
+        if (distance < minDistance) {
+          minDistance = distance;
+          closestCard = card;
         }
       });
+
+      if (closestCard) {
+        updateActiveProject(closestCard);
+      }
     }, { passive: true });
   }
 
   /* ==========================================================================
-     8. PORTFOLIO CATEGORY FILTER (projets.html)
+     5. NOS MÉTIERS DECK TRACK PROGRESS
      ========================================================================== */
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectItems = document.querySelectorAll('.project-item');
+  const deckCards = document.querySelectorAll('.dcard');
+  const deckFill = document.querySelector('.deck__fill');
+  const deckCur = document.querySelector('.deck__rail b');
 
-  if (filterBtns.length && projectItems.length) {
-    filterBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        filterBtns.forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
-
-        const filter = btn.getAttribute('data-filter');
-        projectItems.forEach(item => {
-          if (filter === 'all' || item.getAttribute('data-category') === filter) {
-            item.style.display = 'flex';
-          } else {
-            item.style.display = 'none';
+  if (deckCards.length > 0 && deckFill) {
+    const deckObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const index = Array.from(deckCards).indexOf(entry.target);
+          if (index !== -1) {
+            const pct = ((index + 1) / deckCards.length) * 100;
+            deckFill.style.width = `${pct}%`;
+            if (deckCur) deckCur.textContent = String(index + 1).padStart(2, '0');
           }
-        });
-      });
-    });
-  }
-
-  /* ==========================================================================
-     9. RFP FORM SUBMISSION (contact.html & index.html)
-     ========================================================================== */
-  const rfpForm = document.getElementById('rfpForm');
-  const rfpSubmit = document.getElementById('rfpSubmit');
-  const rfpAlert = document.getElementById('rfpAlert');
-
-  if (rfpForm) {
-    rfpForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      if (rfpSubmit) {
-        rfpSubmit.disabled = true;
-        rfpSubmit.innerHTML = '<span>Traitement du dossier en cours...</span>';
-      }
-
-      setTimeout(() => {
-        if (rfpAlert) rfpAlert.classList.remove('hidden');
-        rfpForm.reset();
-        if (rfpSubmit) {
-          rfpSubmit.disabled = false;
-          rfpSubmit.innerHTML = '<span>Dossier Transmis avec Succès ✓</span>';
         }
-      }, 700);
-    });
+      });
+    }, { threshold: 0.5 });
+
+    deckCards.forEach(card => deckObserver.observe(card));
   }
 });

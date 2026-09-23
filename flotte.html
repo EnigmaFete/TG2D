@@ -1,145 +1,125 @@
 <!DOCTYPE html>
-<html lang="fr" class="light">
+<html lang="fr" dir="ltr">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flotte Lourde & Parc Matériel | TG2D Maroc</title>
   <meta name="description" content="Découvrez le parc matériel propriétaire TG2D Maroc : tombereaux Komatsu HD785, pelles d'extraction Caterpillar, niveleuses et engins de terrassement lourd." />
 
-  <!-- Google Fonts: Inter -->
+  <!-- Preconnect Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=2026" />
 </head>
 <body>
 
-  <!-- ==================== MAIN NAVIGATION ==================== -->
-  <header class="header" id="header">
-    <div class="header-inner">
-            <a href="index.html" class="brand" aria-label="TG2D Accueil">
-        <img src="assets/images/tg2d-logo-light.png" alt="TG2D Maroc" class="brand-logo-img" />
-      </a>
+  <!-- Editorial Grid Vertical Guide Rails -->
+  <div class="egrid" aria-hidden="true">
+    <i></i><i></i><i></i><i></i>
+  </div>
 
-      <!-- Navigation Links -->
-      <nav class="nav" aria-label="Navigation Principale">
-        <a href="index.html" class="nav-item">Accueil</a>
-        <a href="a-propos.html" class="nav-item">À Propos</a>
-        <a href="expertises.html" class="nav-item">Expertises</a>
-        <a href="flotte.html" class="nav-item active">Flotte & Matériel</a>
-        <a href="projets.html" class="nav-item">Réalisations</a>
-        <a href="contact.html" class="nav-item">Contact</a>
-      </nav>
-
-      <!-- Action Button -->
-      <div class="header-cta">
-        <a href="contact.html" class="btn-primary">
-          <span>Étude de Projet</span>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+  <!-- ==================== HEADER & NAVIGATION ==================== -->
+  <div class="header-lockup" id="headerLockup">
+    <nav class="nav">
+      <div class="wrap">
+        <a href="index.html" class="nav-logo" aria-label="TG2D Accueil">
+          <img src="assets/images/tg2d-logo-light.png" alt="TG2D Maroc" class="nav-logo-img" id="navLogo" />
         </a>
-        <button class="menu-toggle" id="menuToggle" aria-label="Menu Mobile">
-          <span></span><span></span>
-        </button>
+
+        <div class="nav-links">
+          <a href="index.html">Accueil</a>
+
+          <div class="nav-dd">
+            <a href="a-propos.html" class="nav-dd-btn">Entreprise</a>
+            <div class="nav-dd-menu">
+              <a href="a-propos.html">Mot de la Direction</a>
+              <a href="a-propos.html#valeurs">Nos Valeurs & RSE</a>
+              <a href="a-propos.html#engagements">Engagements HSE</a>
+            </div>
+          </div>
+
+          <div class="nav-dd">
+            <a href="expertises.html" class="nav-dd-btn">Pôles d'Ingénierie</a>
+            <div class="nav-dd-menu">
+              <a href="expertises.html#terrassement">Terrassement & Déroctage</a>
+              <a href="expertises.html#gros-oeuvre">Gros Œuvre & Génie Civil</a>
+              <a href="expertises.html#second-oeuvre">Second Œuvre & Façades</a>
+              <a href="expertises.html#vrd">Voiries & VRD</a>
+            </div>
+          </div>
+
+          <a href="flotte.html" class="is-active">Flotte & Matériel</a>
+
+          <div class="nav-dd">
+            <a href="projets.html" class="nav-dd-btn">Réalisations</a>
+            <div class="nav-dd-menu">
+              <a href="projets.html#residentiel">Résidentiel Prestige</a>
+              <a href="projets.html#tertiaire">Tertiaire & Corporate</a>
+              <a href="projets.html#industriel">Industriel & Logistique</a>
+              <a href="projets.html#hotellerie">Hôtellerie & Loisirs</a>
+            </div>
+          </div>
+
+          <a href="contact.html">Contact</a>
+        </div>
+
+        <div class="nav-right">
+          <a href="contact.html" class="nav-cta">
+            <span>Étude de projet</span>
+            <span class="arr" aria-hidden="true">→</span>
+          </a>
+
+          <button class="nav-burger" id="navBurger" aria-label="Ouvrir le menu">
+            <span></span>
+            <span></span>
+          </button>
+        </div>
       </div>
-    </div>
+    </nav>
+  </div>
 
-    <!-- Mobile Luxury Drawer -->
-    <div class="mobile-drawer" id="mobileDrawer">
-      <ul class="mob-nav-list">
-        <li>
-          <a href="index.html" class="mob-link">
-            <span class="mob-link-content">
-              <span class="mob-num">01</span>
-              <span>Accueil</span>
-            </span>
-            <svg class="mob-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="a-propos.html" class="mob-link">
-            <span class="mob-link-content">
-              <span class="mob-num">02</span>
-              <span>À Propos de TG2D</span>
-            </span>
-            <svg class="mob-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="expertises.html" class="mob-link">
-            <span class="mob-link-content">
-              <span class="mob-num">03</span>
-              <span>Pôles d'Ingénierie</span>
-            </span>
-            <svg class="mob-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="flotte.html" class="mob-link active">
-            <span class="mob-link-content">
-              <span class="mob-num">04</span>
-              <span>Flotte & Engins Lourds</span>
-            </span>
-            <svg class="mob-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="projets.html" class="mob-link">
-            <span class="mob-link-content">
-              <span class="mob-num">05</span>
-              <span>Projets Emblématiques</span>
-            </span>
-            <svg class="mob-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="contact.html" class="mob-link">
-            <span class="mob-link-content">
-              <span class="mob-num">06</span>
-              <span>Contact & Devis</span>
-            </span>
-            <svg class="mob-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
-          </a>
-        </li>
-      </ul>
-
-      <div class="mob-drawer-footer">
-        <a href="contact.html" class="mob-drawer-cta">
-          <span>Étude de Projet & Devis</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </a>
-        <a href="tel:+212522000000" class="mob-drawer-phone">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          <span>+212 (0) 522 00 00 00</span>
-        </a>
-        <div class="mob-drawer-meta">Casablanca • Rabat • Tanger Med</div>
-      </div>
+  <!-- Mobile Luxury Drawer -->
+  <div class="mobile-menu-drawer" id="mobileDrawer">
+    <div class="mob-head">
+      <img src="assets/images/tg2d-logo-light.png" alt="TG2D" style="height: 32px;" />
+      <button class="mob-close" id="mobClose">&times;</button>
     </div>
-  </header>
+    <div class="mob-links">
+      <a href="index.html"><span>Accueil</span> <span class="num">01</span></a>
+      <a href="a-propos.html"><span>Entreprise</span> <span class="num">02</span></a>
+      <a href="expertises.html"><span>Pôles d'Ingénierie</span> <span class="num">03</span></a>
+      <a href="flotte.html"><span>Flotte & Matériel</span> <span class="num">04</span></a>
+      <a href="projets.html"><span>Réalisations</span> <span class="num">05</span></a>
+      <a href="contact.html"><span>Contact & Devis</span> <span class="num">06</span></a>
+    </div>
+    <div class="mob-foot">
+      <a href="contact.html" class="btn-gold" style="width: 100%; justify-content: center;">Étude de Projet & Devis →</a>
+    </div>
+  </div>
 
   <!-- ==================== SUBPAGE PAGE-HERO ==================== -->
   <section class="page-hero">
-    <div class="container">
+    <div class="wrap">
       <div class="breadcrumbs">
         <a href="index.html">Accueil</a>
         <span>/</span>
         <span>Flotte & Parc Matériel</span>
       </div>
-      <h1 class="page-hero-title">PUISSANCE MÉCANIQUE & AUTONOMIE LOGISTIQUE</h1>
+      <h1 class="page-hero-title">PUISSANCE MÉCANIQUE & <em>AUTONOMIE</em></h1>
       <p class="page-hero-lead">
-        Un parc propriétaire de plus de 45 engins lourds, tombereaux de 91 tonnes et pelles d'extraction pour sécuriser vos cadences de chantiers.
+        Un parc propriétaire de plus de 45 engins lourds, tombereaux de 91 tonnes et pelles d'extraction pour sécuriser vos cadences de chantiers au Maroc.
       </p>
     </div>
   </section>
 
   <!-- ==================== ENGIN VEDETTE : KOMATSU HD785 ==================== -->
-  <section class="section">
-    <div class="container">
+  <section class="fleet-section">
+    <div class="wrap">
       <div class="fleet-editorial-layout">
-        
         <div class="fleet-info-pane">
-          <div class="eyebrow">ENGIN D'EXTRACTION EMBLÉMATIQUE</div>
-          <h2 class="title-lg">KOMATSU HD785 — CHARGE UTILE 91 TONNES</h2>
+          <div class="eyebrow" style="color: var(--c-gold);">Engin d'Extraction Emblématique</div>
+          <h2 class="section-title section-title-light">Komatsu HD785 — <em>91 Tonnes</em></h2>
           <p class="fleet-lead">
             Conçu pour les environnements rocheux les plus rudes, le tombereau rigide Komatsu HD785 assure des rendements d'évacuation exceptionnels sur nos terrassements d'infrastructures et carrières.
           </p>
@@ -163,275 +143,154 @@
             </div>
           </div>
 
-          <div class="fleet-cta-wrap">
-            <a href="contact.html?type=flotte" class="btn-primary">
-              <span>Demande de Mobilisation d'Engins</span>
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-          </div>
+          <a href="contact.html" class="btn-gold">
+            <span>Demande de Mobilisation d'Engins</span>
+            <span class="arr" aria-hidden="true">→</span>
+          </a>
         </div>
 
         <div class="fleet-visual-pane">
-          <div class="fleet-hero-img-wrap">
-            <img src="assets/images/fleet-komatsu.jpg" alt="Tombereau Komatsu HD785 TG2D" class="fleet-hero-img" />
-            <div class="fleet-caption">
-              <strong>KOMATSU HD785-7 • PARC TG2D MAROC</strong>
-              <span>Mobilisable sur chantiers industriels, miniers et autoroutiers</span>
-            </div>
+          <img src="assets/images/fleet-komatsu.jpg" alt="Tombereau Komatsu HD785 TG2D" class="fleet-hero-img" />
+          <div class="fleet-caption">
+            <strong>KOMATSU HD785-7 • PARC TG2D MAROC</strong>
+            <span>Mobilisable sur chantiers industriels, miniers et autoroutiers</span>
           </div>
         </div>
-
       </div>
     </div>
   </section>
 
   <!-- ==================== CATALOGUE DU PARC D'ENGINS ==================== -->
-  <section class="section" style="background-color: var(--bg-surface-1); border-top: 1px solid var(--border-hairline); border-bottom: 1px solid var(--border-hairline);">
-    <div class="container">
-      <div class="section-top center">
-        <div class="eyebrow">PARC MACHINE COMPLET</div>
-        <h2 class="title-lg">CATALOGUE DE NOTRE FLOTTE LOURDE</h2>
-        <p class="section-subtitle">
-          Tous nos engins sont entretenus par notre équipe de mécaniciens dédiée et conduits par des opérateurs certifiés.
+  <section class="section" style="background: var(--c-cream-bg);">
+    <div class="wrap">
+      <div class="partenaires-head">
+        <span class="eyebrow">Disponibilité Immédiate</span>
+        <h2 class="section-title">Catalogue de <em>notre flotte</em></h2>
+        <p style="color: var(--c-text-body); margin-top: 12px;">
+          Tous nos engins sont entretenus par notre équipe de mécaniciens dédiée et conduits par des opérateurs certifiés CACES.
         </p>
       </div>
 
-      <div class="fleet-full-grid">
-        
+      <div class="fleet-grid-page">
         <!-- Machine 1 -->
-        <article class="machine-card">
-          <div class="machine-media">
-            <img src="assets/images/fleet-komatsu.jpg" alt="Komatsu HD785 TG2D" />
-          </div>
-          <div class="machine-info">
-            <div class="machine-category">Tombereaux Rigides</div>
-            <h3 class="machine-title">Komatsu HD785-7</h3>
-            <div class="machine-specs">
-              <div><strong>Charge Utile :</strong> 91 Tonnes</div>
-              <div><strong>Puissance :</strong> 1 200 ch</div>
-              <div><strong>Usage :</strong> Terrassements de masse & mines</div>
-            </div>
-            <a href="contact.html?machine=komatsu-hd785" class="btn-secondary" style="margin-top: auto;">
-              <span>Réserver cet Engin</span>
-            </a>
+        <article class="fleet-card-item">
+          <img src="assets/images/fleet-komatsu.jpg" alt="Komatsu HD785 TG2D" />
+          <div class="eyebrow" style="margin-bottom: 6px;">Tombereau Rigide</div>
+          <h4>Komatsu HD785-7 (91T)</h4>
+          <p>Charge utile 91 tonnes, puissance 1 200 ch pour terrassements de grande masse et carrières.</p>
+          <div style="margin-top: 16px;">
+            <a href="contact.html" class="link-arrow">Mobiliser cet engin <span class="arr">→</span></a>
           </div>
         </article>
 
         <!-- Machine 2 -->
-        <article class="machine-card">
-          <div class="machine-media">
-            <img src="assets/images/excavator-rock.jpg" alt="Caterpillar 349D TG2D" />
-          </div>
-          <div class="machine-info">
-            <div class="machine-category">Pelles d'Extraction</div>
-            <h3 class="machine-title">Caterpillar 349D</h3>
-            <div class="machine-specs">
-              <div><strong>Poids Opérationnel :</strong> 49 Tonnes</div>
-              <div><strong>Équipements :</strong> BRH 4T / Godet 3.2 m³</div>
-              <div><strong>Usage :</strong> Déroctage rocheux & chargement</div>
-            </div>
-            <a href="contact.html?machine=cat-349d" class="btn-secondary" style="margin-top: auto;">
-              <span>Réserver cet Engin</span>
-            </a>
+        <article class="fleet-card-item">
+          <img src="assets/images/excavator-rock.jpg" alt="Caterpillar 349D TG2D" />
+          <div class="eyebrow" style="margin-bottom: 6px;">Pelle d'Extraction</div>
+          <h4>Caterpillar 349D (49T)</h4>
+          <p>Équipée d'un BRH 4 tonnes et godet d'extraction 3.2 m³ pour déroctage rocheux continu.</p>
+          <div style="margin-top: 16px;">
+            <a href="contact.html" class="link-arrow">Mobiliser cet engin <span class="arr">→</span></a>
           </div>
         </article>
 
         <!-- Machine 3 -->
-        <article class="machine-card">
-          <div class="machine-media">
-            <img src="assets/images/site-heavy-1.jpg" alt="Caterpillar 320D TG2D" />
-          </div>
-          <div class="machine-info">
-            <div class="machine-category">Pelles Hydrauliques</div>
-            <h3 class="machine-title">Caterpillar 320D</h3>
-            <div class="machine-specs">
-              <div><strong>Poids Opérationnel :</strong> 22 Tonnes</div>
-              <div><strong>Équipements :</strong> Godets de curage & tranchées</div>
-              <div><strong>Usage :</strong> Fondations urbaines & réseaux VRD</div>
-            </div>
-            <a href="contact.html?machine=cat-320d" class="btn-secondary" style="margin-top: auto;">
-              <span>Réserver cet Engin</span>
-            </a>
+        <article class="fleet-card-item">
+          <img src="assets/images/site-heavy-1.jpg" alt="Caterpillar 320D TG2D" />
+          <div class="eyebrow" style="margin-bottom: 6px;">Pelle Polyvalente</div>
+          <h4>Caterpillar 320D (22T)</h4>
+          <p>Fouilles en tranchée, curage de fondations urbaines et terrassements de précision.</p>
+          <div style="margin-top: 16px;">
+            <a href="contact.html" class="link-arrow">Mobiliser cet engin <span class="arr">→</span></a>
           </div>
         </article>
-
-        <!-- Machine 4 -->
-        <article class="machine-card">
-          <div class="machine-media">
-            <img src="assets/images/project-cover-3.png" alt="Niveleuse CAT 140K TG2D" />
-          </div>
-          <div class="machine-info">
-            <div class="machine-category">Nivellement & Voiries</div>
-            <h3 class="machine-title">CAT 140K Laser</h3>
-            <div class="machine-specs">
-              <div><strong>Largeur Lame :</strong> 4.2 mètres</div>
-              <div><strong>Guidage :</strong> Système laser 3D millimétrique</div>
-              <div><strong>Usage :</strong> Plateformes industrielles & pistes</div>
-            </div>
-            <a href="contact.html?machine=cat-140k" class="btn-secondary" style="margin-top: auto;">
-              <span>Réserver cet Engin</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- Machine 5 -->
-        <article class="machine-card">
-          <div class="machine-media">
-            <img src="assets/images/project-cover-4.png" alt="Compacteur Dynapac CA302D TG2D" />
-          </div>
-          <div class="machine-info">
-            <div class="machine-category">Compactage Lourd</div>
-            <h3 class="machine-title">Dynapac CA302D</h3>
-            <div class="machine-specs">
-              <div><strong>Poids Opérationnel :</strong> 20 Tonnes</div>
-              <div><strong>Type :</strong> Cylindre vibrant haute amplitude</div>
-              <div><strong>Usage :</strong> Remblais structurés & couches de forme</div>
-            </div>
-            <a href="contact.html?machine=dynapac-ca302d" class="btn-secondary" style="margin-top: auto;">
-              <span>Réserver cet Engin</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- Machine 6 -->
-        <article class="machine-card">
-          <div class="machine-media">
-            <img src="assets/images/project-cover-1.png" alt="Grues Mobiles TG2D" />
-          </div>
-          <div class="machine-info">
-            <div class="machine-category">Levage Lourd</div>
-            <h3 class="machine-title">Grues Télescopiques</h3>
-            <div class="machine-specs">
-              <div><strong>Capacité :</strong> 60 à 120 Tonnes</div>
-              <div><strong>Hauteur de Flèche :</strong> Jusqu'à 65 mètres</div>
-              <div><strong>Usage :</strong> Montage préfabriqué & charpentes</div>
-            </div>
-            <a href="contact.html?machine=grues-telescopiques" class="btn-secondary" style="margin-top: auto;">
-              <span>Réserver cet Engin</span>
-            </a>
-          </div>
-        </article>
-
       </div>
     </div>
   </section>
 
-  <!-- ==================== CTA BANNER (ULTRA-LUXURIOUS ARCHITECTURAL) ==================== -->
-  <section class="cta-banner">
-    <div class="container">
-      <div class="cta-banner-card">
-        <div class="cta-banner-inner">
-          <div class="cta-banner-text">
-            <div class="cta-eyebrow">Consultation Technique & Chiffrage BTP</div>
-            <h2>Besoin d'une mobilisation d'engins sur votre chantier ?</h2>
-            <p>
-              Nos ingénieurs et directeurs de chantiers étudient votre cahier des charges et vous transmettent un chiffrage rigoureux sous 24h ouvrées.
-            </p>
-            <div class="cta-reassurances">
-              <span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Bureau d'études & ingénierie intégrée
-              </span>
-              <span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Flotte lourde mobilisable immédiatement
-              </span>
-              <span>
-                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
-                Garantie Décennale & Respect des Délais
-              </span>
-            </div>
-          </div>
-          <div class="cta-actions-group">
-            <a href="contact.html" class="cta-banner-btn">
-              <span>Demander une Étude Technique</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </a>
-            <a href="tel:+212522000000" class="cta-banner-phone">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>+212 (0) 522 00 00 00</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== CORPORATE FOOTER (ULTRA-LUXURIOUS ARCHITECTURAL) ==================== -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        
-                <div class="footer-brand-pane">
-          <a href="index.html" class="brand" aria-label="TG2D Accueil" style="margin-bottom: 16px;">
-            <img src="assets/images/tg2d-logo-dark.png" alt="TG2D Maroc" class="brand-logo-img footer-logo" />
-          </a>
-          <p class="footer-motto">«&nbsp;Des fondations solides pour un avenir&nbsp;meilleur.&nbsp;»</p>
-          <p class="footer-legal-copy">
-            Entreprise Générale de Bâtiment, Génie Civil, Terrassement de Masse et Réalisation Clé en Main au Maroc.
+  <!-- ==================== CORPORATE FOOTER (5 COLUMNS) ==================== -->
+  <footer class="ft">
+    <div class="wrap">
+      <div class="ft-in">
+        <!-- Col 1: Brand & Bio -->
+        <div class="ft-brand">
+          <img src="assets/images/tg2d-logo-light.png" alt="TG2D Maroc" class="ft-logo" />
+          <p class="ft-desc">
+            Entreprise générale de Bâtiment et de Travaux Publics au Maroc. Nos équipes maîtrisent l'ensemble des corps d'état, du terrassement minier aux façades de prestige.
           </p>
-          <div class="footer-cert-badges">
-            <span>Agrément BTP Classe 1</span>
-            <span>Garantie Décennale SMABTP</span>
-            <span>Normes Parasismiques RPS 2011</span>
+          <div class="ft-social">
+            <a href="https://linkedin.com" target="_blank" rel="noopener" class="ft-soc" aria-label="LinkedIn">
+              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 3a2 2 0 012 2v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zM8.34 17v-7H6v7h2.34zM7.17 8.9a1.36 1.36 0 100-2.72 1.36 1.36 0 000 2.72zM18 17v-3.86c0-2.06-1.1-3.02-2.57-3.02-1.19 0-1.72.65-2.02 1.11V10H11.1v7h2.31v-3.9c0-.21.02-.41.08-.56.16-.41.54-.84 1.17-.84.83 0 1.16.63 1.16 1.55V17H18z"/></svg>
+            </a>
           </div>
         </div>
 
-        <div class="footer-links-col">
-          <h4>Pôles d'Ingénierie</h4>
-          <ul>
-            <li><a href="expertises.html#terrassement">Terrassement & Déroctage</a></li>
-            <li><a href="expertises.html#gros-oeuvre">Gros Œuvre & Génie Civil</a></li>
-            <li><a href="expertises.html#second-oeuvre">Second Œuvre & Façades</a></li>
-            <li><a href="expertises.html#flotte">Logistique & VRD</a></li>
-            <li><a href="flotte.html">Flotte Lourde (Komatsu HD785)</a></li>
-          </ul>
+        <!-- Col 2: Navigation -->
+        <div class="ft-col">
+          <h2 class="ft-h">Plan du Site</h2>
+          <div class="ft-links">
+            <a href="index.html">Accueil</a>
+            <a href="a-propos.html">À Propos</a>
+            <a href="expertises.html">Pôles d'Ingénierie</a>
+            <a href="flotte.html">Flotte & Matériel</a>
+            <a href="projets.html">Réalisations</a>
+            <a href="contact.html">Contact</a>
+          </div>
         </div>
 
-        <div class="footer-links-col">
-          <h4>Navigation</h4>
-          <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="a-propos.html">À Propos du Groupe</a></li>
-            <li><a href="expertises.html">Nos Expertises</a></li>
-            <li><a href="flotte.html">Parc Matériel & Engins</a></li>
-            <li><a href="projets.html">Projets Emblématiques</a></li>
-            <li><a href="contact.html">Contact & Appel d'Offres</a></li>
-          </ul>
+        <!-- Col 3: Pôles d'Ingénierie -->
+        <div class="ft-col">
+          <h2 class="ft-h">Nos Métiers</h2>
+          <div class="ft-links">
+            <a href="expertises.html#terrassement">Terrassement Lourd</a>
+            <a href="expertises.html#gros-oeuvre">Gros Œuvre & Génie Civil</a>
+            <a href="expertises.html#second-oeuvre">Second Œuvre & Façades</a>
+            <a href="expertises.html#vrd">Voiries & VRD</a>
+            <a href="flotte.html">Komatsu HD785</a>
+          </div>
         </div>
 
-        <div class="footer-links-col">
-          <h4>Direction & Chantiers</h4>
-          <ul class="footer-contact-list">
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              <span>Boulevard d'Anfa, Casablanca, Maroc</span>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <span>+212 (0) 522 00 00 00</span>
-            </li>
-            <li>
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <span>contact@tg2d-maroc.com</span>
-            </li>
-          </ul>
+        <!-- Col 4: Villes d'intervention -->
+        <div class="ft-col">
+          <h2 class="ft-h">Chantiers au Maroc</h2>
+          <div class="ft-links">
+            <a href="projets.html">Casablanca</a>
+            <a href="projets.html">Rabat</a>
+            <a href="projets.html">Tanger Med</a>
+            <a href="projets.html">Marrakech</a>
+            <a href="projets.html">Agadir</a>
+          </div>
         </div>
 
+        <!-- Col 5: Contact -->
+        <div class="ft-contact-col">
+          <h2 class="ft-h">Contact</h2>
+          <div class="ft-c">
+            <span class="k">Téléphone</span>
+            <a href="tel:+212522000000">+212 (0) 522 00 00 00</a>
+          </div>
+          <div class="ft-c">
+            <span class="k">Courriel</span>
+            <a href="mailto:contact@tg2d-maroc.com">contact@tg2d-maroc.com</a>
+          </div>
+          <div class="ft-c">
+            <span class="k">Siège Social</span>
+            <span class="v">Boulevard d'Anfa, Casablanca, Maroc</span>
+          </div>
+        </div>
       </div>
 
-      <div class="footer-bottom-bar">
-        <p>&copy; 2026 TG2D Maroc. Tous droits réservés. Entreprise Générale de Construction & BTP.</p>
-        <div style="display: flex; gap: 24px;">
+      <div class="ft-bottom">
+        <p>&copy; 2026 TG2D Maroc. Tous droits réservés. Entreprise Générale BTP & Génie Civil.</p>
+        <div class="ft-bottom-links">
           <a href="contact.html">Mentions Légales</a>
-          <a href="contact.html">Charte HSE & Sécurité</a>
-          <a href="contact.html">Politique RSE</a>
-          <a href="contact.html">Plan du Site</a>
+          <a href="contact.html">Charte HSE</a>
+          <a href="contact.html">Politique Qualité</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=2026"></script>
 </body>
 </html>
