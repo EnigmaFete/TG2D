@@ -285,7 +285,7 @@ button, input, select, textarea {
 }
 
 .nav-logo-img {
-  height: 36px;
+  height: 53px;
   width: auto;
   object-fit: contain;
   transition: opacity 0.2s var(--ease);
@@ -1544,37 +1544,50 @@ button, input, select, textarea {
 }
 
 /* ==========================================================================
-   CORPORATE FOOTER (5 COLUMNS - AHMA BTP PATTERN)
+   CORPORATE FOOTER (FULL-WIDTH 5 COLUMNS - AHMA BTP PATTERN)
    ========================================================================== */
 .ft {
   background: var(--c-navy-dark);
   color: #FFFFFF;
-  padding: 80px 0 32px;
+  padding: 90px 0 36px;
   border-top: 1px solid rgba(255, 255, 255, 0.08);
+  width: 100%;
+}
+.ft .wrap {
+  max-width: 100%;
+  padding: 0 clamp(24px, 4.5vw, 84px);
 }
 .ft-in {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr 1fr 1.2fr;
-  gap: 40px;
-  margin-bottom: 60px;
+  grid-template-columns: 2.8fr 1fr 1.1fr 1fr 1.3fr;
+  gap: clamp(24px, 3.5vw, 64px);
+  margin-bottom: 50px;
+  align-items: start;
+}
+.ft-brand {
+  max-width: 560px;
 }
 .ft-logo {
-  height: 36px;
-  margin-bottom: 18px;
+  width: 100%;
+  max-width: 540px;
+  height: auto;
+  margin-top: -12px;
+  margin-bottom: 20px;
+  display: block;
 }
 .ft-desc {
-  font-size: 0.84rem;
-  color: rgba(255, 255, 255, 0.65);
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.68);
   line-height: 1.65;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
 }
 .ft-social {
   display: flex;
   gap: 12px;
 }
 .ft-soc {
-  width: 36px;
-  height: 36px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.08);
   display: flex;
@@ -1589,21 +1602,21 @@ button, input, select, textarea {
 }
 
 .ft-h {
-  font-size: 0.82rem;
+  font-size: 0.84rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.12em;
   color: var(--c-gold);
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 .ft-links {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 .ft-links a {
-  font-size: 0.84rem;
-  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.86rem;
+  color: rgba(255, 255, 255, 0.72);
 }
 .ft-links a:hover {
   color: #FFFFFF;
@@ -1613,32 +1626,33 @@ button, input, select, textarea {
 .ft-contact-col .ft-c {
   display: flex;
   flex-direction: column;
-  margin-bottom: 14px;
+  margin-bottom: 16px;
 }
 .ft-contact-col .k {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   color: var(--c-gold);
+  margin-bottom: 3px;
 }
 .ft-contact-col a,
 .ft-contact-col .v {
-  font-size: 0.86rem;
+  font-size: 0.88rem;
   color: rgba(255, 255, 255, 0.85);
 }
 
 .ft-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 28px;
+  padding-top: 32px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: rgba(255, 255, 255, 0.5);
 }
 .ft-bottom-links {
   display: flex;
-  gap: 20px;
+  gap: 24px;
 }
 .ft-bottom-links a:hover {
   color: #FFFFFF;
@@ -1982,3 +1996,199 @@ button, input, select, textarea {
     text-align: center;
   }
 }
+
+/* ==========================================================================
+   PERFORMANCE & COMPOSITING OPTIMIZATIONS
+   ========================================================================== */
+.b2-pres, .b3-pres, .deck, .fr-sect, .ckv-band, .pjv-sect, .lead-sect, .ft-main {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 700px;
+}
+
+/* ==========================================================================
+   TG2D LUXURY CUSTOM BRAND CURSOR (MATCHING TG2D LOGO & ARCHITECTURAL AESTHETICS)
+   ========================================================================== */
+@media (hover: hover) and (pointer: fine) {
+  html, body, a, button, input, select, textarea, [role="button"], .fr-card, .dcard, .btn {
+    cursor: none !important;
+  }
+}
+
+.tg2d-cursor-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 999999;
+  transition: opacity 0.25s var(--ease);
+}
+
+.tg2d-cursor-wrapper.is-hidden {
+  opacity: 0;
+}
+
+/* Precision Center Dot */
+.tg2d-cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  border-radius: 50%;
+  background: var(--c-gold);
+  box-shadow: 0 0 10px rgba(207, 165, 116, 0.8), 0 0 4px rgba(56, 189, 248, 0.9);
+  pointer-events: none;
+  transition: transform 0.15s ease-out, opacity 0.2s ease, background-color 0.25s ease;
+  z-index: 10;
+  will-change: transform;
+}
+
+/* Outer Brand Follower Ring */
+.tg2d-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 -20px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(207, 165, 116, 0.75);
+  background: rgba(13, 21, 39, 0.25);
+  box-shadow: 0 0 15px rgba(207, 165, 116, 0.25), inset 0 0 10px rgba(56, 189, 248, 0.15);
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: width 0.3s var(--ease), height 0.3s var(--ease), margin 0.3s var(--ease), border-color 0.3s var(--ease), background-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
+  z-index: 5;
+  will-change: transform;
+}
+
+/* Precision Reticles matching TG2D Brand */
+.tg2d-cursor-ring::before,
+.tg2d-cursor-ring::after {
+  content: '';
+  position: absolute;
+  opacity: 0.75;
+  transition: all 0.3s var(--ease);
+  pointer-events: none;
+}
+.tg2d-cursor-ring::before {
+  top: -4px;
+  bottom: -4px;
+  width: 1.5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, var(--c-gold) 0%, transparent 25%, transparent 75%, var(--c-cyan-light) 100%);
+}
+.tg2d-cursor-ring::after {
+  left: -4px;
+  right: -4px;
+  height: 1.5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(to right, var(--c-cyan-light) 0%, transparent 25%, transparent 75%, var(--c-gold) 100%);
+}
+
+/* Embedded Logo Icon inside follower */
+.tg2d-cursor-logo {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  opacity: 0;
+  transform: scale(0.4);
+  filter: drop-shadow(0 0 8px rgba(207, 165, 116, 0.9));
+  transition: opacity 0.3s var(--ease), transform 0.35s var(--ease-spring);
+  pointer-events: none;
+}
+
+/* Micro Label (e.g. EXPLORER / DÉCOUVRIR) */
+.tg2d-cursor-label {
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-gold-light);
+  background: rgba(7, 11, 22, 0.88);
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(207, 165, 116, 0.5);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  margin-top: 28px;
+  margin-left: 0;
+  transform: translate(-50%, 0);
+  transition: opacity 0.25s ease;
+  will-change: transform;
+}
+
+/* Interactive Hover States */
+.tg2d-cursor-wrapper.is-hovering .tg2d-cursor-ring {
+  width: 58px;
+  height: 58px;
+  margin: -29px 0 0 -29px;
+  border-color: var(--c-gold);
+  background: rgba(13, 21, 39, 0.75);
+  box-shadow: 0 0 25px rgba(207, 165, 116, 0.5), inset 0 0 15px rgba(56, 189, 248, 0.3);
+}
+
+.tg2d-cursor-wrapper.is-hovering .tg2d-cursor-logo {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.tg2d-cursor-wrapper.is-hovering .tg2d-cursor-dot {
+  opacity: 0;
+  transform: scale(0.2);
+}
+
+/* Card / Project Hover State */
+.tg2d-cursor-wrapper.is-card-hover .tg2d-cursor-ring {
+  width: 72px;
+  height: 72px;
+  margin: -36px 0 0 -36px;
+  border-color: var(--c-cyan-light);
+  background: rgba(7, 11, 22, 0.82);
+  box-shadow: 0 0 30px rgba(56, 189, 248, 0.45), inset 0 0 20px rgba(207, 165, 116, 0.35);
+}
+
+.tg2d-cursor-wrapper.is-card-hover .tg2d-cursor-logo {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.tg2d-cursor-wrapper.is-card-hover .tg2d-cursor-dot {
+  opacity: 0;
+  transform: scale(0.2);
+}
+
+.tg2d-cursor-wrapper.is-card-hover .tg2d-cursor-label {
+  opacity: 1;
+}
+
+/* Active Click Pulse */
+.tg2d-cursor-wrapper.is-clicking .tg2d-cursor-ring {
+  transform: scale(0.85);
+  border-color: var(--c-cyan-light);
+  box-shadow: 0 0 35px rgba(56, 189, 248, 0.85);
+}
+.tg2d-cursor-wrapper.is-clicking .tg2d-cursor-dot {
+  transform: scale(1.5);
+  background: var(--c-cyan-light);
+}
+
+/* Mobile & Touch: Disable Custom Cursor */
+@media (hover: none) or (pointer: coarse) {
+  .tg2d-cursor-wrapper {
+    display: none !important;
+  }
+}
+
