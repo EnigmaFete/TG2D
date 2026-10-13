@@ -19,12 +19,17 @@ document.addEventListener('DOMContentLoaded', () => {
   let isHeaderLight = false;
   let isScrollTicking = false;
 
+  let cachedTrackHeight = heroTrack ? Math.max(heroTrack.offsetHeight - window.innerHeight, 400) : 800;
+  function updateCachedDimensions() {
+    cachedTrackHeight = heroTrack ? Math.max(heroTrack.offsetHeight - window.innerHeight, 400) : 800;
+  }
+  window.addEventListener('resize', updateCachedDimensions, { passive: true });
+
   function updateHeaderOnScroll() {
     if (!header) return;
     const scrollY = window.scrollY;
     const shouldBeScrolled = scrollY > 40;
-    const trackHeight = heroTrack ? heroTrack.offsetHeight - window.innerHeight : 800;
-    const shouldBeLight = shouldBeScrolled && (scrollY > trackHeight + 40);
+    const shouldBeLight = shouldBeScrolled && (scrollY > cachedTrackHeight + 40);
 
     if (shouldBeScrolled !== isHeaderScrolled) {
       isHeaderScrolled = shouldBeScrolled;
@@ -158,41 +163,24 @@ document.addEventListener('DOMContentLoaded', () => {
       lastDrawn = frameIdx;
     }
 
-    /* Intelligent Chunked Image Preloader (Avoids Network Flooding) */
+    /* On-Demand Intelligent Frame Loader (Zero Network Flooding & Ultra Fast Memory) */
+    function ensureFramesNear(target) {
+      const center = Math.round(target);
+      const start = Math.max(1, center - 2);
+      const end = Math.min(TOTAL_FRAMES, center + 4);
+      for (let i = start; i <= end; i++) {
+        if (!images[i]) loadSingleFrame(i);
+      }
+    }
+
     function preloadFrames() {
-      // Step 1: Eagerly load initial frames (1..15)
-      for (let i = 1; i <= 15; i++) {
+      // Step 1: Eagerly load ONLY initial frames (1..5)
+      for (let i = 1; i <= 5; i++) {
         loadSingleFrame(i, i === 1 ? () => { resizeCanvas(); drawFrame(1); } : null);
       }
-
-      // Step 2: Milestone frames for instant scrub responsive feedback
+      // Step 2: Milestone samples for instant scrub feedback (every 30 frames)
       const milestones = [30, 60, 90, 120, 150, 180, 210, 240, 270, 300];
       milestones.forEach(i => loadSingleFrame(i));
-
-      // Step 3: Progressive background batching for remaining frames (2 per tick)
-      let nextFrameToLoad = 16;
-      function loadNextBatch() {
-        if (nextFrameToLoad > TOTAL_FRAMES) return;
-
-        let loadedCount = 0;
-        while (nextFrameToLoad <= TOTAL_FRAMES && loadedCount < 3) {
-          if (!images[nextFrameToLoad]) {
-            loadSingleFrame(nextFrameToLoad);
-            loadedCount++;
-          }
-          nextFrameToLoad++;
-        }
-
-        if (nextFrameToLoad <= TOTAL_FRAMES) {
-          if ('requestIdleCallback' in window) {
-            requestIdleCallback(loadNextBatch, { timeout: 200 });
-          } else {
-            setTimeout(loadNextBatch, 60);
-          }
-        }
-      }
-
-      setTimeout(loadNextBatch, 500);
     }
 
     function loadSingleFrame(idx, callback) {
@@ -294,12 +282,12 @@ document.addEventListener('DOMContentLoaded', () => {
     syncHeroScrub = function() {
       if (!heroTrack || !isHeroVisible) return;
       const rect = heroTrack.getBoundingClientRect();
-      const trackHeight = heroTrack.offsetHeight - window.innerHeight;
 
-      if (trackHeight > 0) {
+      if (cachedTrackHeight > 0) {
         const scrolled = -rect.top;
-        const progress = Math.min(Math.max(scrolled / trackHeight, 0), 1);
+        const progress = Math.min(Math.max(scrolled / cachedTrackHeight, 0), 1);
         targetFrame = Math.max(1, Math.min(TOTAL_FRAMES, 1 + progress * (TOTAL_FRAMES - 1)));
+        ensureFramesNear(targetFrame);
         triggerCanvasLoop();
       }
     };
@@ -369,17 +357,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (frRail && frIdx && frCat && frTitle && frDesc) {
     const cards = frRail.querySelectorAll('.fr-card');
+    const frLink = document.getElementById('frLink');
 
     function updateActiveProject(card) {
       const idx = card.getAttribute('data-idx') || '01';
       const cat = card.getAttribute('data-cat') || 'Résidentiel';
       const title = card.getAttribute('data-title') || '';
       const desc = card.getAttribute('data-desc') || '';
+      const url = card.getAttribute('data-url') || card.getAttribute('href') || 'projets.html';
 
       frIdx.textContent = idx;
       frCat.textContent = cat;
-      frTitle.textContent = title;
+      frTitle.innerHTML = `<a href="${url}" style="color: inherit; text-decoration: none;">${title}</a>`;
       frDesc.textContent = desc;
+      if (frLink) {
+        frLink.setAttribute('href', url);
+      }
 
       cards.forEach(c => c.style.borderColor = '');
       card.style.borderColor = 'var(--c-gold)';
@@ -387,7 +380,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     cards.forEach(card => {
       card.addEventListener('mouseenter', () => updateActiveProject(card), { passive: true });
-      card.addEventListener('click', () => updateActiveProject(card), { passive: true });
     });
   }
 
@@ -523,8 +515,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (hoverTimeout) return;
       hoverTimeout = setTimeout(() => {
         hoverTimeout = null;
-        const cardTarget = e.target.closest('.fr-card, .dcard, .cx-card, .grid-card, .pjv-slab, .fl-card');
-        const clickableTarget = e.target.closest('a, button, input, select, textarea, [role="button"], .btn, .nav-dd-btn, .h-cta, .hero-btn');
+        const cardTarget = e.target.closest('.fr-card, .dcard, .cx-card, .grid-card, .pjv-slab, .fl-card, .service-card-item, .engagement-card, .why-tg2d-card, .book-spread');
+        const clickableTarget = e.target.closest('a, button, input, select, textarea, [role="button"], .btn, .nav-dd-btn, .h-cta, .hero-btn, .book-tab-btn, .book-nav-btn');
 
         if (cardTarget) {
           wrapper.classList.add('is-card-hover');
@@ -543,5 +535,191 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  initTg2dCursor();
+  // Native hardware cursor enabled for maximum 120Hz/60Hz responsive UX
+  // initTg2dCursor();
+
+  /* ==========================================================================
+     7. TG2D BOOKPAGES SPREAD ENGINE (3D ANIMATED PROJECT SHOWCASE)
+     ========================================================================== */
+  function initProjectBookEngine() {
+    const bookContainer = document.getElementById('projectBookContainer');
+    if (!bookContainer) return;
+
+    const spreads = bookContainer.querySelectorAll('.book-spread');
+    const tabBtns = document.querySelectorAll('.book-tab-btn');
+    const prevBtn = document.getElementById('bookPrevBtn');
+    const nextBtn = document.getElementById('bookNextBtn');
+    const curIndicator = document.getElementById('bookCurPage');
+    const totalIndicator = document.getElementById('bookTotalPages');
+
+    if (!spreads.length) return;
+
+    let currentSpreadIdx = 0;
+    let isFlipping = false;
+    const totalSpreads = spreads.length;
+
+    if (totalIndicator) {
+      totalIndicator.textContent = String(totalSpreads * 2).padStart(2, '0');
+    }
+
+    function showSpread(targetIdx, forceDirection = null) {
+      if (targetIdx < 0) targetIdx = 0;
+      if (targetIdx >= totalSpreads) targetIdx = totalSpreads - 1;
+      if (targetIdx === currentSpreadIdx && spreads[currentSpreadIdx].style.display === 'grid') return;
+      if (isFlipping) return;
+
+      const direction = forceDirection || (targetIdx > currentSpreadIdx ? 'forward' : 'backward');
+      const prevIdx = currentSpreadIdx;
+      currentSpreadIdx = targetIdx;
+      isFlipping = true;
+
+      spreads.forEach((spread, idx) => {
+        spread.classList.remove('is-flipping-forward', 'is-flipping-backward');
+        if (idx === currentSpreadIdx) {
+          spread.style.display = 'grid';
+          // Force layout reflow to ensure clean animation trigger
+          void spread.offsetWidth;
+          spread.classList.add(direction === 'forward' ? 'is-flipping-forward' : 'is-flipping-backward');
+        } else {
+          spread.style.display = 'none';
+        }
+      });
+
+      tabBtns.forEach((btn, idx) => {
+        btn.classList.toggle('is-active', idx === currentSpreadIdx);
+      });
+
+      if (curIndicator) {
+        const pageNum = (currentSpreadIdx * 2) + 1;
+        curIndicator.textContent = String(pageNum).padStart(2, '0') + '-' + String(pageNum + 1).padStart(2, '0');
+      }
+
+      if (prevBtn) prevBtn.disabled = currentSpreadIdx === 0;
+      if (nextBtn) nextBtn.disabled = currentSpreadIdx === totalSpreads - 1;
+
+      setTimeout(() => {
+        isFlipping = false;
+      }, 550);
+    }
+
+    tabBtns.forEach((btn, idx) => {
+      btn.addEventListener('click', () => showSpread(idx));
+    });
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', () => {
+        if (currentSpreadIdx > 0) showSpread(currentSpreadIdx - 1, 'backward');
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', () => {
+        if (currentSpreadIdx < totalSpreads - 1) showSpread(currentSpreadIdx + 1, 'forward');
+      });
+    }
+
+    // Keyboard navigation (ArrowLeft / ArrowRight) when inside book stage
+    const bookStage = document.querySelector('.book-stage');
+    if (bookStage) {
+      document.addEventListener('keydown', (e) => {
+        const rect = bookStage.getBoundingClientRect();
+        const isInView = rect.top < window.innerHeight && rect.bottom > 0;
+        if (!isInView) return;
+
+        if (e.key === 'ArrowRight' && currentSpreadIdx < totalSpreads - 1) {
+          showSpread(currentSpreadIdx + 1, 'forward');
+        } else if (e.key === 'ArrowLeft' && currentSpreadIdx > 0) {
+          showSpread(currentSpreadIdx - 1, 'backward');
+        }
+      });
+
+      // Touch swipe support for mobile
+      let touchStartX = 0;
+      let touchEndX = 0;
+      bookStage.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+      }, { passive: true });
+
+      bookStage.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        const diff = touchEndX - touchStartX;
+        if (Math.abs(diff) > 40) {
+          if (diff < 0 && currentSpreadIdx < totalSpreads - 1) {
+            showSpread(currentSpreadIdx + 1, 'forward');
+          } else if (diff > 0 && currentSpreadIdx > 0) {
+            showSpread(currentSpreadIdx - 1, 'backward');
+          }
+        }
+      }, { passive: true });
+    }
+
+    // Initialize first spread without animation delay
+    spreads.forEach((spread, idx) => {
+      spread.style.display = idx === 0 ? 'grid' : 'none';
+    });
+    tabBtns.forEach((btn, idx) => {
+      btn.classList.toggle('is-active', idx === 0);
+    });
+    if (curIndicator) {
+      curIndicator.textContent = '01-02';
+    }
+    if (prevBtn) prevBtn.disabled = true;
+    if (nextBtn) nextBtn.disabled = totalSpreads <= 1;
+  }
+
+  initProjectBookEngine();
+
+  /* ==========================================================================
+     12. JOURNAL & PROJECT CASE STUDY FILTER ENGINE
+     ========================================================================== */
+  function initJournalFilterEngine() {
+    const filterBar = document.getElementById('journalFilterBar');
+    const featuredCard = document.querySelector('.journal-featured-card');
+    const gridCards = document.querySelectorAll('.journal-card');
+
+    if (!filterBar) return;
+
+    const filterBtns = filterBar.querySelectorAll('.journal-filter-btn');
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('is-active'));
+        btn.classList.add('is-active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        // Handle featured card
+        if (featuredCard) {
+          const featuredCat = featuredCard.getAttribute('data-category');
+          if (filter === 'all' || filter === featuredCat) {
+            featuredCard.style.display = 'grid';
+            featuredCard.style.opacity = '1';
+            featuredCard.style.transform = 'translateY(0)';
+          } else {
+            featuredCard.style.display = 'none';
+          }
+        }
+
+        // Handle grid cards
+        gridCards.forEach(card => {
+          const cat = card.getAttribute('data-category');
+          if (filter === 'all' || filter === cat) {
+            card.style.display = 'flex';
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(12px)';
+            setTimeout(() => {
+              card.style.opacity = '1';
+              card.style.transform = 'translateY(0)';
+            }, 30);
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  }
+
+  initJournalFilterEngine();
 });
+
+
