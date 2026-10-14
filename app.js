@@ -535,8 +535,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  // Native hardware cursor enabled for maximum 120Hz/60Hz responsive UX
-  // initTg2dCursor();
+  initTg2dCursor();
 
   /* ==========================================================================
      7. TG2D BOOKPAGES SPREAD ENGINE (3D ANIMATED PROJECT SHOWCASE)
