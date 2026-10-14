@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://tg2d-maroc.com/sitemap.xml
+Sitemap: https://tg2d.ma/sitemap.xml
