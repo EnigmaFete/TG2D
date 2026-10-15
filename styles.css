@@ -6357,9 +6357,9 @@ main .fleet-editorial-layout .spec-key,
 /* ---------------- SECTION 06: CTA BANNER ("VOUS AVEZ UN PROJET ?") ---------------- */
 .sec-cta-banner-ui {
   position: relative;
-  padding: 120px 0;
-  background: linear-gradient(90deg, rgba(7, 11, 22, 0.96) 0%, rgba(7, 11, 22, 0.85) 45%, rgba(7, 11, 22, 0.3) 100%),
-              url('assets/images/cta-worker-safety-jacket.jpg') center right / cover no-repeat;
+  padding: 80px 0;
+  background: linear-gradient(90deg, rgba(7, 11, 22, 0.95) 0%, rgba(7, 11, 22, 0.82) 48%, rgba(7, 11, 22, 0.15) 85%),
+              url('assets/images/cta-worker-safety-jacket.jpg?v=2026_hd') top right / cover no-repeat;
   color: #FFFFFF;
   overflow: hidden;
 }
