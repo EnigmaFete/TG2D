@@ -39,9 +39,9 @@ function tg2d_format_label($val, $type = 'besoin') {
     ];
 
     if ($type === 'besoin') {
-        return $besoins[$val] ?? htmlspecialchars($val);
+        return (isset($besoins[$val]) ? $besoins[$val] : htmlspecialchars($val));
     }
-    return $profils[$val] ?? htmlspecialchars($val);
+    return (isset($profils[$val]) ? $profils[$val] : htmlspecialchars($val));
 }
 
 /**
@@ -57,21 +57,21 @@ function tg2d_send_inquiry_notification(array $inquiry) {
         return ['success' => false, 'error' => "Aucun email administrateur configuré."];
     }
 
-    $id = $inquiry['id'] ?? 'REF-NEW';
+    $id = (isset($inquiry['id']) ? $inquiry['id'] : 'REF-NEW');
     $nom = htmlspecialchars((isset($inquiry['nom']) ? $inquiry['nom'] : ''));
-    $tel = htmlspecialchars($inquiry['telephone'] ?? '');
-    $cleanPhone = tg2d_clean_phone_for_whatsapp($inquiry['telephone'] ?? '');
-    $email = htmlspecialchars($inquiry['email'] ?? '');
-    $profil = tg2d_format_label($inquiry['profil'] ?? '', 'profil');
+    $tel = htmlspecialchars((isset($inquiry['telephone']) ? $inquiry['telephone'] : ''));
+    $cleanPhone = tg2d_clean_phone_for_whatsapp((isset($inquiry['telephone']) ? $inquiry['telephone'] : ''));
+    $email = htmlspecialchars((isset($inquiry['email']) ? $inquiry['email'] : ''));
+    $profil = tg2d_format_label((isset($inquiry['profil']) ? $inquiry['profil'] : ''), 'profil');
     $besoin = tg2d_format_label((isset($inquiry['besoin']) ? $inquiry['besoin'] : ''), 'besoin');
-    $msg = nl2br(htmlspecialchars($inquiry['message'] ?? 'Aucun détail textuel spécifié.'));
+    $msg = nl2br(htmlspecialchars((isset($inquiry['message']) ? $inquiry['message'] : 'Aucun détail textuel spécifié.')));
     $date = date('d/m/Y à H:i');
 
-    $subject = "🚨 [Nouveau Projet TG2D #{$id}] " . ($inquiry['nom'] ?? 'Client') . " — " . $besoin;
+    $subject = "🚨 [Nouveau Projet TG2D #{$id}] " . ((isset($inquiry['nom']) ? $inquiry['nom'] : 'Client')) . " — " . $besoin;
 
     // Déterminer l'URL du tableau de bord admin
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
-    $host = $_SERVER['HTTP_HOST'] ?? 'tg2d.ma';
+    $host = (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'tg2d.ma');
     $adminUrl = $protocol . $host . '/admin/';
 
     $html = '
