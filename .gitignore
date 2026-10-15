@@ -6,3 +6,4 @@ WhatsApp*
 ezgif-*-png-split/
 scratch_*.png
 *.zip
+data/*.sqlite*

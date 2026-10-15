@@ -209,7 +209,9 @@
           <p class="cx-fh-s">Réponse et premier retour sous 24h à 48h ouvrées</p>
         </div>
 
-        <form class="cx-form" id="contactForm" onsubmit="event.preventDefault(); alert('Merci pour votre demande. Nos équipes d\'ingénierie vous répondront sous 24h ouvrées.');">
+        <form class="cx-form" id="contactForm">
+          <div id="cxAlertBox" style="display: none; padding: 16px; border-radius: 8px; margin-bottom: 20px; font-size: 0.92rem; line-height: 1.5;"></div>
+
           <div class="cx-field">
             <label for="cx-nom">Nom complet & Organisme</label>
             <input type="text" id="cx-nom" placeholder="Ex: M. Mohammed Alami — Investisseur" required />
@@ -255,9 +257,9 @@
             <textarea id="cx-msg" placeholder="Décrivez votre projet, localisation et contraintes particulières..."></textarea>
           </div>
 
-          <button type="submit" class="cx-submit">
-            <span>Transmettre mon dossier d'étude</span>
-            <span class="arr">→</span>
+          <button type="submit" class="cx-submit" id="cxSubmitBtn">
+            <span id="cxBtnText">Transmettre mon dossier d'étude</span>
+            <span class="arr" id="cxBtnArr">→</span>
           </button>
           <p class="cx-note">Vos données restent strictement confidentielles et réservées à l'étude technique par nos ingénieurs.</p>
         </form>
@@ -400,14 +402,106 @@
 
       <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 0.8rem; color: rgba(255,255,255,0.5);">
         <div>&copy; 2026 TG2D — Travaux Généraux de Développement Durable. Tous droits réservés.</div>
-        <div style="display: flex; gap: 20px;">
+        <div style="display: flex; gap: 20px; align-items: center;">
           <a href="contact.html" style="color: rgba(255,255,255,0.5);">Politique de confidentialité</a>
           <a href="contact.html" style="color: rgba(255,255,255,0.5);">Mentions légales</a>
+          <a href="admin/" style="color: var(--c-cyan); font-weight: 600; text-decoration: none; opacity: 0.85;" title="Tableau de Bord Inquiries & Base de Données">⚙️ Admin Inquiries</a>
         </div>
       </div>
     </div>
   </footer>
 
   <script src="app.js?v=2026"></script>
+  <script>
+    // Inquiries submission engine
+    document.addEventListener('DOMContentLoaded', () => {
+      const form = document.getElementById('contactForm');
+      if (!form) return;
+
+      const alertBox = document.getElementById('cxAlertBox');
+      const submitBtn = document.getElementById('cxSubmitBtn');
+      const btnText = document.getElementById('cxBtnText');
+      const btnArr = document.getElementById('cxBtnArr');
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+
+        // Get values
+        const payload = {
+          nom: document.getElementById('cx-nom').value.trim(),
+          telephone: document.getElementById('cx-tel').value.trim(),
+          email: document.getElementById('cx-mail').value.trim(),
+          profil: document.getElementById('cx-profil').value,
+          besoin: document.getElementById('cx-besoin').value,
+          message: document.getElementById('cx-msg').value.trim()
+        };
+
+        // Loading state
+        submitBtn.disabled = true;
+        btnText.textContent = "Transmission sécurisée du dossier...";
+        if (btnArr) btnArr.textContent = "⏳";
+        alertBox.style.display = 'none';
+
+        try {
+          const response = await fetch('api/submit-inquiry.php', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+
+          const res = await response.json();
+
+          if (res.success) {
+            alertBox.style.display = 'block';
+            alertBox.style.background = 'rgba(16, 185, 129, 0.12)';
+            alertBox.style.border = '1px solid rgba(16, 185, 129, 0.35)';
+            alertBox.style.color = '#FFFFFF';
+            alertBox.innerHTML = `
+              <div style="display: flex; gap: 12px; align-items: flex-start;">
+                <span style="font-size: 1.4rem; line-height: 1;">✅</span>
+                <div>
+                  <strong style="color: #34D399; font-size: 1rem; display: block; margin-bottom: 4px;">Dossier d'Étude N° #${res.inquiry_id} Transmis avec Succès !</strong>
+                  <p style="margin: 0; color: rgba(255,255,255,0.85); font-size: 0.9rem;">
+                    Une alerte automatique a été transmise à notre équipe d'ingénieurs (<strong>tg2d.maroc@gmail.com</strong>).
+                    Un chargé d'affaires prendra contact avec vous sous 24h ouvrées.
+                  </p>
+                </div>
+              </div>
+            `;
+            form.reset();
+            // Scroll to alert
+            alertBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          } else {
+            throw new Error(res.error || 'Erreur lors de la transmission.');
+          }
+        } catch (err) {
+          alertBox.style.display = 'block';
+          alertBox.style.background = 'rgba(239, 68, 68, 0.12)';
+          alertBox.style.border = '1px solid rgba(239, 68, 68, 0.35)';
+          alertBox.style.color = '#FFFFFF';
+          alertBox.innerHTML = `
+            <div style="display: flex; gap: 12px; align-items: flex-start;">
+              <span style="font-size: 1.4rem; line-height: 1;">⚠️</span>
+              <div>
+                <strong style="color: #F87171; display: block; margin-bottom: 4px;">Impossible de transmettre le dossier en ligne</strong>
+                <p style="margin: 0; color: rgba(255,255,255,0.85); font-size: 0.9rem;">
+                  ${err.message || 'Veuillez réessayer ou contacter directement notre direction par WhatsApp.'}
+                </p>
+                <div style="margin-top: 10px;">
+                  <a href="https://wa.me/212618392328" target="_blank" style="color: var(--c-cyan); font-weight: 600; text-decoration: underline;">
+                    → Échanger directement sur WhatsApp (+212 618-392328)
+                  </a>
+                </div>
+              </div>
+            </div>
+          `;
+        } finally {
+          submitBtn.disabled = false;
+          btnText.textContent = "Transmettre mon dossier d'étude";
+          if (btnArr) btnArr.textContent = "→";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
