@@ -5103,7 +5103,7 @@ main .fleet-editorial-layout .spec-key,
   padding: calc(var(--nav-height) + 80px) 0 50px;
   background: linear-gradient(90deg, rgba(6, 10, 22, 0.86) 0%, rgba(6, 10, 22, 0.6) 48%, rgba(6, 10, 22, 0.15) 85%),
               linear-gradient(180deg, rgba(7, 11, 22, 0.3) 0%, rgba(7, 11, 22, 0.7) 100%),
-              url('assets/images/hero-construction-workers.jpg') center right / cover no-repeat;
+              url('assets/images/hero-construction-workers.jpg?v=2026_hd2') center right / cover no-repeat;
   color: #FFFFFF;
   overflow: hidden;
 }
