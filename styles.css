@@ -5100,9 +5100,10 @@ main .fleet-editorial-layout .spec-key,
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: calc(var(--nav-height) + 60px) 0 45px;
-  background: linear-gradient(180deg, rgba(7, 11, 22, 0.55) 0%, rgba(7, 11, 22, 0.2) 40%, rgba(7, 11, 22, 0.92) 100%),
-              url('assets/images/hero-construction-workers.jpg') center bottom / cover no-repeat;
+  padding: calc(var(--nav-height) + 80px) 0 50px;
+  background: linear-gradient(90deg, rgba(6, 10, 22, 0.86) 0%, rgba(6, 10, 22, 0.6) 48%, rgba(6, 10, 22, 0.15) 85%),
+              linear-gradient(180deg, rgba(7, 11, 22, 0.3) 0%, rgba(7, 11, 22, 0.7) 100%),
+              url('assets/images/hero-construction-workers.jpg') center right / cover no-repeat;
   color: #FFFFFF;
   overflow: hidden;
 }
@@ -5110,10 +5111,14 @@ main .fleet-editorial-layout .spec-key,
 .hero-cinematic-inner {
   position: relative;
   z-index: 5;
-  max-width: 1280px;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 40px;
   width: 100%;
+}
+
+.hero-content-col {
+  max-width: 620px;
 }
 
 /* Architectural Eyebrow — Replaces AI pill capsule */
@@ -5132,7 +5137,7 @@ main .fleet-editorial-layout .spec-key,
   border: none !important;
   border-radius: 0 !important;
   padding: 0 !important;
-  margin-bottom: 22px;
+  margin-bottom: 24px;
   backdrop-filter: none !important;
   box-shadow: none !important;
 }
@@ -5140,27 +5145,27 @@ main .fleet-editorial-layout .spec-key,
 .eyebrow-architectural::before {
   content: '';
   display: inline-block;
-  width: 22px;
+  width: 24px;
   height: 2px;
   background: var(--c-cyan-light);
   border-radius: 1px;
 }
 
 .hero-cinematic-title {
-  font-size: clamp(2.8rem, 5.8vw, 4.8rem);
+  font-size: clamp(2.6rem, 5.2vw, 4.4rem);
   font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.035em;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
   color: #FFFFFF;
   margin-bottom: 22px;
 }
 
 .hero-cinematic-lead {
-  font-size: clamp(1.05rem, 1.4vw, 1.25rem);
-  line-height: 1.65;
-  color: rgba(255, 255, 255, 0.85);
-  max-width: 680px;
-  margin-bottom: 36px;
+  font-size: 1.12rem;
+  line-height: 1.68;
+  color: rgba(255, 255, 255, 0.88);
+  max-width: 580px;
+  margin-bottom: 38px;
 }
 
 .hero-cinematic-actions {
