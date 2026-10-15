@@ -1,4 +1,9 @@
 <?php
+if (!function_exists("tg2d_val")) {
+    function tg2d_val($val, $default = "") {
+        return isset($val) && $val !== null ? $val : $default;
+    }
+}
 /**
  * TG2D MAROC — COUCHE D'ACCÈS BASE DE DONNÉES (PDO)
  * Gestion unifiée SQLite / MySQL avec création automatique des tables et index.

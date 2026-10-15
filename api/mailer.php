@@ -1,4 +1,9 @@
 <?php
+if (!function_exists("tg2d_val")) {
+    function tg2d_val($val, $default = "") {
+        return isset($val) && $val !== null ? $val : $default;
+    }
+}
 /**
  * TG2D MAROC — SERVICE D'EXPÉDITION D'EMAILS & NOTIFICATIONS
  * Envoi d'alertes HTML premium avec boutons d'actions directs (WhatsApp, Appel, Réponse)
@@ -53,12 +58,12 @@ function tg2d_send_inquiry_notification(array $inquiry) {
     }
 
     $id = $inquiry['id'] ?? 'REF-NEW';
-    $nom = htmlspecialchars($inquiry['nom'] ?? '');
+    $nom = htmlspecialchars((isset($inquiry['nom']) ? $inquiry['nom'] : ''));
     $tel = htmlspecialchars($inquiry['telephone'] ?? '');
     $cleanPhone = tg2d_clean_phone_for_whatsapp($inquiry['telephone'] ?? '');
     $email = htmlspecialchars($inquiry['email'] ?? '');
     $profil = tg2d_format_label($inquiry['profil'] ?? '', 'profil');
-    $besoin = tg2d_format_label($inquiry['besoin'] ?? '', 'besoin');
+    $besoin = tg2d_format_label((isset($inquiry['besoin']) ? $inquiry['besoin'] : ''), 'besoin');
     $msg = nl2br(htmlspecialchars($inquiry['message'] ?? 'Aucun détail textuel spécifié.'));
     $date = date('d/m/Y à H:i');
 
@@ -138,7 +143,7 @@ function tg2d_send_inquiry_notification(array $inquiry) {
 
             <!-- Quick Action Buttons -->
             <div class="actions-wrap">
-              ' . (!empty($cleanPhone) ? '<a href="https://wa.me/' . $cleanPhone . '?text=Bonjour%20' . urlencode($inquiry['nom'] ?? '') . ',%20suite%20%C3%A0%20votre%20demande%20d%27%C3%A9tude%20sur%20TG2D%20Maroc..." target="_blank" class="btn-wa">💬 Contacter sur WhatsApp</a>' : '') . '
+              ' . (!empty($cleanPhone) ? '<a href="https://wa.me/' . $cleanPhone . '?text=Bonjour%20' . urlencode((isset($inquiry['nom']) ? $inquiry['nom'] : '')) . ',%20suite%20%C3%A0%20votre%20demande%20d%27%C3%A9tude%20sur%20TG2D%20Maroc..." target="_blank" class="btn-wa">💬 Contacter sur WhatsApp</a>' : '') . '
               ' . (!empty($tel) ? '<a href="tel:' . $tel . '" class="btn-call">📞 Appeler le Client</a>' : '') . '
               <a href="' . $adminUrl . '" class="btn-admin">📊 Ouvrir le Dashboard Admin</a>
             </div>
@@ -147,7 +152,7 @@ function tg2d_send_inquiry_notification(array $inquiry) {
           <div class="footer">
             <strong>TG2D MAROC</strong> — Entreprise Générale de Bâtiment, Génie Civil & Travaux Publics<br>
             Alerte automatique générée pour l\'équipe de direction technique.<br>
-            Adresse IP déclencheur : ' . htmlspecialchars($inquiry['ip_address'] ?? 'N/A') . '
+            Adresse IP déclencheur : ' . htmlspecialchars((isset($inquiry['ip_address']) ? $inquiry['ip_address'] : 'N/A')) . '
           </div>
         </div>
       </div>
@@ -178,7 +183,7 @@ function tg2d_send_inquiry_notification(array $inquiry) {
         return ['success' => true, 'error' => null];
     } else {
         $err = error_get_last();
-        return ['success' => false, 'error' => $err['message'] ?? 'Erreur native mail()'];
+        return ['success' => false, 'error' => (isset($err['message']) ? $err['message'] : 'Erreur native mail()')];
     }
 }
 
@@ -194,8 +199,8 @@ function tg2d_send_client_confirmation(array $inquiry) {
         return false;
     }
 
-    $nom = htmlspecialchars($inquiry['nom'] ?? 'Cher Partenaire');
-    $besoin = tg2d_format_label($inquiry['besoin'] ?? '', 'besoin');
+    $nom = htmlspecialchars((isset($inquiry['nom']) ? $inquiry['nom'] : 'Cher Partenaire'));
+    $besoin = tg2d_format_label((isset($inquiry['besoin']) ? $inquiry['besoin'] : ''), 'besoin');
     $to = $inquiry['email'];
     $subject = "Dossier d'Étude Technique Reçu — TG2D Maroc";
 
@@ -274,7 +279,7 @@ function tg2d_send_test_email($targetEmail) {
         'profil' => 'promoteur',
         'besoin' => 'tce',
         'message' => 'Ceci est un test de diagnostic envoyé depuis le tableau de bord TG2D Admin pour confirmer que les alertes e-mail automatiques fonctionnent correctement.',
-        'ip_address' => $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1'
+        'ip_address' => (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1')
     ];
 
     $res = tg2d_send_inquiry_notification($testInquiry);

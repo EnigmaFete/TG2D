@@ -1,4 +1,9 @@
 <?php
+if (!function_exists("tg2d_val")) {
+    function tg2d_val($val, $default = "") {
+        return isset($val) && $val !== null ? $val : $default;
+    }
+}
 /**
  * TG2D MAROC — API DU TABLEAU DE BORD ADMINISTRATEUR
  * Point d'accès complet pour la gestion des demandes de projets en base de données,
@@ -23,7 +28,7 @@ if (is_array($jsonBody)) {
     $_REQ = $_REQUEST;
 }
 
-$action = $_GET['action'] ?? $_POST['action'] ?? $_REQ['action'] ?? '';
+$action = (isset($_GET['action']) ? $_GET['action'] : (isset($_POST['action']) ? $_POST['action'] : (isset($_REQ['action']) ? $_REQ['action'] : '')));
 
 $config = tg2d_get_config();
 
@@ -31,8 +36,8 @@ $config = tg2d_get_config();
 // 1. AUTHENTIFICATION
 // -------------------------------------------------------------
 if ($action === 'login') {
-    $user = trim($_REQ['username'] ?? '');
-    $pass = trim($_REQ['password'] ?? '');
+    $user = trim(tg2d_val($_REQ['username'], ''));
+    $pass = trim(tg2d_val($_REQ['password'], ''));
 
     $adminUser = $config['admin']['username'];
     $adminPass = $config['admin']['password'];
@@ -73,7 +78,7 @@ if ($action === 'check_auth') {
     $isAuth = !empty($_SESSION['tg2d_admin_auth']) && $_SESSION['tg2d_admin_auth'] === true;
     echo json_encode([
         'authenticated' => $isAuth,
-        'user'          => $isAuth ? ($_SESSION['tg2d_admin_user'] ?? 'admin') : null
+        'user'          => $isAuth ? ((isset($_SESSION['tg2d_admin_user']) ? $_SESSION['tg2d_admin_user'] : 'admin')) : null
     ]);
     exit;
 }
@@ -153,7 +158,7 @@ try {
     // LISTE DES DEMANDES AVEC RECHERCHE ET FILTRES
     if ($action === 'get_inquiries') {
         $search = trim($_REQ['search'] ?? '');
-        $status = trim($_REQ['status'] ?? '');
+        $status = trim(tg2d_val($_REQ['status'], ''));
         $besoin = trim($_REQ['besoin'] ?? '');
         $page   = max(1, (int)($_REQ['page'] ?? 1));
         $limit  = min(100, max(10, (int)($_REQ['limit'] ?? 50)));
@@ -217,8 +222,8 @@ try {
 
     // MISE À JOUR DU STATUT D'UNE DEMANDE
     if ($action === 'update_status') {
-        $id = (int)($_REQ['id'] ?? 0);
-        $newStatus = trim($_REQ['status'] ?? '');
+        $id = (int)(tg2d_val($_REQ['id'], 0));
+        $newStatus = trim(tg2d_val($_REQ['status'], ''));
 
         $allowedStatuses = ['Nouveau', 'Contacté', 'Étude en cours', 'Devis envoyé', 'Clôturé', 'Archivé'];
         if (!in_array($newStatus, $allowedStatuses)) {
@@ -236,8 +241,8 @@ try {
 
     // MISE À JOUR DES NOTES INTERNES
     if ($action === 'update_notes') {
-        $id = (int)($_REQ['id'] ?? 0);
-        $notes = trim($_REQ['notes'] ?? '');
+        $id = (int)(tg2d_val($_REQ['id'], 0));
+        $notes = trim(tg2d_val($_REQ['notes'], ''));
 
         $stmt = $pdo->prepare("UPDATE inquiries SET notes = :notes WHERE id = :id");
         $stmt->execute([':notes' => $notes, ':id' => $id]);
@@ -248,7 +253,7 @@ try {
 
     // SUPPRESSION D'UNE DEMANDE
     if ($action === 'delete_inquiry') {
-        $id = (int)($_REQ['id'] ?? 0);
+        $id = (int)(tg2d_val($_REQ['id'], 0));
         $stmt = $pdo->prepare("DELETE FROM inquiries WHERE id = :id");
         $stmt->execute([':id' => $id]);
 
@@ -265,7 +270,7 @@ try {
         $besoin    = trim($_REQ['besoin'] ?? 'tce');
         $message   = trim($_REQ['message'] ?? 'Saisie manuelle via le tableau de bord');
         $status    = trim($_REQ['status'] ?? 'Nouveau');
-        $notes     = trim($_REQ['notes'] ?? '');
+        $notes     = trim(tg2d_val($_REQ['notes'], ''));
         $sendEmail = !empty($_REQ['send_email']);
 
         if (empty($nom) || empty($telephone)) {
@@ -385,10 +390,10 @@ try {
 
     // GESTION DES DEVIS
     if ($action === 'get_devis') {
-        $search = trim($_GET['search'] ?? $_REQ['search'] ?? '');
-        $status = trim($_GET['status'] ?? $_REQ['status'] ?? '');
-        $limit  = (int)($_GET['limit'] ?? $_REQ['limit'] ?? 50);
-        $offset = (int)($_GET['offset'] ?? $_REQ['offset'] ?? 0);
+        $search = trim((isset($_GET['search']) ? $_GET['search'] : (isset($_REQ['search']) ? $_REQ['search'] : '')));
+        $status = trim((isset($_GET['status']) ? $_GET['status'] : (isset($_REQ['status']) ? $_REQ['status'] : '')));
+        $limit  = (int)((isset($_GET['limit']) ? $_GET['limit'] : (isset($_REQ['limit']) ? $_REQ['limit'] : 50)));
+        $offset = (int)((isset($_GET['offset']) ? $_GET['offset'] : (isset($_REQ['offset']) ? $_REQ['offset'] : 0)));
 
         $params = [];
         $where = [];
@@ -427,19 +432,19 @@ try {
     }
 
     if ($action === 'create_devis') {
-        $clientNom     = trim($_REQ['client_nom'] ?? '');
-        $clientSociete = trim($_REQ['client_societe'] ?? '');
-        $clientEmail   = trim($_REQ['client_email'] ?? '');
-        $clientTel     = trim($_REQ['client_tel'] ?? '');
-        $projetTitre   = trim($_REQ['projet_titre'] ?? '');
-        $typeTravaux   = trim($_REQ['type_travaux'] ?? '');
-        $localisation  = trim($_REQ['localisation'] ?? '');
-        $montantHt     = (float)($_REQ['montant_ht'] ?? 0);
-        $tvaPct        = (float)($_REQ['tva_pct'] ?? 20);
+        $clientNom     = trim(tg2d_val($_REQ['client_nom'], ''));
+        $clientSociete = trim(tg2d_val($_REQ['client_societe'], ''));
+        $clientEmail   = trim(tg2d_val($_REQ['client_email'], ''));
+        $clientTel     = trim(tg2d_val($_REQ['client_tel'], ''));
+        $projetTitre   = trim(tg2d_val($_REQ['projet_titre'], ''));
+        $typeTravaux   = trim(tg2d_val($_REQ['type_travaux'], ''));
+        $localisation  = trim(tg2d_val($_REQ['localisation'], ''));
+        $montantHt     = (float)(tg2d_val($_REQ['montant_ht'], 0));
+        $tvaPct        = (float)(tg2d_val($_REQ['tva_pct'], 20));
         $montantTtc    = $montantHt * (1 + ($tvaPct / 100));
-        $status        = trim($_REQ['status'] ?? 'Brouillon');
-        $validiteDate  = trim($_REQ['validite_date'] ?? date('Y-m-d', strtotime('+30 days')));
-        $notes         = trim($_REQ['notes'] ?? '');
+        $status        = trim(tg2d_val($_REQ['status'], 'Brouillon'));
+        $validiteDate  = trim((isset($_REQ['validite_date']) ? $_REQ['validite_date'] : date('Y-m-d', strtotime('+30 days'))));
+        $notes         = trim(tg2d_val($_REQ['notes'], ''));
 
         if ($clientNom === '') {
             http_response_code(400);
@@ -474,7 +479,7 @@ try {
     }
 
     if ($action === 'delete_devis') {
-        $id = (int)($_REQ['id'] ?? 0);
+        $id = (int)(tg2d_val($_REQ['id'], 0));
         if ($id <= 0) {
             http_response_code(400);
             echo json_encode(['success' => false, 'error' => 'Identifiant invalide.']);
@@ -487,8 +492,8 @@ try {
     }
 
     if ($action === 'update_devis_status') {
-        $id = (int)($_REQ['id'] ?? 0);
-        $status = trim($_REQ['status'] ?? '');
+        $id = (int)(tg2d_val($_REQ['id'], 0));
+        $status = trim(tg2d_val($_REQ['status'], ''));
         if ($id <= 0 || $status === '') {
             http_response_code(400);
             echo json_encode(['success' => false, 'error' => 'Paramètres invalides.']);
@@ -516,9 +521,9 @@ try {
 
     if ($action === 'save_settings') {
         $links = [
-            'link_paperless' => trim($_REQ['link_paperless'] ?? 'http://localhost:8001'),
-            'link_gce'       => trim($_REQ['link_gce'] ?? 'https://tg2d.ma'),
-            'link_easydoc'   => trim($_REQ['link_easydoc'] ?? 'https://tg2d.ma')
+            'link_paperless' => trim(tg2d_val($_REQ['link_paperless'], 'http://localhost:8001')),
+            'link_gce'       => trim(tg2d_val($_REQ['link_gce'], 'https://tg2d.ma')),
+            'link_easydoc'   => trim(tg2d_val($_REQ['link_easydoc'], 'https://tg2d.ma'))
         ];
         foreach ($links as $k => $v) {
             $check = $pdo->prepare("SELECT COUNT(*) FROM app_settings WHERE key_name = ?");

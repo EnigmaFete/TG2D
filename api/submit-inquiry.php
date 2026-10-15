@@ -1,4 +1,9 @@
 <?php
+if (!function_exists("tg2d_val")) {
+    function tg2d_val($val, $default = "") {
+        return isset($val) && $val !== null ? $val : $default;
+    }
+}
 /**
  * TG2D MAROC — POINT D'ENTRÉE SOUMISSION DEMANDE DE PROJET
  * Reçoit les demandes d'études, les insère en base de données,
@@ -35,12 +40,12 @@ if (!is_array($data) || empty($data)) {
 }
 
 // Extraction et nettoyage des champs
-$nom       = trim($data['nom'] ?? '');
-$telephone = trim($data['telephone'] ?? '');
-$email     = trim($data['email'] ?? '');
-$profil    = trim($data['profil'] ?? 'promoteur');
-$besoin    = trim($data['besoin'] ?? 'tce');
-$message   = trim($data['message'] ?? '');
+$nom       = trim((isset($data['nom']) ? $data['nom'] : ''));
+$telephone = trim((isset($data['telephone']) ? $data['telephone'] : ''));
+$email     = trim((isset($data['email']) ? $data['email'] : ''));
+$profil    = trim((isset($data['profil']) ? $data['profil'] : 'promoteur'));
+$besoin    = trim((isset($data['besoin']) ? $data['besoin'] : 'tce'));
+$message   = trim((isset($data['message']) ? $data['message'] : ''));
 
 // Validation
 if (empty($nom)) {
@@ -62,8 +67,8 @@ if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
 }
 
 // Métadonnées techniques
-$ip = $_SERVER['HTTP_CF_CONNECTING_IP'] ?? $_SERVER['HTTP_X_FORWARDED_FOR'] ?? $_SERVER['REMOTE_ADDR'] ?? '127.0.0.1';
-$userAgent = substr($_SERVER['HTTP_USER_AGENT'] ?? 'Unknown', 0, 450);
+$ip = (isset($_SERVER['HTTP_CF_CONNECTING_IP']) ? $_SERVER['HTTP_CF_CONNECTING_IP'] : (isset($_SERVER['HTTP_X_FORWARDED_FOR']) ? $_SERVER['HTTP_X_FORWARDED_FOR'] : (isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '127.0.0.1')));
+$userAgent = substr((isset($_SERVER['HTTP_USER_AGENT']) ? $_SERVER['HTTP_USER_AGENT'] : 'Unknown'), 0, 450);
 
 try {
     $pdo = tg2d_get_db();
@@ -100,7 +105,7 @@ try {
     // Déclencher immédiatement l'envoi de l'e-mail automatique à l'administrateur
     $mailResult = tg2d_send_inquiry_notification($inquiryRecord);
     $emailSent = $mailResult['success'] ? 1 : 0;
-    $emailError = $mailResult['error'] ?? '';
+    $emailError = (isset($mailResult['error']) ? $mailResult['error'] : '');
 
     // Mettre à jour le statut d'envoi dans la base
     $updateStmt = $pdo->prepare("UPDATE inquiries SET email_sent = :sent, email_error = :err WHERE id = :id");

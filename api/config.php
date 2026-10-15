@@ -1,4 +1,9 @@
 <?php
+if (!function_exists("tg2d_val")) {
+    function tg2d_val($val, $default = "") {
+        return isset($val) && $val !== null ? $val : $default;
+    }
+}
 /**
  * TG2D MAROC — CONFIGURATION SYSTÈME & BASE DE DONNÉES
  * Configuration de l'environnement, de la base de données et du service de notifications email.
