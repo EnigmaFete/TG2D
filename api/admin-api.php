@@ -157,11 +157,11 @@ try {
 
     // LISTE DES DEMANDES AVEC RECHERCHE ET FILTRES
     if ($action === 'get_inquiries') {
-        $search = trim($_REQ['search'] ?? '');
+        $search = trim((isset($_REQ['search']) ? $_REQ['search'] : ''));
         $status = trim(tg2d_val($_REQ['status'], ''));
-        $besoin = trim($_REQ['besoin'] ?? '');
-        $page   = max(1, (int)($_REQ['page'] ?? 1));
-        $limit  = min(100, max(10, (int)($_REQ['limit'] ?? 50)));
+        $besoin = trim((isset($_REQ['besoin']) ? $_REQ['besoin'] : ''));
+        $page   = max(1, (int)((isset($_REQ['page']) ? $_REQ['page'] : 1)));
+        $limit  = min(100, max(10, (int)((isset($_REQ['limit']) ? $_REQ['limit'] : 50))));
         $offset = ($page - 1) * $limit;
 
         $where = [];
@@ -263,13 +263,13 @@ try {
 
     // AJOUT MANUEL D'UN DOSSIER (ex: appel téléphonique ou rdv physique)
     if ($action === 'add_inquiry') {
-        $nom       = trim($_REQ['nom'] ?? '');
-        $telephone = trim($_REQ['telephone'] ?? '');
-        $email     = trim($_REQ['email'] ?? '');
-        $profil    = trim($_REQ['profil'] ?? 'promoteur');
-        $besoin    = trim($_REQ['besoin'] ?? 'tce');
-        $message   = trim($_REQ['message'] ?? 'Saisie manuelle via le tableau de bord');
-        $status    = trim($_REQ['status'] ?? 'Nouveau');
+        $nom       = trim((isset($_REQ['nom']) ? $_REQ['nom'] : ''));
+        $telephone = trim((isset($_REQ['telephone']) ? $_REQ['telephone'] : ''));
+        $email     = trim((isset($_REQ['email']) ? $_REQ['email'] : ''));
+        $profil    = trim((isset($_REQ['profil']) ? $_REQ['profil'] : 'promoteur'));
+        $besoin    = trim((isset($_REQ['besoin']) ? $_REQ['besoin'] : 'tce'));
+        $message   = trim(isset($_REQ['message']) ? $_REQ['message'] : 'Saisie manuelle via le tableau de bord');
+        $status    = trim((isset($_REQ['status']) ? $_REQ['status'] : 'Nouveau'));
         $notes     = trim(tg2d_val($_REQ['notes'], ''));
         $sendEmail = !empty($_REQ['send_email']);
 
@@ -304,7 +304,7 @@ try {
             ];
             $mailRes = tg2d_send_inquiry_notification($inquiryRecord);
             $pdo->prepare("UPDATE inquiries SET email_sent = :s, email_error = :e WHERE id = :id")
-                ->execute([':s' => $mailRes['success'] ? 1 : 0, ':e' => $mailRes['error'] ?? '', ':id' => $newId]);
+                ->execute([':s' => $mailRes['success'] ? 1 : 0, ':e' => (isset($mailRes['error']) ? $mailRes['error'] : ''), ':id' => $newId]);
         }
 
         echo json_encode(['success' => true, 'id' => $newId, 'message' => 'Dossier créé avec succès.']);
@@ -313,7 +313,7 @@ try {
 
     // TEST D'EXPÉDITION D'EMAIL
     if ($action === 'test_email') {
-        $targetEmail = trim($_REQ['email'] ?? $config['mail']['notify_emails'][0] ?? 'tg2d.maroc@gmail.com');
+        $targetEmail = trim(!empty($_REQ['email']) ? $_REQ['email'] : (!empty($config['mail']['notify_emails'][0]) ? $config['mail']['notify_emails'][0] : 'tg2d.maroc@gmail.com'));
         $res = tg2d_send_test_email($targetEmail);
 
         if ($res['success']) {
@@ -324,7 +324,7 @@ try {
         } else {
             echo json_encode([
                 'success' => false,
-                'error'   => "Échec de l'envoi : " . ($res['error'] ?? 'Vérifiez la configuration du serveur mail.')
+                'error'   => "Échec de l'envoi : " . (!empty($res['error']) ? $res['error'] : 'Vérifiez la configuration du serveur mail.')
             ]);
         }
         exit;
