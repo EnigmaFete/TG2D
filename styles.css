@@ -2856,10 +2856,22 @@ button, input, select, textarea {
 /* ==========================================================================
    TG2D LUXURY CUSTOM BRAND CURSOR (MATCHING TG2D LOGO & ARCHITECTURAL AESTHETICS)
    ========================================================================== */
-@media (hover: hover) and (pointer: fine) {
-  html, body, a, button, input, select, textarea, [role="button"], .fr-card, .dcard, .btn {
-    cursor: none !important;
-  }
+/* When custom cursor is active on any device (Windows, Mac, Linux) */
+html.has-custom-cursor,
+html.has-custom-cursor body,
+html.has-custom-cursor a,
+html.has-custom-cursor button,
+html.has-custom-cursor select,
+html.has-custom-cursor [role="button"],
+html.has-custom-cursor .fr-card,
+html.has-custom-cursor .dcard,
+html.has-custom-cursor .btn {
+  cursor: none !important;
+}
+
+html.has-custom-cursor input,
+html.has-custom-cursor textarea {
+  cursor: text !important;
 }
 
 .tg2d-cursor-wrapper {
@@ -3033,9 +3045,9 @@ button, input, select, textarea {
   background: var(--c-cyan-light);
 }
 
-/* Mobile & Touch: Disable Custom Cursor */
-@media (hover: none) or (pointer: coarse) {
-  .tg2d-cursor-wrapper {
+/* Small Touch Phones: Keep hidden by default */
+@media (max-width: 600px) and (hover: none) {
+  .tg2d-cursor-wrapper.is-hidden {
     display: none !important;
   }
 }

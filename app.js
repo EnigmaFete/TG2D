@@ -408,14 +408,13 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     6. TG2D LUXURY BRAND CUSTOM CURSOR (ZERO-JANK HIGH-FPS ENGINE)
+     6. TG2D LUXURY BRAND CUSTOM CURSOR (CROSS-PLATFORM: WINDOWS, MAC, LINUX)
      ========================================================================== */
   function initTg2dCursor() {
-    // Completely skip on touch/mobile devices
-    if (window.matchMedia('(hover: none) or (pointer: coarse)').matches) {
-      return;
-    }
+    // Avoid double initialization
+    if (document.querySelector('.tg2d-cursor-wrapper')) return;
 
+    // Build cursor DOM elements
     const wrapper = document.createElement('div');
     wrapper.className = 'tg2d-cursor-wrapper is-hidden';
     wrapper.setAttribute('aria-hidden', 'true');
@@ -441,6 +440,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let dotY = -100;
     let isVisible = false;
     let isCursorLoopActive = false;
+    let hasMoved = false;
 
     function renderCursor() {
       if (!isVisible) {
@@ -460,7 +460,7 @@ document.addEventListener('DOMContentLoaded', () => {
       label.style.transform = `translate3d(${ringX.toFixed(1)}px, ${ringY.toFixed(1)}px, 0) translate(-50%, 0)`;
 
       const dist = Math.abs(mouseX - ringX) + Math.abs(mouseY - ringY);
-      if (dist > 0.15) {
+      if (dist > 0.1) {
         requestAnimationFrame(renderCursor);
       } else {
         isCursorLoopActive = false;
@@ -474,49 +474,102 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     }
 
-    window.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
-
+    function showCursor() {
       if (!isVisible) {
         isVisible = true;
         wrapper.classList.remove('is-hidden');
+        document.documentElement.classList.add('has-custom-cursor');
+      }
+    }
+
+    function hideCursor() {
+      if (isVisible) {
+        isVisible = false;
+        wrapper.classList.add('is-hidden');
+        document.documentElement.classList.remove('has-custom-cursor');
+      }
+    }
+
+    // Unified pointer/mouse tracking for Windows, Mac, Linux, touchscreens
+    function handlePointerMove(e) {
+      // Discard touch finger taps so mobile/tablet touch does not leave an orphaned cursor
+      if (e.pointerType === 'touch') {
+        hideCursor();
+        return;
+      }
+
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (!hasMoved) {
+        hasMoved = true;
         ringX = mouseX;
         ringY = mouseY;
         dotX = mouseX;
         dotY = mouseY;
       }
 
+      showCursor();
       wakeCursor();
+    }
+
+    // Support standard Pointer Events (Windows Edge/Chrome/Firefox) & fallback MouseEvents
+    if (window.PointerEvent) {
+      window.addEventListener('pointermove', handlePointerMove, { passive: true });
+      window.addEventListener('pointerdown', (e) => {
+        if (e.pointerType === 'touch') {
+          hideCursor();
+          return;
+        }
+        showCursor();
+        wrapper.classList.add('is-clicking');
+      }, { passive: true });
+      window.addEventListener('pointerup', (e) => {
+        if (e.pointerType === 'touch') return;
+        wrapper.classList.remove('is-clicking');
+      }, { passive: true });
+    } else {
+      window.addEventListener('mousemove', handlePointerMove, { passive: true });
+      window.addEventListener('mousedown', () => {
+        showCursor();
+        wrapper.classList.add('is-clicking');
+      }, { passive: true });
+      window.addEventListener('mouseup', () => {
+        wrapper.classList.remove('is-clicking');
+      }, { passive: true });
+    }
+
+    // On touch interaction, gracefully hide cursor
+    window.addEventListener('touchstart', () => {
+      hideCursor();
     }, { passive: true });
 
-    document.addEventListener('mouseleave', () => {
-      isVisible = false;
-      wrapper.classList.add('is-hidden');
+    document.addEventListener('mouseleave', (e) => {
+      // Only hide if cursor actually exits the window
+      if (!e.relatedTarget && (e.clientY <= 0 || e.clientX <= 0 || e.clientX >= window.innerWidth || e.clientY >= window.innerHeight)) {
+        hideCursor();
+      }
     });
 
-    document.addEventListener('mouseenter', () => {
-      isVisible = true;
-      wrapper.classList.remove('is-hidden');
-      wakeCursor();
+    document.addEventListener('mouseenter', (e) => {
+      if (e.clientX > 0 && e.clientY > 0 && e.clientX < window.innerWidth && e.clientY < window.innerHeight) {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        showCursor();
+        wakeCursor();
+      }
     });
-
-    window.addEventListener('mousedown', () => {
-      wrapper.classList.add('is-clicking');
-    }, { passive: true });
-
-    window.addEventListener('mouseup', () => {
-      wrapper.classList.remove('is-clicking');
-    }, { passive: true });
 
     // Efficient delegated hover detection
     let hoverTimeout = null;
     document.addEventListener('mouseover', (e) => {
+      if (!isVisible) return;
       if (hoverTimeout) return;
       hoverTimeout = setTimeout(() => {
         hoverTimeout = null;
+        if (!e.target || typeof e.target.closest !== 'function') return;
         const cardTarget = e.target.closest('.fr-card, .dcard, .cx-card, .grid-card, .pjv-slab, .fl-card, .service-card-item, .engagement-card, .why-tg2d-card, .book-spread');
-        const clickableTarget = e.target.closest('a, button, input, select, textarea, [role="button"], .btn, .nav-dd-btn, .h-cta, .hero-btn, .book-tab-btn, .book-nav-btn');
+        const clickableTarget = e.target.closest('a, button, select, [role="button"], .btn, .nav-dd-btn, .h-cta, .hero-btn, .book-tab-btn, .book-nav-btn');
 
         if (cardTarget) {
           wrapper.classList.add('is-card-hover');
@@ -535,7 +588,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
-  initTg2dCursor();
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTg2dCursor);
+  } else {
+    initTg2dCursor();
+  }
 
   /* ==========================================================================
      7. TG2D BOOKPAGES SPREAD ENGINE (3D ANIMATED PROJECT SHOWCASE)
