@@ -881,7 +881,7 @@ if (session_status() === PHP_SESSION_NONE) {
           </a>
 
           <!-- Card 3: GCE -->
-          <a class="quick-card card-gce" id="linkGceCard" href="https://tg2d.ma" target="_blank" rel="noopener">
+          <a class="quick-card card-gce" id="linkGceCard" href="https://tg2d.ma/gce" target="_blank" rel="noopener">
             <div class="quick-icon-wrap">
               <!-- GCE Red Styled Badge -->
               <div style="width: 24px; height: 24px; border-radius: 5px; background: linear-gradient(135deg, #B91C1C 0%, #7F1D1D 100%); color: #FFFFFF; font-weight: 800; font-size: 11px; display: flex; align-items: center; justify-content: center; font-family: monospace;">
@@ -898,7 +898,7 @@ if (session_status() === PHP_SESSION_NONE) {
           </a>
 
           <!-- Card 4: Easydoc -->
-          <a class="quick-card card-easydoc" id="linkEasydocCard" href="https://tg2d.ma" target="_blank" rel="noopener">
+          <a class="quick-card card-easydoc" id="linkEasydocCard" href="https://tg2d.ma/easydoc/login.php" target="_blank" rel="noopener">
             <div class="quick-icon-wrap" style="color: #0084FF;">
               <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><circle cx="10" cy="14" r="2"/><path d="M12 14h3"/></svg>
             </div>
@@ -1021,7 +1021,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px;">
               Module de gestion commerciale chantiers, suivi des règlements fournisseurs BTP, facturation d'avancement et décomptes provisoires.
             </p>
-            <a id="linkGceSuite" href="https://tg2d.ma" target="_blank" class="btn-create-devis" style="width: 100%; justify-content: center; text-decoration: none; background: #B91C1C;">
+            <a id="linkGceSuite" href="https://tg2d.ma/gce" target="_blank" class="btn-create-devis" style="width: 100%; justify-content: center; text-decoration: none; background: #B91C1C;">
               <span>Ouvrir GCE</span>
               <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
@@ -1039,7 +1039,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <p style="font-size: 0.88rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 20px;">
               Référentiel des documents techniques, fiches de sécurité chantiers, habilitations des équipes et attestations de conformité LPEE.
             </p>
-            <a id="linkEasydocSuite" href="https://tg2d.ma" target="_blank" class="btn-create-devis" style="width: 100%; justify-content: center; text-decoration: none;">
+            <a id="linkEasydocSuite" href="https://tg2d.ma/easydoc/login.php" target="_blank" class="btn-create-devis" style="width: 100%; justify-content: center; text-decoration: none;">
               <span>Accéder à Easydoc</span>
               <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
             </a>
@@ -1292,8 +1292,8 @@ if (session_status() === PHP_SESSION_NONE) {
         const data = await res.json();
         if (data.success && data.settings) {
           const p = data.settings.link_paperless || 'http://localhost:8001';
-          const g = data.settings.link_gce || 'https://tg2d.ma';
-          const e = data.settings.link_easydoc || 'https://tg2d.ma';
+          const g = data.settings.link_gce || 'https://tg2d.ma/gce';
+          const e = data.settings.link_easydoc || 'https://tg2d.ma/easydoc/login.php';
 
           // Set links on quick access cards
           const linkP = document.getElementById('linkPaperlessCard');

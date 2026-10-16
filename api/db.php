@@ -105,15 +105,19 @@ function tg2d_get_db() {
         // Valeurs par défaut pour les logiciels si non configurés
         $initSettings = [
             'link_paperless' => 'http://localhost:8001',
-            'link_gce'       => 'https://tg2d.ma',
-            'link_easydoc'   => 'https://tg2d.ma'
+            'link_gce'       => 'https://tg2d.ma/gce',
+            'link_easydoc'   => 'https://tg2d.ma/easydoc/login.php'
         ];
         foreach ($initSettings as $k => $v) {
-            $check = $pdo->prepare("SELECT COUNT(*) FROM app_settings WHERE key_name = ?");
-            $check->execute([$k]);
-            if ((int)$check->fetchColumn() === 0) {
+            $stmt = $pdo->prepare("SELECT val_content FROM app_settings WHERE key_name = ?");
+            $stmt->execute([$k]);
+            $existing = $stmt->fetchColumn();
+            if ($existing === false) {
                 $ins = $pdo->prepare("INSERT INTO app_settings (key_name, val_content) VALUES (?, ?)");
                 $ins->execute([$k, $v]);
+            } elseif ($existing === 'https://tg2d.ma' && ($k === 'link_gce' || $k === 'link_easydoc')) {
+                $up = $pdo->prepare("UPDATE app_settings SET val_content = ? WHERE key_name = ?");
+                $up->execute([$v, $k]);
             }
         }
     } else {

@@ -522,8 +522,8 @@ try {
     if ($action === 'save_settings') {
         $links = [
             'link_paperless' => trim(tg2d_val($_REQ['link_paperless'], 'http://localhost:8001')),
-            'link_gce'       => trim(tg2d_val($_REQ['link_gce'], 'https://tg2d.ma')),
-            'link_easydoc'   => trim(tg2d_val($_REQ['link_easydoc'], 'https://tg2d.ma'))
+            'link_gce'       => trim(tg2d_val($_REQ['link_gce'], 'https://tg2d.ma/gce')),
+            'link_easydoc'   => trim(tg2d_val($_REQ['link_easydoc'], 'https://tg2d.ma/easydoc/login.php'))
         ];
         foreach ($links as $k => $v) {
             $check = $pdo->prepare("SELECT COUNT(*) FROM app_settings WHERE key_name = ?");
