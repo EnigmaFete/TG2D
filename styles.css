@@ -6193,103 +6193,25 @@ main .fleet-editorial-layout .spec-key,
   }
 }
 
-/* ---------------- SECTION: POURQUOI TG2D & CHIFFRES CLÉS (OFFICIAL BANNER DESIGN) ---------------- */
-.sec-pourquoi-ui {
-  padding: 60px 0;
-  background: #060911;
-  position: relative;
-  overflow: hidden;
-}
-
-.pourquoi-banner-wrap {
+/* ---------------- SECTION: POURQUOI TG2D & CHIFFRES CLÉS (FULL BLEED EDGE-TO-EDGE) ---------------- */
+.sec-pourquoi-full {
   width: 100%;
-  max-width: 1380px;
-  margin: 0 auto;
-  border-radius: 20px;
+  margin: 0;
+  padding: 0;
+  line-height: 0;
   overflow: hidden;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), 0 0 0 1px rgba(0, 194, 255, 0.2);
-  background: #09101d;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: block;
+  background: transparent;
 }
 
-.pourquoi-banner-wrap:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 32px 75px rgba(0, 0, 0, 0.7), 0 0 0 1px rgba(0, 194, 255, 0.4);
-}
-
-.pourquoi-banner-img {
+.pourquoi-full-img {
   width: 100%;
   height: auto;
   display: block;
   object-fit: cover;
-}
-
-@media (max-width: 768px) {
-  .sec-pourquoi-ui {
-    padding: 30px 0;
-  }
-  .pourquoi-banner-wrap {
-    border-radius: 12px;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.45);
-  }
-}
-
-@media (max-width: 768px) {
-  .sec-pourquoi-ui {
-    padding: 60px 0;
-  }
-  .pourquoi-grid {
-    gap: 36px;
-  }
-  .pourquoi-right-card {
-    padding: 24px 20px;
-    border-radius: 18px;
-  }
-  .pourquoi-stats-grid {
-    gap: 18px;
-  }
-  .pourquoi-stat-val-cyan {
-    font-size: 1.95rem;
-  }
-  .pourquoi-stat-val-white {
-    font-size: 1.45rem;
-  }
-  .pourquoi-stat-label {
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .sec-pourquoi-ui {
-    padding: 50px 0;
-  }
-  .pourquoi-point-item {
-    gap: 12px;
-  }
-  .pourquoi-point-num {
-    font-size: 0.95rem;
-  }
-  .pourquoi-point-title {
-    font-size: 0.98rem;
-  }
-  .pourquoi-point-desc {
-    font-size: 0.85rem;
-  }
-  .pourquoi-right-card {
-    padding: 20px 16px;
-  }
-  .pourquoi-stats-grid {
-    gap: 14px;
-  }
-  .pourquoi-stat-val-cyan {
-    font-size: 1.7rem;
-  }
-  .pourquoi-stat-val-white {
-    font-size: 1.25rem;
-  }
-  .pourquoi-stat-label {
-    font-size: 0.76rem;
-  }
+  margin: 0;
+  padding: 0;
+  border: none;
 }
 
 /* ---------------- SECTION 06: CTA BANNER ("VOUS AVEZ UN PROJET ?") ---------------- */
