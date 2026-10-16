@@ -453,18 +453,38 @@
 
           if (res.success) {
             alertBox.style.display = 'block';
-            alertBox.style.background = 'rgba(16, 185, 129, 0.12)';
-            alertBox.style.border = '1px solid rgba(16, 185, 129, 0.35)';
-            alertBox.style.color = '#FFFFFF';
+            alertBox.style.background = '#F0FDF4';
+            alertBox.style.border = '1px solid #BBF7D0';
+            alertBox.style.borderLeft = '5px solid #059669';
+            alertBox.style.borderRadius = '12px';
+            alertBox.style.padding = '22px 24px';
+            alertBox.style.color = '#1E293B';
+            alertBox.style.boxShadow = '0 4px 16px rgba(5, 150, 105, 0.08)';
+            const refNum = res.reference || ('DEV-2026-00' + res.inquiry_id);
             alertBox.innerHTML = `
-              <div style="display: flex; gap: 12px; align-items: flex-start;">
-                <span style="font-size: 1.4rem; line-height: 1;">✅</span>
-                <div>
-                  <strong style="color: #34D399; font-size: 1rem; display: block; margin-bottom: 4px;">Dossier d'Étude N° #${res.inquiry_id} Transmis avec Succès !</strong>
-                  <p style="margin: 0; color: rgba(255,255,255,0.85); font-size: 0.9rem;">
-                    Une alerte automatique a été transmise à notre équipe d'ingénieurs (<strong>tg2d.maroc@gmail.com</strong>).
-                    Un chargé d'affaires prendra contact avec vous sous 24h ouvrées.
+              <div style="display: flex; gap: 16px; align-items: flex-start;">
+                <div style="width: 44px; height: 44px; border-radius: 50%; background: #DCFCE7; border: 2px solid #059669; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #059669;">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                </div>
+                <div style="flex: 1;">
+                  <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #059669; display: block; margin-bottom: 3px;">
+                    DOSSIER D'ÉTUDE ENREGISTRÉ
+                  </span>
+                  <h4 style="font-size: 1.15rem; font-weight: 800; color: #064E3B; margin: 0 0 8px; letter-spacing: -0.01em;">
+                    Dossier N° ${refNum} — Transmis avec Succès
+                  </h4>
+                  <p style="margin: 0 0 10px; color: #334155; font-size: 0.92rem; line-height: 1.6;">
+                    Votre demande a bien été enregistrée et transmise à notre <strong>cellule d'ingénierie et d'études de prix</strong>.
+                    Un ingénieur chargé d'affaires prendra contact avec vous sous <strong>24h à 48h ouvrées</strong>.
                   </p>
+                  <div style="display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 12px; padding-top: 12px; border-top: 1px solid #D1FAE5; font-size: 0.85rem; color: #065F46;">
+                    <span>Des plans d'architecte ou métrés complémentaires à joindre ?</span>
+                    <a href="https://wa.me/212618392328?text=Bonjour,%20je%20souhaite%20transmettre%20des%20plans%20compl%C3%A9mentaires%20pour%20le%20dossier%20${encodeURIComponent(refNum)}." target="_blank" style="color: #059669; font-weight: 700; text-decoration: underline; display: inline-flex; align-items: center; gap: 4px;">
+                      Transmettre sur WhatsApp &rarr;
+                    </a>
+                  </div>
                 </div>
               </div>
             `;
@@ -476,20 +496,27 @@
           }
         } catch (err) {
           alertBox.style.display = 'block';
-          alertBox.style.background = 'rgba(239, 68, 68, 0.12)';
-          alertBox.style.border = '1px solid rgba(239, 68, 68, 0.35)';
-          alertBox.style.color = '#FFFFFF';
+          alertBox.style.background = '#FEF2F2';
+          alertBox.style.border = '1px solid #FECACA';
+          alertBox.style.borderLeft = '5px solid #DC2626';
+          alertBox.style.borderRadius = '12px';
+          alertBox.style.padding = '20px 24px';
+          alertBox.style.color = '#1E293B';
           alertBox.innerHTML = `
-            <div style="display: flex; gap: 12px; align-items: flex-start;">
-              <span style="font-size: 1.4rem; line-height: 1;">⚠️</span>
-              <div>
-                <strong style="color: #F87171; display: block; margin-bottom: 4px;">Impossible de transmettre le dossier en ligne</strong>
-                <p style="margin: 0; color: rgba(255,255,255,0.85); font-size: 0.9rem;">
-                  ${err.message || 'Veuillez réessayer ou contacter directement notre direction par WhatsApp.'}
+            <div style="display: flex; gap: 16px; align-items: flex-start;">
+              <div style="width: 44px; height: 44px; border-radius: 50%; background: #FEE2E2; border: 2px solid #DC2626; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #DC2626; font-size: 1.2rem; font-weight: 800;">
+                !
+              </div>
+              <div style="flex: 1;">
+                <h4 style="color: #991B1B; font-size: 1.05rem; font-weight: 700; margin: 0 0 6px;">
+                  Transmission impossible en ligne
+                </h4>
+                <p style="margin: 0; color: #475569; font-size: 0.9rem; line-height: 1.5;">
+                  ${err.message || 'Veuillez vérifier votre connexion ou nous contacter directement par téléphone.'}
                 </p>
-                <div style="margin-top: 10px;">
-                  <a href="https://wa.me/212618392328" target="_blank" style="color: var(--c-cyan); font-weight: 600; text-decoration: underline;">
-                    → Échanger directement sur WhatsApp (+212 618-392328)
+                <div style="margin-top: 12px; padding-top: 10px; border-top: 1px solid #FEE2E2;">
+                  <a href="https://wa.me/212618392328" target="_blank" style="color: #DC2626; font-weight: 700; font-size: 0.88rem; text-decoration: underline;">
+                    &rarr; Contacter directement la direction sur WhatsApp (+212 618-392328)
                   </a>
                 </div>
               </div>

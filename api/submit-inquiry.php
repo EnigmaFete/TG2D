@@ -115,6 +115,33 @@ try {
         ':id'   => $inquiryId
     ]);
 
+    // Synchronisation automatique dans la table des devis
+    $year = date('Y');
+    $reference = "DEV-{$year}-" . str_pad($inquiryId, 3, '0', STR_PAD_LEFT);
+    $typeLabel = tg2d_format_label($besoin, 'besoin');
+    $profilLabel = tg2d_format_label($profil, 'profil');
+    $validiteDate = date('Y-m-d', strtotime('+30 days'));
+
+    try {
+        $devisStmt = $pdo->prepare("INSERT INTO devis 
+            (reference, client_nom, client_email, client_tel, client_societe, projet_titre, type_travaux, localisation, montant_ht, tva_pct, montant_ttc, status, validite_date, notes)
+            VALUES (?, ?, ?, ?, ?, ?, ?, 'Maroc', 0, 20, 0, 'En attente', ?, ?)");
+        $devisStmt->execute([
+            $reference,
+            $nom,
+            $email,
+            $telephone,
+            $profilLabel,
+            "Demande en ligne : " . $typeLabel,
+            $typeLabel,
+            $validiteDate,
+            $message
+        ]);
+    } catch (Exception $eDevis) {
+        // En cas d'erreur secondaire sur devis, on logue sans bloquer la demande principale
+        error_log("Erreur sync devis: " . $eDevis->getMessage());
+    }
+
     // Envoi de l'accusé de réception au client si activé dans config
     $config = tg2d_get_config();
     if (!empty($config['mail']['send_client_confirmation'])) {
@@ -124,6 +151,7 @@ try {
     echo json_encode([
         'success'    => true,
         'inquiry_id' => $inquiryId,
+        'reference'  => $reference,
         'email_sent' => (bool)$emailSent,
         'message'    => 'Votre demande a été enregistrée avec succès. Notre équipe d\'ingénieurs vous contactera sous 24h ouvrées.'
     ]);

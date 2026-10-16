@@ -619,6 +619,7 @@ if (session_status() === PHP_SESSION_NONE) {
     .badge-transmis { background: #EFF6FF; color: #1D4ED8; }
     .badge-valide { background: #ECFDF5; color: #047857; }
     .badge-refuse { background: #FEF2F2; color: #B91C1C; }
+    .badge-attente { background: #FEF3C7; color: #B45309; }
 
     /* Modal Styling */
     .modal-overlay {
@@ -957,12 +958,13 @@ if (session_status() === PHP_SESSION_NONE) {
 
         <!-- Filters Strip -->
         <div style="display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; justify-content: space-between;">
-          <div style="display: flex; gap: 8px;">
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             <button class="status-btn active" onclick="filterDevisStatus('Tous', this)">Tous</button>
-            <button class="status-btn" onclick="filterDevisStatus('Brouillon', this)">Brouillons</button>
+            <button class="status-btn" onclick="filterDevisStatus('En attente', this)">En attente</button>
             <button class="status-btn" onclick="filterDevisStatus('Transmis', this)">Transmis</button>
             <button class="status-btn" onclick="filterDevisStatus('Validé', this)">Validés</button>
             <button class="status-btn" onclick="filterDevisStatus('Refusé', this)">Refusés</button>
+            <button class="status-btn" onclick="filterDevisStatus('Brouillon', this)">Brouillons</button>
           </div>
           <div style="color: var(--text-muted); font-size: 0.85rem;" id="devisCounterText">0 devis enregistrés</div>
         </div>
@@ -1483,36 +1485,47 @@ if (session_status() === PHP_SESSION_NONE) {
               </tr>
             </thead>
             <tbody>
-              ${filtered.map(d => `
+              ${filtered.map(d => {
+                const cleanTel = (d.client_tel || '').replace(/[^0-9]/g, '');
+                const waNumber = cleanTel.startsWith('0') ? '212' + cleanTel.substring(1) : cleanTel;
+                const waLink = cleanTel ? `https://wa.me/${waNumber}?text=${encodeURIComponent('Bonjour ' + (d.client_nom || '') + ', concernant votre dossier d\'étude ' + (d.reference || '') + ' pour TG2D...')}` : '';
+                return `
                 <tr>
                   <td><strong style="color: var(--c-blue);">${escapeHtml(d.reference || 'DEV-N/A')}</strong></td>
                   <td>
                     <div style="font-weight: 600;">${escapeHtml(d.client_nom)}</div>
+                    ${d.client_societe ? `<div style="font-size: 0.78rem; color: #475569;">🏢 ${escapeHtml(d.client_societe)}</div>` : ''}
                     ${d.client_tel ? `<div style="font-size: 0.78rem; color: #64748B;">📞 ${escapeHtml(d.client_tel)}</div>` : ''}
+                    ${d.client_email ? `<div style="font-size: 0.78rem; color: #64748B;">✉️ ${escapeHtml(d.client_email)}</div>` : ''}
                   </td>
                   <td>
                     <div style="font-weight: 600;">${escapeHtml(d.projet_titre || 'Chantier')}</div>
                     <div style="font-size: 0.78rem; color: #64748B;">📍 ${escapeHtml(d.localisation || 'Maroc')}</div>
+                    ${d.type_travaux ? `<div style="font-size: 0.75rem; color: #0284C7;">${escapeHtml(d.type_travaux)}</div>` : ''}
                   </td>
                   <td><strong>${Number(d.montant_ht || 0).toLocaleString('fr-FR')} MAD</strong></td>
                   <td><strong style="color: #047857;">${Number(d.montant_ttc || 0).toLocaleString('fr-FR')} MAD</strong></td>
                   <td>
                     <select onchange="updateDevisStatus(${d.id}, this.value)" style="border: 1px solid #CBD5E1; border-radius: 6px; padding: 4px 8px; font-size: 0.8rem; background: #FFFFFF; font-weight: 600;">
-                      <option value="Brouillon" ${d.status === 'Brouillon' ? 'selected' : ''}>Brouillon</option>
-                      <option value="Transmis" ${d.status === 'Transmis' ? 'selected' : ''}>Transmis</option>
+                      <option value="En attente" ${d.status === 'En attente' ? 'selected' : ''}>En attente</option>
                       <option value="En étude" ${d.status === 'En étude' ? 'selected' : ''}>En étude</option>
+                      <option value="Transmis" ${d.status === 'Transmis' ? 'selected' : ''}>Transmis</option>
                       <option value="Validé" ${d.status === 'Validé' ? 'selected' : ''}>Validé</option>
                       <option value="Refusé" ${d.status === 'Refusé' ? 'selected' : ''}>Refusé</option>
+                      <option value="Brouillon" ${d.status === 'Brouillon' ? 'selected' : ''}>Brouillon</option>
                     </select>
                   </td>
                   <td style="color: #64748B; font-size: 0.82rem;">${d.created_at ? d.created_at.substring(0, 10) : ''}</td>
                   <td>
-                    <button onclick="deleteDevis(${d.id})" style="background: transparent; border: none; color: #EF4444; cursor: pointer; padding: 4px 8px; font-size: 0.82rem; font-weight: 600;" title="Supprimer ce devis">
-                      ✕
-                    </button>
+                    <div style="display: inline-flex; align-items: center; gap: 6px;">
+                      ${waLink ? `<a href="${waLink}" target="_blank" rel="noopener noreferrer" style="background: #25D366; color: #FFFFFF; text-decoration: none; border-radius: 6px; padding: 4px 8px; font-size: 0.78rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;" title="Contacter sur WhatsApp">💬 WhatsApp</a>` : ''}
+                      <button onclick="deleteDevis(${d.id})" style="background: transparent; border: 1px solid #FECACA; border-radius: 6px; color: #EF4444; cursor: pointer; padding: 4px 8px; font-size: 0.82rem; font-weight: 600;" title="Supprimer ce devis">
+                        ✕
+                      </button>
+                    </div>
                   </td>
                 </tr>
-              `).join('')}
+              `;}).join('')}
             </tbody>
           </table>
         </div>
@@ -1523,6 +1536,7 @@ if (session_status() === PHP_SESSION_NONE) {
       if (status === 'Validé') return `<span class="status-badge badge-valide">Validé</span>`;
       if (status === 'Transmis') return `<span class="status-badge badge-transmis">Transmis</span>`;
       if (status === 'Refusé') return `<span class="status-badge badge-refuse">Refusé</span>`;
+      if (status === 'En attente' || status === 'Nouveau' || status === 'En étude') return `<span class="status-badge badge-attente">${status}</span>`;
       return `<span class="status-badge badge-brouillon">${status || 'Brouillon'}</span>`;
     }
 
