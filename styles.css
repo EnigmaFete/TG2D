@@ -6193,25 +6193,295 @@ main .fleet-editorial-layout .spec-key,
   }
 }
 
-/* ---------------- SECTION: POURQUOI TG2D & CHIFFRES CLÉS (FULL BLEED EDGE-TO-EDGE) ---------------- */
-.sec-pourquoi-full {
+/* ---------------- SECTION: POURQUOI TG2D & CHIFFRES CLÉS (LIVE REAL DOM) ---------------- */
+.sec-pourquoi-live {
+  position: relative;
   width: 100%;
-  margin: 0;
-  padding: 0;
-  line-height: 0;
+  padding: 100px 0 120px;
+  background: #060A14 url('assets/images/pourquoi-bg-architecture.jpg?v=2026') center top / cover no-repeat;
+  color: #FFFFFF;
   overflow: hidden;
-  display: block;
-  background: transparent;
 }
 
-.pourquoi-full-img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
+/* Atmospheric light gradient to guarantee contrast */
+.sec-pourquoi-live::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(6, 10, 20, 0.88) 0%, rgba(6, 10, 20, 0.72) 45%, rgba(6, 10, 20, 0.25) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.sec-pourquoi-live .wrap {
+  position: relative;
+  z-index: 2;
+}
+
+.pq-live-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Kicker with cyan dash */
+.pq-kicker,
+.pq-card-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--c-cyan, #00C2FF);
+  font-family: var(--font-main, sans-serif);
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.pq-dash {
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  background: var(--c-cyan, #00C2FF);
+  border-radius: 2px;
+}
+
+/* Main Headline */
+.pq-main-title {
+  font-size: 2.35rem;
+  font-weight: 800;
+  line-height: 1.22;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-bottom: 36px;
+}
+
+.pq-main-title .text-cyan {
+  color: var(--c-cyan, #00C2FF);
+}
+
+/* Vertical Timeline */
+.pq-timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.pq-timeline-item {
+  display: flex;
+  gap: 18px;
+  position: relative;
+  padding-bottom: 24px;
+}
+
+.pq-timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Continuous blue vertical line */
+.pq-timeline-item:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 36px;
+  top: 14px;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(0, 194, 255, 0.5) 0%, rgba(0, 194, 255, 0.15) 100%);
+}
+
+.pq-tl-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  height: 24px;
+}
+
+.pq-tl-num {
+  font-family: var(--font-main, sans-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--c-cyan, #00C2FF);
+  min-width: 20px;
+}
+
+.pq-tl-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--c-cyan, #00C2FF);
+  box-shadow: 0 0 8px rgba(0, 194, 255, 0.8);
+  position: relative;
+  z-index: 2;
+}
+
+.pq-tl-body {
+  flex: 1;
+}
+
+.pq-tl-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0 0 4px 0;
+  line-height: 1.35;
+}
+
+.pq-tl-desc {
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: #94A3B8;
   margin: 0;
-  padding: 0;
-  border: none;
+}
+
+/* ==========================================================================
+   GLASSMORPHISM CARD (RIGHT COLUMN)
+   ========================================================================== */
+.pq-glass-card {
+  background: rgba(8, 16, 28, 0.72);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(0, 194, 255, 0.38);
+  border-radius: 24px;
+  padding: 34px 30px;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), inset 0 0 25px rgba(0, 194, 255, 0.08);
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.pq-glass-card:hover {
+  border-color: rgba(0, 194, 255, 0.6);
+  box-shadow: 0 30px 75px rgba(0, 0, 0, 0.65), inset 0 0 35px rgba(0, 194, 255, 0.14);
+}
+
+.pq-card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 20px;
+}
+
+.pq-cell {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 24px 18px;
+}
+
+.pq-border-r {
+  border-right: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pq-border-b {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.pq-cell-icon {
+  width: 58px;
+  height: 54px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pq-cell-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 0 10px rgba(0, 194, 255, 0.45));
+}
+
+.pq-cell-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.pq-stat-head {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.pq-stat-num-cyan {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--c-cyan, #00C2FF);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.pq-stat-unit {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #FFFFFF;
+}
+
+.pq-stat-title-white {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.15;
+  margin-bottom: 4px;
+}
+
+.pq-stat-title-cyan {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--c-cyan, #00C2FF);
+  line-height: 1.15;
+  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+}
+
+.pq-stat-label {
+  font-size: 0.78rem;
+  line-height: 1.35;
+  color: #94A3B8;
+  margin-bottom: 8px;
+}
+
+.pq-stat-bar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--c-cyan, #00C2FF);
+  border-radius: 2px;
+}
+
+/* Responsive queries */
+@media (max-width: 1100px) {
+  .pq-live-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+  .pq-glass-card {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .sec-pourquoi-live {
+    padding: 60px 0 80px;
+  }
+  .pq-main-title {
+    font-size: 1.85rem;
+  }
+  .pq-card-grid {
+    grid-template-columns: 1fr;
+  }
+  .pq-border-r {
+    border-right: none;
+  }
+  .pq-cell {
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .pq-cell:last-child {
+    border-bottom: none;
+  }
 }
 
 /* ---------------- SECTION 06: CTA BANNER ("VOUS AVEZ UN PROJET ?") ---------------- */
