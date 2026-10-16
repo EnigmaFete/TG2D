@@ -8,6 +8,10 @@ RewriteEngine On
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+# 1a. Redirect removed matériel/flotte pages to expertises
+RewriteRule ^flotte(\.html)?$ /expertises.html [R=301,L]
+RewriteRule ^machine-.*$ /expertises.html [R=301,L]
+
 # 1b. Clean URLs (serve .html without requiring the .html extension in the URL)
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_FILENAME} !-f
