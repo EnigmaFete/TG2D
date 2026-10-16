@@ -6198,7 +6198,7 @@ main .fleet-editorial-layout .spec-key,
   position: relative;
   width: 100%;
   padding: 100px 0 120px;
-  background: #060A14 url('assets/images/pourquoi-bg-architecture.jpg?v=2026') center top / cover no-repeat;
+  background: #060A14 url('assets/images/pourquoi-bg-architecture.jpg?v=clean_hq_2026') right center / cover no-repeat;
   color: #FFFFFF;
   overflow: hidden;
 }
@@ -6208,7 +6208,7 @@ main .fleet-editorial-layout .spec-key,
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(90deg, rgba(6, 10, 20, 0.88) 0%, rgba(6, 10, 20, 0.72) 45%, rgba(6, 10, 20, 0.25) 100%);
+  background: linear-gradient(90deg, #060A14 0%, rgba(6, 10, 20, 0.94) 38%, rgba(6, 10, 20, 0.62) 65%, rgba(6, 10, 20, 0.15) 100%);
   pointer-events: none;
   z-index: 1;
 }
