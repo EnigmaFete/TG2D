@@ -67,7 +67,7 @@ function tg2d_send_inquiry_notification(array $inquiry) {
     $msg = nl2br(htmlspecialchars((isset($inquiry['message']) ? $inquiry['message'] : 'Aucun détail textuel spécifié.')));
     $date = date('d/m/Y à H:i');
 
-    $subject = "🚨 [Nouveau Projet TG2D #{$id}] " . ((isset($inquiry['nom']) ? $inquiry['nom'] : 'Client')) . " — " . $besoin;
+    $subject = "[Nouveau Projet TG2D #{$id}] " . ((isset($inquiry['nom']) ? $inquiry['nom'] : 'Client')) . " — " . $besoin;
 
     // Déterminer l'URL du tableau de bord admin
     $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
@@ -143,9 +143,9 @@ function tg2d_send_inquiry_notification(array $inquiry) {
 
             <!-- Quick Action Buttons -->
             <div class="actions-wrap">
-              ' . (!empty($cleanPhone) ? '<a href="https://wa.me/' . $cleanPhone . '?text=Bonjour%20' . urlencode((isset($inquiry['nom']) ? $inquiry['nom'] : '')) . ',%20suite%20%C3%A0%20votre%20demande%20d%27%C3%A9tude%20sur%20TG2D%20Maroc..." target="_blank" class="btn-wa">💬 Contacter sur WhatsApp</a>' : '') . '
-              ' . (!empty($tel) ? '<a href="tel:' . $tel . '" class="btn-call">📞 Appeler le Client</a>' : '') . '
-              <a href="' . $adminUrl . '" class="btn-admin">📊 Ouvrir le Dashboard Admin</a>
+              ' . (!empty($cleanPhone) ? '<a href="https://wa.me/' . $cleanPhone . '?text=Bonjour%20' . urlencode((isset($inquiry['nom']) ? $inquiry['nom'] : '')) . ',%20suite%20%C3%A0%20votre%20demande%20d%27%C3%A9tude%20sur%20TG2D%20Maroc..." target="_blank" class="btn-wa">Contacter sur WhatsApp</a>' : '') . '
+              ' . (!empty($tel) ? '<a href="tel:' . $tel . '" class="btn-call">Appeler le Client</a>' : '') . '
+              <a href="' . $adminUrl . '" class="btn-admin">Ouvrir le Tableau de Bord Admin</a>
             </div>
           </div>
 

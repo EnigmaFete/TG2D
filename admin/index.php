@@ -1345,7 +1345,7 @@ if (session_status() === PHP_SESSION_NONE) {
           alert.style.background = '#ECFDF5';
           alert.style.color = '#047857';
           alert.style.border = '1px solid #A7F3D0';
-          alert.textContent = '✅ Liens des logiciels enregistrés avec succès !';
+          alert.textContent = 'Liens des logiciels enregistrés avec succès !';
           loadSettings();
         }
       } catch (err) {
@@ -1494,13 +1494,13 @@ if (session_status() === PHP_SESSION_NONE) {
                   <td><strong style="color: var(--c-blue);">${escapeHtml(d.reference || 'DEV-N/A')}</strong></td>
                   <td>
                     <div style="font-weight: 600;">${escapeHtml(d.client_nom)}</div>
-                    ${d.client_societe ? `<div style="font-size: 0.78rem; color: #475569;">🏢 ${escapeHtml(d.client_societe)}</div>` : ''}
-                    ${d.client_tel ? `<div style="font-size: 0.78rem; color: #64748B;">📞 ${escapeHtml(d.client_tel)}</div>` : ''}
-                    ${d.client_email ? `<div style="font-size: 0.78rem; color: #64748B;">✉️ ${escapeHtml(d.client_email)}</div>` : ''}
+                    ${d.client_societe ? `<div style="font-size: 0.78rem; color: #475569;">${escapeHtml(d.client_societe)}</div>` : ''}
+                    ${d.client_tel ? `<div style="font-size: 0.78rem; color: #64748B;"><span style="font-weight: 500;">Tél :</span> ${escapeHtml(d.client_tel)}</div>` : ''}
+                    ${d.client_email ? `<div style="font-size: 0.78rem; color: #64748B;"><span style="font-weight: 500;">Email :</span> ${escapeHtml(d.client_email)}</div>` : ''}
                   </td>
                   <td>
                     <div style="font-weight: 600;">${escapeHtml(d.projet_titre || 'Chantier')}</div>
-                    <div style="font-size: 0.78rem; color: #64748B;">📍 ${escapeHtml(d.localisation || 'Maroc')}</div>
+                    <div style="font-size: 0.78rem; color: #64748B;">${escapeHtml(d.localisation || 'Maroc')}</div>
                     ${d.type_travaux ? `<div style="font-size: 0.75rem; color: #0284C7;">${escapeHtml(d.type_travaux)}</div>` : ''}
                   </td>
                   <td><strong>${Number(d.montant_ht || 0).toLocaleString('fr-FR')} MAD</strong></td>
@@ -1518,9 +1518,9 @@ if (session_status() === PHP_SESSION_NONE) {
                   <td style="color: #64748B; font-size: 0.82rem;">${d.created_at ? d.created_at.substring(0, 10) : ''}</td>
                   <td>
                     <div style="display: inline-flex; align-items: center; gap: 6px;">
-                      ${waLink ? `<a href="${waLink}" target="_blank" rel="noopener noreferrer" style="background: #25D366; color: #FFFFFF; text-decoration: none; border-radius: 6px; padding: 4px 8px; font-size: 0.78rem; font-weight: 700; display: inline-flex; align-items: center; gap: 4px;" title="Contacter sur WhatsApp">💬 WhatsApp</a>` : ''}
-                      <button onclick="deleteDevis(${d.id})" style="background: transparent; border: 1px solid #FECACA; border-radius: 6px; color: #EF4444; cursor: pointer; padding: 4px 8px; font-size: 0.82rem; font-weight: 600;" title="Supprimer ce devis">
-                        ✕
+                      ${waLink ? `<a href="${waLink}" target="_blank" rel="noopener noreferrer" style="background: #059669; color: #FFFFFF; text-decoration: none; border-radius: 6px; padding: 4px 10px; font-size: 0.78rem; font-weight: 700; display: inline-flex; align-items: center;" title="Contacter sur WhatsApp">WhatsApp</a>` : ''}
+                      <button onclick="deleteDevis(${d.id})" style="background: transparent; border: 1px solid #FECACA; border-radius: 6px; color: #EF4444; cursor: pointer; padding: 4px 8px; font-size: 0.78rem; font-weight: 600;" title="Supprimer ce devis">
+                        Supprimer
                       </button>
                     </div>
                   </td>
