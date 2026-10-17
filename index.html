@@ -298,7 +298,7 @@
       <section class="relative w-full bg-surface border-b border-surface-container-high" id="a-propos">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            <div class="lg:col-span-5 flex flex-col gap-3">
+            <div class="lg:col-span-7 flex flex-col gap-6">
               <div class="flex items-center gap-2">
                 <span class="w-1.5 h-1.5 bg-primary-container rounded-sm"></span>
                 <span class="font-label-mono text-label-mono text-primary font-semibold uppercase tracking-wider">À propos de TG2D</span>
@@ -306,14 +306,6 @@
               <h2 class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface font-bold">
                 Un partenaire de confiance pour vos projets de construction au Maroc.
               </h2>
-              <div class="pt-4">
-                <a class="inline-flex items-center gap-2 font-label-md text-label-md text-primary font-semibold hover:text-on-primary-fixed-variant transition-colors group" href="a-propos.html">
-                  <span>Notre histoire</span>
-                  <span class="material-symbols-outlined text-[16px] transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
-                </a>
-              </div>
-            </div>
-            <div class="lg:col-span-7 flex flex-col gap-8">
               <p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
                 TG2D est une entreprise marocaine spécialisée dans la construction tous corps d’état, accompagnant ses clients dans la réalisation de projets résidentiels, commerciaux, industriels et logistiques. Basée à Casablanca, TG2D s’appuie sur plus de 3 années d’expérience, une équipe bénéficiant de plus de 20 années d’expérience dans le développement immobilier et une organisation capable de mobiliser les compétences nécessaires à la réalisation de projets avec un haut niveau d’exigence dans différentes régions du Maroc. Notre ambition est de devenir un partenaire de référence en plaçant la qualité, la rigueur et la satisfaction client au cœur de notre démarche.
               </p>
@@ -338,6 +330,24 @@
                   <span class="font-label-mono text-label-mono text-primary font-semibold uppercase block mb-1">VALEURS CLÉS</span>
                   <span class="font-title-md text-title-md text-on-surface block">Un engagement</span>
                   <span class="font-body-sm text-body-sm text-secondary mt-1 block">Qualité, rigueur et satisfaction client</span>
+                </div>
+              </div>
+              <div class="pt-2">
+                <a class="inline-flex items-center gap-2 font-label-md text-label-md text-primary font-semibold hover:text-on-primary-fixed-variant transition-colors group" href="a-propos.html">
+                  <span>Notre histoire</span>
+                  <span class="material-symbols-outlined text-[16px] transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Right Visual: Authentic Construction Photo -->
+            <div class="lg:col-span-5 flex flex-col gap-4">
+              <div class="relative rounded-2xl overflow-hidden shadow-md border border-surface-container-high aspect-[4/3] lg:aspect-[5/6] bg-surface-container-high group">
+                <img src="assets/images/facade-detail.jpg" alt="Chantier gros œuvre et coulage béton par TG2D Maroc" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-inverse-surface/20 to-transparent"></div>
+                <div class="absolute bottom-5 left-5 right-5 text-surface-container-lowest">
+                  <span class="inline-block px-2.5 py-1 rounded bg-primary-container text-on-primary-container font-label-mono text-label-mono uppercase tracking-wider font-bold mb-2">Chantier BTP Maroc</span>
+                  <p class="font-body-sm text-surface-container-lowest/90 font-medium">Maîtrise structurelle, rigueur d'exécution et sécurité sur chaque lot opérationnel.</p>
                 </div>
               </div>
             </div>
@@ -511,7 +521,7 @@
             <!-- Project 1: Showroom BRICOMA -->
             <div class="group bg-surface-container-lowest rounded overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 flex flex-col border border-surface-container-high">
               <div class="relative h-60 w-full overflow-hidden bg-surface-container-high">
-                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Showroom BRICOMA Dar Bouazza construction travaux tous corps d'état façade moderne" src="assets/images/showroom-bricoma-darbouazza.jpg" />
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" style="object-position: center 36%;" alt="Showroom BRICOMA Dar Bouazza construction travaux tous corps d'état façade moderne" src="assets/images/showroom-bricoma-darbouazza.jpg" />
                 <div class="absolute top-4 left-4 bg-surface-container-lowest/95 backdrop-blur-sm px-3 py-1 rounded font-label-mono text-label-mono text-on-surface shadow-sm">
                   DAR BOUAZZA · MAROC
                 </div>
@@ -1054,7 +1064,11 @@
 
       <!-- 12. CTA FINAL -->
       <section class="relative w-full bg-inverse-surface text-inverse-on-surface overflow-hidden" id="contact">
-        <div class="absolute inset-0 opacity-5 pointer-events-none">
+        <div class="absolute inset-0 z-0">
+          <img alt="Ingénieur supervision chantier TG2D" class="w-full h-full object-cover object-top opacity-20" src="assets/images/cta-worker-safety-jacket.jpg" />
+          <div class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/95 to-inverse-surface/85"></div>
+        </div>
+        <div class="absolute inset-0 opacity-5 pointer-events-none z-[1]">
           <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern height="32" id="cta-grid-2" patternUnits="userSpaceOnUse" width="32">
@@ -1064,7 +1078,7 @@
             <rect fill="url(#cta-grid-2)" height="100%" width="100%"></rect>
           </svg>
         </div>
-        <div class="relative max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-24">
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-24">
           <div class="max-w-3xl flex flex-col gap-6">
             <div class="flex items-center gap-3">
               <span class="w-2 h-2 rounded-full bg-primary-container"></span>
@@ -1107,8 +1121,8 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
         <!-- Col 1: Brand -->
         <div class="flex flex-col gap-5">
-          <a href="index.html" class="inline-block" aria-label="TG2D Accueil">
-            <img alt="TG2D Logo" class="h-10 w-auto object-contain" src="assets/images/tg2d-logo.png" />
+          <a href="index.html" class="inline-block mb-5" aria-label="TG2D Accueil">
+            <img alt="TG2D Maroc" class="h-11 w-auto" style="height: 44px; width: auto;" src="assets/images/tg2d-logo.png" />
           </a>
           <p class="font-body-md text-body-md text-tertiary-fixed-dim max-w-sm">
             TG2D — Travaux Généraux de Développement Durable est une entreprise marocaine spécialisée dans la construction tous corps d’état, au service de projets résidentiels, commerciaux, industriels et logistiques.
