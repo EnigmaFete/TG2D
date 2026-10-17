@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="fr" dir="ltr" class="no-js">
 <head>
-  <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="shell-type" content="web_standard" />
 
   <!-- Favicon / Pin Icon -->
   <link rel="shortcut icon" href="/favicon.ico?v=2" />
@@ -10,9 +11,11 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
+
   <title>TG2D — Construire aujourd’hui. Bâtir durablement. | Entreprise Générale BTP Maroc</title>
   <meta name="description" content="TG2D est une entreprise marocaine spécialisée dans la construction tous corps d'état : projets résidentiels, commerciaux, industriels et logistiques à Casablanca et sur l'ensemble du Maroc." />
 
+  <!-- Search Engine Crawlers & Verification -->
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <link rel="canonical" href="https://tg2d.ma/index.html" />
   <meta name="google-site-verification" content="P9Lro5ScYuXYtG87U2gMqbDB3elC60244stLrHV7MOI" />
@@ -24,7 +27,7 @@
   <meta property="og:description" content="Construction Tous Corps d’État | Résidentiel | Commercial | Industriel | Logistique au Maroc." />
   <meta property="og:url" content="https://tg2d.ma/index.html" />
   <meta property="og:site_name" content="TG2D Entreprise Générale BTP" />
-  <meta property="og:image" content="assets/images/hero-construction-workers.jpg" />
+  <meta property="og:image" content="assets/images/stitch_hero_1920.png" />
 
   <!-- Schema.org JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -32,16 +35,15 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "GeneralContractor",
+        "@type": ["Organization", "GeneralContractor"],
         "@id": "https://tg2d.ma/#organization",
-        "name": "TG2D - Travaux Généraux de Développement Durable",
+        "name": "TG2D — Travaux Généraux de Développement Durable",
         "alternateName": "TG2D Maroc",
         "url": "https://tg2d.ma",
         "logo": "https://tg2d.ma/assets/images/tg2d-logo.png",
-        "image": "https://tg2d.ma/assets/images/hero-construction-workers.jpg",
-        "description": "Entreprise marocaine spécialisée dans la construction tous corps d'état, accompagnant ses clients dans la réalisation de projets résidentiels, commerciaux, industriels et logistiques.",
+        "image": "https://tg2d.ma/assets/images/stitch_hero_1920.png",
         "telephone": "+212618392328",
-        "email": "contact@tg2d.ma",
+        "email": "tg2d.maroc@gmail.com",
         "address": {
           "@type": "PostalAddress",
           "streetAddress": "57 Rue Abou Alaazahar, Quartier des Hôpitaux",
@@ -56,939 +58,1178 @@
   }
   </script>
 
-  <!-- Preconnect Fonts -->
+  <!-- Google Fonts & Material Symbols -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=2026_clean_v3" />
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "inverse-primary": "#46d7f4",
+            "surface-container-highest": "#e0e3e5",
+            "primary-container": "#08bcd8",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#34424b",
+            "on-secondary-fixed": "#0c1d28",
+            "inverse-surface": "#111827",
+            "error-container": "#ffdad6",
+            "on-surface": "#181c1e",
+            "surface-tint": "#006878",
+            "surface": "#f7fafc",
+            "inverse-on-surface": "#eef1f3",
+            "secondary": "#50606d",
+            "on-primary-container": "#004752",
+            "on-primary-fixed-variant": "#004e5b",
+            "on-secondary-container": "#546572",
+            "outline-variant": "#bbc9cd",
+            "primary-fixed": "#a8edff",
+            "error": "#ba1a1a",
+            "surface-bright": "#f7fafc",
+            "tertiary-container": "#9faeb9",
+            "on-primary-fixed": "#001f25",
+            "surface-container-high": "#e5e9eb",
+            "on-tertiary-fixed": "#0f1d25",
+            "secondary-fixed-dim": "#b7c9d8",
+            "surface-dim": "#d7dadc",
+            "primary": "#006878",
+            "on-error": "#ffffff",
+            "surface-container": "#ebeef0",
+            "on-secondary-fixed-variant": "#384955",
+            "secondary-container": "#d0e2f1",
+            "on-background": "#181c1e",
+            "on-surface-variant": "#3c494c",
+            "surface-container-low": "#f1f4f6",
+            "on-secondary": "#ffffff",
+            "background": "#f7fafc",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed-dim": "#bac8d4",
+            "on-error-container": "#93000a",
+            "surface-variant": "#e0e3e5",
+            "tertiary-fixed": "#d6e4f0",
+            "on-tertiary-fixed-variant": "#3b4952",
+            "secondary-fixed": "#d3e5f4",
+            "outline": "#6c797d",
+            "primary-fixed-dim": "#46d7f4",
+            "tertiary": "#52606a",
+            "surface-container-lowest": "#ffffff"
+          },
+          borderRadius: {
+            DEFAULT: "0.125rem",
+            lg: "0.25rem",
+            xl: "0.5rem",
+            full: "0.75rem"
+          },
+          spacing: {
+            gutter: "1.5rem",
+            "margin-mobile": "1.25rem",
+            margin: "3rem",
+            "space-xs": "0.25rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2.5rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem",
+            "gutter-mobile": "1rem"
+          },
+          fontFamily: {
+            "display-xl": ["Manrope", "sans-serif"],
+            "label-md": ["Inter", "sans-serif"],
+            "display-xl-mobile": ["Manrope", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "headline-lg": ["Manrope", "sans-serif"],
+            "label-mono": ["Inter", "monospace"],
+            "title-md": ["Inter", "sans-serif"],
+            "headline-sm": ["Manrope", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "headline-md": ["Manrope", "sans-serif"]
+          },
+          fontSize: {
+            "display-xl": ["56px", { lineHeight: "64px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "label-md": ["12px", { lineHeight: "16px", letterSpacing: "0.05em", fontWeight: "600" }],
+            "display-xl-mobile": ["36px", { lineHeight: "44px", letterSpacing: "-0.01em", fontWeight: "700" }],
+            "body-md": ["15px", { lineHeight: "24px", fontWeight: "400" }],
+            "headline-lg": ["32px", { lineHeight: "40px", letterSpacing: "-0.015em", fontWeight: "700" }],
+            "label-mono": ["11px", { lineHeight: "14px", letterSpacing: "0.08em", fontWeight: "500" }],
+            "title-md": ["16px", { lineHeight: "24px", fontWeight: "600" }],
+            "headline-sm": ["20px", { lineHeight: "28px", fontWeight: "600" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "body-sm": ["13px", { lineHeight: "20px", fontWeight: "400" }],
+            "headline-md": ["24px", { lineHeight: "32px", letterSpacing: "-0.01em", fontWeight: "600" }]
+          }
+        }
+      }
+    };
+  </script>
 </head>
-<body>
+<body class="bg-background font-body-md text-body-md text-on-surface antialiased">
 
-  <!-- ==================== HEADER & NAVIGATION ==================== -->
-  <header class="header-lockup" id="headerLockup" style="background: rgba(8, 13, 24, 0.9); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.08);">
-    <nav class="nav">
-      <div class="wrap" style="display: flex; align-items: center; justify-content: space-between; height: 80px;">
-        <a href="index.html" class="nav-logo" aria-label="TG2D Accueil">
-          <img src="assets/images/tg2d-logo.png" alt="TG2D Maroc" class="nav-logo-img" id="navLogo" style="height: 44px; width: auto;" />
+  <!-- 1. HEADER / NAVIGATION -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b border-surface-container-high shadow-[0_1px_8px_rgba(18,35,46,0.06)]">
+    <div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <a class="flex items-center" href="index.html" aria-label="TG2D Accueil">
+          <img alt="TG2D Logo" class="h-8 w-auto object-contain" src="assets/images/tg2d-logo.png" />
+        </a>
+        <div class="hidden xl:block h-6 w-px bg-surface-container-high"></div>
+        <span class="hidden xl:inline-block font-label-mono text-label-mono text-secondary uppercase tracking-widest">Entreprise Générale Tous Corps d'État</span>
+      </div>
+
+      <nav class="hidden lg:flex items-center gap-8 h-full">
+        <a aria-current="page" class="transition-colors py-2 text-primary font-semibold border-b-2 border-primary-container" href="index.html">Accueil</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-2" href="a-propos.html">À propos</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-2" href="expertises.html">Nos expertises</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-2" href="projets.html">Nos réalisations</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-2" href="contact.html#carrieres">Carrières</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-2" href="contact.html">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a class="inline-flex items-center justify-center bg-inverse-surface text-inverse-on-surface border border-transparent hover:border-primary-container hover:text-primary-fixed-dim transition-all duration-200 px-4 sm:px-5 py-2 sm:py-2.5 rounded font-label-md text-label-md uppercase tracking-wider shadow-[0_1px_2px_rgba(18,35,46,0.08)]" href="contact.html">
+          Demander un devis
         </a>
 
-        <div class="nav-links">
-          <a href="index.html" class="is-active">Accueil</a>
-          <a href="a-propos.html">À propos</a>
-          <a href="expertises.html">Nos expertises</a>
-          <a href="projets.html">Nos réalisations</a>
-          <a href="contact.html#carrieres">Carrières</a>
-          <a href="contact.html">Contact</a>
-        </div>
-
-        <div class="nav-right" style="display: flex; align-items: center; gap: 16px;">
-<!-- Primary CTA Button with sleek SVG arrow -->
-          <a href="contact.html" class="nav-cta-btn">
-            <span>Demander un devis</span>
-            <svg class="btn-arr-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-
-          <button class="nav-burger" id="navBurger" aria-label="Ouvrir le menu">
-            <span></span>
-            <span></span>
-          </button>
-        </div>
+        <!-- Mobile Burger Menu Button -->
+        <button id="navBurger" class="lg:hidden p-2 rounded text-on-surface hover:text-primary transition-colors flex items-center justify-center" aria-label="Ouvrir le menu">
+          <span class="material-symbols-outlined text-[28px]">menu</span>
+        </button>
       </div>
-    </nav>
+    </div>
   </header>
 
   <!-- Mobile Drawer -->
-  <div class="mobile-menu-drawer" id="mobileDrawer">
-    <div class="mob-head">
-      <img src="assets/images/tg2d-logo.png" alt="TG2D" style="height: 36px;" />
-      <button class="mob-close" id="mobClose">&times;</button>
-    </div>
-    <div class="mob-links">
-      <a href="index.html"><span>Accueil</span></a>
-      <a href="a-propos.html"><span>À propos</span></a>
-      <a href="expertises.html"><span>Nos expertises</span></a>
-      <a href="projets.html"><span>Nos réalisations</span></a>
-      <a href="contact.html#carrieres"><span>Carrières</span></a>
-      <a href="contact.html"><span>Contact</span></a>
-    </div>
-    <div style="padding: 24px;">
-      <a href="contact.html" class="btn-cyan" style="width: 100%; justify-content: center;">
-        <span>Demander un devis</span>
-        <svg class="btn-arr-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+  <div id="mobileDrawer" class="fixed inset-0 z-[60] bg-inverse-surface/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden" aria-hidden="true">
+    <div id="mobileDrawerPanel" class="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-surface-container-lowest shadow-2xl p-6 flex flex-col justify-between translate-x-full transition-transform duration-300 ease-out">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-surface-container-high">
+          <img src="assets/images/tg2d-logo.png" alt="TG2D" class="h-7 w-auto" />
+          <button id="mobClose" class="p-2 rounded text-on-surface-variant hover:text-on-surface" aria-label="Fermer le menu">
+            <span class="material-symbols-outlined text-[26px]">close</span>
+          </button>
+        </div>
+        <nav class="flex flex-col gap-1 pt-6 font-body-md">
+          <a href="index.html" class="px-4 py-3 rounded font-semibold text-primary bg-primary-container/10">Accueil</a>
+          <a href="a-propos.html" class="px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">À propos</a>
+          <a href="expertises.html" class="px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">Nos expertises</a>
+          <a href="projets.html" class="px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">Nos réalisations</a>
+          <a href="contact.html#carrieres" class="px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">Carrières</a>
+          <a href="contact.html" class="px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">Contact</a>
+        </nav>
+      </div>
+      <div class="pt-6 border-t border-surface-container-high">
+        <a href="contact.html" class="w-full inline-flex items-center justify-center bg-inverse-surface text-inverse-on-surface py-3 rounded font-label-md uppercase tracking-wider">
+          Demander un devis
+        </a>
+      </div>
     </div>
   </div>
 
-  <!-- ==================== HERO CINEMATIC SECTION ==================== -->
-  <section id="top" class="hero-cinematic">
-    <div class="hero-cinematic-inner">
-      <div class="hero-content-col">
-        <div class="hero-badge-tag">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-          <span>Entreprise Générale Tous Corps d'État</span>
+  <main class="w-full pt-20 bg-background min-h-screen">
+    <div class="flex flex-col w-full">
+
+      <!-- 2. HERO -->
+      <section class="relative w-full overflow-hidden border-b border-surface-container-high bg-inverse-surface min-h-[580px] lg:min-h-[660px] flex items-center">
+        <div class="absolute inset-0 z-0">
+          <img alt="Chantier TG2D Golden Hour Construction" class="w-full h-full object-cover" src="assets/images/stitch_hero_1920.png" />
+          <div class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/80 to-inverse-surface/40"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/90 via-transparent to-inverse-surface/30"></div>
         </div>
-
-        <h1 class="hero-cinematic-title">
-          Construire aujourd’hui.<br>
-          <span class="text-cyan">Bâtir durablement.</span>
-        </h1>
-
-        <p class="hero-cinematic-lead">
-          De Casablanca à l’ensemble du Royaume, nous concrétisons vos projets d'envergure avec un haut niveau d'exigence technique et environnementale.
-        </p>
-
-        <div class="hero-cinematic-actions">
-          <a href="#realisations" class="btn-cyan">
-            <span>Découvrir nos réalisations</span>
-            <svg class="btn-arr-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="contact.html" class="btn-outline-white">
-            <span>Nous contacter</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== 01 À PROPOS DE TG2D ==================== -->
-  <section id="a-propos" class="sec-about-ui">
-    <div class="wrap">
-      <div class="about-ui-grid">
-        <!-- Left: Text content + Metrics -->
-        <div class="about-ui-left">
-          <span class="section-num-tag">À PROPOS DE TG2D</span>
-          <h2 class="section-h2-title">Un partenaire de confiance pour vos projets de construction au Maroc.</h2>
-          <p class="section-p-lead">
-            TG2D est une entreprise marocaine spécialisée dans la construction tous corps d’état, accompagnant ses clients dans la réalisation de projets résidentiels, commerciaux, industriels et logistiques.
-          </p>
-          <p class="section-p-lead" style="margin-top: -16px; margin-bottom: 30px; font-size: 0.98rem; color: var(--c-text-muted);">
-            Basée à Casablanca, TG2D s’appuie sur plus de 3 années d’expérience, une équipe bénéficiant de plus de 20 années d’expérience dans le développement immobilier et une organisation capable de mobiliser les compétences nécessaires à la réalisation de projets avec un haut niveau d’exigence dans différentes régions du Maroc. Notre ambition est de devenir un partenaire de référence en plaçant la qualité, la rigueur et la satisfaction client au cœur de notre démarche.
-          </p>
-
-          <!-- 4 Metrics Cards with Premium Vector Icons -->
-          <div class="about-metrics-cards">
-            <!-- Metric 1: Experience -->
-            <div class="metric-card-item">
-              <div class="metric-icon-bubble">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><circle cx="12" cy="15" r="1.5" fill="currentColor"/></svg>
-              </div>
-              <div class="metric-card-info">
-                <strong>+3 ans</strong>
-                <span>d’expérience sous la marque TG2D</span>
-              </div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-28 w-full">
+          <div class="max-w-3xl flex flex-col gap-6">
+            <div class="flex items-center gap-2.5">
+              <span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+              <span class="font-label-mono text-label-mono text-primary-fixed uppercase tracking-widest font-semibold">
+                Entreprise Générale Tous Corps d’État
+              </span>
             </div>
-
-            <!-- Metric 2: Team -->
-            <div class="metric-card-item">
-              <div class="metric-icon-bubble">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-              </div>
-              <div class="metric-card-info">
-                <strong>+20 ans</strong>
-                <span>d'expertise développement immobilier & équipes</span>
-              </div>
-            </div>
-
-            <!-- Metric 3: National Coverage -->
-            <div class="metric-card-item">
-              <div class="metric-icon-bubble">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
-              </div>
-              <div class="metric-card-info">
-                <strong>Maroc</strong>
-                <span>De Casablanca à l’ensemble du territoire</span>
-              </div>
-            </div>
-
-            <!-- Metric 4: Commitment -->
-            <div class="metric-card-item">
-              <div class="metric-icon-bubble">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
-              </div>
-              <div class="metric-card-info">
-                <strong>Un engagement</strong>
-                <span>Qualité, rigueur et satisfaction client</span>
-              </div>
-            </div>
-          </div>
-
-          <a href="a-propos.html" class="btn-arrow-link">
-            <span>Notre histoire</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-        </div>
-
-        <!-- Right: Architecture Image -->
-        <div class="about-ui-visual">
-          <img src="assets/images/facade-detail.jpg" alt="Architecture d'exception et réalisation de prestige TG2D" loading="lazy" />
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== 02 NOS SERVICES / NOS EXPERTISES ==================== -->
-  <section id="services" class="sec-expertises-ui">
-    <div class="wrap">
-      <div class="expertises-ui-grid">
-        <!-- Left Pane -->
-        <div class="expertises-ui-left">
-          <span class="section-num-tag" style="color: var(--c-cyan-light);">NOS EXPERTISES</span>
-          <h2 class="section-h2-title">Une approche globale de la construction</h2>
-          <p class="section-p-lead">
-            TG2D propose une approche tous corps d’état, permettant à nos clients de bénéficier d’une coordination globale des différents intervenants du chantier. De la préparation du chantier à la remise des clés, nous assurons la gestion fluide, maîtrisée et rigoureuse de votre projet.
-          </p>
-          <div style="margin-top: 36px;">
-            <a href="expertises.html" class="btn-cyan">
-              <span>Découvrir toutes nos expertises</span>
-              <svg class="btn-arr-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-          </div>
-        </div>
-
-        <!-- Right 6 Cards Grid (Sleek Architectural Tiles matching reference mockup) -->
-        <div class="expertises-cards-grid">
-          <!-- Card 1: TCE -->
-          <a href="service-construction-tous-corps-detat.html" class="exp-card-box">
-            <div class="exp-card-top">
-              <div class="exp-icon-wrap">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-              </div>
-              <div class="exp-arrow-wrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-              </div>
-            </div>
-            <div class="exp-title-text">Construction tous corps d’état</div>
-          </a>
-
-          <!-- Card 2: Gros Œuvre -->
-          <a href="service-gros-oeuvre-structure.html" class="exp-card-box">
-            <div class="exp-card-top">
-              <div class="exp-icon-wrap">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M5 20V6l7-4 7 4v14"/><path d="M9 10h6"/><path d="M9 14h6"/><path d="M9 18h6"/></svg>
-              </div>
-              <div class="exp-arrow-wrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-              </div>
-            </div>
-            <div class="exp-title-text">Gros œuvre & structure</div>
-          </a>
-
-          <!-- Card 3: Second Œuvre -->
-          <a href="service-second-oeuvre-finitions.html" class="exp-card-box">
-            <div class="exp-card-top">
-              <div class="exp-icon-wrap">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m14 7 3 3-9 9H5v-3l9-9Z"/><path d="m19 5 2 2-2 2-2-2 2-2Z"/><line x1="2" y1="22" x2="22" y2="22"/></svg>
-              </div>
-              <div class="exp-arrow-wrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-              </div>
-            </div>
-            <div class="exp-title-text">Second œuvre & finitions</div>
-          </a>
-
-          <!-- Card 4: Commercial -->
-          <a href="service-projets-commerciaux-retail.html" class="exp-card-box">
-            <div class="exp-card-top">
-              <div class="exp-icon-wrap">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l2-5h14l2 5"/><path d="M21 9v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V9"/><path d="M3 9a3 3 0 0 0 6 0 3 3 0 0 0 6 0 3 3 0 0 0 6 0"/><line x1="9" y1="22" x2="9" y2="15"/><line x1="15" y1="22" x2="15" y2="15"/></svg>
-              </div>
-              <div class="exp-arrow-wrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-              </div>
-            </div>
-            <div class="exp-title-text">Bâtiments commerciaux & retail</div>
-          </a>
-
-          <!-- Card 5: Industriel -->
-          <a href="service-projets-industriels-logistiques.html" class="exp-card-box">
-            <div class="exp-card-top">
-              <div class="exp-icon-wrap">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20"/><path d="M3 20V9l7 4V9l7 4V4l5 3v13"/><line x1="7" y1="15" x2="7" y2="15.01"/><line x1="14" y1="15" x2="14" y2="15.01"/></svg>
-              </div>
-              <div class="exp-arrow-wrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-              </div>
-            </div>
-            <div class="exp-title-text">Projets industriels & logistiques</div>
-          </a>
-
-          <!-- Card 6: Rénovation -->
-          <a href="service-renovation-rehabilitation.html" class="exp-card-box">
-            <div class="exp-card-top">
-              <div class="exp-icon-wrap">
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 0 1 15-6.7L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-15 6.7L3 16"/><path d="M3 21v-5h5"/></svg>
-              </div>
-              <div class="exp-arrow-wrap">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-              </div>
-            </div>
-            <div class="exp-title-text">Rénovation & réhabilitation</div>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== 03 NOS RÉALISATIONS ==================== -->
-  <section id="realisations" class="sec-realisations-ui">
-    <div class="wrap">
-      <div class="realisations-ui-header">
-        <div>
-          <span class="section-num-tag">NOS RÉALISATIONS</span>
-          <h2 class="section-h2-title" style="margin-bottom: 10px;">Des projets qui témoignent de notre savoir-faire</h2>
-          <p class="section-p-lead" style="max-width: 650px; margin-bottom: 0;">
-            Chaque chantier représente une nouvelle exigence et une nouvelle responsabilité. TG2D met son expertise au service de projets aux usages variés dans le Grand Casablanca et tout le Maroc.
-          </p>
-        </div>
-
-        <div class="realisations-nav-ctrls">
-          <button class="circle-nav-btn" aria-label="Projet précédent">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-          </button>
-          <button class="circle-nav-btn" aria-label="Projet suivant">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <!-- 3 Project Cards Row -->
-      <div class="projects-cards-row">
-        <!-- Project 1: Bricoma -->
-        <a href="projet-showroom-bricoma-dar-bouazza.html" class="proj-card-modern">
-          <div class="proj-thumb-frame">
-            <span class="proj-badge-sector">Commercial</span>
-            <img src="assets/images/showroom-bricoma-darbouazza.jpg" alt="Showroom commercial BRICOMA Dar Bouazza par TG2D" loading="lazy" />
-          </div>
-          <div class="proj-content-panel">
-            <h3 class="proj-title-head">Showroom BRICOMA</h3>
-            <span class="proj-location-sub">Localisation : Dar Bouazza</span>
-            <p class="proj-desc-text">
-              Participation à la construction et la réalisation des travaux tous corps d’état du showroom commercial BRICOMA à Dar Bouazza. Coordination globale et finitions soignées.
+            <h1 class="font-display-xl text-3xl sm:text-4xl lg:text-display-xl text-surface-container-lowest leading-tight font-bold">
+              Construire aujourd’hui.<br />
+              <span class="text-primary-container">Bâtir durablement.</span>
+            </h1>
+            <p class="font-body-lg text-body-lg text-inverse-on-surface/90 max-w-2xl leading-relaxed">
+              De Casablanca à l’ensemble du Royaume, nous concrétisons vos projets d’envergure avec un haut niveau d’exigence technique et environnementale.
             </p>
-            <div class="proj-link-action">
-              <span>Voir le projet</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <a class="h-12 px-7 inline-flex items-center justify-center bg-primary-container text-on-primary-container font-label-md text-label-md tracking-wider uppercase rounded font-bold transition-all duration-200 hover:bg-primary hover:text-on-primary shadow-md" href="projets.html">
+                Découvrir nos réalisations
+              </a>
+              <a class="h-12 px-7 inline-flex items-center justify-center bg-surface-container-lowest/10 backdrop-blur-sm text-surface-container-lowest font-label-md text-label-md tracking-wider uppercase rounded transition-all duration-200 hover:bg-surface-container-lowest/20 shadow-sm border border-surface-container-lowest/20" href="contact.html">
+                Nous contacter
+              </a>
             </div>
-          </div>
-        </a>
-
-        <!-- Project 2: Bouskoura Logistics -->
-        <a href="projet-centre-logistique-bouskoura.html" class="proj-card-modern">
-          <div class="proj-thumb-frame">
-            <span class="proj-badge-sector">Logistique & Industriel</span>
-            <img src="assets/images/centre-logistique-bouskoura.jpg" alt="Centre Logistique à Bouskoura par TG2D" loading="lazy" />
-          </div>
-          <div class="proj-content-panel">
-            <h3 class="proj-title-head">Centre Logistique</h3>
-            <span class="proj-location-sub">Localisation : Bouskoura</span>
-            <p class="proj-desc-text">
-              Réalisation des travaux liés à la construction d'un centre logistique majeur. Coordination rigoureuse des corps d’état pour les exigences professionnelles et d'exploitation.
-            </p>
-            <div class="proj-link-action">
-              <span>Voir le projet</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
-
-        <!-- Project 3: Residential -->
-        <a href="projet-residence-villas-standing-casablanca.html" class="proj-card-modern">
-          <div class="proj-thumb-frame">
-            <span class="proj-badge-sector">Résidentiel</span>
-            <img src="assets/images/residence-villas-maroc.jpg" alt="Projets résidentiels de prestige par TG2D" loading="lazy" />
-          </div>
-          <div class="proj-content-panel">
-            <h3 class="proj-title-head">Projets Résidentiels</h3>
-            <span class="proj-location-sub">Localisation : Casablanca & Régions</span>
-            <p class="proj-desc-text">
-              Construction et travaux tous corps d’état pour projets résidentiels et villas standing, avec une attention rigoureuse à la qualité de structure et au niveau de finitions.
-            </p>
-            <div class="proj-link-action">
-              <span>Voir le projet</span>
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </div>
-          </div>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== 04 NOTRE ENGAGEMENT ==================== -->
-  <section id="engagements" class="sec-engagement-ui">
-    <div class="wrap">
-      <!-- Section Header -->
-      <div class="eng-header-center">
-        <div class="eng-eyebrow-line">
-          <span class="eng-cyan-dash"></span>
-          <span class="eng-eyebrow-text">NOTRE ENGAGEMENT</span>
-        </div>
-        <h2 class="eng-main-title">Qualité, sécurité et maîtrise des travaux</h2>
-        <p class="eng-main-subtitle">
-          Nous plaçons l'exigence, la rigueur et la sécurité au cœur de chaque projet pour livrer des ouvrages durables, conformes et performants.
-        </p>
-      </div>
-
-      <!-- Row 1: The 4 Cards (01, 02, 03, 04) -->
-      <div class="eng-cards-row-top">
-        <!-- Card 01 -->
-        <div class="eng-top-card">
-          <div class="eng-top-card-header">
-            <div class="eng-top-card-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
-              </svg>
-            </div>
-            <span class="eng-top-card-num">01</span>
-          </div>
-          <h3 class="eng-top-card-title">Conformité aux normes</h3>
-          <p class="eng-top-card-desc">
-            Respect rigoureux des réglementations parasismiques marocaines RPS2011 et des Normes Marocaines (NM).
-          </p>
-          <a href="guide-normes-parasismiques-rps2011.html" class="eng-learn-more-link">
-            <span>En savoir plus</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-
-        <!-- Card 02 -->
-        <div class="eng-top-card">
-          <div class="eng-top-card-header">
-            <div class="eng-top-card-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                <polyline points="14 2 14 8 20 8"/>
-                <line x1="16" y1="13" x2="8" y2="13"/>
-                <line x1="16" y1="17" x2="8" y2="17"/>
-                <line x1="10" y1="9" x2="8" y2="9"/>
-              </svg>
-            </div>
-            <span class="eng-top-card-num">02</span>
-          </div>
-          <h3 class="eng-top-card-title">Contrôles techniques</h3>
-          <p class="eng-top-card-desc">
-            Essais de sol, écrasements d'éprouvettes béton et validation continue avec des laboratoires agréés (LPEE).
-          </p>
-          <a href="qualite-normes-lpee.html" class="eng-learn-more-link">
-            <span>En savoir plus</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-
-        <!-- Card 03 -->
-        <div class="eng-top-card">
-          <div class="eng-top-card-header">
-            <div class="eng-top-card-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M2 18a1 1 0 0 0 1 1h18a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v2z"/>
-                <path d="M10 15V6a2 2 0 0 1 4 0v9"/>
-                <path d="M4 15v-3a8 8 0 0 1 16 0v3"/>
-              </svg>
-            </div>
-            <span class="eng-top-card-num">03</span>
-          </div>
-          <h3 class="eng-top-card-title">Assurance & garantie</h3>
-          <p class="eng-top-card-desc">
-            Couverture complète Tous Risques Chantier (TRC), Responsabilité Civile et garantie décennale systématique.
-          </p>
-          <a href="a-propos.html#garanties" class="eng-learn-more-link">
-            <span>En savoir plus</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-
-        <!-- Card 04 -->
-        <div class="eng-top-card">
-          <div class="eng-top-card-header">
-            <div class="eng-top-card-icon">
-              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M11 20A7 7 0 0 1 4 13c0-4.4 3.6-8 8-8s8 3.6 8 8a7 7 0 0 1-7 7z"/>
-                <path d="M12 5v15"/>
-              </svg>
-            </div>
-            <span class="eng-top-card-num">04</span>
-          </div>
-          <h3 class="eng-top-card-title">Démarche HSE</h3>
-          <p class="eng-top-card-desc">
-            Port des EPI obligatoire, protocoles de sécurité rigoureux et respect strict des conditions de travail sur le terrain.
-          </p>
-          <a href="securite-hse-chantiers.html" class="eng-learn-more-link">
-            <span>En savoir plus</span>
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-          </a>
-        </div>
-      </div>
-
-      <!-- Row 2: Three Split Cards with Photos (QUALITÉ, RIGUEUR, RESPECT DES DÉLAIS) -->
-      <div class="eng-split-cards-row">
-        <!-- Card 1: QUALITÉ -->
-        <div class="eng-split-card">
-          <div class="eng-split-thumb">
-            <img src="assets/images/eng-qualite.jpg" alt="Qualité d'exécution TG2D" loading="lazy" />
-          </div>
-          <div class="eng-split-body">
-            <h4 class="eng-split-title">QUALITÉ</h4>
-            <p class="eng-split-desc">
-              Nous accordons une importance particulière à la qualité des matériaux, à la précision de l'exécution et au respect des exigences techniques du projet.
-            </p>
-          </div>
-        </div>
-
-        <!-- Card 2: RIGUEUR -->
-        <div class="eng-split-card">
-          <div class="eng-split-thumb">
-            <img src="assets/images/eng-rigueur.jpg" alt="Rigueur et organisation chantier TG2D" loading="lazy" />
-          </div>
-          <div class="eng-split-body">
-            <h4 class="eng-split-title">RIGUEUR</h4>
-            <p class="eng-split-desc">
-              Une construction réussie nécessite une organisation rigoureuse. Nos équipes assurent le suivi et la coordination des différentes phases du chantier.
-            </p>
-          </div>
-        </div>
-
-        <!-- Card 3: RESPECT DES DÉLAIS -->
-        <div class="eng-split-card">
-          <div class="eng-split-thumb">
-            <img src="assets/images/eng-delais.jpg" alt="Respect des délais d'exécution TG2D" loading="lazy" />
-          </div>
-          <div class="eng-split-body">
-            <h4 class="eng-split-title">RESPECT DES DÉLAIS</h4>
-            <p class="eng-split-desc">
-              Nous intégrons la planification et la coordination des différents intervenants afin de contribuer au respect du calendrier défini pour chaque projet.
-            </p>
-          </div>
-        </div>
-      </div>
-
-      <!-- Row 3: Three Value Items with Line Icons (TRANSPARENCE, SÉCURITÉ, ENGAGEMENT) -->
-      <div class="eng-values-row-bottom">
-        <!-- Item 1: TRANSPARENCE -->
-        <div class="eng-value-item">
-          <div class="eng-value-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-            </svg>
-          </div>
-          <div class="eng-value-text">
-            <h4 class="eng-value-title">TRANSPARENCE</h4>
-            <p class="eng-value-desc">
-              Nous privilégions une communication claire avec nos clients et partenaires afin de maintenir une bonne visibilité sur l'avancement du projet.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item 2: SÉCURITÉ -->
-        <div class="eng-value-item">
-          <div class="eng-value-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <div class="eng-value-text">
-            <h4 class="eng-value-title">SÉCURITÉ</h4>
-            <p class="eng-value-desc">
-              La sécurité des collaborateurs, des intervenants et des installations constitue un élément essentiel de notre approche du chantier.
-            </p>
-          </div>
-        </div>
-
-        <!-- Item 3: ENGAGEMENT -->
-        <div class="eng-value-item">
-          <div class="eng-value-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 11l-4.5 4.5a3 3 0 0 1-4.24 0L6 12.24a3 3 0 0 1 0-4.24l3-3a3 3 0 0 1 4.24 0L15 6.76"/>
-              <path d="M14 15l1.5 1.5a3 3 0 0 0 4.24 0l1.76-1.76a3 3 0 0 0 0-4.24L18 7.01"/>
-              <path d="M2 13l2.5 2.5a2 2 0 0 0 2.83 0L9 13.83"/>
-              <path d="M15 10.17l1.67-1.67a2 2 0 0 1 2.83 0L22 11"/>
-            </svg>
-          </div>
-          <div class="eng-value-text">
-            <h4 class="eng-value-title">ENGAGEMENT</h4>
-            <p class="eng-value-desc">
-              Nous considérons chaque projet comme un engagement à long terme avec notre client. Notre objectif est de construire une relation basée sur la confiance.
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== POURQUOI TG2D & CHIFFRES CLÉS ==================== -->
-  <section id="pourquoi" class="sec-pourquoi-live">
-    <div class="wrap">
-      <div class="pq-live-grid">
-        <!-- Left: Why TG2D -->
-        <div class="pq-left-col">
-          <div class="pq-kicker">
-            <span class="pq-dash"></span>
-            <span>POURQUOI TG2D ?</span>
-          </div>
-          <h2 class="pq-main-title">
-            Un partenaire unique pour vos<br>
-            <span class="text-cyan">projets de construction</span>
-          </h2>
-
-          <div class="pq-timeline">
-            <!-- Timeline Item 01 -->
-            <div class="pq-timeline-item">
-              <div class="pq-tl-left">
-                <span class="pq-tl-num">01</span>
-                <span class="pq-tl-dot"></span>
+            <div class="mt-4 pt-6 border-t border-surface-container-lowest/15 flex flex-wrap gap-6 items-center font-label-mono text-label-mono text-tertiary-fixed-dim">
+              <div class="flex items-center gap-2">
+                <span class="text-primary-container font-semibold">GRID_REF:</span>
+                <span class="text-surface-container-lowest">CAS-MOR-33.5731</span>
               </div>
-              <div class="pq-tl-body">
-                <h3 class="pq-tl-title">Une approche tous corps d’état</h3>
-                <p class="pq-tl-desc">La coordination des différents corps de métier permet une approche globale du projet et facilite le suivi pour le client.</p>
+              <div class="flex items-center gap-2">
+                <span class="text-primary-container font-semibold">ACTIVITÉ:</span>
+                <span class="text-surface-container-lowest">T.C.E. MAROC</span>
               </div>
-            </div>
-
-            <!-- Timeline Item 02 -->
-            <div class="pq-timeline-item">
-              <div class="pq-tl-left">
-                <span class="pq-tl-num">02</span>
-                <span class="pq-tl-dot"></span>
+              <div class="flex items-center gap-2">
+                <span class="text-primary-container font-semibold">STANDARD:</span>
+                <span class="text-surface-container-lowest">RPS2011 &amp; NM</span>
               </div>
-              <div class="pq-tl-body">
-                <h3 class="pq-tl-title">Une équipe expérimentée</h3>
-                <p class="pq-tl-desc">Une équipe bénéficiant de plus de 20 années d’expérience dans le développement immobilier, avec une maîtrise approfondie des enjeux de conception et de réalisation.</p>
-              </div>
-            </div>
-
-            <!-- Timeline Item 03 -->
-            <div class="pq-timeline-item">
-              <div class="pq-tl-left">
-                <span class="pq-tl-num">03</span>
-                <span class="pq-tl-dot"></span>
-              </div>
-              <div class="pq-tl-body">
-                <h3 class="pq-tl-title">Une expérience régionale concrète</h3>
-                <p class="pq-tl-desc">Une expérience concrète développée à Casablanca et dans le Grand Casablanca, notamment à Dar Bouazza et Bouskoura.</p>
-              </div>
-            </div>
-
-            <!-- Timeline Item 04 -->
-            <div class="pq-timeline-item">
-              <div class="pq-tl-left">
-                <span class="pq-tl-num">04</span>
-                <span class="pq-tl-dot"></span>
-              </div>
-              <div class="pq-tl-body">
-                <h3 class="pq-tl-title">Une capacité d’intervention nationale</h3>
-                <p class="pq-tl-desc">TG2D dispose d’une organisation permettant d’étudier et d’accompagner des projets dans différentes régions du Maroc.</p>
-              </div>
-            </div>
-
-            <!-- Timeline Item 05 -->
-            <div class="pq-timeline-item">
-              <div class="pq-tl-left">
-                <span class="pq-tl-num">05</span>
-                <span class="pq-tl-dot"></span>
-              </div>
-              <div class="pq-tl-body">
-                <h3 class="pq-tl-title">Une vision orientée client</h3>
-                <p class="pq-tl-desc">Nous cherchons à comprendre les objectifs du client avant de définir l’organisation et les moyens nécessaires à la réalisation du projet.</p>
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+                <span class="text-primary-fixed-dim">SUPERVISION OPÉRATIONNELLE</span>
               </div>
             </div>
           </div>
         </div>
+      </section>
 
-        <!-- Right: Glassmorphism Numbers Card -->
-        <div class="pq-right-col">
-          <div class="pq-glass-card">
-            <div class="pq-card-kicker">
-              <span class="pq-dash"></span>
-              <span>TG2D EN QUELQUES CHIFFRES</span>
+      <!-- 3. À PROPOS DE TG2D -->
+      <section class="relative w-full bg-surface border-b border-surface-container-high" id="a-propos">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <div class="lg:col-span-5 flex flex-col gap-3">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-primary-container rounded-sm"></span>
+                <span class="font-label-mono text-label-mono text-primary font-semibold uppercase tracking-wider">À propos de TG2D</span>
+              </div>
+              <h2 class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface font-bold">
+                Un partenaire de confiance pour vos projets de construction au Maroc.
+              </h2>
+              <div class="pt-4">
+                <a class="inline-flex items-center gap-2 font-label-md text-label-md text-primary font-semibold hover:text-on-primary-fixed-variant transition-colors group" href="a-propos.html">
+                  <span>Notre histoire</span>
+                  <span class="material-symbols-outlined text-[16px] transition-transform duration-200 group-hover:translate-x-1">arrow_forward</span>
+                </a>
+              </div>
             </div>
-
-            <div class="pq-card-grid">
-              <!-- Cell 1: +3 ans -->
-              <div class="pq-cell pq-border-r pq-border-b">
-                <div class="pq-cell-icon">
-                  <img src="assets/images/pourquoi-icons/icon_experience_construction.png" alt="" loading="lazy" />
+            <div class="lg:col-span-7 flex flex-col gap-8">
+              <p class="font-body-lg text-body-lg text-on-surface leading-relaxed">
+                TG2D est une entreprise marocaine spécialisée dans la construction tous corps d’état, accompagnant ses clients dans la réalisation de projets résidentiels, commerciaux, industriels et logistiques. Basée à Casablanca, TG2D s’appuie sur plus de 3 années d’expérience, une équipe bénéficiant de plus de 20 années d’expérience dans le développement immobilier et une organisation capable de mobiliser les compétences nécessaires à la réalisation de projets avec un haut niveau d’exigence dans différentes régions du Maroc. Notre ambition est de devenir un partenaire de référence en plaçant la qualité, la rigueur et la satisfaction client au cœur de notre démarche.
+              </p>
+              <!-- 4 Key facts -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                <div class="p-5 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high">
+                  <span class="font-label-mono text-label-mono text-primary font-semibold uppercase block mb-1">MARQUE</span>
+                  <span class="font-title-md text-title-md text-on-surface block">+3 ans d’expérience</span>
+                  <span class="font-body-sm text-body-sm text-secondary mt-1 block">Sous la marque TG2D</span>
                 </div>
-                <div class="pq-cell-content">
-                  <div class="pq-stat-head">
-                    <span class="pq-stat-num-cyan">+3</span>
-                    <span class="pq-stat-unit">ans</span>
+                <div class="p-5 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high">
+                  <span class="font-label-mono text-label-mono text-primary font-semibold uppercase block mb-1">EXPÉRIENCE ÉQUIPE</span>
+                  <span class="font-title-md text-title-md text-on-surface block">+20 ans d’expertise</span>
+                  <span class="font-body-sm text-body-sm text-secondary mt-1 block">Développement immobilier &amp; équipes</span>
+                </div>
+                <div class="p-5 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high">
+                  <span class="font-label-mono text-label-mono text-primary font-semibold uppercase block mb-1">RAYONNEMENT</span>
+                  <span class="font-title-md text-title-md text-on-surface block">Maroc : De Casablanca</span>
+                  <span class="font-body-sm text-body-sm text-secondary mt-1 block">À l’ensemble du territoire</span>
+                </div>
+                <div class="p-5 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high">
+                  <span class="font-label-mono text-label-mono text-primary font-semibold uppercase block mb-1">VALEURS CLÉS</span>
+                  <span class="font-title-md text-title-md text-on-surface block">Un engagement</span>
+                  <span class="font-body-sm text-body-sm text-secondary mt-1 block">Qualité, rigueur et satisfaction client</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. NOS EXPERTISES -->
+      <section class="relative w-full bg-surface-container-lowest border-b border-surface-container-high" id="expertises">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div class="flex flex-col gap-3 max-w-2xl">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-primary-container rounded-sm"></span>
+                <span class="font-label-mono text-label-mono text-primary font-semibold uppercase tracking-wider">Nos expertises</span>
+              </div>
+              <h2 class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface font-bold">
+                Une approche globale de la construction
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                TG2D propose une approche tous corps d’état, permettant à nos clients de bénéficier d’une coordination globale des différents intervenants du chantier. De la préparation du chantier à la remise des clés, nous assurons la gestion fluide, maîtrisée et rigoureuse de votre projet.
+              </p>
+            </div>
+            <div>
+              <a class="inline-flex items-center gap-2 font-label-md text-label-md text-primary font-semibold hover:text-on-primary-fixed-variant transition-colors" href="expertises.html">
+                <span>Découvrir toutes nos expertises</span>
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- 6 Service Cards -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <a href="service-construction-tous-corps-detat.html" class="group p-7 bg-surface rounded shadow-sm hover:shadow-md transition-all duration-200 border border-surface-container-high flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <span class="font-label-mono text-label-mono text-secondary">EXP 01 // TCE</span>
+                  <div class="w-10 h-10 rounded bg-surface-container-lowest flex items-center justify-center text-primary group-hover:text-primary-container transition-colors shadow-xs">
+                    <span class="material-symbols-outlined text-[22px]">domain</span>
                   </div>
-                  <div class="pq-stat-label">d’expérience dans le secteur de la construction</div>
                 </div>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-3 font-semibold">Construction tous corps d’état</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Prise en charge intégrale de la chaîne constructive avec un interlocuteur unique pour coordonner tous les intervenants.</p>
               </div>
+              <div class="pt-6 mt-6 border-t border-surface-container-high flex items-center justify-between text-secondary">
+                <span class="font-label-mono text-label-mono uppercase">COORDINATION GLOBALE</span>
+                <span class="material-symbols-outlined text-[16px] text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </a>
 
-              <!-- Cell 2: +20 ans -->
-              <div class="pq-cell pq-border-b">
-                <div class="pq-cell-icon">
-                  <img src="assets/images/pourquoi-icons/icon_experience_immobilier.png" alt="" loading="lazy" />
-                </div>
-                <div class="pq-cell-content">
-                  <div class="pq-stat-head">
-                    <span class="pq-stat-num-cyan">+20</span>
-                    <span class="pq-stat-unit">ans</span>
+            <!-- Card 2 -->
+            <a href="service-gros-oeuvre-structure.html" class="group p-7 bg-surface rounded shadow-sm hover:shadow-md transition-all duration-200 border border-surface-container-high flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <span class="font-label-mono text-label-mono text-secondary">EXP 02 // STRUCT</span>
+                  <div class="w-10 h-10 rounded bg-surface-container-lowest flex items-center justify-center text-primary group-hover:text-primary-container transition-colors shadow-xs">
+                    <span class="material-symbols-outlined text-[22px]">foundation</span>
                   </div>
-                  <div class="pq-stat-label">d’expérience dans le développement immobilier</div>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-3 font-semibold">Gros œuvre &amp; structure</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Infrastructures et superstructures en béton armé, fondations spéciales et charpentes aux normes techniques rigoureuses.</p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-surface-container-high flex items-center justify-between text-secondary">
+                <span class="font-label-mono text-label-mono uppercase">NORMES RPS2011</span>
+                <span class="material-symbols-outlined text-[16px] text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </a>
+
+            <!-- Card 3 -->
+            <a href="service-second-oeuvre-finitions.html" class="group p-7 bg-surface rounded shadow-sm hover:shadow-md transition-all duration-200 border border-surface-container-high flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <span class="font-label-mono text-label-mono text-secondary">EXP 03 // FIN</span>
+                  <div class="w-10 h-10 rounded bg-surface-container-lowest flex items-center justify-center text-primary group-hover:text-primary-container transition-colors shadow-xs">
+                    <span class="material-symbols-outlined text-[22px]">format_paint</span>
+                  </div>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-3 font-semibold">Second œuvre &amp; finitions</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Cloisonnement, revêtements, menuiseries et fluides réalisés avec une haute exigence esthétique et qualitative.</p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-surface-container-high flex items-center justify-between text-secondary">
+                <span class="font-label-mono text-label-mono uppercase">FINITIONS DE STANDING</span>
+                <span class="material-symbols-outlined text-[16px] text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </a>
+
+            <!-- Card 4 -->
+            <a href="service-projets-commerciaux-retail.html" class="group p-7 bg-surface rounded shadow-sm hover:shadow-md transition-all duration-200 border border-surface-container-high flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <span class="font-label-mono text-label-mono text-secondary">EXP 04 // RET</span>
+                  <div class="w-10 h-10 rounded bg-surface-container-lowest flex items-center justify-center text-primary group-hover:text-primary-container transition-colors shadow-xs">
+                    <span class="material-symbols-outlined text-[22px]">storefront</span>
+                  </div>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-3 font-semibold">Bâtiments commerciaux &amp; retail</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Conception et agencement d’espaces de vente, showrooms et commerces respectant des plannings d'ouverture stricts.</p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-surface-container-high flex items-center justify-between text-secondary">
+                <span class="font-label-mono text-label-mono uppercase">SHOWROOMS &amp; BOUTIQUES</span>
+                <span class="material-symbols-outlined text-[16px] text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </a>
+
+            <!-- Card 5 -->
+            <a href="service-projets-industriels-logistiques.html" class="group p-7 bg-surface rounded shadow-sm hover:shadow-md transition-all duration-200 border border-surface-container-high flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <span class="font-label-mono text-label-mono text-secondary">EXP 05 // IND</span>
+                  <div class="w-10 h-10 rounded bg-surface-container-lowest flex items-center justify-center text-primary group-hover:text-primary-container transition-colors shadow-xs">
+                    <span class="material-symbols-outlined text-[22px]">warehouse</span>
+                  </div>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-3 font-semibold">Projets industriels &amp; logistiques</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Entrepôts, dallages industriels haute résistance, zones de stockage et plateformes répondant aux flux lourds.</p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-surface-container-high flex items-center justify-between text-secondary">
+                <span class="font-label-mono text-label-mono uppercase">SOLS &amp; HANGARS FORTS</span>
+                <span class="material-symbols-outlined text-[16px] text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </a>
+
+            <!-- Card 6 -->
+            <a href="service-renovation-rehabilitation.html" class="group p-7 bg-surface rounded shadow-sm hover:shadow-md transition-all duration-200 border border-surface-container-high flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-5">
+                  <span class="font-label-mono text-label-mono text-secondary">EXP 06 // RENOV</span>
+                  <div class="w-10 h-10 rounded bg-surface-container-lowest flex items-center justify-center text-primary group-hover:text-primary-container transition-colors shadow-xs">
+                    <span class="material-symbols-outlined text-[22px]">construction</span>
+                  </div>
+                </div>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-3 font-semibold">Rénovation &amp; réhabilitation</h3>
+                <p class="font-body-md text-body-md text-on-surface-variant">Restructuration lourde, renforcement structurel et valorisation énergétique de bâtiments existants en site occupé ou libre.</p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-surface-container-high flex items-center justify-between text-secondary">
+                <span class="font-label-mono text-label-mono uppercase">RÉAMÉNAGEMENT COMPLET</span>
+                <span class="material-symbols-outlined text-[16px] text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. NOS RÉALISATIONS -->
+      <section class="relative w-full bg-surface border-b border-surface-container-high" id="realisations">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14">
+            <div class="flex flex-col gap-3 max-w-2xl">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-primary-container rounded-sm"></span>
+                <span class="font-label-mono text-label-mono text-primary font-semibold uppercase tracking-wider">Nos réalisations</span>
+              </div>
+              <h2 class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface font-bold">
+                Des projets qui témoignent de notre savoir-faire
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Chaque chantier représente une nouvelle exigence et une nouvelle responsabilité. TG2D met son expertise au service de projets aux usages variés dans le Grand Casablanca et tout le Maroc.
+              </p>
+            </div>
+            <div>
+              <a class="inline-flex items-center gap-2 font-label-md text-label-md text-on-surface uppercase tracking-wider hover:text-primary transition-colors" href="projets.html">
+                <span>Voir l'ensemble des réalisations</span>
+                <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- 3 Specific Realisation Cards -->
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Project 1: Showroom BRICOMA -->
+            <div class="group bg-surface-container-lowest rounded overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 flex flex-col border border-surface-container-high">
+              <div class="relative h-60 w-full overflow-hidden bg-surface-container-high">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Showroom BRICOMA Dar Bouazza construction travaux tous corps d'état façade moderne" src="assets/images/stitch_showroom_bricoma.png" />
+                <div class="absolute top-4 left-4 bg-surface-container-lowest/95 backdrop-blur-sm px-3 py-1 rounded font-label-mono text-label-mono text-on-surface shadow-sm">
+                  DAR BOUAZZA · MAROC
+                </div>
+                <div class="absolute top-4 right-4 bg-primary text-on-primary px-2.5 py-0.5 rounded font-label-mono text-label-mono uppercase tracking-wider">
+                  Commercial
                 </div>
               </div>
-
-              <!-- Cell 3: Casablanca -->
-              <div class="pq-cell pq-border-r pq-border-b">
-                <div class="pq-cell-icon">
-                  <img src="assets/images/pourquoi-icons/icon_casablanca.png" alt="" loading="lazy" />
+              <div class="p-6 flex flex-col flex-1 justify-between">
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Showroom BRICOMA</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+                    Participation à la construction et la réalisation des travaux tous corps d’état du showroom commercial BRICOMA à Dar Bouazza. Coordination globale et finitions soignées.
+                  </p>
                 </div>
-                <div class="pq-cell-content">
-                  <div class="pq-stat-title-white">Casablanca</div>
-                  <div class="pq-stat-label">notre implantation historique</div>
-                  <span class="pq-stat-bar"></span>
-                </div>
-              </div>
-
-              <!-- Cell 4: Grand Casa -->
-              <div class="pq-cell pq-border-b">
-                <div class="pq-cell-icon">
-                  <img src="assets/images/pourquoi-icons/icon_grand_casa.png" alt="" loading="lazy" />
-                </div>
-                <div class="pq-cell-content">
-                  <div class="pq-stat-title-white">Grand Casa</div>
-                  <div class="pq-stat-label">une région majeure de notre expérience</div>
-                  <span class="pq-stat-bar"></span>
+                <div class="pt-4 border-t border-surface-container-high flex items-center justify-between">
+                  <span class="font-label-mono text-label-mono text-secondary">RÉF // BRI-DAR-01</span>
+                  <a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-semibold hover:underline" href="projet-showroom-bricoma-dar-bouazza.html">
+                    <span>Voir le projet</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </a>
                 </div>
               </div>
+            </div>
 
-              <!-- Cell 5: Maroc -->
-              <div class="pq-cell pq-border-r">
-                <div class="pq-cell-icon">
-                  <img src="assets/images/pourquoi-icons/icon_maroc.png" alt="" loading="lazy" />
+            <!-- Project 2: Centre Logistique -->
+            <div class="group bg-surface-container-lowest rounded overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 flex flex-col border border-surface-container-high">
+              <div class="relative h-60 w-full overflow-hidden bg-surface-container-high">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Centre logistique Bouskoura plateforme industrielle dalle haute résistance génie civil" src="assets/images/stitch_centre_logistique.png" />
+                <div class="absolute top-4 left-4 bg-surface-container-lowest/95 backdrop-blur-sm px-3 py-1 rounded font-label-mono text-label-mono text-on-surface shadow-sm">
+                  BOUSKOURA · MAROC
                 </div>
-                <div class="pq-cell-content">
-                  <div class="pq-stat-title-white">Maroc</div>
-                  <div class="pq-stat-label">capacité d’intervention à l’échelle nationale</div>
-                  <span class="pq-stat-bar"></span>
+                <div class="absolute top-4 right-4 bg-secondary text-on-secondary px-2.5 py-0.5 rounded font-label-mono text-label-mono uppercase tracking-wider">
+                  Logistique &amp; Industriel
                 </div>
               </div>
-
-              <!-- Cell 6: T.C.E. -->
-              <div class="pq-cell">
-                <div class="pq-cell-icon">
-                  <img src="assets/images/pourquoi-icons/icon_tce.png" alt="" loading="lazy" />
+              <div class="p-6 flex flex-col flex-1 justify-between">
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Centre Logistique</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+                    Réalisation des travaux liés à la construction d’un centre logistique majeur. Coordination rigoureuse des corps d’état pour les exigences professionnelles et d’exploitation.
+                  </p>
                 </div>
-                <div class="pq-cell-content">
-                  <div class="pq-stat-title-cyan">T.C.E.</div>
-                  <div class="pq-stat-label">une approche globale de la construction</div>
-                  <span class="pq-stat-bar"></span>
+                <div class="pt-4 border-t border-surface-container-high flex items-center justify-between">
+                  <span class="font-label-mono text-label-mono text-secondary">RÉF // LOG-BOU-02</span>
+                  <a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-semibold hover:underline" href="projet-centre-logistique-bouskoura.html">
+                    <span>Voir le projet</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Project 3: Projets Résidentiels -->
+            <div class="group bg-surface-container-lowest rounded overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 flex flex-col border border-surface-container-high">
+              <div class="relative h-60 w-full overflow-hidden bg-surface-container-high">
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Projets résidentiels villas standing Casablanca et régions finitions architecturales de luxe" src="assets/images/stitch_residence_villas.png" />
+                <div class="absolute top-4 left-4 bg-surface-container-lowest/95 backdrop-blur-sm px-3 py-1 rounded font-label-mono text-label-mono text-on-surface shadow-sm">
+                  CASABLANCA &amp; RÉGIONS
+                </div>
+                <div class="absolute top-4 right-4 bg-inverse-surface text-inverse-on-surface px-2.5 py-0.5 rounded font-label-mono text-label-mono uppercase tracking-wider">
+                  Résidentiel
+                </div>
+              </div>
+              <div class="p-6 flex flex-col flex-1 justify-between">
+                <div>
+                  <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Projets Résidentiels</h3>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant mb-4">
+                    Construction et travaux tous corps d’état pour projets résidentiels et villas standing, avec une attention rigoureuse à la qualité de structure et au niveau de finitions.
+                  </p>
+                </div>
+                <div class="pt-4 border-t border-surface-container-high flex items-center justify-between">
+                  <span class="font-label-mono text-label-mono text-secondary">RÉF // RES-CAS-03</span>
+                  <a class="inline-flex items-center gap-1 font-label-md text-label-md text-primary font-semibold hover:underline" href="projet-residence-villas-standing-casablanca.html">
+                    <span>Voir le projet</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </a>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- ==================== NOTRE APPROCHE (5 ÉTAPES) ==================== -->
-  <section id="approche" style="padding: 100px 0; background: #FFFFFF;">
-    <div class="wrap">
-      <div style="max-width: 750px; margin-bottom: 45px;">
-        <span class="section-num-tag">NOTRE APPROCHE</span>
-        <h2 class="section-h2-title">De votre vision à la réalisation</h2>
-        <p class="section-p-lead">
-          Chaque projet commence par l’écoute. Nous analysons les besoins du client, les contraintes du site, les exigences techniques et les objectifs du projet afin de mettre en place une organisation adaptée.
-        </p>
-      </div>
+      <!-- 6. NOTRE ENGAGEMENT -->
+      <section class="relative w-full bg-surface-container-lowest border-b border-surface-container-high">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+          <div class="flex flex-col gap-3 max-w-3xl mb-14">
+            <div class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary-container rounded-sm"></span>
+              <span class="font-label-mono text-label-mono text-primary font-semibold uppercase tracking-wider">Notre engagement</span>
+            </div>
+            <h2 class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface font-bold">
+              Qualité, sécurité et maîtrise des travaux
+            </h2>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              Nous plaçons l’exigence, la rigueur et la sécurité au cœur de chaque projet pour livrer des ouvrages durables, conformes et performants.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Card 01 -->
+            <div class="p-6 bg-surface rounded shadow-sm border border-surface-container-high flex flex-col justify-between">
+              <div>
+                <span class="font-display-xl-mobile text-3xl font-bold text-primary-container block mb-4">01</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Conformité aux normes</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Respect rigoureux des réglementations parasismiques marocaines RPS2011 et des Normes Marocaines (NM).
+                </p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-surface-container-high">
+                <a class="font-label-md text-label-md text-primary font-semibold hover:underline inline-flex items-center gap-1" href="guide-normes-parasismiques-rps2011.html">
+                  <span>En savoir plus</span>
+                  <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 20px;">
-        <div style="background: #FFFFFF; border: 1px solid rgba(13,21,39,0.08); border-radius: 12px; padding: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.02);">
-          <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 800; color: var(--c-cyan); margin-bottom: 10px;">01</div>
-          <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--c-navy-dark); margin-bottom: 8px;">Écoute & analyse</h3>
-          <p style="font-size: 0.85rem; color: var(--c-text-body); line-height: 1.5;">Comprendre votre projet, vos objectifs et vos contraintes.</p>
+            <!-- Card 02 -->
+            <div class="p-6 bg-surface rounded shadow-sm border border-surface-container-high flex flex-col justify-between">
+              <div>
+                <span class="font-display-xl-mobile text-3xl font-bold text-primary-container block mb-4">02</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Contrôles techniques</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Essais de sol, écrasements d’éprouvettes béton et validation continue avec des laboratoires agréés (LPEE).
+                </p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-surface-container-high">
+                <a class="font-label-md text-label-md text-primary font-semibold hover:underline inline-flex items-center gap-1" href="qualite-normes-lpee.html">
+                  <span>En savoir plus</span>
+                  <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Card 03 -->
+            <div class="p-6 bg-surface rounded shadow-sm border border-surface-container-high flex flex-col justify-between">
+              <div>
+                <span class="font-display-xl-mobile text-3xl font-bold text-primary-container block mb-4">03</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Assurance &amp; garantie</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Couverture complète Tous Risques Chantier (TRC), Responsabilité Civile et garantie décennale systématique.
+                </p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-surface-container-high">
+                <a class="font-label-md text-label-md text-primary font-semibold hover:underline inline-flex items-center gap-1" href="contact.html">
+                  <span>En savoir plus</span>
+                  <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Card 04 -->
+            <div class="p-6 bg-surface rounded shadow-sm border border-surface-container-high flex flex-col justify-between">
+              <div>
+                <span class="font-display-xl-mobile text-3xl font-bold text-primary-container block mb-4">04</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Démarche HSE</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Port des EPI obligatoire, protocoles de sécurité rigoureux et respect strict des conditions de travail sur le terrain.
+                </p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-surface-container-high">
+                <a class="font-label-md text-label-md text-primary font-semibold hover:underline inline-flex items-center gap-1" href="securite-hse-chantiers.html">
+                  <span>En savoir plus</span>
+                  <span class="material-symbols-outlined text-[15px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div style="background: #FFFFFF; border: 1px solid rgba(13,21,39,0.08); border-radius: 12px; padding: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.02);">
-          <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 800; color: var(--c-cyan); margin-bottom: 10px;">02</div>
-          <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--c-navy-dark); margin-bottom: 8px;">Préparation</h3>
-          <p style="font-size: 0.85rem; color: var(--c-text-body); line-height: 1.5;">Définir les besoins techniques, les ressources et l’organisation du chantier.</p>
+      <!-- 7. VALEURS -->
+      <section class="relative w-full bg-surface border-b border-surface-container-high">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+          <div class="flex flex-col gap-3 max-w-3xl mb-14">
+            <div class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary-container rounded-sm"></span>
+              <span class="font-label-mono text-label-mono text-primary font-semibold uppercase tracking-wider">Nos principes directeurs</span>
+            </div>
+            <h2 class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface font-bold">
+              Les valeurs qui guident chaque chantier
+            </h2>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              Une culture d’ingénierie et de rigueur opérationnelle partagée par l’ensemble de nos équipes.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Valeur 1 -->
+            <div class="p-7 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high">
+              <div class="w-10 h-10 rounded bg-surface flex items-center justify-center text-primary mb-5">
+                <span class="material-symbols-outlined text-[24px]">verified</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Qualité</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Nous accordons une importance particulière à la qualité des matériaux, à la précision de l’exécution et au respect des exigences techniques du projet.
+              </p>
+            </div>
+
+            <!-- Valeur 2 -->
+            <div class="p-7 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high">
+              <div class="w-10 h-10 rounded bg-surface flex items-center justify-center text-primary mb-5">
+                <span class="material-symbols-outlined text-[24px]">rule</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Rigueur</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Une construction réussie nécessite une organisation rigoureuse. Nos équipes assurent le suivi et la coordination des différentes phases du chantier.
+              </p>
+            </div>
+
+            <!-- Valeur 3 -->
+            <div class="p-7 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high">
+              <div class="w-10 h-10 rounded bg-surface flex items-center justify-center text-primary mb-5">
+                <span class="material-symbols-outlined text-[24px]">schedule</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Respect des délais</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Nous intégrons la planification et la coordination des différents intervenants afin de contribuer au respect du calendrier défini pour chaque projet.
+              </p>
+            </div>
+
+            <!-- Valeur 4 -->
+            <div class="p-7 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high">
+              <div class="w-10 h-10 rounded bg-surface flex items-center justify-center text-primary mb-5">
+                <span class="material-symbols-outlined text-[24px]">visibility</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Transparence</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Nous privilégions une communication claire avec nos clients et partenaires afin de maintenir une bonne visibilité sur l’avancement du projet.
+              </p>
+            </div>
+
+            <!-- Valeur 5 -->
+            <div class="p-7 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high">
+              <div class="w-10 h-10 rounded bg-surface flex items-center justify-center text-primary mb-5">
+                <span class="material-symbols-outlined text-[24px]">shield_with_heart</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Sécurité</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                La sécurité des collaborateurs, des intervenants et des installations constitue un élément essentiel de notre approche du chantier.
+              </p>
+            </div>
+
+            <!-- Valeur 6 -->
+            <div class="p-7 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high">
+              <div class="w-10 h-10 rounded bg-surface flex items-center justify-center text-primary mb-5">
+                <span class="material-symbols-outlined text-[24px]">handshake</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Engagement</h3>
+              <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                Nous considérons chaque projet comme un engagement à long terme avec notre client. Notre objectif est de construire une relation basée sur la confiance.
+              </p>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div style="background: #FFFFFF; border: 1px solid rgba(13,21,39,0.08); border-radius: 12px; padding: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.02);">
-          <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 800; color: var(--c-cyan); margin-bottom: 10px;">03</div>
-          <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--c-navy-dark); margin-bottom: 8px;">Coordination</h3>
-          <p style="font-size: 0.85rem; color: var(--c-text-body); line-height: 1.5;">Mobiliser et coordonner les différents corps de métier et intervenants.</p>
+      <!-- 8. POURQUOI TG2D ? -->
+      <section class="relative w-full bg-surface-container-lowest border-b border-surface-container-high">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            <div class="lg:col-span-5 flex flex-col gap-4">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-primary-container rounded-sm"></span>
+                <span class="font-label-mono text-label-mono text-primary font-semibold uppercase tracking-wider">Pourquoi TG2D ?</span>
+              </div>
+              <h2 class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface font-bold">
+                Un partenaire unique pour vos projets de construction
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Faire appel à TG2D, c'est choisir un interlocuteur unique capable de piloter l'ensemble des dimensions techniques, administratives et calendaires de vos ouvrages.
+              </p>
+              <div class="pt-4">
+                <a class="inline-flex items-center justify-center bg-inverse-surface text-inverse-on-surface px-6 py-3 rounded font-label-md text-label-md uppercase tracking-wider hover:bg-on-surface transition-colors" href="contact.html">
+                  Discuter avec nos ingénieurs
+                </a>
+              </div>
+            </div>
+            <div class="lg:col-span-7 flex flex-col gap-4">
+              <!-- 5 Reasons -->
+              <div class="p-5 bg-surface rounded border border-surface-container-high flex items-start gap-4">
+                <span class="font-label-mono text-label-mono font-bold text-primary px-2.5 py-1 bg-surface-container rounded shrink-0">01</span>
+                <div>
+                  <h4 class="font-title-md text-title-md text-on-surface mb-1 font-semibold">Une approche tous corps d’état</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Coordination globale fluide assurant la parfaite synchronisation des différents corps de métier sans rupture de chaîne.</p>
+                </div>
+              </div>
+              <div class="p-5 bg-surface rounded border border-surface-container-high flex items-start gap-4">
+                <span class="font-label-mono text-label-mono font-bold text-primary px-2.5 py-1 bg-surface-container rounded shrink-0">02</span>
+                <div>
+                  <h4 class="font-title-md text-title-md text-on-surface mb-1 font-semibold">Une équipe expérimentée</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Plus de 20 années d’expérience cumulée dans le développement immobilier, l’ingénierie et le pilotage de travaux majeurs.</p>
+                </div>
+              </div>
+              <div class="p-5 bg-surface rounded border border-surface-container-high flex items-start gap-4">
+                <span class="font-label-mono text-label-mono font-bold text-primary px-2.5 py-1 bg-surface-container rounded shrink-0">03</span>
+                <div>
+                  <h4 class="font-title-md text-title-md text-on-surface mb-1 font-semibold">Une expérience régionale concrète</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Projets emblématiques déjà concrétisés à Casablanca, Dar Bouazza, Bouskoura et zones industrielles périphériques.</p>
+                </div>
+              </div>
+              <div class="p-5 bg-surface rounded border border-surface-container-high flex items-start gap-4">
+                <span class="font-label-mono text-label-mono font-bold text-primary px-2.5 py-1 bg-surface-container rounded shrink-0">04</span>
+                <div>
+                  <h4 class="font-title-md text-title-md text-on-surface mb-1 font-semibold">Une capacité d’intervention nationale</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Mobilité technique et logistique structurée pour déployer des chantiers dans différentes régions du Maroc.</p>
+                </div>
+              </div>
+              <div class="p-5 bg-surface rounded border border-surface-container-high flex items-start gap-4">
+                <span class="font-label-mono text-label-mono font-bold text-primary px-2.5 py-1 bg-surface-container rounded shrink-0">05</span>
+                <div>
+                  <h4 class="font-title-md text-title-md text-on-surface mb-1 font-semibold">Une vision orientée client</h4>
+                  <p class="font-body-sm text-body-sm text-on-surface-variant">Compréhension approfondie de vos objectifs économiques, opérationnels et fonctionnels avant le premier coup de pioche.</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div style="background: #FFFFFF; border: 1px solid rgba(13,21,39,0.08); border-radius: 12px; padding: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.02);">
-          <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 800; color: var(--c-cyan); margin-bottom: 10px;">04</div>
-          <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--c-navy-dark); margin-bottom: 8px;">Réalisation</h3>
-          <p style="font-size: 0.85rem; color: var(--c-text-body); line-height: 1.5;">Assurer le suivi des travaux avec une attention constante portée à la qualité et à la conformité.</p>
+      <!-- 9. CHIFFRES CLÉS -->
+      <section class="relative w-full bg-inverse-surface text-inverse-on-surface border-b border-inverse-surface">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+          <div class="flex flex-col gap-3 max-w-2xl mb-14">
+            <div class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary-container rounded-sm"></span>
+              <span class="font-label-mono text-label-mono text-primary-fixed-dim uppercase tracking-wider">Repères chiffrés</span>
+            </div>
+            <h2 class="font-headline-lg text-2xl sm:text-headline-lg text-surface-container-lowest font-bold">
+              TG2D en quelques chiffres
+            </h2>
+          </div>
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+            <!-- Stat 1 -->
+            <div class="p-5 bg-surface-container-lowest/5 rounded border border-surface-container-lowest/10 flex flex-col justify-between">
+              <span class="font-display-xl-mobile text-3xl font-bold text-primary-container block">+3 ans</span>
+              <span class="font-body-sm text-body-sm text-tertiary-fixed-dim mt-2 block">d’expérience dans le secteur de la construction</span>
+            </div>
+            <!-- Stat 2 -->
+            <div class="p-5 bg-surface-container-lowest/5 rounded border border-surface-container-lowest/10 flex flex-col justify-between">
+              <span class="font-display-xl-mobile text-3xl font-bold text-primary-container block">+20 ans</span>
+              <span class="font-body-sm text-body-sm text-tertiary-fixed-dim mt-2 block">d’expérience dans le développement immobilier</span>
+            </div>
+            <!-- Stat 3 -->
+            <div class="p-5 bg-surface-container-lowest/5 rounded border border-surface-container-lowest/10 flex flex-col justify-between">
+              <span class="font-headline-lg text-2xl font-bold text-surface-container-lowest block">Casablanca</span>
+              <span class="font-body-sm text-body-sm text-tertiary-fixed-dim mt-2 block">notre implantation historique</span>
+            </div>
+            <!-- Stat 4 -->
+            <div class="p-5 bg-surface-container-lowest/5 rounded border border-surface-container-lowest/10 flex flex-col justify-between">
+              <span class="font-headline-lg text-2xl font-bold text-surface-container-lowest block">Grand Casa</span>
+              <span class="font-body-sm text-body-sm text-tertiary-fixed-dim mt-2 block">une région majeure de notre expérience</span>
+            </div>
+            <!-- Stat 5 -->
+            <div class="p-5 bg-surface-container-lowest/5 rounded border border-surface-container-lowest/10 flex flex-col justify-between">
+              <span class="font-headline-lg text-2xl font-bold text-surface-container-lowest block">Maroc</span>
+              <span class="font-body-sm text-body-sm text-tertiary-fixed-dim mt-2 block">capacité d’intervention à l’échelle nationale</span>
+            </div>
+            <!-- Stat 6 -->
+            <div class="p-5 bg-surface-container-lowest/5 rounded border border-surface-container-lowest/10 flex flex-col justify-between">
+              <span class="font-headline-lg text-2xl font-bold text-primary-container block">T.C.E.</span>
+              <span class="font-body-sm text-body-sm text-tertiary-fixed-dim mt-2 block">une approche globale de la construction</span>
+            </div>
+          </div>
         </div>
+      </section>
 
-        <div style="background: #FFFFFF; border: 1px solid rgba(13,21,39,0.08); border-radius: 12px; padding: 24px; box-shadow: 0 4px 16px rgba(0,0,0,0.02);">
-          <div style="font-family: var(--font-mono); font-size: 1.1rem; font-weight: 800; color: var(--c-cyan); margin-bottom: 10px;">05</div>
-          <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--c-navy-dark); margin-bottom: 8px;">Livraison</h3>
-          <p style="font-size: 0.85rem; color: var(--c-text-body); line-height: 1.5;">Finaliser le projet et accompagner le client jusqu’à la réception des travaux.</p>
+      <!-- 10. NOTRE APPROCHE (5-Step Process) -->
+      <section class="relative w-full bg-surface border-b border-surface-container-high">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+          <div class="flex flex-col gap-3 max-w-3xl mb-16">
+            <div class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary-container rounded-sm"></span>
+              <span class="font-label-mono text-label-mono text-primary font-semibold uppercase tracking-wider">Notre approche</span>
+            </div>
+            <h2 class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface font-bold">
+              De votre vision à la réalisation
+            </h2>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              Chaque projet commence par l’écoute. Nous analysons les besoins du client, les contraintes du site, les exigences techniques et les objectifs du projet afin de mettre en place une organisation adaptée.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-6">
+            <!-- Step 1 -->
+            <div class="p-6 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high flex flex-col justify-between">
+              <div>
+                <span class="font-label-mono text-label-mono font-bold text-primary px-2.5 py-1 bg-surface-container rounded inline-block mb-4">ÉTAPE 01</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Écoute &amp; analyse</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Comprendre votre projet, vos objectifs et vos contraintes techniques ou financières.
+                </p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-surface-container-high flex items-center gap-2 font-label-mono text-label-mono text-secondary">
+                <span class="material-symbols-outlined text-[16px] text-primary-container">psychology</span>
+                <span>CADRAGE INITIAL</span>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="p-6 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high flex flex-col justify-between">
+              <div>
+                <span class="font-label-mono text-label-mono font-bold text-primary px-2.5 py-1 bg-surface-container rounded inline-block mb-4">ÉTAPE 02</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Préparation</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Définir les besoins techniques, les ressources matérielles et l’organisation du chantier.
+                </p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-surface-container-high flex items-center gap-2 font-label-mono text-label-mono text-secondary">
+                <span class="material-symbols-outlined text-[16px] text-primary-container">assignment</span>
+                <span>PLANIFICATION</span>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="p-6 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high flex flex-col justify-between">
+              <div>
+                <span class="font-label-mono text-label-mono font-bold text-primary px-2.5 py-1 bg-surface-container rounded inline-block mb-4">ÉTAPE 03</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Coordination</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Mobiliser et coordonner les différents corps de métier, intervenants et bureaux d'études.
+                </p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-surface-container-high flex items-center gap-2 font-label-mono text-label-mono text-secondary">
+                <span class="material-symbols-outlined text-[16px] text-primary-container">hub</span>
+                <span>PILOTAGE FLUIDE</span>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="p-6 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high flex flex-col justify-between">
+              <div>
+                <span class="font-label-mono text-label-mono font-bold text-primary px-2.5 py-1 bg-surface-container rounded inline-block mb-4">ÉTAPE 04</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Réalisation</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Assurer le suivi des travaux avec une attention constante portée à la qualité et à la conformité.
+                </p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-surface-container-high flex items-center gap-2 font-label-mono text-label-mono text-secondary">
+                <span class="material-symbols-outlined text-[16px] text-primary-container">engineering</span>
+                <span>EXÉCUTION NORMÉE</span>
+              </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="p-6 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high flex flex-col justify-between">
+              <div>
+                <span class="font-label-mono text-label-mono font-bold text-primary px-2.5 py-1 bg-surface-container rounded inline-block mb-4">ÉTAPE 05</span>
+                <h3 class="font-headline-sm text-headline-sm text-on-surface mb-2 font-semibold">Livraison</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">
+                  Finaliser le projet et accompagner le client jusqu’à la réception officielle des travaux.
+                </p>
+              </div>
+              <div class="pt-6 mt-6 border-t border-surface-container-high flex items-center gap-2 font-label-mono text-label-mono text-secondary">
+                <span class="material-symbols-outlined text-[16px] text-primary-container">key</span>
+                <span>RÉCEPTION SANS RÉSERVE</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- ==================== NOS CLIENTS & PARTENAIRES ==================== -->
-  <section class="partenaires-section" id="partenaires" style="background: #FFFFFF; padding: 80px 0;">
-    <div class="wrap partenaires-head" style="text-align: center; margin-bottom: 36px;">
-      <span class="section-num-tag">NOS CLIENTS & PARTENAIRES</span>
-      <h2 class="section-h2-title" style="margin-bottom: 14px;">Des partenaires de confiance à travers tout le Royaume</h2>
-      <p style="color: var(--c-text-body); font-size: 1.05rem; max-width: 820px; margin: 0 auto;">
-        TG2D accompagne différents profils de clients et donneurs d’ordre : particuliers, entreprises, promoteurs immobiliers, investisseurs, acteurs commerciaux et opérateurs logistiques.
-      </p>
-    </div>
+      <!-- 11. CLIENTS & PARTENAIRES -->
+      <section class="relative w-full bg-surface-container-lowest border-b border-surface-container-high">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+          <div class="flex flex-col gap-3 max-w-3xl mb-14">
+            <div class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary-container rounded-sm"></span>
+              <span class="font-label-mono text-label-mono text-primary font-semibold uppercase tracking-wider">Nos clients &amp; partenaires</span>
+            </div>
+            <h2 class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface font-bold">
+              Des partenaires de confiance à travers tout le Royaume
+            </h2>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              TG2D accompagne différents profils de clients et donneurs d’ordre : particuliers, entreprises, promoteurs immobiliers, investisseurs, acteurs commerciaux et opérateurs logistiques.
+            </p>
+          </div>
 
-    <!-- Marquee Badges with sleek pulsing dot -->
-    <div class="marquee-track">
-      <div class="partner-badge"><span class="pulse-dot"></span> Particuliers</div>
-      <div class="partner-badge"><span class="pulse-dot"></span> Entreprises</div>
-      <div class="partner-badge"><span class="pulse-dot"></span> Promoteurs Immobiliers</div>
-      <div class="partner-badge"><span class="pulse-dot"></span> Investisseurs</div>
-      <div class="partner-badge"><span class="pulse-dot"></span> Acteurs Commerciaux</div>
-      <div class="partner-badge"><span class="pulse-dot"></span> Opérateurs Industriels & Logistiques</div>
-      <!-- Loop -->
-      <div class="partner-badge"><span class="pulse-dot"></span> Particuliers</div>
-      <div class="partner-badge"><span class="pulse-dot"></span> Entreprises</div>
-      <div class="partner-badge"><span class="pulse-dot"></span> Promoteurs Immobiliers</div>
-      <div class="partner-badge"><span class="pulse-dot"></span> Investisseurs</div>
-    </div>
+          <!-- Client Types Badges / Grid -->
+          <div class="mb-12">
+            <span class="font-label-mono text-label-mono text-secondary uppercase tracking-widest block mb-4">Profils de clients accompagnés</span>
+            <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+              <div class="p-4 bg-surface rounded text-center border border-surface-container-high flex flex-col items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-[24px] text-primary">person</span>
+                <span class="font-title-md text-title-md text-on-surface font-medium">Particuliers</span>
+              </div>
+              <div class="p-4 bg-surface rounded text-center border border-surface-container-high flex flex-col items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-[24px] text-primary">corporate_fare</span>
+                <span class="font-title-md text-title-md text-on-surface font-medium">Entreprises</span>
+              </div>
+              <div class="p-4 bg-surface rounded text-center border border-surface-container-high flex flex-col items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-[24px] text-primary">apartment</span>
+                <span class="font-title-md text-title-md text-on-surface font-medium">Promoteurs</span>
+              </div>
+              <div class="p-4 bg-surface rounded text-center border border-surface-container-high flex flex-col items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-[24px] text-primary">account_balance</span>
+                <span class="font-title-md text-title-md text-on-surface font-medium">Investisseurs</span>
+              </div>
+              <div class="p-4 bg-surface rounded text-center border border-surface-container-high flex flex-col items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-[24px] text-primary">shopping_bag</span>
+                <span class="font-title-md text-title-md text-on-surface font-medium">Commerciaux</span>
+              </div>
+              <div class="p-4 bg-surface rounded text-center border border-surface-container-high flex flex-col items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-[24px] text-primary">local_shipping</span>
+                <span class="font-title-md text-title-md text-on-surface leading-snug font-medium">Logisticiens</span>
+              </div>
+            </div>
+          </div>
 
-    <div class="marquee-track marquee-track-rev" style="margin-top: 14px;">
-      <div class="partner-badge"><span class="pulse-dot"></span> Architectes & Maîtrises d'Œuvre</div>
-      <div class="partner-badge"><span class="pulse-dot"></span> Bureaux d’Études Techniques</div>
-      <div class="partner-badge"><span class="pulse-dot"></span> Entreprises Générales Partenaires</div>
-      <div class="partner-badge"><span class="pulse-dot"></span> Écosystème de la Construction au Maroc</div>
-      <!-- Loop -->
-      <div class="partner-badge"><span class="pulse-dot"></span> Architectes & Maîtrises d'Œuvre</div>
-      <div class="partner-badge"><span class="pulse-dot"></span> Bureaux d’Études Techniques</div>
-      <div class="partner-badge"><span class="pulse-dot"></span> Entreprises Générales Partenaires</div>
-      <div class="partner-badge"><span class="pulse-dot"></span> Écosystème de la Construction au Maroc</div>
-    </div>
-  </section>
-
-  <!-- ==================== 06 BANNER CTA ("VOUS AVEZ UN PROJET ?") ==================== -->
-  <section class="sec-cta-banner-ui" id="contact">
-    <div class="wrap">
-      <div class="cta-banner-content">
-        <span class="eyebrow-architectural">
-          Notre Projet, Notre Engagement
-        </span>
-
-        <h2 class="section-h2-title" style="color: #FFFFFF;">
-          Vous avez un projet ?<br>
-          <span class="text-cyan">Construisons-le ensemble.</span>
-        </h2>
-
-        <p class="section-p-lead" style="color: rgba(255, 255, 255, 0.9);">
-          Vous avez un projet résidentiel, commercial, industriel ou logistique au Maroc ? TG2D met son expertise, ses équipes et son savoir-faire au service de votre projet. Que vous soyez particulier, entreprise, promoteur ou investisseur, nous sommes à votre disposition pour étudier vos besoins et vous proposer une solution adaptée.
-        </p>
-
-        <p style="color: var(--c-cyan-light); font-weight: 700; font-size: 1.05rem; margin-bottom: 28px;">
-          TG2D — Construction Tous Corps d’État<br>
-          <span style="color: rgba(255,255,255,0.7); font-size: 0.92rem; font-weight: 500;">Résidentiel | Commercial | Industriel | Logistique • Casablanca • Grand Casablanca • Maroc</span>
-        </p>
-
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="contact.html" class="btn-cyan">
-            <span>Demander un devis</span>
-            <svg class="btn-arr-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-          <a href="contact.html" class="btn-outline-white">
-            <span>Nous contacter</span>
-          </a>
+          <!-- Ecosystem Section -->
+          <div class="p-8 bg-surface rounded border border-surface-container-high">
+            <span class="font-label-mono text-label-mono text-primary font-semibold uppercase tracking-widest block mb-6">Écosystème &amp; Parties prenantes</span>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+              <div class="flex items-center gap-3">
+                <span class="w-2 h-2 rounded-full bg-primary-container shrink-0"></span>
+                <span class="font-body-md text-body-md text-on-surface font-medium">Architectes &amp; Maîtrises d’Œuvre</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-2 h-2 rounded-full bg-primary-container shrink-0"></span>
+                <span class="font-body-md text-body-md text-on-surface font-medium">Bureaux d’Études Techniques (BET)</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-2 h-2 rounded-full bg-primary-container shrink-0"></span>
+                <span class="font-body-md text-body-md text-on-surface font-medium">Entreprises Générales Partenaires</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="w-2 h-2 rounded-full bg-primary-container shrink-0"></span>
+                <span class="font-body-md text-body-md text-on-surface font-medium">Écosystème BTP au Maroc</span>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
-  </section>
+      </section>
 
-  <!-- ==================== FOOTER ==================== -->
-  <footer class="footer" style="background: #060911; border-top: 1px solid rgba(255,255,255,0.08); padding: 80px 0 30px; color: #FFFFFF;">
-    <div class="wrap">
-      <div class="footer-grid">
-        <!-- Col 1: Logo & intro -->
-        <div>
-          <a href="index.html" style="display: inline-block; margin-bottom: 20px;">
-            <img src="assets/images/tg2d-logo.png" alt="TG2D Maroc" style="height: 44px; width: auto;" />
-          </a>
-          <p style="color: rgba(255, 255, 255, 0.65); font-size: 0.88rem; line-height: 1.6; max-width: 320px; margin-bottom: 24px;">
-            TG2D — Travaux Généraux de Développement Durable est une entreprise marocaine spécialisée dans la construction tous corps d'état, au service de projets résidentiels, commerciaux, industriels et logistiques.
+      <!-- 12. CTA FINAL -->
+      <section class="relative w-full bg-inverse-surface text-inverse-on-surface overflow-hidden" id="contact">
+        <div class="absolute inset-0 opacity-5 pointer-events-none">
+          <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern height="32" id="cta-grid-2" patternUnits="userSpaceOnUse" width="32">
+                <path d="M 32 0 L 0 0 0 32" fill="none" stroke="#FFFFFF" stroke-width="0.8"></path>
+              </pattern>
+            </defs>
+            <rect fill="url(#cta-grid-2)" height="100%" width="100%"></rect>
+          </svg>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-6 lg:px-12 py-20 lg:py-24">
+          <div class="max-w-3xl flex flex-col gap-6">
+            <div class="flex items-center gap-3">
+              <span class="w-2 h-2 rounded-full bg-primary-container"></span>
+              <span class="font-label-mono text-label-mono text-primary-fixed-dim tracking-widest uppercase">
+                Notre Projet, Notre Engagement
+              </span>
+            </div>
+            <h2 class="font-headline-lg text-2xl sm:text-headline-lg text-surface-container-lowest font-bold">
+              Vous avez un projet ? Construisons-le ensemble.
+            </h2>
+            <p class="font-body-lg text-body-lg text-tertiary-fixed-dim">
+              Vous avez un projet résidentiel, commercial, industriel ou logistique au Maroc ? TG2D met son expertise, ses équipes et son savoir-faire au service de votre projet. Que vous soyez particulier, entreprise, promoteur ou investisseur, nous sommes à votre disposition pour étudier vos besoins et vous proposer une solution adaptée.
+            </p>
+            <div class="p-4 bg-surface-container-lowest/5 rounded border border-surface-container-lowest/15 font-label-mono text-label-mono text-primary-fixed-dim leading-relaxed">
+              TG2D — Construction Tous Corps d’État | Résidentiel | Commercial | Industriel | Logistique • Casablanca • Grand Casablanca • Maroc
+            </div>
+            <div class="flex flex-wrap items-center gap-4 pt-4">
+              <a class="h-12 px-7 inline-flex items-center justify-center bg-primary-container text-on-primary-container font-label-md text-label-md tracking-wider uppercase rounded font-bold transition-all duration-200 hover:bg-primary hover:text-on-primary shadow-sm" href="contact.html">
+                Demander un devis
+              </a>
+              <a class="h-12 px-6 inline-flex items-center gap-2 bg-surface-container-lowest/10 text-surface-container-lowest hover:bg-surface-container-lowest/20 font-body-md text-body-md rounded transition-colors duration-200" href="tel:+212618392328">
+                <span class="material-symbols-outlined text-primary-container text-[20px]">call</span>
+                <span>+212 618-392328</span>
+              </a>
+              <a class="h-12 px-6 inline-flex items-center gap-2 bg-transparent text-tertiary-fixed-dim hover:text-surface-container-lowest font-body-md text-body-md rounded transition-colors duration-200" href="mailto:tg2d.maroc@gmail.com">
+                <span class="material-symbols-outlined text-primary-container text-[20px]">mail</span>
+                <span>tg2d.maroc@gmail.com</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- 13. FOOTER -->
+  <footer class="w-full bg-inverse-surface text-inverse-on-surface border-t border-surface-container-highest/20">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+        <!-- Col 1: Brand -->
+        <div class="flex flex-col gap-5">
+          <div class="p-3 bg-surface-container-lowest rounded w-fit inline-block border border-surface-container-high">
+            <img alt="TG2D Logo" class="h-8 w-auto object-contain" src="assets/images/tg2d-logo.png" />
+          </div>
+          <p class="font-body-md text-body-md text-tertiary-fixed-dim max-w-sm">
+            TG2D — Travaux Généraux de Développement Durable est une entreprise marocaine spécialisée dans la construction tous corps d’état, au service de projets résidentiels, commerciaux, industriels et logistiques.
           </p>
-          <div style="display: flex; gap: 12px;">
-            <a href="https://linkedin.com" target="_blank" rel="noopener" style="width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: #FFFFFF; transition: all 0.2s ease;">
-              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener" style="width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: #FFFFFF; transition: all 0.2s ease;">
-              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener" style="width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: #FFFFFF; transition: all 0.2s ease;">
-              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a>
+          <div class="flex items-center gap-2 pt-2">
+            <span class="w-2 h-2 rounded-full bg-primary-container"></span>
+            <span class="font-label-mono text-label-mono uppercase tracking-widest text-primary-fixed-dim">Construction Tous Corps d'État</span>
           </div>
         </div>
 
         <!-- Col 2: Navigation -->
-        <div>
-          <h4 style="font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.1em; color: var(--c-cyan-light); text-transform: uppercase; margin-bottom: 20px;">Navigation</h4>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.88rem;">
-            <li><a href="index.html" style="color: rgba(255,255,255,0.75);">Accueil</a></li>
-            <li><a href="a-propos.html" style="color: rgba(255,255,255,0.75);">À propos</a></li>
-            <li><a href="expertises.html" style="color: rgba(255,255,255,0.75);">Nos expertises</a></li>
-            <li><a href="projets.html" style="color: rgba(255,255,255,0.75);">Nos réalisations</a></li>
-            <li><a href="contact.html#carrieres" style="color: rgba(255,255,255,0.75);">Carrières</a></li>
-            <li><a href="contact.html" style="color: rgba(255,255,255,0.75);">Contact</a></li>
-          </ul>
+        <div class="flex flex-col gap-4">
+          <h4 class="font-headline-sm text-headline-sm text-surface-container-lowest border-l-2 border-primary-container pl-3 font-semibold">Navigation</h4>
+          <nav class="flex flex-col gap-2.5">
+            <a class="text-primary-fixed-dim font-semibold" href="index.html">Accueil</a>
+            <a class="font-body-sm text-body-sm text-tertiary-fixed-dim hover:text-surface-container-lowest transition-colors" href="a-propos.html">À propos</a>
+            <a class="font-body-sm text-body-sm text-tertiary-fixed-dim hover:text-surface-container-lowest transition-colors" href="expertises.html">Nos expertises</a>
+            <a class="font-body-sm text-body-sm text-tertiary-fixed-dim hover:text-surface-container-lowest transition-colors" href="projets.html">Nos réalisations</a>
+            <a class="font-body-sm text-body-sm text-tertiary-fixed-dim hover:text-surface-container-lowest transition-colors" href="contact.html#carrieres">Carrières</a>
+            <a class="font-body-sm text-body-sm text-tertiary-fixed-dim hover:text-surface-container-lowest transition-colors" href="contact.html">Contact</a>
+          </nav>
         </div>
 
-        <!-- Col 3: Nos expertises -->
-        <div>
-          <h4 style="font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.1em; color: var(--c-cyan-light); text-transform: uppercase; margin-bottom: 20px;">Nos expertises</h4>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.88rem;">
-            <li><a href="service-construction-tous-corps-detat.html" style="color: rgba(255,255,255,0.75);">Construction TCE</a></li>
-            <li><a href="service-gros-oeuvre-structure.html" style="color: rgba(255,255,255,0.75);">Gros œuvre</a></li>
-            <li><a href="service-second-oeuvre-finitions.html" style="color: rgba(255,255,255,0.75);">Second œuvre</a></li>
-            <li><a href="service-projets-commerciaux-retail.html" style="color: rgba(255,255,255,0.75);">Projets commerciaux</a></li>
-            <li><a href="service-projets-industriels-logistiques.html" style="color: rgba(255,255,255,0.75);">Projets industriels</a></li>
-            <li><a href="service-renovation-rehabilitation.html" style="color: rgba(255,255,255,0.75);">Rénovation</a></li>
+        <!-- Col 3: Expertises -->
+        <div class="flex flex-col gap-4">
+          <h4 class="font-headline-sm text-headline-sm text-surface-container-lowest border-l-2 border-primary-container pl-3 font-semibold">Nos expertises</h4>
+          <ul class="flex flex-col gap-2.5">
+            <li>
+              <a href="service-construction-tous-corps-detat.html" class="font-body-sm text-body-sm text-tertiary-fixed-dim hover:text-surface-container-lowest transition-colors flex items-center gap-2">
+                <span class="w-1 h-1 bg-primary-container rounded-full"></span>Construction TCE
+              </a>
+            </li>
+            <li>
+              <a href="service-gros-oeuvre-structure.html" class="font-body-sm text-body-sm text-tertiary-fixed-dim hover:text-surface-container-lowest transition-colors flex items-center gap-2">
+                <span class="w-1 h-1 bg-primary-container rounded-full"></span>Gros œuvre &amp; Structure
+              </a>
+            </li>
+            <li>
+              <a href="service-second-oeuvre-finitions.html" class="font-body-sm text-body-sm text-tertiary-fixed-dim hover:text-surface-container-lowest transition-colors flex items-center gap-2">
+                <span class="w-1 h-1 bg-primary-container rounded-full"></span>Second œuvre &amp; Finitions
+              </a>
+            </li>
+            <li>
+              <a href="service-projets-commerciaux-retail.html" class="font-body-sm text-body-sm text-tertiary-fixed-dim hover:text-surface-container-lowest transition-colors flex items-center gap-2">
+                <span class="w-1 h-1 bg-primary-container rounded-full"></span>Projets commerciaux &amp; Retail
+              </a>
+            </li>
+            <li>
+              <a href="service-projets-industriels-logistiques.html" class="font-body-sm text-body-sm text-tertiary-fixed-dim hover:text-surface-container-lowest transition-colors flex items-center gap-2">
+                <span class="w-1 h-1 bg-primary-container rounded-full"></span>Projets industriels &amp; Logistiques
+              </a>
+            </li>
+            <li>
+              <a href="service-renovation-rehabilitation.html" class="font-body-sm text-body-sm text-tertiary-fixed-dim hover:text-surface-container-lowest transition-colors flex items-center gap-2">
+                <span class="w-1 h-1 bg-primary-container rounded-full"></span>Rénovation &amp; Réhabilitation
+              </a>
+            </li>
           </ul>
         </div>
 
         <!-- Col 4: Contact -->
-        <div>
-          <h4 style="font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.1em; color: var(--c-cyan-light); text-transform: uppercase; margin-bottom: 20px;">Contact</h4>
-          <div style="font-size: 0.88rem; color: rgba(255,255,255,0.75); display: flex; flex-direction: column; gap: 14px; line-height: 1.5;">
-            <div style="display: flex; gap: 10px;">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color: var(--c-cyan-light); flex-shrink: 0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="flex flex-col gap-4">
+          <h4 class="font-headline-sm text-headline-sm text-surface-container-lowest border-l-2 border-primary-container pl-3 font-semibold">Contact</h4>
+          <div class="flex flex-col gap-3 font-body-sm text-body-sm text-tertiary-fixed-dim">
+            <div class="flex items-start gap-2.5">
+              <span class="material-symbols-outlined text-[18px] text-primary-container mt-0.5">location_on</span>
               <span>57 Rue Abou Alaazahar, Quartier des Hôpitaux, 20100 Casablanca, Maroc</span>
             </div>
-            <div style="display: flex; gap: 10px;">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color: var(--c-cyan-light); flex-shrink: 0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <a href="tel:+212618392328" style="color: rgba(255,255,255,0.75);">+212 618-392328</a>
+            <div class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px] text-primary-container">call</span>
+              <a class="hover:text-primary-fixed-dim transition-colors" href="tel:+212618392328">+212 618-392328</a>
             </div>
-            <div style="display: flex; gap: 10px;">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color: var(--c-cyan-light); flex-shrink: 0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <a href="mailto:tg2d.maroc@gmail.com" style="color: rgba(255,255,255,0.75);">tg2d.maroc@gmail.com</a>
+            <div class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px] text-primary-container">mail</span>
+              <a class="hover:text-primary-fixed-dim transition-colors" href="mailto:tg2d.maroc@gmail.com">tg2d.maroc@gmail.com</a>
             </div>
-            <div style="display: flex; gap: 10px;">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color: var(--c-cyan-light); flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              <span>Lun - Sam: 08h00 - 19h00</span>
+            <div class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px] text-primary-container">schedule</span>
+              <span>Lun - Sam : 08h00 - 19h00</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 0.8rem; color: rgba(255,255,255,0.5);">
-        <div>&copy; 2026 TG2D — Travaux Généraux de Développement Durable. Tous droits réservés.</div>
-        <div style="display: flex; gap: 20px;">
-          <a href="contact.html" style="color: rgba(255,255,255,0.5);">Politique de confidentialité</a>
-          <a href="contact.html" style="color: rgba(255,255,255,0.5);">Mentions légales</a>
+      <!-- Copyright -->
+      <div class="mt-16 pt-8 border-t border-surface-container-highest/20 flex flex-col md:flex-row items-center justify-between gap-4 font-body-sm text-body-sm text-tertiary-fixed-dim">
+        <div class="flex items-center gap-6">
+          <a class="hover:text-surface-container-lowest transition-colors" href="contact.html">Mentions légales</a>
+          <a class="hover:text-surface-container-lowest transition-colors" href="contact.html">Confidentialité</a>
         </div>
+        <p>© 2026 TG2D — Travaux Généraux de Développement Durable. Tous droits réservés.</p>
       </div>
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <!-- Drawer Toggle Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const burger = document.getElementById('navBurger');
+      const close = document.getElementById('mobClose');
+      const drawer = document.getElementById('mobileDrawer');
+      const panel = document.getElementById('mobileDrawerPanel');
+
+      function openMenu() {
+        if (!drawer || !panel) return;
+        drawer.classList.remove('opacity-0', 'pointer-events-none');
+        drawer.classList.add('opacity-100', 'pointer-events-auto');
+        panel.classList.remove('translate-x-full');
+        panel.classList.add('translate-x-0');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        if (!drawer || !panel) return;
+        drawer.classList.add('opacity-0', 'pointer-events-none');
+        drawer.classList.remove('opacity-100', 'pointer-events-auto');
+        panel.classList.add('translate-x-full');
+        panel.classList.remove('translate-x-0');
+        document.body.style.overflow = '';
+      }
+
+      if (burger) burger.addEventListener('click', openMenu);
+      if (close) close.addEventListener('click', closeMenu);
+      if (drawer) {
+        drawer.addEventListener('click', (e) => {
+          if (e.target === drawer) closeMenu();
+        });
+        drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      }
+    });
+  </script>
 </body>
 </html>
