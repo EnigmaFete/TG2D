@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr" dir="ltr">
+<html lang="fr" dir="ltr" class="no-js">
 <head>
-  <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nos Réalisations — TG2D BTP & Travaux Généraux Maroc</title>
+  <meta name="description" content="Découvrez le portfolio des réalisations de TG2D au Maroc : Showroom BRICOMA Dar Bouazza, Plateforme Logistique Bouskoura, Villas de standing et complexes tertiaires." />
 
   <!-- Favicon / Pin Icon -->
   <link rel="shortcut icon" href="/favicon.ico?v=2" />
@@ -10,291 +12,522 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=2" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
-  <title>Nos Réalisations | TG2D — Entreprise Générale BTP Maroc</title>
-  <meta name="description" content="Découvrez les réalisations de TG2D : Showroom Bricoma Dar Bouazza, Centre Logistique Bouskoura, Projets Résidentiels d'exception à Casablanca et au Maroc." />
 
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://tg2d.ma/projets.html" />
+  <meta name="google-site-verification" content="P9Lro5ScYuXYtG87U2gMqbDB3elC60244stLrHV7MOI" />
 
   <!-- Open Graph -->
   <meta property="og:locale" content="fr_MA" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Nos Réalisations | TG2D Maroc" />
-  <meta property="og:description" content="Des projets qui témoignent de notre savoir-faire dans les secteurs commercial, logistique et résidentiel au Maroc." />
-  <meta property="og:image" content="assets/images/showroom-bricoma-darbouazza.jpg" />
+  <meta property="og:title" content="Nos Réalisations d'Ouvrages & Infrastructures — TG2D Maroc" />
+  <meta property="og:description" content="Portfolio d'ouvrages commerciaux, industriels, logistiques et résidentiels livrés avec rigueur au Maroc." />
+  <meta property="og:url" content="https://tg2d.ma/projets.html" />
+  <meta property="og:site_name" content="TG2D Entreprise Générale BTP" />
+  <meta property="og:image" content="assets/images/stitch_showroom_bricoma.png" />
 
-  <!-- Preconnect Fonts -->
+  <!-- Google Fonts & Material Symbols -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
 
-  <link rel="stylesheet" href="styles.css?v=2026_white_pro_refresh" />
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "inverse-primary": "#46d7f4",
+            "surface-container-highest": "#e0e3e5",
+            "primary-container": "#08bcd8",
+            "on-primary": "#ffffff",
+            "on-tertiary-container": "#34424b",
+            "on-secondary-fixed": "#0c1d28",
+            "inverse-surface": "#111827",
+            "error-container": "#ffdad6",
+            "on-surface": "#181c1e",
+            "surface-tint": "#006878",
+            "surface": "#f7fafc",
+            "inverse-on-surface": "#eef1f3",
+            "secondary": "#50606d",
+            "on-primary-container": "#004752",
+            "on-primary-fixed-variant": "#004e5b",
+            "on-secondary-container": "#546572",
+            "outline-variant": "#bbc9cd",
+            "primary-fixed": "#a8edff",
+            "error": "#ba1a1a",
+            "surface-bright": "#f7fafc",
+            "tertiary-container": "#9faeb9",
+            "on-primary-fixed": "#001f25",
+            "surface-container-high": "#e5e9eb",
+            "on-tertiary-fixed": "#0f1d25",
+            "secondary-fixed-dim": "#b7c9d8",
+            "surface-dim": "#d7dadc",
+            "primary": "#006878",
+            "on-error": "#ffffff",
+            "surface-container": "#ebeef0",
+            "on-secondary-fixed-variant": "#384955",
+            "secondary-container": "#d0e2f1",
+            "on-background": "#181c1e",
+            "on-surface-variant": "#3c494c",
+            "surface-container-low": "#f1f4f6",
+            "on-secondary": "#ffffff",
+            "background": "#f7fafc",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed-dim": "#bac8d4",
+            "on-error-container": "#93000a",
+            "surface-variant": "#e0e3e5",
+            "tertiary-fixed": "#d6e4f0",
+            "on-tertiary-fixed-variant": "#3b4952",
+            "secondary-fixed": "#d3e5f4",
+            "outline": "#6c797d",
+            "primary-fixed-dim": "#46d7f4",
+            "tertiary": "#52606a",
+            "surface-container-lowest": "#ffffff"
+          },
+          fontFamily: {
+            "display-xl": ["Manrope", "sans-serif"],
+            "label-md": ["Inter", "sans-serif"],
+            "headline-lg": ["Manrope", "sans-serif"],
+            "label-mono": ["Inter", "monospace"],
+            "title-md": ["Inter", "sans-serif"],
+            "headline-sm": ["Manrope", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    };
+  </script>
 </head>
-<body>
+<body class="bg-background font-body-md text-body-md text-on-surface antialiased">
 
-    <!-- ==================== HEADER & NAVIGATION ==================== -->
-  <header class="header-lockup" id="headerLockup" style="background: rgba(8, 13, 24, 0.9); backdrop-filter: blur(18px); border-bottom: 1px solid rgba(255,255,255,0.08);">
-    <nav class="nav">
-      <div class="wrap" style="display: flex; align-items: center; justify-content: space-between; height: 80px;">
-        <a href="index.html" class="nav-logo" aria-label="TG2D Accueil">
-          <img src="assets/images/tg2d-logo.png" alt="TG2D Maroc" class="nav-logo-img" id="navLogo" style="height: 44px; width: auto;" />
+  <!-- 1. HEADER / NAVIGATION -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/95 backdrop-blur-md border-b border-surface-container-high shadow-[0_1px_8px_rgba(18,35,46,0.06)]">
+    <div class="h-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-4 shrink-0">
+        <a class="flex items-center shrink-0" href="index.html" aria-label="TG2D Accueil">
+          <img alt="TG2D Logo" class="h-8 w-auto object-contain" src="assets/images/tg2d-logo.png" />
         </a>
-
-        <div class="nav-links">
-          <a href="index.html">Accueil</a>
-          <a href="a-propos.html">À propos</a>
-          <a href="expertises.html">Nos expertises</a>
-          <a href="projets.html" class="is-active">Nos réalisations</a>
-          <a href="contact.html#carrieres">Carrières</a>
-          <a href="contact.html">Contact</a>
-        </div>
-
-        <div class="nav-right" style="display: flex; align-items: center; gap: 16px;">
-<!-- Primary CTA Button with sleek SVG arrow -->
-          <a href="contact.html" class="nav-cta-btn">
-            <span>Demander un devis</span>
-            <svg class="btn-arr-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
-
-          <button class="nav-burger" id="navBurger" aria-label="Ouvrir le menu">
-            <span></span>
-            <span></span>
-          </button>
-        </div>
+        <div class="hidden 2xl:block h-6 w-px bg-surface-container-high"></div>
+        <span class="hidden 2xl:inline-block font-label-mono text-label-mono text-secondary uppercase tracking-widest whitespace-nowrap">Entreprise Générale Tous Corps d'État</span>
       </div>
-    </nav>
+
+      <nav class="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-8 h-full shrink-0">
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-2 whitespace-nowrap shrink-0" href="index.html">Accueil</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-2 whitespace-nowrap shrink-0" href="a-propos.html">À propos</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-2 whitespace-nowrap shrink-0" href="expertises.html">Nos expertises</a>
+        <a aria-current="page" class="transition-colors py-2 text-primary font-semibold border-b-2 border-primary-container whitespace-nowrap shrink-0" href="projets.html">Nos réalisations</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-2 whitespace-nowrap shrink-0" href="carrieres.html">Carrières</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-2 whitespace-nowrap shrink-0" href="contact.html">Contact</a>
+      </nav>
+
+      <div class="flex items-center gap-3 shrink-0">
+        <a class="inline-flex items-center justify-center bg-inverse-surface text-inverse-on-surface border border-transparent hover:border-primary-container hover:text-primary-fixed-dim transition-all duration-200 px-4 sm:px-5 py-2 sm:py-2.5 rounded font-label-md text-label-md uppercase tracking-wider shadow-[0_1px_2px_rgba(18,35,46,0.08)] whitespace-nowrap shrink-0" href="contact.html">
+          Demander un devis
+        </a>
+        <button id="navBurger" class="lg:hidden p-2 rounded text-on-surface-variant hover:text-on-surface focus:outline-none" aria-label="Menu de navigation">
+          <span class="material-symbols-outlined text-2xl">menu</span>
+        </button>
+      </div>
+    </div>
   </header>
 
   <!-- Mobile Drawer -->
-  <div class="mobile-menu-drawer" id="mobileDrawer">
-    <div class="mob-head">
-      <img src="assets/images/tg2d-logo.png" alt="TG2D" style="height: 36px;" />
-      <button class="mob-close" id="mobClose">&times;</button>
-    </div>
-    <div class="mob-links">
-      <a href="index.html"><span>Accueil</span></a>
-      <a href="a-propos.html"><span>À propos</span></a>
-      <a href="expertises.html"><span>Nos expertises</span></a>
-      <a href="projets.html" class="is-active"><span>Nos réalisations</span></a>
-      <a href="contact.html#carrieres"><span>Carrières</span></a>
-      <a href="contact.html"><span>Contact</span></a>
-    </div>
-    <div style="padding: 24px;">
-      <a href="contact.html" class="btn-cyan" style="width: 100%; justify-content: center;">
-        <span>Demander un devis</span>
-        <svg class="btn-arr-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+  <div id="mobileDrawer" class="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden">
+    <div id="mobileDrawerPanel" class="fixed right-0 top-0 bottom-0 w-80 max-w-[85vw] bg-surface-container-lowest p-6 shadow-2xl flex flex-col justify-between translate-x-full transition-transform duration-300 ease-out">
+      <div>
+        <div class="flex items-center justify-between pb-6 border-b border-surface-container-high">
+          <img alt="TG2D Logo" class="h-7 w-auto object-contain" src="assets/images/tg2d-logo.png" />
+          <button id="mobClose" class="p-1 rounded text-on-surface-variant hover:text-on-surface">
+            <span class="material-symbols-outlined text-2xl">close</span>
+          </button>
+        </div>
+        <nav class="flex flex-col gap-4 mt-6">
+          <a class="text-base font-medium text-on-surface-variant hover:text-primary transition-colors py-2" href="index.html">Accueil</a>
+          <a class="text-base font-medium text-on-surface-variant hover:text-primary transition-colors py-2" href="a-propos.html">À propos</a>
+          <a class="text-base font-medium text-on-surface-variant hover:text-primary transition-colors py-2" href="expertises.html">Nos expertises</a>
+          <a class="text-base font-bold text-primary border-l-2 border-primary-container pl-3 py-2" href="projets.html">Nos réalisations</a>
+          <a class="text-base font-medium text-on-surface-variant hover:text-primary transition-colors py-2" href="carrieres.html">Carrières</a>
+          <a class="text-base font-medium text-on-surface-variant hover:text-primary transition-colors py-2" href="contact.html">Contact</a>
+        </nav>
+      </div>
+      <div class="pt-6 border-t border-surface-container-high">
+        <a class="w-full inline-flex items-center justify-center bg-inverse-surface text-inverse-on-surface py-3 rounded font-label-md text-label-md uppercase tracking-wider text-center" href="contact.html">
+          Demander un devis
+        </a>
+      </div>
     </div>
   </div>
 
-  <!-- ==================== SUBPAGE HERO ==================== -->
-  <section class="subpage-editorial-hero">
-    <div class="wrap">
-      <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--c-cyan-light); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px;">
-        <a href="index.html" style="color: rgba(255,255,255,0.6);">Accueil</a> / <span style="color: var(--c-cyan-light);">Nos Réalisations</span>
-      </div>
-      <h1 class="subpage-hero-title">
-        NOS RÉALISATIONS<br>
-        <span class="text-cyan">Des projets qui témoignent de notre savoir-faire.</span>
-      </h1>
-      <p class="subpage-hero-lead">
-        Chaque chantier représente une nouvelle exigence et une nouvelle responsabilité. TG2D met son expertise au service de projets aux usages et aux contraintes variés, avec une expérience particulièrement développée dans la région du Grand Casablanca et au niveau national.
-      </p>
-    </div>
-  </section>
-
-  <!-- ==================== PROJETS DÉTAILLÉS ==================== -->
-  <section class="subpage-editorial-body">
-    <div class="wrap">
-      <div class="projects-editorial-list">
-
-        <!-- Projet 1 : Showroom BRICOMA -->
-        <article class="project-editorial-card">
-          <div class="project-card-media">
-            <img src="assets/images/showroom-bricoma-darbouazza.jpg" alt="Showroom commercial BRICOMA Dar Bouazza réalisé par TG2D" />
-            <span class="project-card-badge">Secteur Commercial</span>
-          </div>
-          <div class="project-card-content">
-            <span class="project-card-kicker">Référence Commerciale</span>
-            <h2 class="project-card-title">SHOWROOM BRICOMA — DAR BOUAZZA</h2>
-            <p class="project-card-desc">
-              TG2D a participé à la construction et à la réalisation d’un showroom BRICOMA à Dar Bouazza. Ce projet illustre notre capacité à intervenir sur des infrastructures commerciales et à coordonner les différents corps de métier nécessaires à la réalisation du bâtiment.
-            </p>
-            <div class="project-card-specs">
-              <div><strong>Localisation :</strong> Dar Bouazza</div>
-              <div><strong>Type :</strong> Showroom / bâtiment commercial</div>
-              <div><strong>Intervention :</strong> Construction et travaux tous corps d’état selon le périmètre confié à TG2D.</div>
-            </div>
-            <div>
-              <a href="projet-showroom-bricoma-dar-bouazza.html" class="btn-cyan">
-                <span>Consulter la fiche détaillée</span>
-                <svg class="btn-arr-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Projet 2 : Centre Logistique Bouskoura -->
-        <article class="project-editorial-card is-reversed">
-          <div class="project-card-media">
-            <img src="assets/images/centre-logistique-bouskoura.jpg" alt="Centre logistique de pointe à Bouskoura par TG2D" />
-            <span class="project-card-badge">Logistique & Industriel</span>
-          </div>
-          <div class="project-card-content">
-            <span class="project-card-kicker">Référence Logistique</span>
-            <h2 class="project-card-title">CENTRE LOGISTIQUE — BOUSKOURA</h2>
-            <p class="project-card-desc">
-              TG2D a également réalisé les travaux liés à la construction d’un centre logistique à Bouskoura. Ce projet représente une référence significative de notre savoir-faire dans la réalisation d’infrastructures destinées aux activités professionnelles et logistiques.
-            </p>
-            <div class="project-card-specs">
-              <div><strong>Localisation :</strong> Bouskoura</div>
-              <div><strong>Type :</strong> Centre logistique</div>
-              <div><strong>Intervention :</strong> Construction, coordination des travaux et différents corps d’état selon le périmètre confié à TG2D.</div>
-            </div>
-            <div>
-              <a href="projet-centre-logistique-bouskoura.html" class="btn-cyan">
-                <span>Consulter la fiche détaillée</span>
-                <svg class="btn-arr-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-        <!-- Projet 3 : Projets Résidentiels -->
-        <article class="project-editorial-card">
-          <div class="project-card-media">
-            <img src="assets/images/residence-villas-maroc.jpg" alt="Villas et résidences standing construites par TG2D au Maroc" />
-            <span class="project-card-badge">Secteur Résidentiel</span>
-          </div>
-          <div class="project-card-content">
-            <span class="project-card-kicker">Référence Résidentielle</span>
-            <h2 class="project-card-title">PROJETS RÉSIDENTIELS</h2>
-            <p class="project-card-desc">
-              TG2D intervient également dans le domaine résidentiel, pour des projets nécessitant une attention particulière portée à la qualité de construction, aux finitions et au respect des attentes du propriétaire. Nous pouvons accompagner les projets résidentiels selon leur nature, leur taille et leur niveau de finition souhaité.
-            </p>
-            <div class="project-card-specs">
-              <div><strong>Localisation :</strong> Casablanca et autres régions du Maroc</div>
-              <div><strong>Type :</strong> Projets résidentiels</div>
-              <div><strong>Intervention :</strong> Construction et travaux tous corps d’état.</div>
-            </div>
-            <div>
-              <a href="projet-residence-villas-standing-casablanca.html" class="btn-cyan">
-                <span>Consulter la fiche détaillée</span>
-                <svg class="btn-arr-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-              </a>
-            </div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- ==================== BANNER CTA ==================== -->
-  <section class="sec-cta-banner-ui">
-    <div class="wrap">
-      <div class="cta-banner-content">
-        <span class="hero-badge-tag">UN PROJET AU MAROC ?</span>
-        <h2 class="section-h2-title" style="color: #FFFFFF;">Construisons-le ensemble.</h2>
-        <p class="section-p-lead">
-          Vous avez un projet résidentiel, commercial, industriel ou logistique au Maroc ? TG2D met son expertise, ses équipes et son savoir-faire à votre service.
+  <main class="pt-28 pb-20">
+    <!-- HERO SECTION -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-12 md:py-16">
+      <div class="max-w-3xl">
+        <span class="font-label-mono text-label-mono text-primary font-bold uppercase tracking-widest block mb-3">
+          Portfolio d'Ouvrages Livrés // TG2D BTP
+        </span>
+        <h1 class="font-display-xl text-3xl sm:text-4xl lg:text-5xl font-extrabold text-on-surface tracking-tight leading-tight mb-6">
+          Nos réalisations d'ouvrages &amp; d'infrastructures
+        </h1>
+        <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+          Une sélection de projets conduits avec rigueur méthodologique, respect scrupuleux des calendriers et conformité absolue aux exigences de nos maîtres d'ouvrage dans le Grand Casablanca et à l'échelle nationale.
         </p>
-        <div style="display: flex; gap: 16px;">
-          <a href="contact.html" class="btn-cyan">
-            <span>Demander un devis</span>
-            <svg class="btn-arr-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </a>
+      </div>
+
+      <!-- Filter / Category Tabs -->
+      <div class="flex flex-wrap gap-2 mt-10 pt-4 border-t border-surface-container-high">
+        <span class="px-4 py-2 rounded-lg bg-inverse-surface text-inverse-on-surface font-label-mono text-xs font-bold uppercase tracking-wider">
+          Tous les projets
+        </span>
+        <span class="px-4 py-2 rounded-lg bg-surface-container-low text-secondary font-label-mono text-xs font-semibold uppercase tracking-wider">
+          Commercial
+        </span>
+        <span class="px-4 py-2 rounded-lg bg-surface-container-low text-secondary font-label-mono text-xs font-semibold uppercase tracking-wider">
+          Industriel &amp; Logistique
+        </span>
+        <span class="px-4 py-2 rounded-lg bg-surface-container-low text-secondary font-label-mono text-xs font-semibold uppercase tracking-wider">
+          Résidentiel &amp; Tertiaire
+        </span>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO GRID -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+        <!-- 01 : Showroom BRICOMA -->
+        <article class="bg-surface-container-lowest border border-surface-container-high rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="aspect-[16/10] overflow-hidden bg-surface-container-high relative">
+              <img src="assets/images/stitch_showroom_bricoma.png" alt="Showroom commercial BRICOMA Dar Bouazza réalisé par TG2D" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-4 left-4 bg-inverse-surface/90 text-primary-fixed font-label-mono text-[10px] font-bold px-3 py-1 rounded backdrop-blur-sm uppercase">
+                Livré // Commercial
+              </span>
+            </div>
+            <div class="p-6 sm:p-8 space-y-3">
+              <div class="font-label-mono text-xs text-secondary">RÉF. TG2D-COM-01 // DAR BOUAZZA</div>
+              <h2 class="font-headline-sm text-xl font-bold text-on-surface">Showroom Commercial BRICOMA</h2>
+              <p class="font-body-sm text-on-surface-variant leading-relaxed">
+                Entreprise générale pour la réalisation du gros œuvre complet, dallage haute résistance adapté au trafic commercial intense, aménagements extérieurs et voiries d'accès.
+              </p>
+              <div class="pt-3 border-t border-surface-container-high/60 space-y-1.5 text-xs text-secondary">
+                <div><strong>Périmètre :</strong> Gros Œuvre, Dallage, Façades, VRD</div>
+                <div><strong>Localisation :</strong> Dar Bouazza, Grand Casablanca</div>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <span class="inline-flex items-center gap-1.5 text-primary font-bold text-xs">
+              <span>Projet finalisé avec succès</span>
+              <span class="material-symbols-outlined text-sm">verified</span>
+            </span>
+          </div>
+        </article>
+
+        <!-- 02 : Centre Logistique Bouskoura -->
+        <article class="bg-surface-container-lowest border border-surface-container-high rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="aspect-[16/10] overflow-hidden bg-surface-container-high relative">
+              <img src="assets/images/stitch_centre_logistique.png" alt="Plateforme logistique et pôle de distribution à Bouskoura" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-4 left-4 bg-inverse-surface/90 text-primary-fixed font-label-mono text-[10px] font-bold px-3 py-1 rounded backdrop-blur-sm uppercase">
+                Livré // Logistique
+              </span>
+            </div>
+            <div class="p-6 sm:p-8 space-y-3">
+              <div class="font-label-mono text-xs text-secondary">RÉF. TG2D-LOG-02 // BOUSKOURA</div>
+              <h2 class="font-headline-sm text-xl font-bold text-on-surface">Plateforme Logistique &amp; Entrepôt</h2>
+              <p class="font-body-sm text-on-surface-variant leading-relaxed">
+                Construction des infrastructures lourdes : fondations spéciales, dallage industriel haute planimétrie à quartz, quais niveleurs de chargement et VRD lourds pour circulation 40 tonnes.
+              </p>
+              <div class="pt-3 border-t border-surface-container-high/60 space-y-1.5 text-xs text-secondary">
+                <div><strong>Périmètre :</strong> Dallage 5T/m², VRD Lourds, Réseaux EP/EU</div>
+                <div><strong>Localisation :</strong> Bouskoura — Pôle Industriel</div>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <span class="inline-flex items-center gap-1.5 text-primary font-bold text-xs">
+              <span>Capacité 40T certifiée</span>
+              <span class="material-symbols-outlined text-sm">verified</span>
+            </span>
+          </div>
+        </article>
+
+        <!-- 03 : Ensemble Résidentiel & Villas -->
+        <article class="bg-surface-container-lowest border border-surface-container-high rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="aspect-[16/10] overflow-hidden bg-surface-container-high relative">
+              <img src="assets/images/stitch_residence_villas.png" alt="Ensemble de villas contemporaines haut standing" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-4 left-4 bg-inverse-surface/90 text-primary-fixed font-label-mono text-[10px] font-bold px-3 py-1 rounded backdrop-blur-sm uppercase">
+                Livré // Résidentiel
+              </span>
+            </div>
+            <div class="p-6 sm:p-8 space-y-3">
+              <div class="font-label-mono text-xs text-secondary">RÉF. TG2D-RES-03 // CASABLANCA</div>
+              <h2 class="font-headline-sm text-xl font-bold text-on-surface">Villas Contemporaines &amp; Résidences</h2>
+              <p class="font-body-sm text-on-surface-variant leading-relaxed">
+                Structures en béton armé haute précision, décoffrages soignés pour lignes architecturales épurées, complexes d'étanchéité multicouches et finitions intérieures de grand standing.
+              </p>
+              <div class="pt-3 border-t border-surface-container-high/60 space-y-1.5 text-xs text-secondary">
+                <div><strong>Périmètre :</strong> Gros Œuvre d'Art, Étanchéité SBS, Piscines</div>
+                <div><strong>Localisation :</strong> Grand Casablanca &amp; Environs</div>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <span class="inline-flex items-center gap-1.5 text-primary font-bold text-xs">
+              <span>Haut niveau de finition</span>
+              <span class="material-symbols-outlined text-sm">verified</span>
+            </span>
+          </div>
+        </article>
+
+        <!-- 04 : Siège Tertiaire & R+5 -->
+        <article class="bg-surface-container-lowest border border-surface-container-high rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="aspect-[16/10] overflow-hidden bg-surface-container-high relative">
+              <img src="assets/images/chantier-structure-elevations.jpg" alt="Structure béton armé bâtiment tertiaire R+5" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-4 left-4 bg-inverse-surface/90 text-primary-fixed font-label-mono text-[10px] font-bold px-3 py-1 rounded backdrop-blur-sm uppercase">
+                Livré // Tertiaire
+              </span>
+            </div>
+            <div class="p-6 sm:p-8 space-y-3">
+              <div class="font-label-mono text-xs text-secondary">RÉF. TG2D-TER-04 // CASABLANCA</div>
+              <h2 class="font-headline-sm text-xl font-bold text-on-surface">Complexe Administratif &amp; Tertiaire</h2>
+              <p class="font-body-sm text-on-surface-variant leading-relaxed">
+                Immeuble de bureaux R+5 avec 2 niveaux de sous-sol entièrement cuvelés en nappe. Voiles banchés BAP, planchers grande portée sans retombée de poutre et cages d'ascenseurs armées.
+              </p>
+              <div class="pt-3 border-t border-surface-container-high/60 space-y-1.5 text-xs text-secondary">
+                <div><strong>Périmètre :</strong> Cuvelage étanche, Superstructure, VRD</div>
+                <div><strong>Localisation :</strong> Casablanca Centre</div>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <span class="inline-flex items-center gap-1.5 text-primary font-bold text-xs">
+              <span>Sous-sol étanche garanti</span>
+              <span class="material-symbols-outlined text-sm">verified</span>
+            </span>
+          </div>
+        </article>
+
+        <!-- 05 : Infrastructures Hydrauliques & Bassins -->
+        <article class="bg-surface-container-lowest border border-surface-container-high rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="aspect-[16/10] overflow-hidden bg-surface-container-high relative">
+              <img src="assets/images/chantier-fondations-longrines.jpg" alt="Ouvrages de génie civil et bassins d'eau" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-4 left-4 bg-inverse-surface/90 text-primary-fixed font-label-mono text-[10px] font-bold px-3 py-1 rounded backdrop-blur-sm uppercase">
+                Livré // Génie Civil
+              </span>
+            </div>
+            <div class="p-6 sm:p-8 space-y-3">
+              <div class="font-label-mono text-xs text-secondary">RÉF. TG2D-GC-05 // MAROC</div>
+              <h2 class="font-headline-sm text-xl font-bold text-on-surface">Réservoirs &amp; Bassins de Rétention</h2>
+              <p class="font-body-sm text-on-surface-variant leading-relaxed">
+                Génie civil spécialisé conforme au Fascicule 74. Coulage continu de radiers hydrofuges, traitement des reprises de bétonnage avec joints waterstop et étanchéité de masse garantie.
+              </p>
+              <div class="pt-3 border-t border-surface-container-high/60 space-y-1.5 text-xs text-secondary">
+                <div><strong>Périmètre :</strong> Bassins étanches, Canalisations BA, Radier</div>
+                <div><strong>Localisation :</strong> Zone Périurbaine Casablanca</div>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <span class="inline-flex items-center gap-1.5 text-primary font-bold text-xs">
+              <span>Épreuve hydraulique réussie</span>
+              <span class="material-symbols-outlined text-sm">verified</span>
+            </span>
+          </div>
+        </article>
+
+        <!-- 06 : Plateforme & VRD Grande Masse -->
+        <article class="bg-surface-container-lowest border border-surface-container-high rounded-2xl overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="aspect-[16/10] overflow-hidden bg-surface-container-high relative">
+              <img src="assets/images/chantier-terrassement-darbouazza.jpg" alt="Terrassement grande masse et nivellement de plateforme" class="w-full h-full object-cover hover:scale-105 transition-transform duration-500" />
+              <span class="absolute top-4 left-4 bg-inverse-surface/90 text-primary-fixed font-label-mono text-[10px] font-bold px-3 py-1 rounded backdrop-blur-sm uppercase">
+                Livré // VRD & Terrassement
+              </span>
+            </div>
+            <div class="p-6 sm:p-8 space-y-3">
+              <div class="font-label-mono text-xs text-secondary">RÉF. TG2D-VRD-06 // DAR BOUAZZA</div>
+              <h2 class="font-headline-sm text-xl font-bold text-on-surface">Viabilisation &amp; Terrassements Lourds</h2>
+              <p class="font-body-sm text-on-surface-variant leading-relaxed">
+                Opération d'envergure mobilisant la flotte d'engins TG2D (pelles Komatsu, BRH, compacteurs) : terrassement de 45 000 m³, assainissement gravitaire grande profondeur et couches de forme.
+              </p>
+              <div class="pt-3 border-t border-surface-container-high/60 space-y-1.5 text-xs text-secondary">
+                <div><strong>Périmètre :</strong> Déroctage, Réseaux EU/EP, Voiries</div>
+                <div><strong>Localisation :</strong> Dar Bouazza</div>
+              </div>
+            </div>
+          </div>
+          <div class="px-6 pb-6 pt-0">
+            <span class="inline-flex items-center gap-1.5 text-primary font-bold text-xs">
+              <span>Plateforme compactée à 98% OPM</span>
+              <span class="material-symbols-outlined text-sm">verified</span>
+            </span>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- BANNER CTA -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 mt-20">
+      <div class="relative overflow-hidden rounded-2xl bg-inverse-surface text-inverse-on-surface p-8 sm:p-12 lg:p-16">
+        <div class="relative z-10 max-w-2xl space-y-4">
+          <span class="font-label-mono text-xs font-bold text-primary-container uppercase tracking-widest">
+            Vous avez un projet similaire ?
+          </span>
+          <h2 class="font-display-xl text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Confiez votre chantier à une entreprise générale certifiée
+          </h2>
+          <p class="text-sm sm:text-base text-surface-container-highest/80 leading-relaxed">
+            Consultez notre direction technique pour étudier vos plans, estimer les cadences et programmer une visite sur nos chantiers en cours.
+          </p>
+          <div class="pt-4 flex flex-wrap gap-4 items-center">
+            <a href="contact.html" class="inline-flex items-center justify-center bg-primary-container text-on-primary-container font-bold px-6 py-3 rounded uppercase text-xs tracking-wider hover:bg-white transition-all duration-200">
+              Demander une étude personnalisée &rarr;
+            </a>
+            <a href="tel:+212618392328" class="inline-flex items-center gap-2 text-surface-container-lowest font-medium text-xs hover:text-primary-container transition-colors py-2 px-3">
+              <span class="material-symbols-outlined text-base">call</span>
+              <span>Téléphone direct : +212 618-392328</span>
+            </a>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <!-- ==================== FOOTER ==================== -->
-    <!-- ==================== FOOTER ==================== -->
-  <footer class="footer" style="background: #060911; border-top: 1px solid rgba(255,255,255,0.08); padding: 80px 0 30px; color: #FFFFFF;">
-    <div class="wrap">
-      <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1.2fr; gap: 40px; margin-bottom: 60px;">
-        <!-- Col 1: Logo & intro -->
-        <div>
-          <a href="index.html" style="display: inline-block; margin-bottom: 20px;">
-            <img src="assets/images/tg2d-logo.png" alt="TG2D Maroc" style="height: 44px; width: auto;" />
+  <!-- FOOTER -->
+  <footer class="bg-inverse-surface text-inverse-on-surface pt-16 pb-12 border-t border-surface-container-high/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <!-- Col 1: Identity -->
+        <div class="flex flex-col gap-4">
+          <a class="inline-flex items-center" href="index.html">
+            <img alt="TG2D Logo" class="h-9 w-auto object-contain" src="assets/images/tg2d-logo.png" />
           </a>
-          <p style="color: rgba(255, 255, 255, 0.65); font-size: 0.88rem; line-height: 1.6; max-width: 320px; margin-bottom: 24px;">
-            TG2D — Travaux Généraux de Développement Durable est une entreprise marocaine spécialisée dans la construction tous corps d'état, au service de projets résidentiels, commerciaux, industriels et logistiques.
+          <p class="font-body-sm text-body-sm text-tertiary-fixed-dim leading-relaxed">
+            Entreprise Générale de Construction BTP au Maroc. Tous Corps d'État, Gros Œuvre, Génie Civil, VRD et Conduite de Travaux rigoureuse.
           </p>
-          <div style="display: flex; gap: 12px;">
-            <a href="https://linkedin.com" target="_blank" rel="noopener" style="width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: #FFFFFF; transition: all 0.2s ease;">
-              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-            </a>
-            <a href="https://instagram.com" target="_blank" rel="noopener" style="width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: #FFFFFF; transition: all 0.2s ease;">
-              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-            </a>
-            <a href="https://youtube.com" target="_blank" rel="noopener" style="width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center; color: #FFFFFF; transition: all 0.2s ease;">
-              <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-            </a>
+          <div class="pt-2">
+            <span class="inline-flex items-center px-3 py-1 rounded bg-surface-container-highest/10 text-primary-fixed-dim font-label-mono text-xs">
+              RC Casablanca N° 572912
+            </span>
           </div>
         </div>
 
         <!-- Col 2: Navigation -->
-        <div>
-          <h4 style="font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.1em; color: var(--c-cyan-light); text-transform: uppercase; margin-bottom: 20px;">Navigation</h4>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.88rem;">
-            <li><a href="index.html" style="color: rgba(255,255,255,0.75);">Accueil</a></li>
-            <li><a href="a-propos.html" style="color: rgba(255,255,255,0.75);">À propos</a></li>
-            <li><a href="expertises.html" style="color: rgba(255,255,255,0.75);">Nos expertises</a></li>
-            <li><a href="projets.html" style="color: rgba(255,255,255,0.75);">Nos réalisations</a></li>
-            <li><a href="contact.html#carrieres" style="color: rgba(255,255,255,0.75);">Carrières</a></li>
-            <li><a href="contact.html" style="color: rgba(255,255,255,0.75);">Contact</a></li>
+        <div class="flex flex-col gap-4">
+          <h4 class="font-headline-sm text-headline-sm text-surface-container-lowest border-l-2 border-primary-container pl-3 font-semibold">Navigation</h4>
+          <ul class="flex flex-col gap-2.5 font-body-sm text-body-sm text-tertiary-fixed-dim">
+            <li><a class="hover:text-primary-fixed-dim transition-colors" href="index.html">Accueil</a></li>
+            <li><a class="hover:text-primary-fixed-dim transition-colors" href="a-propos.html">À propos de TG2D</a></li>
+            <li><a class="hover:text-primary-fixed-dim transition-colors" href="expertises.html">Nos expertises</a></li>
+            <li><a class="hover:text-primary-fixed-dim transition-colors" href="projets.html">Nos réalisations</a></li>
+            <li><a class="hover:text-primary-fixed-dim transition-colors" href="carrieres.html">Carrières &amp; Recrutement</a></li>
+            <li><a class="hover:text-primary-fixed-dim transition-colors" href="contact.html">Contact &amp; Devis</a></li>
           </ul>
         </div>
 
-        <!-- Col 3: Nos expertises -->
-        <div>
-          <h4 style="font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.1em; color: var(--c-cyan-light); text-transform: uppercase; margin-bottom: 20px;">Nos expertises</h4>
-          <ul style="list-style: none; display: flex; flex-direction: column; gap: 12px; font-size: 0.88rem;">
-            <li><a href="service-construction-tous-corps-detat.html" style="color: rgba(255,255,255,0.75);">Construction TCE</a></li>
-            <li><a href="service-gros-oeuvre-structure.html" style="color: rgba(255,255,255,0.75);">Gros œuvre</a></li>
-            <li><a href="service-second-oeuvre-finitions.html" style="color: rgba(255,255,255,0.75);">Second œuvre</a></li>
-            <li><a href="service-projets-commerciaux-retail.html" style="color: rgba(255,255,255,0.75);">Projets commerciaux</a></li>
-            <li><a href="service-projets-industriels-logistiques.html" style="color: rgba(255,255,255,0.75);">Projets industriels</a></li>
-            <li><a href="service-renovation-rehabilitation.html" style="color: rgba(255,255,255,0.75);">Rénovation</a></li>
+        <!-- Col 3: Expertises -->
+        <div class="flex flex-col gap-4">
+          <h4 class="font-headline-sm text-headline-sm text-surface-container-lowest border-l-2 border-primary-container pl-3 font-semibold">Domaines Clés</h4>
+          <ul class="flex flex-col gap-2.5 font-body-sm text-body-sm text-tertiary-fixed-dim">
+            <li>Showrooms Commerciaux &amp; Hangars</li>
+            <li>Plateformes Logistiques &amp; Quais</li>
+            <li>Villas Contemporaines Standing</li>
+            <li>Immeubles Tertiaires &amp; Sièges</li>
+            <li>Bassins Industriels &amp; Cuvelage</li>
+            <li>Terrassements Lourds &amp; VRD</li>
           </ul>
         </div>
 
         <!-- Col 4: Contact -->
-        <div>
-          <h4 style="font-family: var(--font-mono); font-size: 0.8rem; letter-spacing: 0.1em; color: var(--c-cyan-light); text-transform: uppercase; margin-bottom: 20px;">Contact</h4>
-          <div style="font-size: 0.88rem; color: rgba(255,255,255,0.75); display: flex; flex-direction: column; gap: 14px; line-height: 1.5;">
-            <div style="display: flex; gap: 10px;">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color: var(--c-cyan-light); flex-shrink: 0;"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <div class="flex flex-col gap-4">
+          <h4 class="font-headline-sm text-headline-sm text-surface-container-lowest border-l-2 border-primary-container pl-3 font-semibold">Contact</h4>
+          <div class="flex flex-col gap-3 font-body-sm text-body-sm text-tertiary-fixed-dim">
+            <div class="flex items-start gap-2.5">
+              <span class="material-symbols-outlined text-[18px] text-primary-container mt-0.5">location_on</span>
               <span>57 Rue Abou Alaazahar, Quartier des Hôpitaux, 20100 Casablanca, Maroc</span>
             </div>
-            <div style="display: flex; gap: 10px;">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color: var(--c-cyan-light); flex-shrink: 0;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              <a href="tel:+212618392328" style="color: rgba(255,255,255,0.75);">+212 618-392328</a>
+            <div class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px] text-primary-container">call</span>
+              <a class="hover:text-primary-fixed-dim transition-colors" href="tel:+212618392328">+212 618-392328</a>
             </div>
-            <div style="display: flex; gap: 10px;">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color: var(--c-cyan-light); flex-shrink: 0;"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              <a href="mailto:tg2d.maroc@gmail.com" style="color: rgba(255,255,255,0.75);">tg2d.maroc@gmail.com</a>
+            <div class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px] text-primary-container">mail</span>
+              <a class="hover:text-primary-fixed-dim transition-colors" href="mailto:tg2d.maroc@gmail.com">tg2d.maroc@gmail.com</a>
             </div>
-            <div style="display: flex; gap: 10px;">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" style="color: var(--c-cyan-light); flex-shrink: 0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-              <span>Lun - Sam: 08h00 - 19h00</span>
+            <div class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px] text-primary-container">schedule</span>
+              <span>Lun - Sam : 08h00 - 19h00</span>
             </div>
           </div>
         </div>
       </div>
 
-      <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 0.8rem; color: rgba(255,255,255,0.5);">
-        <div>&copy; 2026 TG2D — Travaux Généraux de Développement Durable. Tous droits réservés.</div>
-        <div style="display: flex; gap: 20px;">
-          <a href="contact.html" style="color: rgba(255,255,255,0.5);">Politique de confidentialité</a>
-          <a href="contact.html" style="color: rgba(255,255,255,0.5);">Mentions légales</a>
+      <!-- Copyright -->
+      <div class="mt-16 pt-8 border-t border-surface-container-highest/20 flex flex-col md:flex-row items-center justify-between gap-4 font-body-sm text-body-sm text-tertiary-fixed-dim">
+        <div class="flex items-center gap-6">
+          <a class="hover:text-surface-container-lowest transition-colors" href="contact.html">Mentions légales</a>
+          <a class="hover:text-surface-container-lowest transition-colors" href="contact.html">Confidentialité</a>
         </div>
+        <p>© 2026 TG2D — Travaux Généraux de Développement Durable. Tous droits réservés.</p>
       </div>
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <!-- Drawer Toggle Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const burger = document.getElementById('navBurger');
+      const close = document.getElementById('mobClose');
+      const drawer = document.getElementById('mobileDrawer');
+      const panel = document.getElementById('mobileDrawerPanel');
+
+      function openMenu() {
+        if (!drawer || !panel) return;
+        drawer.classList.remove('opacity-0', 'pointer-events-none');
+        drawer.classList.add('opacity-100', 'pointer-events-auto');
+        panel.classList.remove('translate-x-full');
+        panel.classList.add('translate-x-0');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeMenu() {
+        if (!drawer || !panel) return;
+        drawer.classList.add('opacity-0', 'pointer-events-none');
+        drawer.classList.remove('opacity-100', 'pointer-events-auto');
+        panel.classList.add('translate-x-full');
+        panel.classList.remove('translate-x-0');
+        document.body.style.overflow = '';
+      }
+
+      if (burger) burger.addEventListener('click', openMenu);
+      if (close) close.addEventListener('click', closeMenu);
+      if (drawer) {
+        drawer.addEventListener('click', (e) => {
+          if (e.target === drawer) closeMenu();
+        });
+        drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
+      }
+    });
+  </script>
 </body>
 </html>
