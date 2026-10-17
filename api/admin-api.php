@@ -327,7 +327,7 @@ try {
 
     // TEST D'EXPÉDITION D'EMAIL
     if ($action === 'test_email') {
-        $targetEmail = trim(!empty($_REQ['email']) ? $_REQ['email'] : (!empty($config['mail']['notify_emails'][0]) ? $config['mail']['notify_emails'][0] : 'tg2d.maroc@gmail.com'));
+        $targetEmail = trim(!empty($_REQ['email']) ? $_REQ['email'] : (!empty($config['mail']['notify_emails'][0]) ? $config['mail']['notify_emails'][0] : 'contact@tg2d.ma'));
         $res = tg2d_send_test_email($targetEmail);
 
         if ($res['success']) {

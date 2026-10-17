@@ -1383,7 +1383,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
               <div class="form-group" style="margin-bottom: 16px;">
                 <label for="testEmailInput">Adresse email de test</label>
-                <input type="email" id="testEmailInput" value="tg2d.maroc@gmail.com" />
+                <input type="email" id="testEmailInput" value="contact@tg2d.ma" />
               </div>
 
               <button type="button" class="btn-secondary" id="btnTestEmail" onclick="handleTestEmail()">

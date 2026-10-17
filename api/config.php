@@ -40,12 +40,12 @@ return [
     'mail' => [
         // Destinataire principal recevant chaque notification de projet
         'notify_emails' => [
-            'tg2d.maroc@gmail.com'
+            'contact@tg2d.ma'
         ],
         
         // Nom de l'expéditeur et adresse d'envoi
         'from_name'  => 'TG2D Maroc — Chantiers & Études',
-        'from_email' => 'noreply@tg2d.ma', // ou tg2d.maroc@gmail.com sur serveurs restreints
+        'from_email' => 'noreply@tg2d.ma', // ou contact@tg2d.ma sur serveurs restreints
 
         // Confirmation automatique envoyée au client qui a fait la demande
         'send_client_confirmation' => true,
@@ -58,7 +58,7 @@ return [
             'host'       => 'smtp.gmail.com', // ou mail.tg2d.ma
             'port'       => 587,
             'encryption' => 'tls', // 'tls' ou 'ssl'
-            'username'   => 'tg2d.maroc@gmail.com',
+            'username'   => 'contact@tg2d.ma',
             'password'   => '' // Mot de passe d'application si SMTP Gmail
         ]
     ],
@@ -84,7 +84,7 @@ return [
         'tagline' => 'Entreprise Générale de Bâtiment, Génie Civil & Travaux Publics',
         'phone'   => '+212 6 18 39 23 28',
         'whatsapp'=> '212618392328',
-        'email'   => 'tg2d.maroc@gmail.com',
+        'email'   => 'contact@tg2d.ma',
         'website' => 'https://tg2d.ma'
     ]
 ];

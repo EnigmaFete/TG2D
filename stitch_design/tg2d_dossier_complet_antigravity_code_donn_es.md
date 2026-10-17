@@ -12,7 +12,7 @@
 - **Coordonnées de référence** :
   - Siège : 57 Rue Abou Alaazahar, Quartier des Hôpitaux, 20100 Casablanca, Maroc
   - Téléphone : +212 618-392328 / +212 (0) 5 22 XX XX XX
-  - E-mail général : tg2d.maroc@gmail.com
+  - E-mail général : contact@tg2d.ma
   - E-mail technique / AO : contact@tg2d.ma
   - E-mail RH : recrutement@tg2d.ma
 - **Framework & Stack Recommandée** : HTML5 sémantique, Tailwind CSS v3.4+, Lucide Icons / Heroicons, Google Fonts (Manrope & Inter).
@@ -605,7 +605,7 @@
         <h4 class="font-bold text-white uppercase tracking-wider text-xs mb-4">Coordonnées</h4>
         <p class="mb-2 text-slate-300">57 Rue Abou Alaazahar, Quartier des Hôpitaux, 20100 Casablanca, Maroc</p>
         <p class="mb-2"><a href="tel:+212618392328" class="text-white hover:underline">+212 618-392328</a></p>
-        <p class="mb-2"><a href="mailto:tg2d.maroc@gmail.com" class="text-[#08bcd8] hover:underline">tg2d.maroc@gmail.com</a></p>
+        <p class="mb-2"><a href="mailto:contact@tg2d.ma" class="text-[#08bcd8] hover:underline">contact@tg2d.ma</a></p>
         <p class="text-slate-500">Lun - Sam : 08h00 - 19h00</p>
       </div>
     </div>
