@@ -1,7 +1,7 @@
 <?php
 /**
- * TG2D MAROC — TABLEAU DE BORD ADMINISTRATEUR
- * Direction Générale, Ingénierie & Gestion Commerciale
+ * TG2D MAROC — TABLEAU DE BORD ADMINISTRATEUR COMPLET
+ * Direction Générale, Ingénierie, Devis & Suivi Commercial
  */
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
@@ -151,7 +151,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     /* Left Sidebar */
     .sidebar {
-      width: 240px;
+      width: 250px;
       background: var(--sidebar-bg);
       border-right: 1px solid var(--sidebar-border);
       position: fixed;
@@ -186,7 +186,7 @@ if (session_status() === PHP_SESSION_NONE) {
     .sidebar-nav-item {
       display: flex;
       align-items: center;
-      gap: 14px;
+      justify-content: space-between;
       padding: 12px 14px;
       border-radius: 8px;
       color: var(--sidebar-text);
@@ -205,11 +205,24 @@ if (session_status() === PHP_SESSION_NONE) {
       color: var(--sidebar-text-active);
       font-weight: 600;
     }
+    .sidebar-nav-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
     .sidebar-nav-item svg {
       width: 19px;
       height: 19px;
       stroke-width: 2;
       flex-shrink: 0;
+    }
+    .sidebar-badge {
+      font-size: 0.72rem;
+      background: var(--c-blue);
+      color: #FFFFFF;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
     }
 
     .sidebar-bottom {
@@ -250,7 +263,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     /* Main Content */
     .main-wrap {
-      margin-left: 240px;
+      margin-left: 250px;
       flex: 1;
       padding: 24px 44px 60px;
       max-width: 1440px;
@@ -298,13 +311,32 @@ if (session_status() === PHP_SESSION_NONE) {
     .user-pill {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 16px;
+    }
+    .user-profile-badge {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #1E293B;
+    }
+    .online-dot {
+      width: 8px;
+      height: 8px;
+      background: #10B981;
+      border-radius: 50%;
+      box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
     }
     .logout-btn {
       background: transparent;
       border: 1px solid var(--border-light);
       border-radius: 6px;
-      padding: 6px 12px;
+      padding: 7px 12px;
       font-size: 0.8rem;
       color: var(--text-muted);
       cursor: pointer;
@@ -330,10 +362,10 @@ if (session_status() === PHP_SESSION_NONE) {
       align-items: center;
       justify-content: space-between;
       box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-      min-height: 200px;
+      min-height: 190px;
     }
     .hero-banner-content {
-      padding: 36px 40px;
+      padding: 32px 40px;
       position: relative;
       z-index: 2;
       max-width: 580px;
@@ -347,15 +379,15 @@ if (session_status() === PHP_SESSION_NONE) {
       margin-bottom: 8px;
     }
     .hero-title {
-      font-size: clamp(2rem, 3.2vw, 2.7rem);
+      font-size: clamp(1.8rem, 3vw, 2.4rem);
       font-weight: 800;
       color: var(--text-dark);
       letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 12px;
+      line-height: 1.15;
+      margin-bottom: 8px;
     }
     .hero-subtitle {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       color: var(--text-muted);
       line-height: 1.5;
     }
@@ -386,7 +418,7 @@ if (session_status() === PHP_SESSION_NONE) {
       max-width: 280px;
     }
     .hero-quote-text {
-      font-size: 0.88rem;
+      font-size: 0.85rem;
       font-weight: 700;
       letter-spacing: 0.12em;
       color: #1E293B;
@@ -406,10 +438,10 @@ if (session_status() === PHP_SESSION_NONE) {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
-      margin: 28px 0;
+      margin: 24px 0;
     }
     .quick-card {
-      padding: 18px 20px;
+      padding: 16px 18px;
       border-radius: 12px;
       display: flex;
       align-items: center;
@@ -423,24 +455,10 @@ if (session_status() === PHP_SESSION_NONE) {
       transform: translateY(-2px);
       box-shadow: 0 8px 20px rgba(0,0,0,0.06);
     }
-
-    /* Card Themes */
-    .card-devis {
-      background: #EFF6FF;
-      border: 1px solid #DBEAFE;
-    }
-    .card-paperless {
-      background: #F0FDF4;
-      border: 1px solid #DCFCE7;
-    }
-    .card-gce {
-      background: #FEF2F2;
-      border: 1px solid #FEE2E2;
-    }
-    .card-easydoc {
-      background: #EFF6FF;
-      border: 1px solid #DBEAFE;
-    }
+    .card-devis { background: #EFF6FF; border: 1px solid #DBEAFE; }
+    .card-paperless { background: #F0FDF4; border: 1px solid #DCFCE7; }
+    .card-gce { background: #FEF2F2; border: 1px solid #FEE2E2; }
+    .card-easydoc { background: #EFF6FF; border: 1px solid #DBEAFE; }
 
     .quick-icon-wrap {
       width: 44px;
@@ -453,36 +471,72 @@ if (session_status() === PHP_SESSION_NONE) {
       flex-shrink: 0;
       box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
-    .quick-card-body {
-      flex: 1;
-      min-width: 0;
+    .quick-card-body { flex: 1; min-width: 0; }
+    .quick-card-title { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 2px; }
+    .quick-card-desc { font-size: 0.8rem; color: var(--text-muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .quick-card-arrow { color: var(--text-dark); display: flex; align-items: center; flex-shrink: 0; margin-left: 6px; }
+    .quick-card-arrow svg { width: 17px; height: 17px; }
+
+    /* Executive KPI Grid */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-bottom: 28px;
     }
-    .quick-card-title {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 2px;
-    }
-    .quick-card-desc {
-      font-size: 0.82rem;
-      color: var(--text-muted);
-      white-space: nowrap;
+    .kpi-card {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: 12px;
+      padding: 20px 22px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+      position: relative;
       overflow: hidden;
-      text-overflow: ellipsis;
     }
-    .quick-card-arrow {
-      color: var(--text-dark);
+    .kpi-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+    .kpi-label {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #64748B;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .kpi-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
-      flex-shrink: 0;
-      margin-left: 6px;
+      justify-content: center;
     }
-    .quick-card-arrow svg {
-      width: 17px;
-      height: 17px;
+    .kpi-val {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: #0F172A;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .kpi-sub {
+      font-size: 0.78rem;
+      color: #64748B;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .kpi-badge-pill {
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
     }
 
-    /* Main Section: Derniers Devis */
+    /* Section Headers */
     .section-header-row {
       display: flex;
       justify-content: space-between;
@@ -503,12 +557,10 @@ if (session_status() === PHP_SESSION_NONE) {
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      cursor: pointer;
       transition: gap 0.2s;
     }
-    .section-link:hover {
-      gap: 10px;
-      text-decoration: underline;
-    }
+    .section-link:hover { gap: 10px; text-decoration: underline; }
 
     /* Content Box Container */
     .content-box {
@@ -517,6 +569,7 @@ if (session_status() === PHP_SESSION_NONE) {
       border-radius: 16px;
       box-shadow: 0 1px 3px rgba(0,0,0,0.03);
       overflow: hidden;
+      margin-bottom: 28px;
     }
 
     /* Empty State View */
@@ -529,39 +582,28 @@ if (session_status() === PHP_SESSION_NONE) {
       justify-content: center;
     }
     .empty-icon-circle {
-      width: 72px;
-      height: 72px;
+      width: 64px;
+      height: 64px;
       border-radius: 50%;
       background: #F1F5F9;
       display: flex;
       align-items: center;
       justify-content: center;
       color: #64748B;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
-    .empty-icon-circle svg {
-      width: 32px;
-      height: 32px;
-    }
-    .empty-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      margin-bottom: 8px;
-    }
-    .empty-desc {
-      font-size: 0.92rem;
-      color: var(--text-muted);
-      margin-bottom: 24px;
-      max-width: 400px;
-    }
+    .empty-icon-circle svg { width: 30px; height: 30px; }
+    .empty-title { font-size: 1.2rem; font-weight: 700; color: var(--text-dark); margin-bottom: 6px; }
+    .empty-desc { font-size: 0.88rem; color: var(--text-muted); margin-bottom: 20px; max-width: 400px; }
+
+    /* Primary Action Buttons */
     .btn-create-devis {
       background: var(--c-blue);
       color: #FFFFFF;
       border: none;
       border-radius: 8px;
-      padding: 12px 24px;
-      font-size: 0.92rem;
+      padding: 10px 20px;
+      font-size: 0.88rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
@@ -569,14 +611,48 @@ if (session_status() === PHP_SESSION_NONE) {
       gap: 8px;
       transition: all 0.2s;
       box-shadow: 0 2px 6px rgba(0, 132, 255, 0.25);
+      text-decoration: none;
     }
     .btn-create-devis:hover {
       background: var(--c-blue-hover);
       transform: translateY(-1px);
       box-shadow: 0 4px 12px rgba(0, 132, 255, 0.35);
     }
+    .btn-secondary {
+      background: #FFFFFF;
+      color: #334155;
+      border: 1px solid var(--border-light);
+      border-radius: 8px;
+      padding: 9px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.18s;
+      text-decoration: none;
+    }
+    .btn-secondary:hover {
+      background: #F8FAFC;
+      border-color: #CBD5E1;
+      color: #0F172A;
+    }
+    .btn-action-sm {
+      padding: 5px 10px;
+      font-size: 0.78rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      transition: all 0.15s;
+      border: 1px solid transparent;
+    }
 
-    /* Table View when devis exist */
+    /* Table View */
     .devis-table-wrap {
       width: 100%;
       overflow-x: auto;
@@ -585,20 +661,21 @@ if (session_status() === PHP_SESSION_NONE) {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
     }
     .devis-table th {
       background: #F8FAFC;
-      padding: 14px 20px;
-      font-size: 0.78rem;
+      padding: 13px 18px;
+      font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: #64748B;
       border-bottom: 1px solid var(--border-light);
+      white-space: nowrap;
     }
     .devis-table td {
-      padding: 16px 20px;
+      padding: 14px 18px;
       border-bottom: 1px solid var(--border-light);
       color: var(--text-dark);
       vertical-align: middle;
@@ -609,23 +686,44 @@ if (session_status() === PHP_SESSION_NONE) {
     .status-badge {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       padding: 4px 10px;
       border-radius: 6px;
-      font-size: 0.76rem;
+      font-size: 0.75rem;
       font-weight: 700;
+      white-space: nowrap;
     }
     .badge-brouillon { background: #F1F5F9; color: #475569; }
-    .badge-transmis { background: #EFF6FF; color: #1D4ED8; }
-    .badge-valide { background: #ECFDF5; color: #047857; }
-    .badge-refuse { background: #FEF2F2; color: #B91C1C; }
-    .badge-attente { background: #FEF3C7; color: #B45309; }
+    .badge-transmis  { background: #EFF6FF; color: #1D4ED8; }
+    .badge-valide    { background: #ECFDF5; color: #047857; }
+    .badge-refuse    { background: #FEF2F2; color: #B91C1C; }
+    .badge-attente   { background: #FEF3C7; color: #B45309; }
+    .badge-info      { background: #F0F9FF; color: #0284C7; }
 
-    /* Modal Styling */
+    /* Filter strip */
+    .status-btn {
+      background: #FFFFFF;
+      border: 1px solid var(--border-light);
+      border-radius: 6px;
+      padding: 6px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      transition: all 0.18s;
+    }
+    .status-btn:hover { background: #F8FAFC; color: var(--text-dark); }
+    .status-btn.active {
+      background: #0F172A;
+      color: #FFFFFF;
+      border-color: #0F172A;
+    }
+
+    /* Modals */
     .modal-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(15, 23, 42, 0.6);
+      background: rgba(15, 23, 42, 0.65);
       backdrop-filter: blur(4px);
       z-index: 2000;
       display: none;
@@ -637,7 +735,7 @@ if (session_status() === PHP_SESSION_NONE) {
       background: #FFFFFF;
       border-radius: 16px;
       width: 100%;
-      max-width: 640px;
+      max-width: 660px;
       max-height: 90vh;
       overflow-y: auto;
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
@@ -649,15 +747,11 @@ if (session_status() === PHP_SESSION_NONE) {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
       border-bottom: 1px solid var(--border-light);
       padding-bottom: 16px;
     }
-    .modal-title {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: var(--text-dark);
-    }
+    .modal-title { font-size: 1.25rem; font-weight: 700; color: var(--text-dark); }
     .modal-close {
       background: transparent;
       border: none;
@@ -675,10 +769,12 @@ if (session_status() === PHP_SESSION_NONE) {
     .form-col-full { grid-column: span 2; }
     .form-group label {
       display: block;
-      font-size: 0.8rem;
+      font-size: 0.78rem;
       font-weight: 600;
       color: #475569;
       margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
     .form-group input, .form-group select, .form-group textarea {
       width: 100%;
@@ -689,6 +785,7 @@ if (session_status() === PHP_SESSION_NONE) {
       color: var(--text-dark);
       outline: none;
       transition: border 0.2s;
+      font-family: inherit;
     }
     .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
       border-color: var(--c-blue);
@@ -703,18 +800,99 @@ if (session_status() === PHP_SESSION_NONE) {
       border-top: 1px solid var(--border-light);
     }
 
+    /* Print / Preview Slip */
+    .print-devis-slip {
+      background: #FFFFFF;
+      padding: 40px;
+      border-radius: 12px;
+      max-width: 780px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.25);
+    }
+    .slip-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid #0F172A;
+      padding-bottom: 20px;
+      margin-bottom: 24px;
+    }
+    .slip-logo {
+      height: 48px;
+      object-fit: contain;
+    }
+    .slip-company-info {
+      font-size: 0.78rem;
+      color: #475569;
+      line-height: 1.4;
+      text-align: right;
+    }
+    .slip-box-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .slip-box {
+      border: 1px solid #E2E8F0;
+      border-radius: 8px;
+      padding: 16px;
+      background: #F8FAFC;
+    }
+    .slip-box-title {
+      font-size: 0.74rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: #64748B;
+      margin-bottom: 8px;
+      letter-spacing: 0.05em;
+    }
+    .slip-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 24px;
+    }
+    .slip-table th, .slip-table td {
+      border: 1px solid #CBD5E1;
+      padding: 10px 14px;
+      font-size: 0.88rem;
+    }
+    .slip-table th { background: #0F172A; color: #FFFFFF; font-size: 0.8rem; text-transform: uppercase; }
+    .slip-totals-row td { font-weight: 700; }
+    .slip-footer {
+      border-top: 1px solid #E2E8F0;
+      padding-top: 20px;
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.78rem;
+      color: #64748B;
+    }
+
+    /* Print styles */
+    @media print {
+      body * { visibility: hidden; }
+      #printModal, #printModal * { visibility: visible; }
+      #printModal { position: absolute; left: 0; top: 0; width: 100%; background: #FFF; padding: 0; display: block !important; }
+      .print-devis-slip { box-shadow: none; border-radius: 0; padding: 20px; max-width: 100%; }
+      .no-print { display: none !important; }
+    }
+
     /* Views Switcher */
     .tab-view { display: none; }
     .tab-view.active-tab { display: block; }
 
     /* Responsive adjustments */
-    @media (max-width: 1100px) {
+    @media (max-width: 1180px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
       .quick-cards-grid { grid-template-columns: repeat(2, 1fr); }
       .hero-banner-visual { width: 44%; }
     }
-    @media (max-width: 820px) {
+    @media (max-width: 860px) {
       .sidebar { width: 72px; padding: 20px 8px; }
-      .sidebar-brand span, .sidebar-nav-item span, .sidebar-site-link-left .label, .sidebar-site-link-left .domain { display: none; }
+      .sidebar-brand span, .sidebar-nav-item span, .sidebar-badge, .sidebar-site-link-left .label, .sidebar-site-link-left .domain { display: none; }
       .sidebar-brand { justify-content: center; padding: 0 0 20px; }
       .sidebar-nav-item { justify-content: center; padding: 12px; }
       .sidebar-site-link { justify-content: center; padding: 12px; }
@@ -722,6 +900,7 @@ if (session_status() === PHP_SESSION_NONE) {
       .main-wrap { margin-left: 72px; padding: 20px; }
       .hero-banner-visual { display: none; }
       .hero-banner-content { max-width: 100%; }
+      .kpi-grid { grid-template-columns: 1fr; }
       .quick-cards-grid { grid-template-columns: 1fr; }
     }
   </style>
@@ -764,26 +943,44 @@ if (session_status() === PHP_SESSION_NONE) {
         <ul class="sidebar-nav">
           <li>
             <a class="sidebar-nav-item active" data-tab="tab-accueil" onclick="switchTab('tab-accueil', this)">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-              <span>Accueil</span>
+              <div class="sidebar-nav-left">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                <span>Accueil</span>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a class="sidebar-nav-item" data-tab="tab-demandes" onclick="switchTab('tab-demandes', this)">
+              <div class="sidebar-nav-left">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                <span>Demandes Web</span>
+              </div>
+              <span class="sidebar-badge" id="sidebarBadgeInquiries">0</span>
             </a>
           </li>
           <li>
             <a class="sidebar-nav-item" data-tab="tab-devis" onclick="switchTab('tab-devis', this)">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-              <span>Devis</span>
+              <div class="sidebar-nav-left">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+                <span>Devis & Chiffrages</span>
+              </div>
+              <span class="sidebar-badge" id="sidebarBadgeDevis" style="background: #334155;">0</span>
             </a>
           </li>
           <li>
             <a class="sidebar-nav-item" data-tab="tab-logiciels" onclick="switchTab('tab-logiciels', this)">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
-              <span>Logiciels</span>
+              <div class="sidebar-nav-left">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                <span>Logiciels</span>
+              </div>
             </a>
           </li>
           <li>
             <a class="sidebar-nav-item" data-tab="tab-parametres" onclick="switchTab('tab-parametres', this)">
-              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
-              <span>Paramètres</span>
+              <div class="sidebar-nav-left">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                <span>Paramètres</span>
+              </div>
             </a>
           </li>
         </ul>
@@ -811,10 +1008,14 @@ if (session_status() === PHP_SESSION_NONE) {
       <header class="top-search-row">
         <div class="search-input-wrap">
           <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-          <input type="text" id="globalSearchInput" class="search-input" placeholder="Rechercher un devis, un client, un document..." oninput="handleSearch(this.value)" />
+          <input type="text" id="globalSearchInput" class="search-input" placeholder="Recherche rapide (client, devis, projet, email...)" oninput="handleGlobalSearch(this.value)" />
         </div>
 
         <div class="user-pill">
+          <div class="user-profile-badge">
+            <span class="online-dot"></span>
+            <span>Direction TG2D</span>
+          </div>
           <button class="logout-btn" onclick="handleLogout()" title="Fermer la session">
             <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
             <span>Déconnexion</span>
@@ -828,9 +1029,9 @@ if (session_status() === PHP_SESSION_NONE) {
         <!-- Hero Banner with Architecture Photo & Tagline -->
         <div class="hero-banner-card">
           <div class="hero-banner-content">
-            <div class="hero-eyebrow">TABLEAU DE BORD</div>
-            <h1 class="hero-title">Bienvenue</h1>
-            <p class="hero-subtitle">Accédez rapidement à vos outils et gérez vos devis depuis un seul espace.</p>
+            <div class="hero-eyebrow">ESPACE DIRECTION GÉNÉRALE</div>
+            <h1 class="hero-title">Tableau de Bord</h1>
+            <p class="hero-subtitle">Supervision centrale des devis, chiffrages BTP et demandes de projets.</p>
           </div>
 
           <div class="hero-banner-visual">
@@ -854,7 +1055,7 @@ if (session_status() === PHP_SESSION_NONE) {
               <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
             </div>
             <div class="quick-card-body">
-              <div class="quick-card-title">Devis</div>
+              <div class="quick-card-title">Devis & Chiffrages</div>
               <div class="quick-card-desc">Gérer tous les devis</div>
             </div>
             <div class="quick-card-arrow">
@@ -865,7 +1066,6 @@ if (session_status() === PHP_SESSION_NONE) {
           <!-- Card 2: Paperless (GED) -->
           <a class="quick-card card-paperless" id="linkPaperlessCard" href="http://localhost:8001" target="_blank" rel="noopener">
             <div class="quick-icon-wrap">
-              <!-- Official Paperless Polygon Green Logo -->
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                 <path d="M12 2L3 8V16L12 22L21 16V8L12 2Z" fill="#10B981" opacity="0.2"/>
                 <path d="M12 2L4 9L12 14L20 9L12 2Z" fill="#059669"/>
@@ -884,13 +1084,12 @@ if (session_status() === PHP_SESSION_NONE) {
           <!-- Card 3: GCE -->
           <a class="quick-card card-gce" id="linkGceCard" href="https://tg2d.ma/gce" target="_blank" rel="noopener">
             <div class="quick-icon-wrap">
-              <!-- GCE Red Styled Badge -->
               <div style="width: 24px; height: 24px; border-radius: 5px; background: linear-gradient(135deg, #B91C1C 0%, #7F1D1D 100%); color: #FFFFFF; font-weight: 800; font-size: 11px; display: flex; align-items: center; justify-content: center; font-family: monospace;">
                 G
               </div>
             </div>
             <div class="quick-card-body">
-              <div class="quick-card-title">GCE</div>
+              <div class="quick-card-title">GCE Entreprise</div>
               <div class="quick-card-desc">Ouvrir GCE</div>
             </div>
             <div class="quick-card-arrow">
@@ -914,46 +1113,170 @@ if (session_status() === PHP_SESSION_NONE) {
 
         </div>
 
+        <!-- Executive KPI Cards Strip -->
+        <div class="kpi-grid">
+          
+          <div class="kpi-card">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Demandes Web</span>
+              <div class="kpi-icon" style="background: #EFF6FF; color: #0084FF;">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </div>
+            </div>
+            <div class="kpi-val" id="kpiDemandesCount">0</div>
+            <div class="kpi-sub">
+              <span class="kpi-badge-pill" style="background: #DCFCE7; color: #15803D;" id="kpiDemandesToday">+0 ajd</span>
+              <span>formulaires reçus</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Devis Enregistrés</span>
+              <div class="kpi-icon" style="background: #FEF3C7; color: #B45309;">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              </div>
+            </div>
+            <div class="kpi-val" id="kpiDevisCount">0</div>
+            <div class="kpi-sub">
+              <span style="color: #64748B;">Dossiers en base active</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Volume Chiffré HT</span>
+              <div class="kpi-icon" style="background: #ECFDF5; color: #059669;">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              </div>
+            </div>
+            <div class="kpi-val" id="kpiTotalMontant">0 MAD</div>
+            <div class="kpi-sub">
+              <span>Montant chiffrages en cours</span>
+            </div>
+          </div>
+
+          <div class="kpi-card">
+            <div class="kpi-card-top">
+              <span class="kpi-label">Devis Validés</span>
+              <div class="kpi-icon" style="background: #F0FDF4; color: #16A34A;">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+            </div>
+            <div class="kpi-val" id="kpiDevisValidés">0</div>
+            <div class="kpi-sub">
+              <span class="kpi-badge-pill" style="background: #ECFDF5; color: #047857;" id="kpiTauxConversion">0%</span>
+              <span>taux de concrétisation</span>
+            </div>
+          </div>
+
+        </div>
+
         <!-- Section: Derniers devis -->
-        <div>
+        <div style="margin-bottom: 32px;">
           <div class="section-header-row">
-            <h2 class="section-title">Derniers devis</h2>
+            <h2 class="section-title">Derniers Devis & Chiffrages</h2>
             <a class="section-link" onclick="switchTab('tab-devis', document.querySelector('[data-tab=\'tab-devis\']'))">
               <span>Voir tous les devis</span>
               <span>&rarr;</span>
             </a>
           </div>
 
-          <!-- Main White Container -->
           <div class="content-box" id="latestDevisContainer">
-            <!-- Will render Empty State or Table dynamically -->
             <div class="empty-state-view">
               <div class="empty-icon-circle">
-                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
               </div>
               <h3 class="empty-title">Aucun devis pour le moment</h3>
               <p class="empty-desc">Vos devis apparaîtront ici une fois créés.</p>
-              <button class="btn-create-devis" onclick="openDevisModal()">
-                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-                <span>Créer un nouveau devis</span>
-              </button>
+              <button class="btn-create-devis" onclick="openDevisModal()">+ Créer un nouveau devis</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section: Dernières Demandes du Site -->
+        <div>
+          <div class="section-header-row">
+            <h2 class="section-title">Dernières Demandes Reçues du Site Web</h2>
+            <a class="section-link" onclick="switchTab('tab-demandes', document.querySelector('[data-tab=\'tab-demandes\']'))">
+              <span>Voir toutes les demandes</span>
+              <span>&rarr;</span>
+            </a>
+          </div>
+
+          <div class="content-box" id="latestInquiriesContainer">
+            <div class="empty-state-view">
+              <div class="empty-icon-circle">
+                <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/></svg>
+              </div>
+              <h3 class="empty-title">Aucune demande reçue</h3>
+              <p class="empty-desc">Les messages envoyés depuis le formulaire du site apparaîtront ici.</p>
             </div>
           </div>
         </div>
 
       </section>
 
+      <!-- ================= TAB: DEMANDES WEB ================= -->
+      <section id="tab-demandes" class="tab-view">
+        <div class="section-header-row" style="margin-bottom: 24px;">
+          <div>
+            <h1 style="font-size: 1.8rem; font-weight: 800; color: var(--text-dark); margin-bottom: 4px;">Demandes de Projets & Contacts Web</h1>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Consultez et traitez les prospects et demandes de chiffrage reçus depuis tg2d.ma.</p>
+          </div>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <button class="btn-secondary" onclick="exportInquiriesCsv()" title="Télécharger un export CSV compatible Excel">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Exporter CSV</span>
+            </button>
+            <button class="btn-create-devis" onclick="openAddInquiryModal()">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <span>Dossier Manuel</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Filters Strip -->
+        <div style="display: flex; gap: 12px; margin-bottom: 20px; flex-wrap: wrap; align-items: center; justify-content: space-between;">
+          <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+            <button class="status-btn active" onclick="filterInquiriesStatus('all', this)">Toutes</button>
+            <button class="status-btn" onclick="filterInquiriesStatus('Nouveau', this)">Nouveaux</button>
+            <button class="status-btn" onclick="filterInquiriesStatus('Contacté', this)">Contactés</button>
+            <button class="status-btn" onclick="filterInquiriesStatus('Étude en cours', this)">En étude</button>
+            <button class="status-btn" onclick="filterInquiriesStatus('Devis envoyé', this)">Devis envoyés</button>
+            <button class="status-btn" onclick="filterInquiriesStatus('Archivé', this)">Archivés</button>
+          </div>
+          <div style="color: var(--text-muted); font-size: 0.85rem;" id="inquiriesCounterText">0 demande(s)</div>
+        </div>
+
+        <div class="content-box" id="inquiriesFullContainer">
+          <div class="empty-state-view" style="padding: 60px;">
+            <div class="empty-icon-circle">
+              <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/></svg>
+            </div>
+            <h3 class="empty-title">Aucune demande trouvée</h3>
+            <p class="empty-desc">Aucune soumission ne correspond aux filtres.</p>
+          </div>
+        </div>
+      </section>
+
       <!-- ================= TAB: DEVIS & DEMANDES ================= -->
       <section id="tab-devis" class="tab-view">
         <div class="section-header-row" style="margin-bottom: 24px;">
           <div>
-            <h1 style="font-size: 1.8rem; font-weight: 800; color: var(--text-dark); margin-bottom: 4px;">Gestion des Devis</h1>
-            <p style="color: var(--text-muted); font-size: 0.9rem;">Consultez, créez et suivez vos devis et chiffrages de projets BTP.</p>
+            <h1 style="font-size: 1.8rem; font-weight: 800; color: var(--text-dark); margin-bottom: 4px;">Gestion des Devis & Chiffrages</h1>
+            <p style="color: var(--text-muted); font-size: 0.9rem;">Consultez, éditez, imprimez et suivez vos devis et chiffrages de projets BTP.</p>
           </div>
-          <button class="btn-create-devis" onclick="openDevisModal()">
-            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-            <span>Nouveau devis</span>
-          </button>
+          <div style="display: flex; gap: 10px; align-items: center;">
+            <button class="btn-secondary" onclick="exportDevisCsv()" title="Télécharger tous les devis au format CSV">
+              <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Exporter CSV</span>
+            </button>
+            <button class="btn-create-devis" onclick="openDevisModal()">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <span>Nouveau devis</span>
+            </button>
+          </div>
         </div>
 
         <!-- Filters Strip -->
@@ -961,6 +1284,7 @@ if (session_status() === PHP_SESSION_NONE) {
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             <button class="status-btn active" onclick="filterDevisStatus('Tous', this)">Tous</button>
             <button class="status-btn" onclick="filterDevisStatus('En attente', this)">En attente</button>
+            <button class="status-btn" onclick="filterDevisStatus('En étude', this)">En étude</button>
             <button class="status-btn" onclick="filterDevisStatus('Transmis', this)">Transmis</button>
             <button class="status-btn" onclick="filterDevisStatus('Validé', this)">Validés</button>
             <button class="status-btn" onclick="filterDevisStatus('Refusé', this)">Refusés</button>
@@ -1053,54 +1377,122 @@ if (session_status() === PHP_SESSION_NONE) {
       <!-- ================= TAB: PARAMÈTRES ================= -->
       <section id="tab-parametres" class="tab-view">
         <div style="margin-bottom: 28px;">
-          <h1 style="font-size: 1.8rem; font-weight: 800; color: var(--text-dark); margin-bottom: 4px;">Paramètres du Système</h1>
-          <p style="color: var(--text-muted); font-size: 0.9rem;">Configurez les liens d'accès aux logiciels et les réglages de votre tableau de bord.</p>
+          <h1 style="font-size: 1.8rem; font-weight: 800; color: var(--text-dark); margin-bottom: 4px;">Paramètres & Système</h1>
+          <p style="color: var(--text-muted); font-size: 0.9rem;">Configurez les accès logiciels, testez les notifications email et surveillez l'état du serveur.</p>
         </div>
 
-        <div style="max-width: 680px;" class="content-box">
-          <form id="settingsForm" onsubmit="saveSoftwareSettings(event)" style="padding: 32px;">
-            <div id="settingsAlert" style="display: none; padding: 12px; border-radius: 8px; margin-bottom: 20px; font-size: 0.88rem;"></div>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          
+          <!-- Column 1: Software Links Settings -->
+          <div class="content-box">
+            <form id="settingsForm" onsubmit="saveSoftwareSettings(event)" style="padding: 28px;">
+              <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">
+                Liens des Logiciels Métier
+              </h3>
+              <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 20px;">
+                Modifiez les adresses vers lesquelles pointent les raccourcis du tableau de bord.
+              </p>
 
-            <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">
-              Liens des Cartes Logiciels
-            </h3>
+              <div id="settingsAlert" style="display: none; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 0.88rem;"></div>
 
-            <div class="form-group" style="margin-bottom: 16px;">
-              <label for="cfg_paperless">URL de Paperless (GED)</label>
-              <input type="text" id="cfg_paperless" placeholder="http://localhost:8001 ou https://ged.tg2d.ma" required />
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label for="cfg_paperless">URL Paperless-ngx (GED)</label>
+                <input type="text" id="cfg_paperless" placeholder="http://localhost:8001 ou https://ged.tg2d.ma" required />
+              </div>
+
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label for="cfg_gce">URL GCE Entreprise</label>
+                <input type="text" id="cfg_gce" placeholder="https://..." required />
+              </div>
+
+              <div class="form-group" style="margin-bottom: 24px;">
+                <label for="cfg_easydoc">URL Easydoc</label>
+                <input type="text" id="cfg_easydoc" placeholder="https://..." required />
+              </div>
+
+              <button type="submit" class="btn-create-devis">
+                <span>Enregistrer les liens</span>
+              </button>
+            </form>
+          </div>
+
+          <!-- Column 2: Test Email & System Information -->
+          <div style="display: flex; flex-direction: column; gap: 24px;">
+            
+            <!-- Test Email Box -->
+            <div class="content-box" style="padding: 28px;">
+              <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 14px; border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">
+                Test d'Envoi d'Email
+              </h3>
+              <p style="font-size: 0.85rem; color: #64748B; margin-bottom: 16px;">
+                Vérifiez la bonne réception des notifications administratives.
+              </p>
+
+              <div id="emailTestAlert" style="display: none; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 0.85rem;"></div>
+
+              <div class="form-group" style="margin-bottom: 16px;">
+                <label for="testEmailInput">Adresse email de test</label>
+                <input type="email" id="testEmailInput" value="tg2d.maroc@gmail.com" />
+              </div>
+
+              <button type="button" class="btn-secondary" id="btnTestEmail" onclick="handleTestEmail()">
+                <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                <span>Envoyer un email de test</span>
+              </button>
             </div>
 
-            <div class="form-group" style="margin-bottom: 16px;">
-              <label for="cfg_gce">URL de GCE</label>
-              <input type="text" id="cfg_gce" placeholder="https://..." required />
+            <!-- System Info Box -->
+            <div class="content-box" style="padding: 28px;">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; border-bottom: 1px solid var(--border-light); padding-bottom: 8px;">
+                <h3 style="font-size: 1.15rem; font-weight: 700;">Informations Système</h3>
+                <button onclick="loadSystemInfo()" class="logout-btn" style="padding: 4px 8px; font-size: 0.75rem;" title="Rafraîchir les infos système">Rafraîchir</button>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 10px; font-size: 0.85rem;">
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed #E2E8F0; padding-bottom: 6px;">
+                  <span style="color: #64748B;">Moteur Base de Données :</span>
+                  <strong id="sysDbDriver">Chargement...</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed #E2E8F0; padding-bottom: 6px;">
+                  <span style="color: #64748B;">Taille Fichier DB :</span>
+                  <strong id="sysDbSize">—</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed #E2E8F0; padding-bottom: 6px;">
+                  <span style="color: #64748B;">Version PHP Serveur :</span>
+                  <strong id="sysPhpVer">—</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px dashed #E2E8F0; padding-bottom: 6px;">
+                  <span style="color: #64748B;">Transport Email :</span>
+                  <strong id="sysMailTransport">—</strong>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span style="color: #64748B;">Heure Serveur :</span>
+                  <strong id="sysServerTime">—</strong>
+                </div>
+              </div>
             </div>
 
-            <div class="form-group" style="margin-bottom: 24px;">
-              <label for="cfg_easydoc">URL de Easydoc</label>
-              <input type="text" id="cfg_easydoc" placeholder="https://..." required />
-            </div>
+          </div>
 
-            <button type="submit" class="btn-create-devis">
-              <span>Enregistrer les liens</span>
-            </button>
-          </form>
         </div>
       </section>
 
     </main>
   </div>
 
-  <!-- ================= MODAL: CRÉER UN NOUVEAU DEVIS ================= -->
+  <!-- ================= MODAL: CRÉER / MODIFIER UN DEVIS ================= -->
   <div class="modal-overlay" id="devisModal">
     <div class="modal-card">
       <div class="modal-header">
-        <h3 class="modal-title">Créer un nouveau devis</h3>
+        <h3 class="modal-title" id="devisModalTitle">Créer un nouveau devis</h3>
         <button class="modal-close" onclick="closeDevisModal()">&times;</button>
       </div>
 
       <div id="devisModalAlert" style="display: none; padding: 12px; border-radius: 8px; margin-bottom: 16px; font-size: 0.88rem;"></div>
 
-      <form id="createDevisForm" onsubmit="handleCreateDevis(event)">
+      <form id="createDevisForm" onsubmit="handleSaveDevis(event)">
+        <input type="hidden" id="dev_id" value="" />
+
         <div class="form-grid">
           
           <div class="form-group form-col-full">
@@ -1132,6 +1524,7 @@ if (session_status() === PHP_SESSION_NONE) {
             <label for="dev_travaux">Corps d'état / Nature</label>
             <select id="dev_travaux">
               <option value="Gros Œuvre & Structure">Gros Œuvre & Structure</option>
+              <option value="Terrassement Lourd / Déroctage">Terrassement Lourd / Déroctage</option>
               <option value="Bâtiment Industriel & Logistique">Bâtiment Industriel & Logistique</option>
               <option value="Tous Corps d'État (TCE)">Tous Corps d'État (TCE)</option>
               <option value="Second Œuvre & Finitions">Second Œuvre & Finitions</option>
@@ -1150,12 +1543,13 @@ if (session_status() === PHP_SESSION_NONE) {
           </div>
 
           <div class="form-group">
-            <label for="dev_statut">Statut initial</label>
+            <label for="dev_statut">Statut</label>
             <select id="dev_statut">
               <option value="Brouillon">Brouillon</option>
-              <option value="Transmis">Transmis au client</option>
               <option value="En étude">En étude technique</option>
+              <option value="Transmis">Transmis au client</option>
               <option value="Validé">Validé / Signé</option>
+              <option value="Refusé">Refusé</option>
             </select>
           </div>
 
@@ -1167,43 +1561,136 @@ if (session_status() === PHP_SESSION_NONE) {
         </div>
 
         <div class="modal-actions">
-          <button type="button" class="logout-btn" onclick="closeDevisModal()" style="padding: 10px 18px;">Annuler</button>
+          <button type="button" class="btn-secondary" onclick="closeDevisModal()">Annuler</button>
           <button type="submit" class="btn-create-devis" id="saveDevisBtn">Enregistrer le devis</button>
         </div>
       </form>
     </div>
   </div>
 
-  <style>
-    .status-btn {
-      background: #FFFFFF;
-      border: 1px solid var(--border-light);
-      border-radius: 6px;
-      padding: 6px 14px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: var(--text-muted);
-      cursor: pointer;
-      transition: all 0.18s;
-    }
-    .status-btn:hover {
-      background: #F8FAFC;
-      color: var(--text-dark);
-    }
-    .status-btn.active {
-      background: #0F172A;
-      color: #FFFFFF;
-      border-color: #0F172A;
-    }
-  </style>
+  <!-- ================= MODAL: NOUVEAU DOSSIER MANUEL (DEMANDE WEB) ================= -->
+  <div class="modal-overlay" id="addInquiryModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title">Nouveau Dossier Prospect / Manuel</h3>
+        <button class="modal-close" onclick="closeAddInquiryModal()">&times;</button>
+      </div>
 
-  <!-- ================= CORE LOGIC JAVASCRIPT ================= -->
+      <form id="addInquiryForm" onsubmit="handleAddInquiry(event)">
+        <div class="form-grid">
+          
+          <div class="form-group">
+            <label for="inq_nom">Nom complet *</label>
+            <input type="text" id="inq_nom" placeholder="Ex: M. Amine Tazi" required />
+          </div>
+
+          <div class="form-group">
+            <label for="inq_tel">Téléphone *</label>
+            <input type="text" id="inq_tel" placeholder="+212 6..." required />
+          </div>
+
+          <div class="form-group">
+            <label for="inq_email">Email</label>
+            <input type="email" id="inq_email" placeholder="contact@..." />
+          </div>
+
+          <div class="form-group">
+            <label for="inq_profil">Profil Client</label>
+            <select id="inq_profil">
+              <option value="promoteur">Promoteur / Investisseur Immobilier</option>
+              <option value="industriel">Industriel / Logistique</option>
+              <option value="architecte">Architecte / Bureau d'études</option>
+              <option value="particulier">Particulier (Villa / Résidence)</option>
+              <option value="autre">Autre organisme</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="inq_besoin">Corps d'état principal</label>
+            <select id="inq_besoin">
+              <option value="gros-oeuvre">Gros Œuvre & Structure Béton</option>
+              <option value="terrassement">Terrassement Lourd / Déroctage</option>
+              <option value="tce">Construction Tous Corps d'État (TCE)</option>
+              <option value="batiment-industriel">Bâtiment Industriel & Charpente</option>
+              <option value="renovation">Rénovation & Restructuration</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="inq_status">Statut initial</label>
+            <select id="inq_status">
+              <option value="Nouveau">Nouveau</option>
+              <option value="Contacté">Contacté</option>
+              <option value="Étude en cours">Étude en cours</option>
+              <option value="Devis envoyé">Devis envoyé</option>
+            </select>
+          </div>
+
+          <div class="form-group form-col-full">
+            <label for="inq_message">Détails du projet / Besoins client</label>
+            <textarea id="inq_message" rows="3" placeholder="Description du projet, métrés, localisation, contraintes de planning..."></textarea>
+          </div>
+
+          <div class="form-group form-col-full">
+            <label for="inq_notes">Notes internes (visibles uniquement par TG2D)</label>
+            <input type="text" id="inq_notes" placeholder="Contact reçu par téléphone le..." />
+          </div>
+
+        </div>
+
+        <div class="modal-actions">
+          <button type="button" class="btn-secondary" onclick="closeAddInquiryModal()">Annuler</button>
+          <button type="submit" class="btn-create-devis" id="saveInquiryBtn">Créer le dossier</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: FICHE / IMPRESSION BORDEREAU DE DEVIS ================= -->
+  <div class="modal-overlay" id="printModal">
+    <div class="print-devis-slip">
+      <div class="no-print" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid var(--border-light);">
+        <button class="logout-btn" onclick="closePrintModal()">&larr; Fermer</button>
+        <button class="btn-create-devis" onclick="window.print()">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+          <span>Imprimer le devis (PDF)</span>
+        </button>
+      </div>
+
+      <!-- Printable Slip Content -->
+      <div id="slipContent">
+        <!-- Rendered via JS -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODAL: NOTES INTERNES ================= -->
+  <div class="modal-overlay" id="notesModal">
+    <div class="modal-card" style="max-width: 480px;">
+      <div class="modal-header">
+        <h3 class="modal-title">Notes Internes Dossier</h3>
+        <button class="modal-close" onclick="closeNotesModal()">&times;</button>
+      </div>
+      <input type="hidden" id="note_inquiry_id" value="" />
+      <div class="form-group" style="margin-bottom: 20px;">
+        <label for="note_text">Remarques & Suivi interne</label>
+        <textarea id="note_text" rows="5" placeholder="Saisir les remarques..."></textarea>
+      </div>
+      <div class="modal-actions">
+        <button type="button" class="btn-secondary" onclick="closeNotesModal()">Annuler</button>
+        <button type="button" class="btn-create-devis" onclick="saveInquiryNotes()">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= CORE JAVASCRIPT ================= -->
   <script>
     let devisList = [];
-    let currentFilter = 'Tous';
-    let searchQuery = '';
+    let inquiriesList = [];
+    let currentDevisFilter = 'Tous';
+    let currentInquiryFilter = 'all';
+    let globalSearchTerm = '';
 
-    // Check authentication on load
     document.addEventListener('DOMContentLoaded', async () => {
       try {
         const res = await fetch('../api/admin-api.php?action=check_auth');
@@ -1227,7 +1714,16 @@ if (session_status() === PHP_SESSION_NONE) {
       document.getElementById('authOverlay').style.display = 'none';
       document.getElementById('mainDashboard').style.display = 'flex';
       loadSettings();
-      loadDevis();
+      loadSystemInfo();
+      refreshDashboardData();
+    }
+
+    async function refreshDashboardData() {
+      await Promise.all([
+        loadStats(),
+        loadDevis(),
+        loadInquiries()
+      ]);
     }
 
     // Login Handler
@@ -1282,12 +1778,43 @@ if (session_status() === PHP_SESSION_NONE) {
       if (target) target.classList.add('active-tab');
       if (element) element.classList.add('active');
 
-      if (tabId === 'tab-devis' || tabId === 'tab-accueil') {
-        loadDevis();
+      if (tabId === 'tab-accueil') refreshDashboardData();
+      if (tabId === 'tab-devis') loadDevis();
+      if (tabId === 'tab-demandes') loadInquiries();
+      if (tabId === 'tab-parametres') loadSystemInfo();
+    }
+
+    // Global Search
+    function handleGlobalSearch(term) {
+      globalSearchTerm = term.trim().toLowerCase();
+      renderDevisTab();
+      renderInquiriesTab();
+    }
+
+    // Load Stats & KPIs
+    async function loadStats() {
+      try {
+        const res = await fetch('../api/admin-api.php?action=get_stats');
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('kpiDemandesCount').textContent = data.total || 0;
+          document.getElementById('kpiDemandesToday').textContent = `+${data.today || 0} ajd`;
+          document.getElementById('kpiDevisCount').textContent = data.devis_total || 0;
+          document.getElementById('kpiTotalMontant').textContent = `${Number(data.devis_total_ht || 0).toLocaleString('fr-FR')} MAD`;
+          document.getElementById('kpiDevisValidés').textContent = data.devis_valides || 0;
+          
+          const conversion = data.devis_total > 0 ? Math.round((data.devis_valides / data.devis_total) * 100) : 0;
+          document.getElementById('kpiTauxConversion').textContent = `${conversion}%`;
+
+          document.getElementById('sidebarBadgeInquiries').textContent = data.total || 0;
+          document.getElementById('sidebarBadgeDevis').textContent = data.devis_total || 0;
+        }
+      } catch (e) {
+        console.error('Erreur stats:', e);
       }
     }
 
-    // Load software settings
+    // Load Software Settings
     async function loadSettings() {
       try {
         const res = await fetch('../api/admin-api.php?action=get_settings');
@@ -1297,7 +1824,6 @@ if (session_status() === PHP_SESSION_NONE) {
           const g = data.settings.link_gce || 'https://tg2d.ma/gce';
           const e = data.settings.link_easydoc || 'https://tg2d.ma/easydoc/login.php';
 
-          // Set links on quick access cards
           const linkP = document.getElementById('linkPaperlessCard');
           const linkG = document.getElementById('linkGceCard');
           const linkE = document.getElementById('linkEasydocCard');
@@ -1305,7 +1831,6 @@ if (session_status() === PHP_SESSION_NONE) {
           if (linkG) linkG.href = g;
           if (linkE) linkE.href = e;
 
-          // Set links on Logiciels tab
           const sP = document.getElementById('linkPaperlessSuite');
           const sG = document.getElementById('linkGceSuite');
           const sE = document.getElementById('linkEasydocSuite');
@@ -1313,7 +1838,6 @@ if (session_status() === PHP_SESSION_NONE) {
           if (sG) sG.href = g;
           if (sE) sE.href = e;
 
-          // Set inputs in Paramètres tab
           const inP = document.getElementById('cfg_paperless');
           const inG = document.getElementById('cfg_gce');
           const inE = document.getElementById('cfg_easydoc');
@@ -1322,7 +1846,7 @@ if (session_status() === PHP_SESSION_NONE) {
           if (inE) inE.value = e;
         }
       } catch (err) {
-        console.error('Erreur chargement paramètres:', err);
+        console.error('Erreur paramètres:', err);
       }
     }
 
@@ -1345,7 +1869,7 @@ if (session_status() === PHP_SESSION_NONE) {
           alert.style.background = '#ECFDF5';
           alert.style.color = '#047857';
           alert.style.border = '1px solid #A7F3D0';
-          alert.textContent = 'Liens des logiciels enregistrés avec succès !';
+          alert.textContent = 'Liens logiciels enregistrés avec succès !';
           loadSettings();
         }
       } catch (err) {
@@ -1356,24 +1880,76 @@ if (session_status() === PHP_SESSION_NONE) {
       }
     }
 
-    // Load devis list
+    // Load System Info
+    async function loadSystemInfo() {
+      try {
+        const res = await fetch('../api/admin-api.php?action=get_system_info');
+        const data = await res.json();
+        if (data.success) {
+          document.getElementById('sysDbDriver').textContent = data.driver || 'SQLITE';
+          document.getElementById('sysDbSize').textContent = data.db_size || 'N/A';
+          document.getElementById('sysPhpVer').textContent = data.php_version || 'N/A';
+          document.getElementById('sysMailTransport').textContent = data.transport || 'PHP mail';
+          document.getElementById('sysServerTime').textContent = data.server_time || 'N/A';
+        }
+      } catch (e) {
+        console.error('Erreur info système:', e);
+      }
+    }
+
+    // Test Email Handler
+    async function handleTestEmail() {
+      const email = document.getElementById('testEmailInput').value.trim();
+      const btn = document.getElementById('btnTestEmail');
+      const alert = document.getElementById('emailTestAlert');
+
+      btn.disabled = true;
+      btn.innerHTML = 'Envoi en cours...';
+      alert.style.display = 'none';
+
+      try {
+        const res = await fetch('../api/admin-api.php?action=test_email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email })
+        });
+        const data = await res.json();
+        alert.style.display = 'block';
+        if (data.success) {
+          alert.style.background = '#ECFDF5';
+          alert.style.color = '#047857';
+          alert.style.border = '1px solid #A7F3D0';
+          alert.textContent = data.message;
+        } else {
+          alert.style.background = '#FEF2F2';
+          alert.style.color = '#B91C1C';
+          alert.style.border = '1px solid #FECACA';
+          alert.textContent = data.error || "Échec d'envoi.";
+        }
+      } catch (err) {
+        alert.style.display = 'block';
+        alert.style.background = '#FEF2F2';
+        alert.style.color = '#B91C1C';
+        alert.textContent = "Erreur de communication avec le serveur mail.";
+      } finally {
+        btn.disabled = false;
+        btn.innerHTML = `<svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg> <span>Envoyer un email de test</span>`;
+      }
+    }
+
+    // ================= DEVIS MANAGEMENT =================
     async function loadDevis() {
       try {
         const res = await fetch('../api/admin-api.php?action=get_devis');
         const data = await res.json();
         if (data.success) {
           devisList = data.devis || [];
-          renderAllDevis();
+          renderAccueilDevis();
+          renderDevisTab();
         }
       } catch (err) {
         console.error('Erreur chargement devis:', err);
       }
-    }
-
-    // Render Devis in both Accueil and Devis tabs
-    function renderAllDevis() {
-      renderAccueilDevis();
-      renderDevisTab();
     }
 
     function renderAccueilDevis() {
@@ -1384,20 +1960,16 @@ if (session_status() === PHP_SESSION_NONE) {
         container.innerHTML = `
           <div class="empty-state-view">
             <div class="empty-icon-circle">
-              <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
             </div>
             <h3 class="empty-title">Aucun devis pour le moment</h3>
             <p class="empty-desc">Vos devis apparaîtront ici une fois créés.</p>
-            <button class="btn-create-devis" onclick="openDevisModal()">
-              <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
-              <span>Créer un nouveau devis</span>
-            </button>
+            <button class="btn-create-devis" onclick="openDevisModal()">+ Créer un nouveau devis</button>
           </div>
         `;
         return;
       }
 
-      // Display table of latest 5 devis
       const latest = devisList.slice(0, 5);
       container.innerHTML = `
         <div class="devis-table-wrap">
@@ -1410,6 +1982,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <th>MONTANT HT</th>
                 <th>STATUT</th>
                 <th>DATE</th>
+                <th>ACTION</th>
               </tr>
             </thead>
             <tbody>
@@ -1427,6 +2000,9 @@ if (session_status() === PHP_SESSION_NONE) {
                   <td><strong>${Number(d.montant_ht || 0).toLocaleString('fr-FR')} MAD</strong></td>
                   <td>${getStatusBadge(d.status)}</td>
                   <td style="color: #64748B; font-size: 0.82rem;">${d.created_at ? d.created_at.substring(0, 10) : ''}</td>
+                  <td>
+                    <button class="btn-action-sm btn-secondary" onclick="openPrintSlip(${d.id})">Bordereau</button>
+                  </td>
                 </tr>
               `).join('')}
             </tbody>
@@ -1441,13 +2017,12 @@ if (session_status() === PHP_SESSION_NONE) {
       if (!container) return;
 
       let filtered = devisList.filter(d => {
-        if (currentFilter !== 'Tous' && d.status !== currentFilter) return false;
-        if (searchQuery !== '') {
-          const q = searchQuery.toLowerCase();
-          const match = (d.reference && d.reference.toLowerCase().includes(q)) ||
-                        (d.client_nom && d.client_nom.toLowerCase().includes(q)) ||
-                        (d.client_societe && d.client_societe.toLowerCase().includes(q)) ||
-                        (d.projet_titre && d.projet_titre.toLowerCase().includes(q));
+        if (currentDevisFilter !== 'Tous' && d.status !== currentDevisFilter) return false;
+        if (globalSearchTerm !== '') {
+          const match = (d.reference && d.reference.toLowerCase().includes(globalSearchTerm)) ||
+                        (d.client_nom && d.client_nom.toLowerCase().includes(globalSearchTerm)) ||
+                        (d.client_societe && d.client_societe.toLowerCase().includes(globalSearchTerm)) ||
+                        (d.projet_titre && d.projet_titre.toLowerCase().includes(globalSearchTerm));
           if (!match) return false;
         }
         return true;
@@ -1462,7 +2037,7 @@ if (session_status() === PHP_SESSION_NONE) {
               <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/></svg>
             </div>
             <h3 class="empty-title">Aucun devis trouvé</h3>
-            <p class="empty-desc">Aucun devis ne correspond aux critères de filtre sélectionnés.</p>
+            <p class="empty-desc">Aucun devis ne correspond aux critères sélectionnés.</p>
             <button class="btn-create-devis" onclick="openDevisModal()">+ Créer un nouveau devis</button>
           </div>
         `;
@@ -1488,7 +2063,7 @@ if (session_status() === PHP_SESSION_NONE) {
               ${filtered.map(d => {
                 const cleanTel = (d.client_tel || '').replace(/[^0-9]/g, '');
                 const waNumber = cleanTel.startsWith('0') ? '212' + cleanTel.substring(1) : cleanTel;
-                const waLink = cleanTel ? `https://wa.me/${waNumber}?text=${encodeURIComponent('Bonjour ' + (d.client_nom || '') + ', concernant votre dossier d\'étude ' + (d.reference || '') + ' pour TG2D...')}` : '';
+                const waLink = cleanTel ? `https://wa.me/${waNumber}?text=${encodeURIComponent('Bonjour ' + (d.client_nom || '') + ', concernant votre dossier d\'étude ' + (d.reference || '') + ' avec l\'entreprise générale TG2D...')}` : '';
                 return `
                 <tr>
                   <td><strong style="color: var(--c-blue);">${escapeHtml(d.reference || 'DEV-N/A')}</strong></td>
@@ -1517,10 +2092,12 @@ if (session_status() === PHP_SESSION_NONE) {
                   </td>
                   <td style="color: #64748B; font-size: 0.82rem;">${d.created_at ? d.created_at.substring(0, 10) : ''}</td>
                   <td>
-                    <div style="display: inline-flex; align-items: center; gap: 6px;">
-                      ${waLink ? `<a href="${waLink}" target="_blank" rel="noopener noreferrer" style="background: #059669; color: #FFFFFF; text-decoration: none; border-radius: 6px; padding: 4px 10px; font-size: 0.78rem; font-weight: 700; display: inline-flex; align-items: center;" title="Contacter sur WhatsApp">WhatsApp</a>` : ''}
-                      <button onclick="deleteDevis(${d.id})" style="background: transparent; border: 1px solid #FECACA; border-radius: 6px; color: #EF4444; cursor: pointer; padding: 4px 8px; font-size: 0.78rem; font-weight: 600;" title="Supprimer ce devis">
-                        Supprimer
+                    <div style="display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                      <button class="btn-action-sm btn-secondary" onclick="openPrintSlip(${d.id})" title="Voir / Imprimer le bordereau chiffré">Bordereau</button>
+                      <button class="btn-action-sm btn-secondary" onclick="openEditDevis(${d.id})" title="Modifier ce devis">Modifier</button>
+                      ${waLink ? `<a href="${waLink}" target="_blank" rel="noopener noreferrer" class="btn-action-sm" style="background: #059669; color: #FFFFFF;" title="Contacter sur WhatsApp">WhatsApp</a>` : ''}
+                      <button onclick="deleteDevis(${d.id})" class="btn-action-sm" style="background: transparent; border: 1px solid #FECACA; color: #EF4444;" title="Supprimer ce devis">
+                        &times;
                       </button>
                     </div>
                   </td>
@@ -1532,38 +2109,58 @@ if (session_status() === PHP_SESSION_NONE) {
       `;
     }
 
-    function getStatusBadge(status) {
-      if (status === 'Validé') return `<span class="status-badge badge-valide">Validé</span>`;
-      if (status === 'Transmis') return `<span class="status-badge badge-transmis">Transmis</span>`;
-      if (status === 'Refusé') return `<span class="status-badge badge-refuse">Refusé</span>`;
-      if (status === 'En attente' || status === 'Nouveau' || status === 'En étude') return `<span class="status-badge badge-attente">${status}</span>`;
-      return `<span class="status-badge badge-brouillon">${status || 'Brouillon'}</span>`;
-    }
-
     function filterDevisStatus(status, btn) {
-      currentFilter = status;
-      document.querySelectorAll('.status-btn').forEach(b => b.classList.remove('active'));
+      currentDevisFilter = status;
+      document.querySelectorAll('#tab-devis .status-btn').forEach(b => b.classList.remove('active'));
       if (btn) btn.classList.add('active');
       renderDevisTab();
     }
 
-    function handleSearch(val) {
-      searchQuery = val.trim();
-      renderDevisTab();
+    function openDevisModal(editData = null) {
+      const modal = document.getElementById('devisModal');
+      const title = document.getElementById('devisModalTitle');
+      const btn = document.getElementById('saveDevisBtn');
+      document.getElementById('devisModalAlert').style.display = 'none';
+
+      if (editData) {
+        title.textContent = `Modifier le devis : ${editData.reference || 'N/A'}`;
+        btn.textContent = "Mettre à jour le devis";
+        document.getElementById('dev_id').value = editData.id;
+        document.getElementById('dev_nom').value = editData.client_nom || '';
+        document.getElementById('dev_societe').value = editData.client_societe || '';
+        document.getElementById('dev_tel').value = editData.client_tel || '';
+        document.getElementById('dev_email').value = editData.client_email || '';
+        document.getElementById('dev_titre').value = editData.projet_titre || '';
+        document.getElementById('dev_travaux').value = editData.type_travaux || "Gros Œuvre & Structure";
+        document.getElementById('dev_loc').value = editData.localisation || '';
+        document.getElementById('dev_montant').value = editData.montant_ht || 0;
+        document.getElementById('dev_statut').value = editData.status || 'Brouillon';
+        document.getElementById('dev_notes').value = editData.notes || '';
+      } else {
+        title.textContent = "Créer un nouveau devis";
+        btn.textContent = "Enregistrer le devis";
+        document.getElementById('createDevisForm').reset();
+        document.getElementById('dev_id').value = '';
+      }
+
+      modal.style.display = 'flex';
     }
 
-    // Modal Create Devis
-    function openDevisModal() {
-      document.getElementById('devisModal').style.display = 'flex';
-    }
     function closeDevisModal() {
       document.getElementById('devisModal').style.display = 'none';
       document.getElementById('createDevisForm').reset();
     }
 
-    async function handleCreateDevis(e) {
+    function openEditDevis(id) {
+      const devis = devisList.find(d => d.id == id);
+      if (devis) openDevisModal(devis);
+    }
+
+    async function handleSaveDevis(e) {
       e.preventDefault();
+      const id = document.getElementById('dev_id').value;
       const payload = {
+        id: id ? parseInt(id) : 0,
         client_nom: document.getElementById('dev_nom').value.trim(),
         client_societe: document.getElementById('dev_societe').value.trim(),
         client_tel: document.getElementById('dev_tel').value.trim(),
@@ -1576,12 +2173,13 @@ if (session_status() === PHP_SESSION_NONE) {
         notes: document.getElementById('dev_notes').value.trim()
       };
 
+      const action = id ? 'update_devis' : 'create_devis';
       const btn = document.getElementById('saveDevisBtn');
       btn.disabled = true;
-      btn.textContent = "Création en cours...";
+      btn.textContent = "Enregistrement...";
 
       try {
-        const res = await fetch('../api/admin-api.php?action=create_devis', {
+        const res = await fetch(`../api/admin-api.php?action=${action}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(payload)
@@ -1589,15 +2187,15 @@ if (session_status() === PHP_SESSION_NONE) {
         const data = await res.json();
         if (data.success) {
           closeDevisModal();
-          await loadDevis();
+          await refreshDashboardData();
         } else {
-          alert(data.error || 'Erreur lors de la création du devis.');
+          alert(data.error || "Erreur lors de l'enregistrement.");
         }
       } catch (err) {
-        alert("Erreur serveur lors de l'enregistrement du devis.");
+        alert("Erreur serveur lors de la sauvegarde.");
       } finally {
         btn.disabled = false;
-        btn.textContent = "Enregistrer le devis";
+        btn.textContent = id ? "Mettre à jour le devis" : "Enregistrer le devis";
       }
     }
 
@@ -1608,7 +2206,7 @@ if (session_status() === PHP_SESSION_NONE) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ id: id, status: newStatus })
         });
-        await loadDevis();
+        await refreshDashboardData();
       } catch (err) {
         console.error(err);
       }
@@ -1622,10 +2220,475 @@ if (session_status() === PHP_SESSION_NONE) {
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ id: id })
         });
-        await loadDevis();
+        await refreshDashboardData();
       } catch (err) {
         console.error(err);
       }
+    }
+
+    function exportDevisCsv() {
+      window.location.href = '../api/admin-api.php?action=export_devis_csv';
+    }
+
+    // ================= INQUIRIES MANAGEMENT =================
+    async function loadInquiries() {
+      try {
+        const res = await fetch('../api/admin-api.php?action=get_inquiries&limit=100');
+        const data = await res.json();
+        if (data.success) {
+          inquiriesList = data.data || [];
+          renderAccueilInquiries();
+          renderInquiriesTab();
+        }
+      } catch (err) {
+        console.error('Erreur chargement demandes:', err);
+      }
+    }
+
+    function renderAccueilInquiries() {
+      const container = document.getElementById('latestInquiriesContainer');
+      if (!container) return;
+
+      if (!inquiriesList || inquiriesList.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state-view">
+            <div class="empty-icon-circle">
+              <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/></svg>
+            </div>
+            <h3 class="empty-title">Aucune demande reçue</h3>
+            <p class="empty-desc">Les messages envoyés depuis le site web apparaîtront ici.</p>
+          </div>
+        `;
+        return;
+      }
+
+      const latest = inquiriesList.slice(0, 5);
+      container.innerHTML = `
+        <div class="devis-table-wrap">
+          <table class="devis-table">
+            <thead>
+              <tr>
+                <th>DATE</th>
+                <th>CLIENT & PROFIL</th>
+                <th>CONTACT</th>
+                <th>CORPS D'ÉTAT</th>
+                <th>STATUT</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${latest.map(inq => {
+                const cleanTel = (inq.telephone || '').replace(/[^0-9]/g, '');
+                const waNumber = cleanTel.startsWith('0') ? '212' + cleanTel.substring(1) : cleanTel;
+                const waLink = cleanTel ? `https://wa.me/${waNumber}?text=${encodeURIComponent('Bonjour ' + (inq.nom || '') + ', nous avons bien reçu votre demande d\'étude TG2D Maroc...')}` : '';
+                return `
+                <tr>
+                  <td style="color: #64748B; font-size: 0.82rem;">${inq.created_at ? inq.created_at.substring(0, 16) : ''}</td>
+                  <td>
+                    <div style="font-weight: 600;">${escapeHtml(inq.nom)}</div>
+                    <div style="font-size: 0.76rem; color: #64748B;">${formatProfilLabel(inq.profil)}</div>
+                  </td>
+                  <td>
+                    <div><a href="tel:${escapeHtml(inq.telephone)}" style="color: var(--c-blue); text-decoration: none; font-weight: 600;">${escapeHtml(inq.telephone)}</a></div>
+                    <div style="font-size: 0.78rem; color: #64748B;"><a href="mailto:${escapeHtml(inq.email)}" style="color: inherit; text-decoration: none;">${escapeHtml(inq.email)}</a></div>
+                  </td>
+                  <td>
+                    <span class="status-badge badge-info">${formatBesoinLabel(inq.besoin)}</span>
+                  </td>
+                  <td>${getInquiryStatusBadge(inq.status)}</td>
+                  <td>
+                    <div style="display: inline-flex; align-items: center; gap: 6px;">
+                      ${waLink ? `<a href="${waLink}" target="_blank" rel="noopener noreferrer" class="btn-action-sm" style="background: #059669; color: #FFFFFF;">WhatsApp</a>` : ''}
+                      <button class="btn-action-sm btn-secondary" onclick="convertInquiryToDevis(${inq.id})">Créer Devis</button>
+                    </div>
+                  </td>
+                </tr>
+              `;}).join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function renderInquiriesTab() {
+      const container = document.getElementById('inquiriesFullContainer');
+      const counter = document.getElementById('inquiriesCounterText');
+      if (!container) return;
+
+      let filtered = inquiriesList.filter(inq => {
+        if (currentInquiryFilter !== 'all' && inq.status !== currentInquiryFilter) return false;
+        if (globalSearchTerm !== '') {
+          const match = (inq.nom && inq.nom.toLowerCase().includes(globalSearchTerm)) ||
+                        (inq.telephone && inq.telephone.toLowerCase().includes(globalSearchTerm)) ||
+                        (inq.email && inq.email.toLowerCase().includes(globalSearchTerm)) ||
+                        (inq.message && inq.message.toLowerCase().includes(globalSearchTerm));
+          if (!match) return false;
+        }
+        return true;
+      });
+
+      if (counter) counter.textContent = `${filtered.length} demande(s) affichée(s)`;
+
+      if (filtered.length === 0) {
+        container.innerHTML = `
+          <div class="empty-state-view" style="padding: 60px;">
+            <div class="empty-icon-circle">
+              <svg fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/></svg>
+            </div>
+            <h3 class="empty-title">Aucune demande trouvée</h3>
+            <p class="empty-desc">Aucune demande de contact ne correspond aux critères.</p>
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = `
+        <div class="devis-table-wrap">
+          <table class="devis-table">
+            <thead>
+              <tr>
+                <th>DATE</th>
+                <th>CLIENT & PROFIL</th>
+                <th>CONTACT</th>
+                <th>CORPS D'ÉTAT & PROJET</th>
+                <th>MESSAGE / DÉTAILS</th>
+                <th>STATUT</th>
+                <th>ACTIONS</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${filtered.map(inq => {
+                const cleanTel = (inq.telephone || '').replace(/[^0-9]/g, '');
+                const waNumber = cleanTel.startsWith('0') ? '212' + cleanTel.substring(1) : cleanTel;
+                const waLink = cleanTel ? `https://wa.me/${waNumber}?text=${encodeURIComponent('Bonjour ' + (inq.nom || '') + ', nous faisons suite à votre demande sur tg2d.ma concernant votre projet de ' + formatBesoinLabel(inq.besoin) + '...')}` : '';
+                return `
+                <tr>
+                  <td style="color: #64748B; font-size: 0.82rem; white-space: nowrap;">${inq.created_at ? inq.created_at.substring(0, 16) : ''}</td>
+                  <td>
+                    <div style="font-weight: 700; color: #0F172A;">${escapeHtml(inq.nom)}</div>
+                    <div style="font-size: 0.78rem; color: #64748B;">${formatProfilLabel(inq.profil)}</div>
+                    ${inq.notes ? `<div style="font-size: 0.74rem; color: #0084FF; margin-top: 4px; cursor: pointer;" onclick="openNotesModal(${inq.id})">📝 Note : ${escapeHtml(inq.notes.substring(0, 30))}...</div>` : ''}
+                  </td>
+                  <td>
+                    <div><a href="tel:${escapeHtml(inq.telephone)}" style="color: var(--c-blue); text-decoration: none; font-weight: 600;">${escapeHtml(inq.telephone)}</a></div>
+                    <div style="font-size: 0.78rem; color: #64748B;"><a href="mailto:${escapeHtml(inq.email)}" style="color: inherit; text-decoration: none;">${escapeHtml(inq.email)}</a></div>
+                  </td>
+                  <td>
+                    <span class="status-badge badge-info" style="margin-bottom: 4px;">${formatBesoinLabel(inq.besoin)}</span>
+                  </td>
+                  <td style="max-width: 280px; font-size: 0.82rem; color: #475569; line-height: 1.4;">
+                    ${escapeHtml(inq.message || '—')}
+                  </td>
+                  <td>
+                    <select onchange="updateInquiryStatus(${inq.id}, this.value)" style="border: 1px solid #CBD5E1; border-radius: 6px; padding: 4px 8px; font-size: 0.8rem; background: #FFFFFF; font-weight: 600;">
+                      <option value="Nouveau" ${inq.status === 'Nouveau' ? 'selected' : ''}>Nouveau</option>
+                      <option value="Contacté" ${inq.status === 'Contacté' ? 'selected' : ''}>Contacté</option>
+                      <option value="Étude en cours" ${inq.status === 'Étude en cours' ? 'selected' : ''}>Étude en cours</option>
+                      <option value="Devis envoyé" ${inq.status === 'Devis envoyé' ? 'selected' : ''}>Devis envoyé</option>
+                      <option value="Clôturé" ${inq.status === 'Clôturé' ? 'selected' : ''}>Clôturé</option>
+                      <option value="Archivé" ${inq.status === 'Archivé' ? 'selected' : ''}>Archivé</option>
+                    </select>
+                  </td>
+                  <td>
+                    <div style="display: inline-flex; align-items: center; gap: 6px; flex-wrap: wrap;">
+                      ${waLink ? `<a href="${waLink}" target="_blank" rel="noopener noreferrer" class="btn-action-sm" style="background: #059669; color: #FFFFFF;" title="Discuter sur WhatsApp">WhatsApp</a>` : ''}
+                      <button class="btn-action-sm btn-secondary" onclick="convertInquiryToDevis(${inq.id})" title="Convertir cette demande en devis chiffré">
+                        + Devis
+                      </button>
+                      <button class="btn-action-sm btn-secondary" onclick="openNotesModal(${inq.id})" title="Notes internes">
+                        Notes
+                      </button>
+                      <button onclick="deleteInquiry(${inq.id})" class="btn-action-sm" style="background: transparent; border: 1px solid #FECACA; color: #EF4444;" title="Supprimer">
+                        &times;
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              `;}).join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function filterInquiriesStatus(status, btn) {
+      currentInquiryFilter = status;
+      document.querySelectorAll('#tab-demandes .status-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderInquiriesTab();
+    }
+
+    async function updateInquiryStatus(id, newStatus) {
+      try {
+        await fetch('../api/admin-api.php?action=update_status', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: id, status: newStatus })
+        });
+        await refreshDashboardData();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    async function deleteInquiry(id) {
+      if (!confirm('Supprimer définitivement ce dossier client ?')) return;
+      try {
+        await fetch('../api/admin-api.php?action=delete_inquiry', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: id })
+        });
+        await refreshDashboardData();
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    function convertInquiryToDevis(inquiryId) {
+      const inq = inquiriesList.find(i => i.id == inquiryId);
+      if (!inq) return;
+
+      openDevisModal({
+        id: 0,
+        client_nom: inq.nom,
+        client_societe: formatProfilLabel(inq.profil),
+        client_tel: inq.telephone,
+        client_email: inq.email,
+        projet_titre: `Projet ${formatBesoinLabel(inq.besoin)}`,
+        type_travaux: formatBesoinLabel(inq.besoin),
+        localisation: 'Casablanca / Maroc',
+        montant_ht: 0,
+        status: 'Brouillon',
+        notes: inq.message
+      });
+    }
+
+    function exportInquiriesCsv() {
+      window.location.href = '../api/admin-api.php?action=export_csv';
+    }
+
+    // Modal Add Inquiry (Manual entry)
+    function openAddInquiryModal() {
+      document.getElementById('addInquiryModal').style.display = 'flex';
+    }
+    function closeAddInquiryModal() {
+      document.getElementById('addInquiryModal').style.display = 'none';
+      document.getElementById('addInquiryForm').reset();
+    }
+
+    async function handleAddInquiry(e) {
+      e.preventDefault();
+      const payload = {
+        nom: document.getElementById('inq_nom').value.trim(),
+        telephone: document.getElementById('inq_tel').value.trim(),
+        email: document.getElementById('inq_email').value.trim(),
+        profil: document.getElementById('inq_profil').value,
+        besoin: document.getElementById('inq_besoin').value,
+        status: document.getElementById('inq_status').value,
+        message: document.getElementById('inq_message').value.trim(),
+        notes: document.getElementById('inq_notes').value.trim()
+      };
+
+      const btn = document.getElementById('saveInquiryBtn');
+      btn.disabled = true;
+      btn.textContent = "Création...";
+
+      try {
+        const res = await fetch('../api/admin-api.php?action=add_inquiry', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+        const data = await res.json();
+        if (data.success) {
+          closeAddInquiryModal();
+          await refreshDashboardData();
+        } else {
+          alert(data.error || "Erreur de création.");
+        }
+      } catch (err) {
+        alert("Erreur serveur lors de la création.");
+      } finally {
+        btn.disabled = false;
+        btn.textContent = "Créer le dossier";
+      }
+    }
+
+    // Modal Notes
+    function openNotesModal(inquiryId) {
+      const inq = inquiriesList.find(i => i.id == inquiryId);
+      if (!inq) return;
+      document.getElementById('note_inquiry_id').value = inquiryId;
+      document.getElementById('note_text').value = inq.notes || '';
+      document.getElementById('notesModal').style.display = 'flex';
+    }
+    function closeNotesModal() {
+      document.getElementById('notesModal').style.display = 'none';
+    }
+
+    async function saveInquiryNotes() {
+      const id = document.getElementById('note_inquiry_id').value;
+      const notes = document.getElementById('note_text').value.trim();
+
+      try {
+        await fetch('../api/admin-api.php?action=update_notes', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: id, notes: notes })
+        });
+        closeNotesModal();
+        await refreshDashboardData();
+      } catch (e) {
+        alert('Erreur lors de la sauvegarde des notes.');
+      }
+    }
+
+    // ================= PRINT / SLIP MODAL =================
+    function openPrintSlip(devisId) {
+      const d = devisList.find(item => item.id == devisId);
+      if (!d) return;
+
+      const slip = document.getElementById('slipContent');
+      const ht = Number(d.montant_ht || 0);
+      const tva = ht * 0.20;
+      const ttc = ht + tva;
+
+      slip.innerHTML = `
+        <div class="slip-header">
+          <div>
+            <img src="../assets/images/tg2d-logo-cyan.png" alt="TG2D Maroc" class="slip-logo" />
+            <div style="font-weight: 800; font-size: 1.1rem; color: #0F172A; margin-top: 8px;">TG2D MAROC SARL AU</div>
+            <div style="font-size: 0.8rem; color: #64748B;">BTP, Gros Œuvre & Tous Corps d'État</div>
+          </div>
+          <div class="slip-company-info">
+            <div><strong>Siège :</strong> 300 Bd Ghandi, Casablanca, Maroc</div>
+            <div><strong>Tél :</strong> +212 618 39 23 28 | <strong>Email :</strong> contact@tg2d.ma</div>
+            <div><strong>RC :</strong> 512480 | <strong>Patente :</strong> 37951204</div>
+            <div><strong>IF :</strong> 40285196 | <strong>ICE :</strong> 002891456000082</div>
+          </div>
+        </div>
+
+        <div class="slip-box-grid">
+          <div class="slip-box">
+            <div class="slip-box-title">Informations Devis</div>
+            <div style="font-size: 1.1rem; font-weight: 800; color: #0084FF; margin-bottom: 4px;">${escapeHtml(d.reference || 'DEV-N/A')}</div>
+            <div style="font-size: 0.85rem; color: #475569;"><strong>Date d'émission :</strong> ${d.created_at ? d.created_at.substring(0, 10) : ''}</div>
+            <div style="font-size: 0.85rem; color: #475569;"><strong>Validité de l'offre :</strong> 30 jours (${escapeHtml(d.validite_date || 'N/A')})</div>
+            <div style="font-size: 0.85rem; color: #475569;"><strong>Statut :</strong> ${getStatusBadge(d.status)}</div>
+          </div>
+
+          <div class="slip-box">
+            <div class="slip-box-title">Client / Maître d'Ouvrage</div>
+            <div style="font-size: 1.05rem; font-weight: 700; color: #0F172A; margin-bottom: 4px;">${escapeHtml(d.client_nom)}</div>
+            ${d.client_societe ? `<div style="font-size: 0.85rem; color: #475569;"><strong>Société :</strong> ${escapeHtml(d.client_societe)}</div>` : ''}
+            ${d.client_tel ? `<div style="font-size: 0.85rem; color: #475569;"><strong>Tél :</strong> ${escapeHtml(d.client_tel)}</div>` : ''}
+            ${d.client_email ? `<div style="font-size: 0.85rem; color: #475569;"><strong>Email :</strong> ${escapeHtml(d.client_email)}</div>` : ''}
+          </div>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; color: #0F172A; margin-bottom: 4px;">Désignation des Travaux & Prestations</h4>
+          <p style="font-size: 0.85rem; color: #64748B;">
+            <strong>Projet :</strong> ${escapeHtml(d.projet_titre || 'Chantier')} — <strong>Corps d'état :</strong> ${escapeHtml(d.type_travaux || 'TCE')} — <strong>Localisation :</strong> ${escapeHtml(d.localisation || 'Maroc')}
+          </p>
+        </div>
+
+        <table class="slip-table">
+          <thead>
+            <tr>
+              <th style="width: 55%;">DÉSIGNATION DES OUVRAGES</th>
+              <th style="text-align: center; width: 15%;">UNITÉ</th>
+              <th style="text-align: right; width: 30%;">TOTAL HT (MAD)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div style="font-weight: 700;">${escapeHtml(d.projet_titre || 'Travaux de construction')}</div>
+                <div style="font-size: 0.8rem; color: #64748B; margin-top: 4px;">${escapeHtml(d.type_travaux || 'Prestations conformes aux règles de l\'art et normes NM')}</div>
+                ${d.notes ? `<div style="font-size: 0.78rem; color: #475569; margin-top: 6px; font-style: italic;">Notes : ${escapeHtml(d.notes)}</div>` : ''}
+              </td>
+              <td style="text-align: center;">Forfait</td>
+              <td style="text-align: right; font-weight: 600;">${ht.toLocaleString('fr-FR')} MAD</td>
+            </tr>
+            <tr class="slip-totals-row">
+              <td colspan="2" style="text-align: right;">TOTAL HORS TAXES (HT)</td>
+              <td style="text-align: right; font-size: 0.95rem;">${ht.toLocaleString('fr-FR')} MAD</td>
+            </tr>
+            <tr class="slip-totals-row">
+              <td colspan="2" style="text-align: right;">TVA (20%)</td>
+              <td style="text-align: right;">${tva.toLocaleString('fr-FR')} MAD</td>
+            </tr>
+            <tr class="slip-totals-row" style="background: #F1F5F9;">
+              <td colspan="2" style="text-align: right; font-size: 1rem; color: #0F172A;">TOTAL GÉNÉRAL TOUTES TAXES COMPRISES (TTC)</td>
+              <td style="text-align: right; font-size: 1.15rem; color: #047857; font-weight: 800;">${ttc.toLocaleString('fr-FR')} MAD</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 36px;">
+          <div style="border: 1px dashed #CBD5E1; border-radius: 8px; padding: 16px; min-height: 120px; font-size: 0.8rem;">
+            <strong>Pour TG2D Maroc</strong><br />
+            <span style="color: #64748B;">Direction des Études & Chiffrages</span>
+          </div>
+          <div style="border: 1px dashed #CBD5E1; border-radius: 8px; padding: 16px; min-height: 120px; font-size: 0.8rem;">
+            <strong>Bon pour accord et exécution des travaux</strong><br />
+            <span style="color: #64748B;">Date, cachet et signature du client précédés de la mention manuscrite :</span>
+          </div>
+        </div>
+
+        <div class="slip-footer">
+          <div>TG2D MAROC — SARL AU au capital de 100 000 MAD</div>
+          <div>Ce bordereau est soumis aux Conditions Générales de Vente TG2D</div>
+        </div>
+      `;
+
+      document.getElementById('printModal').style.display = 'flex';
+    }
+
+    function closePrintModal() {
+      document.getElementById('printModal').style.display = 'none';
+    }
+
+    // ================= HELPERS =================
+    function getStatusBadge(status) {
+      if (status === 'Validé') return `<span class="status-badge badge-valide">Validé</span>`;
+      if (status === 'Transmis') return `<span class="status-badge badge-transmis">Transmis</span>`;
+      if (status === 'Refusé') return `<span class="status-badge badge-refuse">Refusé</span>`;
+      if (status === 'En attente' || status === 'Nouveau' || status === 'En étude') return `<span class="status-badge badge-attente">${status}</span>`;
+      return `<span class="status-badge badge-brouillon">${status || 'Brouillon'}</span>`;
+    }
+
+    function getInquiryStatusBadge(status) {
+      if (status === 'Nouveau') return `<span class="status-badge badge-attente">Nouveau</span>`;
+      if (status === 'Contacté') return `<span class="status-badge badge-info">Contacté</span>`;
+      if (status === 'Étude en cours') return `<span class="status-badge badge-transmis">En étude</span>`;
+      if (status === 'Devis envoyé') return `<span class="status-badge badge-valide">Devis envoyé</span>`;
+      if (status === 'Clôturé') return `<span class="status-badge badge-valide">Clôturé</span>`;
+      return `<span class="status-badge badge-brouillon">${status || 'Archivé'}</span>`;
+    }
+
+    function formatProfilLabel(profil) {
+      const map = {
+        'promoteur': 'Promoteur / Investisseur Immobilier',
+        'industriel': 'Groupe Industriel & Logistique',
+        'architecte': "Architecte / Bureau d'études",
+        'particulier': 'Maître d\'ouvrage Particulier',
+        'autre': 'Autre organisme'
+      };
+      return map[profil] || profil || 'Client';
+    }
+
+    function formatBesoinLabel(besoin) {
+      const map = {
+        'terrassement': 'Terrassement Lourd / Déroctage',
+        'gros-oeuvre': 'Gros Œuvre & Structure Béton',
+        'tce': 'Construction Tous Corps d\'État (TCE)',
+        'batiment-industriel': 'Bâtiment Industriel & Logistique',
+        'renovation': 'Rénovation & Restructuration'
+      };
+      return map[besoin] || besoin || 'BTP & Construction';
     }
 
     function escapeHtml(text) {

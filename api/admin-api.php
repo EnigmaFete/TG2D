@@ -1,6 +1,6 @@
 <?php
 if (!function_exists("tg2d_val")) {
-    function tg2d_val($val, $default = "") {
+    function tg2d_val(&$val, $default = "") {
         return isset($val) && $val !== null ? $val : $default;
     }
 }
@@ -142,15 +142,29 @@ try {
         $emailStmt = $pdo->query("SELECT COUNT(*) as c FROM inquiries WHERE email_sent = 1");
         $emailSentCount = (int)$emailStmt->fetch()['c'];
 
+        // Statistiques Devis
+        $devisTotalStmt = $pdo->query("SELECT COUNT(*) as c, COALESCE(SUM(montant_ht), 0) as total_ht, COALESCE(SUM(montant_ttc), 0) as total_ttc FROM devis");
+        $devisMetrics = $devisTotalStmt->fetch();
+        $devisTotal = (int)$devisMetrics['c'];
+        $devisTotalHt = (float)$devisMetrics['total_ht'];
+        $devisTotalTtc = (float)$devisMetrics['total_ttc'];
+
+        $devisValidesStmt = $pdo->query("SELECT COUNT(*) as c FROM devis WHERE status = 'Validé'");
+        $devisValides = (int)$devisValidesStmt->fetch()['c'];
+
         echo json_encode([
-            'success'      => true,
-            'total'        => $total,
-            'today'        => $today,
-            'status'       => $statusCounts,
-            'besoins'      => $besoinCounts,
-            'profils'      => $profilCounts,
-            'email_sent'   => $emailSentCount,
-            'email_rate'   => $total > 0 ? round(($emailSentCount / $total) * 100, 1) : 100
+            'success'          => true,
+            'total'            => $total,
+            'today'            => $today,
+            'status'           => $statusCounts,
+            'besoins'          => $besoinCounts,
+            'profils'          => $profilCounts,
+            'email_sent'       => $emailSentCount,
+            'email_rate'       => $total > 0 ? round(($emailSentCount / $total) * 100, 1) : 100,
+            'devis_total'      => $devisTotal,
+            'devis_total_ht'   => $devisTotalHt,
+            'devis_total_ttc'  => $devisTotalTtc,
+            'devis_valides'    => $devisValides
         ]);
         exit;
     }
@@ -537,6 +551,83 @@ try {
         $stmt = $pdo->prepare("UPDATE devis SET status = ? WHERE id = ?");
         $stmt->execute([$status, $id]);
         echo json_encode(['success' => true, 'message' => "Statut mis à jour."]);
+        exit;
+    }
+
+    if ($action === 'update_devis') {
+        $id            = (int)(tg2d_val($_REQ['id'], 0));
+        $clientNom     = trim(tg2d_val($_REQ['client_nom'], ''));
+        $clientSociete = trim(tg2d_val($_REQ['client_societe'], ''));
+        $clientEmail   = trim(tg2d_val($_REQ['client_email'], ''));
+        $clientTel     = trim(tg2d_val($_REQ['client_tel'], ''));
+        $projetTitre   = trim(tg2d_val($_REQ['projet_titre'], ''));
+        $typeTravaux   = trim(tg2d_val($_REQ['type_travaux'], ''));
+        $localisation  = trim(tg2d_val($_REQ['localisation'], ''));
+        $montantHt     = (float)(tg2d_val($_REQ['montant_ht'], 0));
+        $tvaPct        = (float)(tg2d_val($_REQ['tva_pct'], 20));
+        $montantTtc    = $montantHt * (1 + ($tvaPct / 100));
+        $status        = trim(tg2d_val($_REQ['status'], 'Brouillon'));
+        $validiteDate  = trim((isset($_REQ['validite_date']) ? $_REQ['validite_date'] : date('Y-m-d', strtotime('+30 days'))));
+        $notes         = trim(tg2d_val($_REQ['notes'], ''));
+
+        if ($id <= 0 || $clientNom === '') {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'error' => 'Identifiant et nom client obligatoires.']);
+            exit;
+        }
+
+        $sql = "UPDATE devis SET 
+                client_nom = ?, client_email = ?, client_tel = ?, client_societe = ?,
+                projet_titre = ?, type_travaux = ?, localisation = ?, 
+                montant_ht = ?, tva_pct = ?, montant_ttc = ?, status = ?, 
+                validite_date = ?, notes = ?
+                WHERE id = ?";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            $clientNom, $clientEmail, $clientTel, $clientSociete,
+            $projetTitre, $typeTravaux, $localisation,
+            $montantHt, $tvaPct, $montantTtc, $status,
+            $validiteDate, $notes, $id
+        ]);
+
+        echo json_encode(['success' => true, 'message' => "Devis mis à jour avec succès."]);
+        exit;
+    }
+
+    if ($action === 'export_devis_csv') {
+        $stmt = $pdo->query("SELECT id, reference, created_at, client_nom, client_societe, client_tel, client_email, projet_titre, type_travaux, localisation, montant_ht, tva_pct, montant_ttc, status, validite_date, notes FROM devis ORDER BY created_at DESC");
+        $rows = $stmt->fetchAll();
+
+        header('Content-Type: text/csv; charset=UTF-8');
+        header('Content-Disposition: attachment; filename="devis_tg2d_' . date('Y-m-d_His') . '.csv"');
+
+        $output = fopen('php://output', 'w');
+        fprintf($output, chr(0xEF).chr(0xBB).chr(0xBF));
+
+        fputcsv($output, ['ID', 'Référence', 'Date Création', 'Client', 'Société', 'Téléphone', 'Email', 'Projet', 'Corps d\'état', 'Localisation', 'Montant HT (MAD)', 'TVA (%)', 'Montant TTC (MAD)', 'Statut', 'Date Validité', 'Notes & Détails'], ';', '"', "\\");
+
+        foreach ($rows as $r) {
+            fputcsv($output, [
+                $r['id'],
+                $r['reference'],
+                $r['created_at'],
+                $r['client_nom'],
+                $r['client_societe'],
+                $r['client_tel'],
+                $r['client_email'],
+                $r['projet_titre'],
+                $r['type_travaux'],
+                $r['localisation'],
+                $r['montant_ht'],
+                $r['tva_pct'],
+                $r['montant_ttc'],
+                $r['status'],
+                $r['validite_date'],
+                $r['notes']
+            ], ';', '"', "\\");
+        }
+
+        fclose($output);
         exit;
     }
 

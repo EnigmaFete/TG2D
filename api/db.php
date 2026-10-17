@@ -1,6 +1,6 @@
 <?php
 if (!function_exists("tg2d_val")) {
-    function tg2d_val($val, $default = "") {
+    function tg2d_val(&$val, $default = "") {
         return isset($val) && $val !== null ? $val : $default;
     }
 }
