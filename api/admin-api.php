@@ -404,41 +404,6 @@ try {
 
     // GESTION DES DEVIS
     if ($action === 'get_devis') {
-        // Synchronisation automatique des demandes du formulaire public dans les devis
-        try {
-            $inquiriesStmt = $pdo->query("SELECT * FROM inquiries");
-            while ($inq = $inquiriesStmt->fetch()) {
-                $year = date('Y', strtotime($inq['created_at']));
-                $ref = "DEV-{$year}-" . str_pad($inq['id'], 3, '0', STR_PAD_LEFT);
-                $checkStmt = $pdo->prepare("SELECT COUNT(*) FROM devis WHERE reference = ?");
-                $checkStmt->execute([$ref]);
-                if ((int)$checkStmt->fetchColumn() === 0) {
-                    $tLabel = tg2d_format_label($inq['besoin'], 'besoin');
-                    $pLabel = tg2d_format_label($inq['profil'], 'profil');
-                    $validite = date('Y-m-d', strtotime($inq['created_at'] . ' +30 days'));
-                    $statusInq = ($inq['status'] === 'Nouveau' ? 'En attente' : $inq['status']);
-                    $insDevis = $pdo->prepare("INSERT INTO devis 
-                        (reference, created_at, client_nom, client_email, client_tel, client_societe, projet_titre, type_travaux, localisation, montant_ht, tva_pct, montant_ttc, status, validite_date, notes)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, 'Maroc', 0, 20, 0, ?, ?, ?)");
-                    $insDevis->execute([
-                        $ref,
-                        $inq['created_at'],
-                        $inq['nom'],
-                        $inq['email'],
-                        $inq['telephone'],
-                        $pLabel,
-                        "Demande d'étude : " . $tLabel,
-                        $tLabel,
-                        $statusInq,
-                        $validite,
-                        $inq['message']
-                    ]);
-                }
-            }
-        } catch (Exception $eSync) {
-            error_log("Sync devis error: " . $eSync->getMessage());
-        }
-
         $search = trim((isset($_GET['search']) ? $_GET['search'] : (isset($_REQ['search']) ? $_REQ['search'] : '')));
         $status = trim((isset($_GET['status']) ? $_GET['status'] : (isset($_REQ['status']) ? $_REQ['status'] : '')));
         $limit  = (int)((isset($_GET['limit']) ? $_GET['limit'] : (isset($_REQ['limit']) ? $_REQ['limit'] : 50)));
@@ -534,9 +499,25 @@ try {
             echo json_encode(['success' => false, 'error' => 'Identifiant invalide.']);
             exit;
         }
+
+        // Get devis details before deletion to clean linked inquiries
+        $refStmt = $pdo->prepare("SELECT reference, client_email, client_tel FROM devis WHERE id = ?");
+        $refStmt->execute([$id]);
+        $row = $refStmt->fetch();
+
         $stmt = $pdo->prepare("DELETE FROM devis WHERE id = ?");
         $stmt->execute([$id]);
-        echo json_encode(['success' => true, 'message' => "Devis supprimé."]);
+
+        // Clean any inquiry matching the reference number (e.g. DEV-2026-001 -> inquiry id 1)
+        if ($row && !empty($row['reference']) && preg_match('/DEV-\d{4}-(\d+)/', $row['reference'], $matches)) {
+            $inqId = (int)$matches[1];
+            if ($inqId > 0) {
+                $delInq = $pdo->prepare("DELETE FROM inquiries WHERE id = ?");
+                $delInq->execute([$inqId]);
+            }
+        }
+
+        echo json_encode(['success' => true, 'message' => "Devis supprimé définitivement."]);
         exit;
     }
 
