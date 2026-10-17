@@ -75,7 +75,7 @@
       <a href="index.html"><span>Accueil</span></a>
       <a href="a-propos.html"><span>À propos</span></a>
       <a href="expertises.html"><span>Nos expertises</span></a>
-      <a href="projets.html"><span>Nos réalisations</span></a>
+      <a href="projets.html" class="is-active"><span>Nos réalisations</span></a>
       <a href="contact.html#carrieres"><span>Carrières</span></a>
       <a href="contact.html"><span>Contact</span></a>
     </div>
@@ -85,59 +85,42 @@
         <svg class="btn-arr-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
-  </div></nav>
-  </header>
-
-  <!-- Mobile Drawer -->
-  <div class="mobile-menu-drawer" id="mobileDrawer">
-    <div class="mob-head">
-      <img src="assets/images/tg2d-logo.png" alt="TG2D" style="height: 36px;" />
-      <button class="mob-close" id="mobClose">&times;</button>
-    </div>
-    <div class="mob-links">
-      <a href="index.html"><span>Accueil</span></a>
-      <a href="a-propos.html"><span>À propos</span></a>
-      <a href="expertises.html"><span>Nos expertises</span></a>
-      <a href="projets.html"><span>Nos réalisations</span></a>
-      <a href="contact.html#carrieres"><span>Carrières</span></a>
-      <a href="contact.html"><span>Contact</span></a>
-    </div>
   </div>
 
   <!-- ==================== SUBPAGE HERO ==================== -->
-  <section style="background: #080D18; color: #FFFFFF; padding: 140px 0 70px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+  <section class="subpage-editorial-hero">
     <div class="wrap">
       <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--c-cyan-light); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px;">
         <a href="index.html" style="color: rgba(255,255,255,0.6);">Accueil</a> / <span style="color: var(--c-cyan-light);">Nos Réalisations</span>
       </div>
-      <h1 style="font-size: clamp(2.4rem, 4.8vw, 3.8rem); font-weight: 800; line-height: 1.1; margin-bottom: 18px;">
+      <h1 class="subpage-hero-title">
         NOS RÉALISATIONS<br>
         <span class="text-cyan">Des projets qui témoignent de notre savoir-faire.</span>
       </h1>
-      <p style="font-size: 1.15rem; line-height: 1.65; color: rgba(255,255,255,0.8); max-width: 820px;">
+      <p class="subpage-hero-lead">
         Chaque chantier représente une nouvelle exigence et une nouvelle responsabilité. TG2D met son expertise au service de projets aux usages et aux contraintes variés, avec une expérience particulièrement développée dans la région du Grand Casablanca et au niveau national.
       </p>
     </div>
   </section>
 
   <!-- ==================== PROJETS DÉTAILLÉS ==================== -->
-  <section style="padding: 90px 0; background: #FFFFFF;">
+  <section class="subpage-editorial-body">
     <div class="wrap">
-      <div style="display: flex; flex-direction: column; gap: 70px;">
+      <div class="projects-editorial-list">
 
         <!-- Projet 1 : Showroom BRICOMA -->
-        <article style="background: #FFFFFF; border: 1px solid rgba(13,21,39,0.08); border-radius: 24px; overflow: hidden; box-shadow: 0 14px 40px rgba(0,0,0,0.04); display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 0;">
-          <div style="height: 100%; min-height: 380px; position: relative;">
-            <img src="assets/images/showroom-bricoma-darbouazza.jpg" alt="Showroom commercial BRICOMA Dar Bouazza réalisé par TG2D" style="width: 100%; height: 100%; object-fit: cover;" />
-            <span style="position: absolute; top: 20px; left: 20px; background: rgba(7,11,22,0.85); color: var(--c-cyan-light); font-family: var(--font-mono); font-size: 0.75rem; padding: 6px 14px; border-radius: 9999px; backdrop-filter: blur(8px);">Secteur Commercial</span>
+        <article class="project-editorial-card">
+          <div class="project-card-media">
+            <img src="assets/images/showroom-bricoma-darbouazza.jpg" alt="Showroom commercial BRICOMA Dar Bouazza réalisé par TG2D" />
+            <span class="project-card-badge">Secteur Commercial</span>
           </div>
-          <div style="padding: 45px; display: flex; flex-direction: column; justify-content: center;">
-            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--c-cyan); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">Référence Commerciale</span>
-            <h2 style="font-size: 2rem; font-weight: 800; color: var(--c-navy-dark); line-height: 1.2; margin-bottom: 16px;">SHOWROOM BRICOMA — DAR BOUAZZA</h2>
-            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--c-text-body); margin-bottom: 24px;">
+          <div class="project-card-content">
+            <span class="project-card-kicker">Référence Commerciale</span>
+            <h2 class="project-card-title">SHOWROOM BRICOMA — DAR BOUAZZA</h2>
+            <p class="project-card-desc">
               TG2D a participé à la construction et à la réalisation d’un showroom BRICOMA à Dar Bouazza. Ce projet illustre notre capacité à intervenir sur des infrastructures commerciales et à coordonner les différents corps de métier nécessaires à la réalisation du bâtiment.
             </p>
-            <div style="background: #F8FAFC; border: 1px solid rgba(13,21,39,0.06); border-radius: 12px; padding: 20px; margin-bottom: 24px; font-size: 0.92rem; display: flex; flex-direction: column; gap: 8px;">
+            <div class="project-card-specs">
               <div><strong>Localisation :</strong> Dar Bouazza</div>
               <div><strong>Type :</strong> Showroom / bâtiment commercial</div>
               <div><strong>Intervention :</strong> Construction et travaux tous corps d’état selon le périmètre confié à TG2D.</div>
@@ -152,14 +135,18 @@
         </article>
 
         <!-- Projet 2 : Centre Logistique Bouskoura -->
-        <article style="background: #FFFFFF; border: 1px solid rgba(13,21,39,0.08); border-radius: 24px; overflow: hidden; box-shadow: 0 14px 40px rgba(0,0,0,0.04); display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 0;">
-          <div style="padding: 45px; display: flex; flex-direction: column; justify-content: center; order: 1;">
-            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--c-cyan); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">Référence Logistique</span>
-            <h2 style="font-size: 2rem; font-weight: 800; color: var(--c-navy-dark); line-height: 1.2; margin-bottom: 16px;">CENTRE LOGISTIQUE — BOUSKOURA</h2>
-            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--c-text-body); margin-bottom: 24px;">
+        <article class="project-editorial-card is-reversed">
+          <div class="project-card-media">
+            <img src="assets/images/centre-logistique-bouskoura.jpg" alt="Centre logistique de pointe à Bouskoura par TG2D" />
+            <span class="project-card-badge">Logistique & Industriel</span>
+          </div>
+          <div class="project-card-content">
+            <span class="project-card-kicker">Référence Logistique</span>
+            <h2 class="project-card-title">CENTRE LOGISTIQUE — BOUSKOURA</h2>
+            <p class="project-card-desc">
               TG2D a également réalisé les travaux liés à la construction d’un centre logistique à Bouskoura. Ce projet représente une référence significative de notre savoir-faire dans la réalisation d’infrastructures destinées aux activités professionnelles et logistiques.
             </p>
-            <div style="background: #F8FAFC; border: 1px solid rgba(13,21,39,0.06); border-radius: 12px; padding: 20px; margin-bottom: 24px; font-size: 0.92rem; display: flex; flex-direction: column; gap: 8px;">
+            <div class="project-card-specs">
               <div><strong>Localisation :</strong> Bouskoura</div>
               <div><strong>Type :</strong> Centre logistique</div>
               <div><strong>Intervention :</strong> Construction, coordination des travaux et différents corps d’état selon le périmètre confié à TG2D.</div>
@@ -171,25 +158,21 @@
               </a>
             </div>
           </div>
-          <div style="height: 100%; min-height: 380px; position: relative; order: 2;">
-            <img src="assets/images/centre-logistique-bouskoura.jpg" alt="Centre logistique de pointe à Bouskoura par TG2D" style="width: 100%; height: 100%; object-fit: cover;" />
-            <span style="position: absolute; top: 20px; left: 20px; background: rgba(7,11,22,0.85); color: var(--c-cyan-light); font-family: var(--font-mono); font-size: 0.75rem; border-radius: 4px; padding: 5px 12px; backdrop-filter: blur(8px);">Logistique & Industriel</span>
-          </div>
         </article>
 
         <!-- Projet 3 : Projets Résidentiels -->
-        <article style="background: #FFFFFF; border: 1px solid rgba(13,21,39,0.08); border-radius: 24px; overflow: hidden; box-shadow: 0 14px 40px rgba(0,0,0,0.04); display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 0;">
-          <div style="height: 100%; min-height: 380px; position: relative;">
-            <img src="assets/images/residence-villas-maroc.jpg" alt="Villas et résidences standing construites par TG2D au Maroc" style="width: 100%; height: 100%; object-fit: cover;" />
-            <span style="position: absolute; top: 20px; left: 20px; background: rgba(7,11,22,0.85); color: var(--c-cyan-light); font-family: var(--font-mono); font-size: 0.75rem; border-radius: 4px; padding: 5px 12px; backdrop-filter: blur(8px);">Secteur Résidentiel</span>
+        <article class="project-editorial-card">
+          <div class="project-card-media">
+            <img src="assets/images/residence-villas-maroc.jpg" alt="Villas et résidences standing construites par TG2D au Maroc" />
+            <span class="project-card-badge">Secteur Résidentiel</span>
           </div>
-          <div style="padding: 45px; display: flex; flex-direction: column; justify-content: center;">
-            <span style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--c-cyan); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 8px;">Référence Résidentielle</span>
-            <h2 style="font-size: 2rem; font-weight: 800; color: var(--c-navy-dark); line-height: 1.2; margin-bottom: 16px;">PROJETS RÉSIDENTIELS</h2>
-            <p style="font-size: 1.05rem; line-height: 1.7; color: var(--c-text-body); margin-bottom: 24px;">
+          <div class="project-card-content">
+            <span class="project-card-kicker">Référence Résidentielle</span>
+            <h2 class="project-card-title">PROJETS RÉSIDENTIELS</h2>
+            <p class="project-card-desc">
               TG2D intervient également dans le domaine résidentiel, pour des projets nécessitant une attention particulière portée à la qualité de construction, aux finitions et au respect des attentes du propriétaire. Nous pouvons accompagner les projets résidentiels selon leur nature, leur taille et leur niveau de finition souhaité.
             </p>
-            <div style="background: #F8FAFC; border: 1px solid rgba(13,21,39,0.06); border-radius: 12px; padding: 20px; margin-bottom: 24px; font-size: 0.92rem; display: flex; flex-direction: column; gap: 8px;">
+            <div class="project-card-specs">
               <div><strong>Localisation :</strong> Casablanca et autres régions du Maroc</div>
               <div><strong>Type :</strong> Projets résidentiels</div>
               <div><strong>Intervention :</strong> Construction et travaux tous corps d’état.</div>

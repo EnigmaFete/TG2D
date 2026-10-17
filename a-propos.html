@@ -73,7 +73,7 @@
     </div>
     <div class="mob-links">
       <a href="index.html"><span>Accueil</span></a>
-      <a href="a-propos.html"><span>À propos</span></a>
+      <a href="a-propos.html" class="is-active"><span>À propos</span></a>
       <a href="expertises.html"><span>Nos expertises</span></a>
       <a href="projets.html"><span>Nos réalisations</span></a>
       <a href="contact.html#carrieres"><span>Carrières</span></a>
@@ -85,46 +85,29 @@
         <svg class="btn-arr-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
     </div>
-  </div></nav>
-  </header>
-
-  <!-- Mobile Drawer -->
-  <div class="mobile-menu-drawer" id="mobileDrawer">
-    <div class="mob-head">
-      <img src="assets/images/tg2d-logo.png" alt="TG2D" style="height: 36px;" />
-      <button class="mob-close" id="mobClose">&times;</button>
-    </div>
-    <div class="mob-links">
-      <a href="index.html"><span>Accueil</span></a>
-      <a href="a-propos.html"><span>À propos</span></a>
-      <a href="expertises.html"><span>Nos expertises</span></a>
-      <a href="projets.html"><span>Nos réalisations</span></a>
-      <a href="contact.html#carrieres"><span>Carrières</span></a>
-      <a href="contact.html"><span>Contact</span></a>
-    </div>
   </div>
 
   <!-- ==================== SUBPAGE HERO ==================== -->
-  <section style="background: #080D18; color: #FFFFFF; padding: 140px 0 70px; border-bottom: 1px solid rgba(255,255,255,0.08);">
+  <section class="subpage-editorial-hero">
     <div class="wrap">
       <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--c-cyan-light); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 14px;">
         <a href="index.html" style="color: rgba(255,255,255,0.6);">Accueil</a> / <span style="color: var(--c-cyan-light);">À Propos de Nous</span>
       </div>
-      <h1 style="font-size: clamp(2.4rem, 4.8vw, 3.8rem); font-weight: 800; line-height: 1.1; margin-bottom: 18px;">
+      <h1 class="subpage-hero-title">
         À PROPOS DE NOUS<br>
         <span class="text-cyan">Une expertise terrain au service de vos projets.</span>
       </h1>
-      <p style="font-size: 1.15rem; line-height: 1.65; color: rgba(255,255,255,0.8); max-width: 780px;">
+      <p class="subpage-hero-lead">
         Construire est bien plus qu’assembler des matériaux. C’est comprendre un besoin, maîtriser des contraintes techniques, coordonner des équipes, respecter des délais et transformer une vision en un ouvrage durable. C’est cette philosophie qui guide TG2D.
       </p>
     </div>
   </section>
 
   <!-- ==================== CONTENU PRINCIPAL ==================== -->
-  <section style="padding: 90px 0; background: #FFFFFF;">
+  <section class="subpage-editorial-body">
     <div class="wrap">
-      <div style="display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 60px; align-items: center; margin-bottom: 90px;">
-        <div>
+      <div class="about-hero-grid">
+        <div class="about-hero-text">
           <span class="section-num-tag">NOTRE EXPERTISE TERRAIN</span>
           <h2 class="section-h2-title">Une maîtrise tous corps d'état forgée sur les chantiers</h2>
           <p class="section-p-lead">
@@ -145,73 +128,73 @@
           </div>
         </div>
 
-        <div style="border-radius: 24px; overflow: hidden; box-shadow: 0 20px 45px rgba(0,0,0,0.1); border: 1px solid rgba(13,21,39,0.08);">
-          <img src="assets/images/tg2d-team-safety-vests.jpg" alt="Équipe d'ingénieurs TG2D avec vestes de sécurité de chantier sur site" style="width: 100%; height: 100%; object-fit: cover;" />
+        <div class="about-hero-media">
+          <img src="assets/images/tg2d-team-safety-vests.jpg" alt="Équipe d'ingénieurs TG2D avec vestes de sécurité de chantier sur site" />
         </div>
       </div>
 
       <!-- ==================== VISION & MISSION (MANIFESTO STYLE) ==================== -->
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-bottom: 80px;">
+      <div class="about-split-grid">
         <!-- Card Vision -->
-        <div style="background: #FFFFFF; border: 1px solid rgba(13,21,39,0.08); border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
-          <div style="width: 52px; height: 52px; border-radius: 14px; background: rgba(0,180,216,0.12); color: var(--c-cyan); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+        <div class="about-card-box">
+          <div class="about-card-icon">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
           </div>
-          <h3 style="font-size: 1.8rem; font-weight: 800; color: var(--c-navy-dark); margin-bottom: 16px;">Notre vision</h3>
-          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--c-text-body);">
+          <h3 class="about-card-title">Notre vision</h3>
+          <p class="about-card-desc">
             Nous souhaitons construire des relations durables avec nos clients et partenaires en nous positionnant comme un partenaire fiable, réactif et engagé, capable d’accompagner un projet depuis sa préparation jusqu’à sa réalisation.
           </p>
         </div>
 
         <!-- Card Mission -->
-        <div style="background: #FFFFFF; border: 1px solid rgba(13,21,39,0.08); border-radius: 20px; padding: 40px; box-shadow: 0 10px 30px rgba(0,0,0,0.03);">
-          <div style="width: 52px; height: 52px; border-radius: 14px; background: rgba(0,180,216,0.12); color: var(--c-cyan); display: flex; align-items: center; justify-content: center; margin-bottom: 24px;">
+        <div class="about-card-box">
+          <div class="about-card-icon">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
           </div>
-          <h3 style="font-size: 1.8rem; font-weight: 800; color: var(--c-navy-dark); margin-bottom: 16px;">Notre mission</h3>
-          <p style="font-size: 1.05rem; line-height: 1.7; color: var(--c-text-body); margin-bottom: 20px;">
+          <h3 class="about-card-title">Notre mission</h3>
+          <p class="about-card-desc" style="margin-bottom: 20px;">
             Notre mission est de transformer les projets de nos clients en réalisations concrètes, en associant :
           </p>
-          <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-            <span style="background: #FFFFFF; border: 1px solid rgba(13,21,39,0.1); padding: 8px 16px; border-radius: 6px; font-weight: 700; font-size: 0.88rem; color: var(--c-navy-dark);">Expertise technique</span>
-            <span style="background: #FFFFFF; border: 1px solid rgba(13,21,39,0.1); padding: 8px 16px; border-radius: 6px; font-weight: 700; font-size: 0.88rem; color: var(--c-navy-dark);">Organisation</span>
-            <span style="background: #FFFFFF; border: 1px solid rgba(13,21,39,0.1); padding: 8px 16px; border-radius: 6px; font-weight: 700; font-size: 0.88rem; color: var(--c-navy-dark);">Qualité</span>
-            <span style="background: #FFFFFF; border: 1px solid rgba(13,21,39,0.1); padding: 8px 16px; border-radius: 6px; font-weight: 700; font-size: 0.88rem; color: var(--c-navy-dark);">Engagement</span>
-            <span style="background: #FFFFFF; border: 1px solid rgba(13,21,39,0.1); padding: 8px 16px; border-radius: 6px; font-weight: 700; font-size: 0.88rem; color: var(--c-navy-dark);">Maîtrise des travaux</span>
+          <div class="about-pill-group">
+            <span class="about-pill">Expertise technique</span>
+            <span class="about-pill">Organisation</span>
+            <span class="about-pill">Qualité</span>
+            <span class="about-pill">Engagement</span>
+            <span class="about-pill">Maîtrise des travaux</span>
           </div>
         </div>
       </div>
 
       <!-- ==================== NOS ENGAGEMENTS ==================== -->
-      <div style="background: #080D18; border-radius: 24px; padding: 60px; color: #FFFFFF;">
+      <div class="about-commitments-block">
         <span class="section-num-tag" style="color: var(--c-cyan-light);">NOS ENGAGEMENTS</span>
         <h2 class="section-h2-title" style="color: #FFFFFF; margin-bottom: 12px;">La qualité comme exigence. La confiance comme objectif.</h2>
         <p style="color: rgba(255,255,255,0.75); font-size: 1.05rem; max-width: 800px; margin-bottom: 40px;">
           Chez TG2D, nous considérons que la réussite d’un projet ne se limite pas à sa réalisation. Elle repose également sur la qualité de la relation avec le client, la transparence dans les échanges et la capacité à respecter les engagements pris.
         </p>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-          <div style="background: #0E1626; border: 1px solid rgba(255,255,255,0.08); padding: 24px; border-radius: 16px;">
+        <div class="about-commitments-grid">
+          <div class="about-commitment-card">
             <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--c-cyan-light); margin-bottom: 8px;">QUALITÉ</h4>
             <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Nous accordons une importance particulière à la qualité des matériaux, à la précision de l’exécution et au respect des exigences techniques du projet.</p>
           </div>
-          <div style="background: #0E1626; border: 1px solid rgba(255,255,255,0.08); padding: 24px; border-radius: 16px;">
+          <div class="about-commitment-card">
             <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--c-cyan-light); margin-bottom: 8px;">RIGUEUR</h4>
             <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Une construction réussie nécessite une organisation rigoureuse. Nos équipes assurent le suivi et la coordination des différentes phases du chantier.</p>
           </div>
-          <div style="background: #0E1626; border: 1px solid rgba(255,255,255,0.08); padding: 24px; border-radius: 16px;">
+          <div class="about-commitment-card">
             <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--c-cyan-light); margin-bottom: 8px;">RESPECT DES DÉLAIS</h4>
             <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Nous intégrons la planification et la coordination des différents intervenants afin de contribuer au respect du calendrier défini pour chaque projet.</p>
           </div>
-          <div style="background: #0E1626; border: 1px solid rgba(255,255,255,0.08); padding: 24px; border-radius: 16px;">
+          <div class="about-commitment-card">
             <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--c-cyan-light); margin-bottom: 8px;">TRANSPARENCE</h4>
             <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Nous privilégions une communication claire avec nos clients et partenaires afin de maintenir une bonne visibilité sur l’avancement du projet.</p>
           </div>
-          <div style="background: #0E1626; border: 1px solid rgba(255,255,255,0.08); padding: 24px; border-radius: 16px;">
+          <div class="about-commitment-card">
             <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--c-cyan-light); margin-bottom: 8px;">SÉCURITÉ</h4>
             <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6;">La sécurité des collaborateurs, des intervenants et des installations constitue un élément essentiel de notre approche du chantier.</p>
           </div>
-          <div style="background: #0E1626; border: 1px solid rgba(255,255,255,0.08); padding: 24px; border-radius: 16px;">
+          <div class="about-commitment-card">
             <h4 style="font-size: 1.15rem; font-weight: 800; color: var(--c-cyan-light); margin-bottom: 8px;">ENGAGEMENT</h4>
             <p style="font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.6;">Nous considérons chaque projet comme un engagement à long terme avec notre client. Notre objectif est de construire une relation basée sur la confiance.</p>
           </div>
