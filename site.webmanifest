@@ -1,0 +1,34 @@
+{
+  "name": "TG2D — Entreprise Générale BTP Maroc",
+  "short_name": "TG2D BTP",
+  "description": "Entreprise marocaine de référence en construction tous corps d'état, génie civil, industriel et logistique.",
+  "start_url": "/index.html",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#FFFFFF",
+  "theme_color": "#006878",
+  "lang": "fr-MA",
+  "dir": "ltr",
+  "icons": [
+    {
+      "src": "/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["business", "construction", "real estate"]
+}

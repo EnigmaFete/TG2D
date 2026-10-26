@@ -1,5 +1,27 @@
 User-agent: *
 Allow: /
+Allow: /assets/
+Allow: /styles.css
+Allow: /app.js
+Disallow: /admin/
+Disallow: /api/
+Disallow: /data/
+Disallow: /tools/
+Disallow: /*.sqlite$
+Disallow: /Project_Cover_*.pdf
+Disallow: /ezgif-*/
 
-# Sitemap
+# Specific Crawlers
+User-agent: Googlebot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+User-agent: Bingbot
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap & Host
+Host: https://tg2d.ma
 Sitemap: https://tg2d.ma/sitemap.xml

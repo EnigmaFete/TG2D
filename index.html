@@ -2,10 +2,21 @@
 <html lang="fr" dir="ltr" class="no-js">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
   <meta name="shell-type" content="web_standard" />
 
-  <!-- Favicon / Pin Icon -->
+  <!-- Device & PWA Meta -->
+  <meta name="theme-color" content="#006878" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#060A14" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="TG2D BTP" />
+  <meta name="application-name" content="TG2D BTP" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Favicon / Touch Icons -->
   <link rel="shortcut icon" href="/favicon.ico?v=2" />
   <link rel="icon" type="image/x-icon" href="/favicon.ico?v=2" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=2" />
@@ -13,21 +24,44 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
 
   <title>TG2D — Construire aujourd’hui. Bâtir durablement. | Entreprise Générale BTP Maroc</title>
-  <meta name="description" content="TG2D est une entreprise marocaine spécialisée dans la construction tous corps d'état : projets résidentiels, commerciaux, industriels et logistiques à Casablanca et sur l'ensemble du Maroc." />
+  <meta name="description" content="TG2D est une entreprise générale marocaine spécialisée dans la construction tous corps d'état (TCE) : projets résidentiels, commerciaux, industriels et logistiques à Casablanca et sur l'ensemble du Maroc." />
+  <meta name="keywords" content="entreprise BTP Maroc, entreprise générale de construction Casablanca, BTP Casablanca, travaux tous corps d'état, gros œuvre Maroc, génie civil Maroc, TG2D, conducteur de travaux Maroc, bâtiment industriel Maroc" />
 
   <!-- Search Engine Crawlers & Verification -->
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
   <link rel="canonical" href="https://tg2d.ma/index.html" />
   <meta name="google-site-verification" content="P9Lro5ScYuXYtG87U2gMqbDB3elC60244stLrHV7MOI" />
+  <meta name="author" content="TG2D Entreprise Générale BTP Maroc" />
+  <meta name="geo.region" content="MA" />
+  <meta name="geo.placename" content="Casablanca, Maroc" />
+  <meta name="geo.position" content="33.5731;-7.6298" />
+  <meta name="ICBM" content="33.5731, -7.6298" />
 
   <!-- Open Graph / Facebook -->
   <meta property="og:locale" content="fr_MA" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="TG2D — Construire aujourd’hui. Bâtir durablement." />
+  <meta property="og:title" content="TG2D — Construire aujourd’hui. Bâtir durablement. | Entreprise BTP Maroc" />
   <meta property="og:description" content="Construction Tous Corps d’État | Résidentiel | Commercial | Industriel | Logistique au Maroc." />
   <meta property="og:url" content="https://tg2d.ma/index.html" />
   <meta property="og:site_name" content="TG2D Entreprise Générale BTP" />
-  <meta property="og:image" content="assets/images/hero-construction-workers.jpg" />
+  <meta property="og:image" content="https://tg2d.ma/assets/images/hero-construction-workers.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Équipe d'ingénieurs et techniciens sur chantier BTP TG2D au Maroc" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="TG2D — Construire aujourd’hui. Bâtir durablement. | Entreprise BTP Maroc" />
+  <meta name="twitter:description" content="Construction Tous Corps d’État | Résidentiel | Commercial | Industriel | Logistique au Maroc." />
+  <meta name="twitter:image" content="https://tg2d.ma/assets/images/hero-construction-workers.jpg" />
+  <meta name="twitter:image:alt" content="Équipe et chantiers TG2D Maroc" />
+
+  <!-- DNS Prefetch & Resource Hints -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+  <link rel="dns-prefetch" href="https://cdn.tailwindcss.com" />
 
   <!-- Schema.org JSON-LD Structured Data -->
   <script type="application/ld+json">
@@ -35,13 +69,20 @@
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": ["Organization", "GeneralContractor"],
+        "@type": ["Organization", "GeneralContractor", "ConstructionBusiness"],
         "@id": "https://tg2d.ma/#organization",
         "name": "TG2D — Travaux Généraux de Développement Durable",
         "alternateName": "TG2D Maroc",
+        "legalName": "TG2D Travaux Généraux de Développement Durable SARL",
         "url": "https://tg2d.ma",
-        "logo": "https://tg2d.ma/assets/images/tg2d-logo.png",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://tg2d.ma/assets/images/tg2d-logo.png",
+          "width": "240",
+          "height": "60"
+        },
         "image": "https://tg2d.ma/assets/images/hero-construction-workers.jpg",
+        "description": "Entreprise générale marocaine spécialisée dans la construction tous corps d'état (TCE) : projets résidentiels de standing, commerciaux, industriels et logistiques à Casablanca et sur l'ensemble du Royaume du Maroc.",
         "telephone": "+212618392328",
         "email": "contact@tg2d.ma",
         "address": {
@@ -52,7 +93,50 @@
           "postalCode": "20100",
           "addressCountry": "MA"
         },
-        "areaServed": ["Casablanca", "Grand Casablanca", "Rabat", "Tanger", "Marrakech", "Bouskoura", "Dar Bouazza", "Maroc"]
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 33.5731,
+          "longitude": -7.6298
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:30",
+            "closes": "18:30"
+          }
+        ],
+        "areaServed": [
+          {"@type": "AdministrativeArea", "name": "Casablanca"},
+          {"@type": "AdministrativeArea", "name": "Grand Casablanca"},
+          {"@type": "AdministrativeArea", "name": "Rabat"},
+          {"@type": "AdministrativeArea", "name": "Tanger"},
+          {"@type": "AdministrativeArea", "name": "Marrakech"},
+          {"@type": "AdministrativeArea", "name": "Bouskoura"},
+          {"@type": "AdministrativeArea", "name": "Dar Bouazza"},
+          {"@type": "Country", "name": "Maroc"}
+        ],
+        "priceRange": "$$$",
+        "knowsAbout": [
+          "Construction BTP Tous Corps d'État",
+          "Gros Œuvre et Béton Armé",
+          "Génie Civil",
+          "Bâtiments Industriels et Entrepôts Logistiques",
+          "Showrooms et Espaces Commerciaux",
+          "Résidences et Villas Haut Standing",
+          "Rénovation et Réhabilitation Lourde",
+          "Normes Parasismiques RPS 2011"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://tg2d.ma/#website",
+        "url": "https://tg2d.ma",
+        "name": "TG2D BTP Maroc",
+        "publisher": {
+          "@id": "https://tg2d.ma/#organization"
+        },
+        "inLanguage": "fr-MA"
       }
     ]
   }
@@ -184,7 +268,7 @@
     <div class="h-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-between gap-4">
       <div class="flex items-center gap-4 shrink-0">
         <a class="flex items-center shrink-0" href="index.html" aria-label="TG2D Accueil">
-          <img alt="TG2D Logo" class="h-8 w-auto object-contain" src="assets/images/tg2d-logo.png" />
+          <img alt="TG2D Logo" class="h-8 w-auto object-contain" src="assets/images/tg2d-logo.png" decoding="async" />
         </a>
         <div class="hidden 2xl:block h-6 w-px bg-surface-container-high"></div>
         <span class="hidden 2xl:inline-block font-label-mono text-label-mono text-secondary uppercase tracking-widest whitespace-nowrap">Entreprise Générale Tous Corps d'État</span>
@@ -217,7 +301,7 @@
     <div id="mobileDrawerPanel" class="fixed top-0 right-0 bottom-0 w-[85%] max-w-sm bg-surface-container-lowest shadow-2xl p-6 flex flex-col justify-between translate-x-full transition-transform duration-300 ease-out">
       <div>
         <div class="flex items-center justify-between pb-6 border-b border-surface-container-high">
-          <img src="assets/images/tg2d-logo.png" alt="TG2D" class="h-7 w-auto" />
+          <img src="assets/images/tg2d-logo.png" alt="TG2D" class="h-7 w-auto" decoding="async" />
           <button id="mobClose" class="p-2 rounded text-on-surface-variant hover:text-on-surface" aria-label="Fermer le menu">
             <span class="material-symbols-outlined text-[26px]">close</span>
           </button>
@@ -245,7 +329,7 @@
       <!-- 2. HERO -->
       <section class="relative w-full overflow-hidden border-b border-surface-container-high bg-inverse-surface min-h-[580px] lg:min-h-[660px] flex items-center">
         <div class="absolute inset-0 z-0">
-          <img alt="Chantier de construction gros œuvre TG2D au Maroc" class="w-full h-full object-cover" src="assets/images/hero-construction-workers.jpg" />
+          <img alt="Chantier de construction gros œuvre TG2D au Maroc" class="w-full h-full object-cover" src="assets/images/hero-construction-workers.jpg" decoding="async" loading="eager" fetchpriority="high" />
           <div class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/80 to-inverse-surface/40"></div>
           <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/90 via-transparent to-inverse-surface/30"></div>
         </div>
@@ -343,7 +427,7 @@
             <!-- Right Visual: Authentic Construction Photo -->
             <div class="lg:col-span-5 flex flex-col gap-4">
               <div class="relative rounded-2xl overflow-hidden shadow-md border border-surface-container-high aspect-[4/3] lg:aspect-[5/6] bg-surface-container-high group">
-                <img src="assets/images/facade-detail.jpg" alt="Chantier gros œuvre et coulage béton par TG2D Maroc" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                <img src="assets/images/facade-detail.jpg" alt="Chantier gros œuvre et coulage béton par TG2D Maroc" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" decoding="async" loading="lazy" />
                 <div class="absolute inset-0 bg-gradient-to-t from-inverse-surface/80 via-inverse-surface/20 to-transparent"></div>
                 <div class="absolute bottom-5 left-5 right-5 text-surface-container-lowest">
                   <span class="inline-block px-2.5 py-1 rounded bg-primary-container text-on-primary-container font-label-mono text-label-mono uppercase tracking-wider font-bold mb-2">Chantier BTP Maroc</span>
@@ -521,7 +605,7 @@
             <!-- Project 1: Showroom BRICOMA -->
             <div class="group bg-surface-container-lowest rounded overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 flex flex-col border border-surface-container-high">
               <div class="relative h-60 w-full overflow-hidden bg-surface-container-high">
-                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" style="object-position: center 36%;" alt="Showroom BRICOMA Dar Bouazza construction travaux tous corps d'état façade moderne" src="assets/images/showroom-bricoma-darbouazza.jpg" />
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" style="object-position: center 36%;" alt="Showroom BRICOMA Dar Bouazza construction travaux tous corps d'état façade moderne" src="assets/images/showroom-bricoma-darbouazza.jpg" decoding="async" loading="lazy" />
                 <div class="absolute top-4 left-4 bg-surface-container-lowest/95 backdrop-blur-sm px-3 py-1 rounded font-label-mono text-label-mono text-on-surface shadow-sm">
                   DAR BOUAZZA · MAROC
                 </div>
@@ -549,7 +633,7 @@
             <!-- Project 2: Centre Logistique -->
             <div class="group bg-surface-container-lowest rounded overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 flex flex-col border border-surface-container-high">
               <div class="relative h-60 w-full overflow-hidden bg-surface-container-high">
-                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Centre logistique Bouskoura plateforme industrielle dalle haute résistance génie civil" src="assets/images/centre-logistique-bouskoura.jpg" />
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Centre logistique Bouskoura plateforme industrielle dalle haute résistance génie civil" src="assets/images/centre-logistique-bouskoura.jpg" decoding="async" loading="lazy" />
                 <div class="absolute top-4 left-4 bg-surface-container-lowest/95 backdrop-blur-sm px-3 py-1 rounded font-label-mono text-label-mono text-on-surface shadow-sm">
                   BOUSKOURA · MAROC
                 </div>
@@ -577,7 +661,7 @@
             <!-- Project 3: Projets Résidentiels -->
             <div class="group bg-surface-container-lowest rounded overflow-hidden shadow-sm hover:shadow-md transition-all duration-200 flex flex-col border border-surface-container-high">
               <div class="relative h-60 w-full overflow-hidden bg-surface-container-high">
-                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Projets résidentiels villas standing Casablanca et régions finitions architecturales de luxe" src="assets/images/residence-villas-maroc.jpg" />
+                <img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" alt="Projets résidentiels villas standing Casablanca et régions finitions architecturales de luxe" src="assets/images/residence-villas-maroc.jpg" decoding="async" loading="lazy" />
                 <div class="absolute top-4 left-4 bg-surface-container-lowest/95 backdrop-blur-sm px-3 py-1 rounded font-label-mono text-label-mono text-on-surface shadow-sm">
                   CASABLANCA &amp; RÉGIONS
                 </div>
@@ -711,7 +795,7 @@
             <!-- Valeur 1 -->
             <div class="p-7 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high overflow-hidden">
               <div class="h-32 -mx-7 -mt-7 mb-5 overflow-hidden">
-                <img src="assets/images/eng-qualite.jpg" alt="Qualité d'exécution TG2D" class="w-full h-full object-cover" />
+                <img src="assets/images/eng-qualite.jpg" alt="Qualité d'exécution TG2D" class="w-full h-full object-cover" decoding="async" loading="lazy" />
               </div>
               <div class="w-10 h-10 rounded bg-surface flex items-center justify-center text-primary mb-5">
                 <span class="material-symbols-outlined text-[24px]">verified</span>
@@ -725,7 +809,7 @@
             <!-- Valeur 2 -->
             <div class="p-7 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high overflow-hidden">
               <div class="h-32 -mx-7 -mt-7 mb-5 overflow-hidden">
-                <img src="assets/images/eng-rigueur.jpg" alt="Rigueur et organisation chantier TG2D" class="w-full h-full object-cover" />
+                <img src="assets/images/eng-rigueur.jpg" alt="Rigueur et organisation chantier TG2D" class="w-full h-full object-cover" decoding="async" loading="lazy" />
               </div>
               <div class="w-10 h-10 rounded bg-surface flex items-center justify-center text-primary mb-5">
                 <span class="material-symbols-outlined text-[24px]">rule</span>
@@ -739,7 +823,7 @@
             <!-- Valeur 3 -->
             <div class="p-7 bg-surface-container-lowest rounded shadow-sm border border-surface-container-high overflow-hidden">
               <div class="h-32 -mx-7 -mt-7 mb-5 overflow-hidden">
-                <img src="assets/images/eng-delais.jpg" alt="Respect des délais d'exécution TG2D" class="w-full h-full object-cover" />
+                <img src="assets/images/eng-delais.jpg" alt="Respect des délais d'exécution TG2D" class="w-full h-full object-cover" decoding="async" loading="lazy" />
               </div>
               <div class="w-10 h-10 rounded bg-surface flex items-center justify-center text-primary mb-5">
                 <span class="material-symbols-outlined text-[24px]">schedule</span>
@@ -1065,7 +1149,7 @@
       <!-- 12. CTA FINAL -->
       <section class="relative w-full bg-inverse-surface text-inverse-on-surface overflow-hidden" id="contact">
         <div class="absolute inset-0 z-0">
-          <img alt="Ingénieur supervision chantier TG2D" class="w-full h-full object-cover object-top opacity-20" src="assets/images/cta-worker-safety-jacket.jpg" />
+          <img alt="Ingénieur supervision chantier TG2D" class="w-full h-full object-cover object-top opacity-20" src="assets/images/cta-worker-safety-jacket.jpg" decoding="async" loading="lazy" />
           <div class="absolute inset-0 bg-gradient-to-r from-inverse-surface via-inverse-surface/95 to-inverse-surface/85"></div>
         </div>
         <div class="absolute inset-0 opacity-5 pointer-events-none z-[1]">
@@ -1122,7 +1206,7 @@
         <!-- Col 1: Brand -->
         <div class="flex flex-col gap-5">
           <a href="index.html" class="inline-block mb-5" aria-label="TG2D Accueil">
-            <img alt="TG2D Maroc" class="h-11 w-auto" style="height: 44px; width: auto;" src="assets/images/tg2d-logo.png" />
+            <img alt="TG2D Maroc" class="h-11 w-auto" style="height: 44px; width: auto;" src="assets/images/tg2d-logo.png" decoding="async" />
           </a>
           <p class="font-body-md text-body-md text-tertiary-fixed-dim max-w-sm">
             TG2D — Travaux Généraux de Développement Durable est une entreprise marocaine spécialisée dans la construction tous corps d’état, au service de projets résidentiels, commerciaux, industriels et logistiques.

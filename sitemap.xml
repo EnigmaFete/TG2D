@@ -1,183 +1,284 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- 1. PAGES PRINCIPALES -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://tg2d.ma/index.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/hero-construction-workers.jpg</image:loc>
+      <image:title>TG2D Entreprise Générale BTP Maroc — Construction Tous Corps d État</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/a-propos.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/tg2d-team-safety-vests.jpg</image:loc>
+      <image:title>Équipe de direction et ingénierie de travaux TG2D Maroc</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/expertises.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/chantier-structure-elevations.jpg</image:loc>
+      <image:title>Expertises BTP, Gros Œuvre, Génie Civil et Ingénierie TG2D</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/projets.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
-  </url>
-  <url>
-    <loc>https://tg2d.ma/journal.html</loc>
-    <lastmod>2026-10-05</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://tg2d.ma/carrieres.html</loc>
-    <lastmod>2026-10-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/centre-logistique-bouskoura.jpg</image:loc>
+      <image:title>Projets et Réalisations BTP TG2D au Maroc</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/realisations.html</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/showroom-bricoma-darbouazza.jpg</image:loc>
+      <image:title>Chantiers livrés et références clients TG2D Maroc</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://tg2d.ma/journal.html</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/bureau-etudes-plans-techniques.jpg</image:loc>
+      <image:title>Journal technique des chantiers et guides d ingénierie BTP</image:title>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://tg2d.ma/carrieres.html</loc>
+    <lastmod>2026-10-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/tg2d-team-safety-vests.jpg</image:loc>
+      <image:title>Carrières et recrutement BTP conducteur de travaux ingénieur TG2D</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/contact.html</loc>
-    <lastmod>2026-10-17</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/hero-construction-workers.jpg</image:loc>
+      <image:title>Contact et demande de devis BTP TG2D Casablanca</image:title>
+    </image:image>
   </url>
-
-  <!-- 2. SERVICES TCE & CORPS D'ÉTAT DÉTAILLÉS -->
   <url>
     <loc>https://tg2d.ma/service-construction-tous-corps-detat.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/chantier-structure-elevations.jpg</image:loc>
+      <image:title>Entreprise Générale Tous Corps d État TCE Maroc TG2D</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/service-gros-oeuvre-structure.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/chantier-ferraillage-dalle.jpg</image:loc>
+      <image:title>Gros Œuvre Génie Civil et Fondations Béton Armé Maroc</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/service-second-oeuvre-finitions.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/facade-detail.jpg</image:loc>
+      <image:title>Second Œuvre Finitions et Aménagements Tertiaires Maroc</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/service-projets-commerciaux-retail.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/showroom-bricoma-darbouazza.jpg</image:loc>
+      <image:title>Construction Espaces Commerciaux Showrooms et Retail Maroc</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/service-projets-industriels-logistiques.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/centre-logistique-bouskoura.jpg</image:loc>
+      <image:title>Construction Usines Entrepôts et Bâtiments Industriels Maroc</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/service-renovation-rehabilitation.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/facade-detail.jpg</image:loc>
+      <image:title>Rénovation et Réhabilitation Bâtiments et Sièges Sociaux Maroc</image:title>
+    </image:image>
   </url>
-
-  <!-- 3. ÉTUDES DE CAS ET PROJETS DE RÉFÉRENCE -->
   <url>
     <loc>https://tg2d.ma/projet-showroom-bricoma-dar-bouazza.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/showroom-bricoma-darbouazza.jpg</image:loc>
+      <image:title>Étude de cas BTP Showroom Bricoma Dar Bouazza</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/projet-centre-logistique-bouskoura.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/centre-logistique-bouskoura.jpg</image:loc>
+      <image:title>Étude de cas Plateforme Logistique Bouskoura</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/projet-residence-villas-standing-casablanca.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/project-cover-1.png</image:loc>
+      <image:title>Construction Résidence Villas Haut Standing Casablanca</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/projet-renovation-rehabilitation-tce.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/facade-detail.jpg</image:loc>
+      <image:title>Rénovation TCE Siège Tertiaire Casablanca</image:title>
+    </image:image>
   </url>
-
-
-  <!-- 5. QUALITÉ, SÉCURITÉ, INGÉNIERIE & RSE -->
   <url>
     <loc>https://tg2d.ma/qualite-normes-lpee.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/eng-qualite.jpg</image:loc>
+      <image:title>Contrôle Qualité et Essais Béton Normes LPEE Maroc</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/securite-hse-chantiers.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/tg2d-team-safety-vests.jpg</image:loc>
+      <image:title>Sécurité des Chantiers et Charte HSE TG2D Maroc</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/bureau-etudes-ingenierie.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/bureau-etudes-plans-techniques.jpg</image:loc>
+      <image:title>Bureau d Études Structure et Calcul Béton Armé Maroc</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/developpement-durable-rse.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/pourquoi-tg2d-banner.png</image:loc>
+      <image:title>Développement Durable et Démarche RSE Construction BTP</image:title>
+    </image:image>
   </url>
-
-  <!-- 6. PÔLES RÉGIONAUX AU MAROC -->
   <url>
     <loc>https://tg2d.ma/btp-casablanca-grand-casablanca.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/hero-construction-workers.jpg</image:loc>
+      <image:title>Entreprise BTP Casablanca Grand Casablanca et Bouskoura</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/btp-rabat-sale-kenitra.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/chantier-structure-elevations.jpg</image:loc>
+      <image:title>Entreprise BTP Rabat Salé Kénitra TG2D Construction</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/btp-tanger-tanger-med.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/centre-logistique-bouskoura.jpg</image:loc>
+      <image:title>Entreprise BTP Tanger Tanger Med Zones Industrielles</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/btp-marrakech-sud.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/chantier-ferraillage-dalle.jpg</image:loc>
+      <image:title>Entreprise BTP Marrakech et Régions Sud TG2D</image:title>
+    </image:image>
   </url>
-
-  <!-- 7. GUIDES TECHNIQUES D'EXPERTISE -->
   <url>
     <loc>https://tg2d.ma/guide-fondations-sols-maroc.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/chantier-fondations-longrines.jpg</image:loc>
+      <image:title>Guide Géotechnique Fondations et Sols au Maroc</image:title>
+    </image:image>
   </url>
   <url>
     <loc>https://tg2d.ma/guide-normes-parasismiques-rps2011.html</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://tg2d.ma/assets/images/bureau-etudes-plans-techniques.jpg</image:loc>
+      <image:title>Guide Règles et Normes Parasismiques RPS 2011 Maroc</image:title>
+    </image:image>
   </url>
 </urlset>

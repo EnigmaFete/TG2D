@@ -2,7 +2,17 @@
 <html lang="fr" dir="ltr">
 <head>
   <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <!-- Device & Cross-Platform Optimization -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#006878" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#060A14" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="TG2D BTP" />
+  <meta name="application-name" content="TG2D BTP" />
+  <meta name="format-detection" content="telephone=no" />
+  <meta name="color-scheme" content="light dark" />
+  <link rel="manifest" href="/site.webmanifest" />
 
   <!-- Favicon / Pin Icon -->
   <link rel="shortcut icon" href="/favicon.ico?v=2" />
@@ -12,25 +22,39 @@
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=2" />
   <title>Bureau d'Études & Ingénierie Structure | TG2D Maroc</title>
   <meta name="description" content="Cellule d'ingénierie intégrée TG2D Maroc : plans d'exécution béton armé, notes de calcul parasismique RPS 2011, modélisation BIM 3D et optimisation des ratios techniques." />
+  <meta name="keywords" content="bureau d'études structure Maroc, calcul béton armé, note de calcul RPS 2011, modélisation BIM Casablanca, plans d'exécution génie civil" />
+
+    <!-- Local SEO & Search Engine Crawlers -->
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="bingbot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+  <meta name="author" content="TG2D Entreprise Générale BTP Maroc" />
+  <meta name="geo.region" content="MA" />
+  <meta name="geo.placename" content="Casablanca, Maroc" />
+  <meta name="geo.position" content="33.5731;-7.6298" />
+  <meta name="ICBM" content="33.5731, -7.6298" />
   <link rel="canonical" href="https://tg2d.ma/bureau-etudes-ingenierie.html" />
 
-  <!-- Open Graph -->
+    <!-- Open Graph -->
   <meta property="og:locale" content="fr_MA" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="Bureau d'Études & Ingénierie Structure | TG2D Maroc" />
-  <meta property="og:description" content="L'ingénierie de pointe au service de la rentabilité et de la sécurité de vos structures de génie civil et bâtiment au Maroc." />
-  <meta property="og:url" content="https://tg2d.ma/bureau-etudes-ingenierie.html" />
   <meta property="og:site_name" content="TG2D Entreprise Générale BTP" />
+  <meta property="og:title" content="Bureau d'Études & Ingénierie Structure | TG2D Maroc" />
+  <meta property="og:description" content="Cellule d'ingénierie intégrée TG2D Maroc : plans d'exécution béton armé, notes de calcul parasismique RPS 2011, modélisation BIM 3D et optimisation des ratios techniques." />
+  <meta property="og:url" content="https://tg2d.ma/bureau-etudes-ingenierie.html" />
   <meta property="og:image" content="https://tg2d.ma/assets/images/bureau-etudes-plans-techniques.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Plans d'ingénierie et bureau d'études structure TG2D Maroc" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Ingénierie & Méthodes | TG2D Maroc" />
   <meta name="twitter:description" content="Optimisation des structures et modélisation BIM pour maîtres d'ouvrage exigeants." />
   <meta name="twitter:image" content="https://tg2d.ma/assets/images/bureau-etudes-plans-techniques.jpg" />
+  <meta name="twitter:image:alt" content="Plans d'ingénierie et bureau d'études structure TG2D Maroc" />
 
-  <!-- Schema.org JSON-LD -->
+<!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -116,6 +140,9 @@
   </script>
 
   <!-- Preconnect Fonts -->
+    <!-- Resource Hints & DNS Prefetch -->
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+  <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
@@ -133,7 +160,7 @@
     <nav class="nav">
       <div class="wrap" style="display: flex; align-items: center; justify-content: space-between; height: 80px;">
         <a href="index.html" class="nav-logo" aria-label="TG2D Accueil">
-          <img src="assets/images/tg2d-logo.png" alt="TG2D Maroc" class="nav-logo-img" id="navLogo" style="height: 44px; width: auto;" />
+          <img src="assets/images/tg2d-logo.png" alt="TG2D Maroc" class="nav-logo-img" id="navLogo" style="height: 44px; width: auto;" decoding="async" />
         </a>
 
         <div class="nav-links">
@@ -164,7 +191,7 @@
   <!-- Mobile Drawer -->
   <div class="mobile-menu-drawer" id="mobileDrawer">
     <div class="mob-head">
-      <img src="assets/images/tg2d-logo.png" alt="TG2D" style="height: 36px;" />
+      <img src="assets/images/tg2d-logo.png" alt="TG2D" style="height: 36px;" decoding="async" />
       <button class="mob-close" id="mobClose">&times;</button>
     </div>
     <div class="mob-links">
@@ -283,7 +310,7 @@
         </p>
       </div>
       <div class="fleet-visual-pane">
-        <img src="assets/images/bureau-etudes-plans-techniques.jpg" alt="Plans d'ingénierie et bureau d'études TG2D" class="fleet-hero-img" />
+        <img src="assets/images/bureau-etudes-plans-techniques.jpg" alt="Plans d'ingénierie et bureau d'études TG2D" class="fleet-hero-img" decoding="async" loading="eager" fetchpriority="high" />
         <div class="fleet-caption">
           <strong>BUREAU D'ÉTUDES TG2D • CASABLANCA</strong>
           <span>Conception structurelle, plans d'exécution et méthodes de réalisation</span>
@@ -316,7 +343,7 @@
         <!-- Col 1: Logo & intro -->
         <div>
           <a href="index.html" style="display: inline-block; margin-bottom: 20px;">
-            <img src="assets/images/tg2d-logo.png" alt="TG2D Maroc" style="height: 44px; width: auto;" />
+            <img src="assets/images/tg2d-logo.png" alt="TG2D Maroc" style="height: 44px; width: auto;" decoding="async" />
           </a>
           <p style="color: rgba(255, 255, 255, 0.65); font-size: 0.88rem; line-height: 1.6; max-width: 320px; margin-bottom: 24px;">
             TG2D — Travaux Généraux de Développement Durable est une entreprise marocaine spécialisée dans la construction tous corps d'état, au service de projets résidentiels, commerciaux, industriels et logistiques.
