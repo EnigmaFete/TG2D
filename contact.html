@@ -375,6 +375,9 @@
           <div id="cxAlertBox" class="hidden mb-6"></div>
 
           <form id="contactForm" class="space-y-5 text-xs">
+            <!-- Invisible Anti-Spam Honeypot Trap -->
+            <input type="text" id="cx-trap" name="company_website_trap" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
             <div class="space-y-1">
               <label for="cx-nom" class="block font-semibold text-on-surface">Nom complet &amp; Organisme / Maître d'ouvrage *</label>
               <input type="text" id="cx-nom" required placeholder="Ex: M. Mohammed Alami — Société d'Aménagement" class="w-full px-3.5 py-2.5 border rounded-lg border-surface-container-high focus:border-primary focus:ring-1 focus:ring-primary text-xs" />
@@ -610,17 +613,49 @@
 
       if (!form) return;
 
+      // Auto pre-fill from URL parameters (e.g., from Simulator)
+      try {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has('msg') || urlParams.has('message')) {
+          const m = urlParams.get('msg') || urlParams.get('message');
+          const msgField = document.getElementById('cx-msg');
+          if (msgField) msgField.value = m;
+        }
+        if (urlParams.has('besoin')) {
+          const b = urlParams.get('besoin');
+          const bField = document.getElementById('cx-besoin');
+          if (bField) {
+            for (let opt of bField.options) {
+              if (opt.value === b) { bField.value = b; break; }
+            }
+          }
+        }
+        if (urlParams.has('profil')) {
+          const p = urlParams.get('profil');
+          const pField = document.getElementById('cx-profil');
+          if (pField) {
+            for (let opt of pField.options) {
+              if (opt.value === p) { pField.value = p; break; }
+            }
+          }
+        }
+      } catch (e) {
+        console.warn('URL parsing error', e);
+      }
+
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         // Get values
+        const trapVal = document.getElementById('cx-trap') ? document.getElementById('cx-trap').value.trim() : '';
         const payload = {
           nom: document.getElementById('cx-nom').value.trim(),
           telephone: document.getElementById('cx-tel').value.trim(),
           email: document.getElementById('cx-mail').value.trim(),
           profil: document.getElementById('cx-profil').value,
           besoin: document.getElementById('cx-besoin').value,
-          message: document.getElementById('cx-msg').value.trim()
+          message: document.getElementById('cx-msg').value.trim(),
+          company_website_trap: trapVal
         };
 
         // Loading state
@@ -702,5 +737,120 @@
       });
     });
   </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const fabBtn = document.getElementById('fabWhatsAppBtn');
+      const fabMenu = document.getElementById('fabWhatsAppMenu');
+      const fabCloseBtn = document.getElementById('fabCloseBtn');
+
+      if (fabBtn && fabMenu) {
+        function toggleFab() {
+          const isHidden = fabMenu.classList.contains('hidden');
+          if (isHidden) {
+            fabMenu.classList.remove('hidden');
+            requestAnimationFrame(() => {
+              fabMenu.classList.remove('opacity-0', 'translate-y-4', 'scale-95');
+              fabMenu.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+            });
+          } else {
+            fabMenu.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+            fabMenu.classList.add('opacity-0', 'translate-y-4', 'scale-95');
+            setTimeout(() => fabMenu.classList.add('hidden'), 250);
+          }
+        }
+
+        fabBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleFab();
+        });
+
+        if (fabCloseBtn) {
+          fabCloseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleFab();
+          });
+        }
+
+        document.addEventListener('click', (e) => {
+          if (!fabMenu.classList.contains('hidden') && !fabMenu.contains(e.target) && !fabBtn.contains(e.target)) {
+            fabMenu.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+            fabMenu.classList.add('opacity-0', 'translate-y-4', 'scale-95');
+            setTimeout(() => fabMenu.classList.add('hidden'), 250);
+          }
+        });
+      }
+    });
+  </script>
+
+  <!-- Floating WhatsApp Quick Action FAB Element -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-none" id="fabWhatsAppWrapper">
+    <!-- Popover Menu -->
+    <div id="fabWhatsAppMenu" class="pointer-events-auto opacity-0 translate-y-4 scale-95 transition-all duration-300 ease-out origin-bottom-right mb-3 w-[290px] sm:w-[320px] bg-surface-container-lowest rounded-2xl shadow-2xl border border-surface-container-high p-4 text-on-surface hidden">
+      <div class="flex items-center justify-between pb-3 border-b border-surface-container-high">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold">
+            <span class="material-symbols-outlined text-[20px]">chat</span>
+          </div>
+          <div>
+            <div class="font-bold text-xs text-on-surface">Équipe Technique TG2D</div>
+            <div class="text-[10px] text-emerald-600 flex items-center gap-1 font-medium">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              En ligne · Réponse sous 15 min
+            </div>
+          </div>
+        </div>
+        <button id="fabCloseBtn" class="p-1 rounded-full text-secondary hover:text-on-surface transition-colors" aria-label="Fermer le menu WhatsApp">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <div class="space-y-2 py-3 text-xs">
+        <a href="https://wa.me/212618392328?text=Bonjour%20TG2D,%20je%20souhaite%20%C3%A9changer%20avec%20un%20ing%C3%A9nieur%20travaux%20concernant%20un%20projet." target="_blank" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-surface-container transition-colors group">
+          <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform text-[20px]">engineering</span>
+          <div class="flex-1">
+            <div class="font-semibold text-on-surface">Parler à un ingénieur travaux</div>
+            <div class="text-[10px] text-on-surface-variant">Conseil technique direct</div>
+          </div>
+        </a>
+
+        <a href="https://wa.me/212618392328?text=Bonjour%20TG2D,%20j'ai%20des%20plans%20(PDF/DWG)%20%C3%A0%20vous%20transmettre%20pour%20un%20chiffrage." target="_blank" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-surface-container transition-colors group">
+          <span class="material-symbols-outlined text-emerald-600 group-hover:scale-110 transition-transform text-[20px]">upload_file</span>
+          <div class="flex-1">
+            <div class="font-semibold text-on-surface">Transmettre des plans (PDF/DWG)</div>
+            <div class="text-[10px] text-on-surface-variant">Chiffrage sur métré existant</div>
+          </div>
+        </a>
+
+        <a href="index.html#simulateur" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-surface-container transition-colors group">
+          <span class="material-symbols-outlined text-amber-500 group-hover:scale-110 transition-transform text-[20px]">calculate</span>
+          <div class="flex-1">
+            <div class="font-semibold text-on-surface">Simulateur de Devis en ligne</div>
+            <div class="text-[10px] text-on-surface-variant">Estimation immédiate en MAD</div>
+          </div>
+        </a>
+
+        <a href="tel:+212618392328" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-surface-container transition-colors group border-t border-surface-container-high pt-2">
+          <span class="material-symbols-outlined text-secondary group-hover:scale-110 transition-transform text-[20px]">call</span>
+          <div class="flex-1">
+            <div class="font-semibold text-on-surface">Appeler la Direction</div>
+            <div class="text-[10px] text-on-surface-variant">+212 618-392328</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- FAB Trigger Button -->
+    <button id="fabWhatsAppBtn" class="pointer-events-auto p-3.5 sm:p-4 rounded-full bg-[#006878] hover:bg-[#00525f] text-surface-container-lowest shadow-[0_8px_24px_rgba(0,104,120,0.45)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center relative group" aria-label="Contacter TG2D sur WhatsApp">
+      <span class="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-white"></span>
+      </span>
+      <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+        <path d="M12.031 2C6.495 2 2 6.495 2 12.031c0 1.988.583 3.864 1.688 5.46L2 22l4.673-1.636a10.007 10.007 0 0 0 5.358 1.667h.005c5.536 0 10.031-4.495 10.031-10.031 0-2.68-1.043-5.2-2.936-7.094A9.972 9.972 0 0 0 12.031 2zm5.882 14.283c-.244.686-1.42 1.31-1.956 1.392-.515.08-1.18.115-1.91-.12a15.82 15.82 0 0 1-5.385-3.327 12.72 12.72 0 0 1-2.482-3.666c-.305-.59-.033-1.077.202-1.392.208-.278.472-.654.708-.942.235-.29.313-.494.47-.818.156-.328.078-.616-.04-.852-.117-.235-1.056-2.545-1.447-3.486-.381-.918-.771-.794-1.057-.808l-.9-.015c-.313 0-.82.117-1.25.586-.43.47-1.64 1.603-1.64 3.91 0 2.308 1.68 4.536 1.914 4.85.234.313 3.308 5.05 8.016 7.086 1.12.484 1.994.773 2.676.99.782.248 1.493.213 2.055.13.627-.094 1.928-.788 2.2-1.547.273-.76.273-1.41.192-1.547-.08-.137-.294-.216-.62-.379z"/>
+      </svg>
+    </button>
+  </div>
+
 </body>
 </html>

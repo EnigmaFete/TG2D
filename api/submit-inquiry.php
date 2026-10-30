@@ -46,6 +46,18 @@ $email     = trim((isset($data['email']) ? $data['email'] : ''));
 $profil    = trim((isset($data['profil']) ? $data['profil'] : 'promoteur'));
 $besoin    = trim((isset($data['besoin']) ? $data['besoin'] : 'tce'));
 $message   = trim((isset($data['message']) ? $data['message'] : ''));
+$honeypot  = trim((isset($data['company_website_trap']) ? $data['company_website_trap'] : (isset($data['website_url']) ? $data['website_url'] : '')));
+
+// Protection Anti-Spam invisible (Honeypot) : si rempli par un robot, feindre le succès sans enregistrer
+if (!empty($honeypot)) {
+    echo json_encode([
+        'success'    => true,
+        'reference'  => 'DEV-2026-0099',
+        'inquiry_id' => 99,
+        'message'    => 'Dossier transmis avec succès.'
+    ]);
+    exit;
+}
 
 // Validation
 if (empty($nom)) {

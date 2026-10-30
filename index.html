@@ -274,11 +274,15 @@
         <span class="hidden 2xl:inline-block font-label-mono text-label-mono text-secondary uppercase tracking-widest whitespace-nowrap">Entreprise Générale Tous Corps d'État</span>
       </div>
 
-      <nav class="hidden lg:flex items-center gap-4 xl:gap-6 2xl:gap-8 h-full shrink-0">
+      <nav class="hidden lg:flex items-center gap-4 xl:gap-5 2xl:gap-7 h-full shrink-0">
         <a aria-current="page" class="transition-colors py-2 text-primary font-semibold border-b-2 border-primary-container whitespace-nowrap shrink-0" href="index.html">Accueil</a>
         <a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-2 whitespace-nowrap shrink-0" href="a-propos.html">À propos</a>
         <a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-2 whitespace-nowrap shrink-0" href="expertises.html">Nos expertises</a>
         <a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-2 whitespace-nowrap shrink-0" href="projets.html">Nos réalisations</a>
+        <a class="font-body-md text-body-md text-primary font-semibold hover:text-primary transition-colors py-2 whitespace-nowrap shrink-0 flex items-center gap-1.5 bg-primary-container/10 px-2.5 py-1 rounded" href="#simulateur">
+          <span class="material-symbols-outlined text-[16px] text-amber-500">calculate</span>
+          <span>Simulateur BTP</span>
+        </a>
         <a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-2 whitespace-nowrap shrink-0" href="carrieres.html">Carrières</a>
         <a class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors py-2 whitespace-nowrap shrink-0" href="contact.html">Contact</a>
       </nav>
@@ -311,6 +315,10 @@
           <a href="a-propos.html" class="px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">À propos</a>
           <a href="expertises.html" class="px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">Nos expertises</a>
           <a href="projets.html" class="px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">Nos réalisations</a>
+          <a href="#simulateur" class="px-4 py-3 rounded text-primary font-semibold hover:bg-surface-container transition-colors flex items-center gap-2">
+            <span class="material-symbols-outlined text-amber-500 text-[18px]">calculate</span>
+            <span>Simulateur de Devis BTP</span>
+          </a>
           <a href="carrieres.html" class="px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">Carrières</a>
           <a href="contact.html" class="px-4 py-3 rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors">Contact</a>
         </nav>
@@ -689,6 +697,250 @@
         </div>
       </section>
 
+      <!-- 5b. COMPARATEUR AVANT / APRÈS : DE LA STRUCTURE AU CLÉ EN MAIN -->
+      <section class="relative w-full bg-surface border-b border-surface-container-high overflow-hidden" id="avant-apres">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div class="flex flex-col gap-3 max-w-2xl">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-primary-container rounded-sm"></span>
+                <span class="font-label-mono text-label-mono text-primary font-semibold uppercase tracking-wider">Maîtrise d'Exécution</span>
+              </div>
+              <h2 class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface font-bold">
+                De la structure brute à la livraison clé en main
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Faites glisser le curseur pour observer la rigueur d'exécution TG2D : du ferraillage parasismique normé jusqu'aux finitions architecturales de haut standing.
+              </p>
+            </div>
+            <div class="flex items-center gap-2 font-label-mono text-label-mono text-secondary bg-surface-container px-3 py-1.5 rounded self-start md:self-end">
+              <span class="material-symbols-outlined text-[18px] text-primary">drag_indicator</span>
+              <span>Glisser le curseur interactif</span>
+            </div>
+          </div>
+
+          <!-- Interactive Before / After Slider -->
+          <div class="relative w-full h-[360px] sm:h-[460px] lg:h-[520px] rounded-xl overflow-hidden border border-surface-container-high shadow-lg select-none" id="baSliderContainer">
+            <!-- Background Image (AFTER) -->
+            <img src="assets/images/residence-villas-maroc.jpg" alt="Après : Finitions architecturales et livraison clés en main TG2D" class="absolute inset-0 w-full h-full object-cover pointer-events-none" />
+            <div class="absolute top-4 right-4 bg-inverse-surface/90 text-surface-container-lowest backdrop-blur-md px-3.5 py-1.5 rounded font-label-mono text-label-mono uppercase tracking-wider shadow-md pointer-events-none flex items-center gap-2 z-10">
+              <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+              <span>Après : Clé en Main</span>
+            </div>
+
+            <!-- Foreground Image (BEFORE) clipped -->
+            <div class="absolute inset-y-0 left-0 overflow-hidden pointer-events-none z-20" id="baBeforeWrapper" style="width: 50%;">
+              <img src="assets/images/chantier-ferraillage-dalle.jpg" alt="Avant : Ferraillage et gros œuvre béton armé TG2D" class="absolute inset-0 w-full h-full object-cover pointer-events-none max-w-none" id="baBeforeImg" />
+              <div class="absolute top-4 left-4 bg-inverse-surface/90 text-surface-container-lowest backdrop-blur-md px-3.5 py-1.5 rounded font-label-mono text-label-mono uppercase tracking-wider shadow-md pointer-events-none flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                <span>Avant : Ferraillage &amp; Béton</span>
+              </div>
+            </div>
+
+            <!-- Divider Line & Handle -->
+            <div class="absolute inset-y-0 cursor-ew-resize flex items-center justify-center pointer-events-none z-30" id="baHandle" style="left: 50%; transform: translateX(-50%);">
+              <div class="w-1 h-full bg-surface-container-lowest shadow-[0_0_12px_rgba(0,0,0,0.6)]"></div>
+              <div class="absolute w-11 h-11 rounded-full bg-inverse-surface text-surface-container-lowest border-2 border-surface-container-lowest shadow-2xl flex items-center justify-center pointer-events-auto cursor-grab active:cursor-grabbing hover:scale-110 transition-transform">
+                <span class="material-symbols-outlined text-lg">sync_alt</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5c. SIMULATEUR DE DEVIS BTP & AVANT-MÉTRÉ EN LIGNE -->
+      <section class="relative w-full bg-surface-container-lowest border-b border-surface-container-high" id="simulateur">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+          <div class="flex flex-col gap-3 max-w-3xl mb-12">
+            <div class="flex items-center gap-2">
+              <span class="w-1.5 h-1.5 bg-primary-container rounded-sm"></span>
+              <span class="font-label-mono text-label-mono text-primary font-semibold uppercase tracking-wider">Outil d'Ingénierie &amp; Études de Prix</span>
+            </div>
+            <h2 class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface font-bold">
+              Simulateur de Devis BTP &amp; Avant-Métré Prévisionnel
+            </h2>
+            <p class="font-body-md text-body-md text-on-surface-variant">
+              Configurez les paramètres de votre futur ouvrage pour générer en temps réel une fourchette budgétaire indicative et estimer le calendrier de réalisation au Maroc.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+            <!-- Form Parameters Panel (7 cols) -->
+            <div class="lg:col-span-7 bg-surface p-6 sm:p-8 rounded-xl border border-surface-container-high shadow-sm space-y-8">
+              
+              <!-- Criterion 1: Project Type -->
+              <div class="space-y-3">
+                <label class="block font-headline-sm text-sm sm:text-base font-bold text-on-surface">
+                  1. Typologie de l'ouvrage
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="simTypeGroup">
+                  <button type="button" data-type="villa" class="sim-type-btn p-3.5 rounded-lg border text-left transition-all duration-200 border-primary bg-primary-container/10 text-on-surface flex items-start gap-3">
+                    <span class="material-symbols-outlined text-primary text-xl mt-0.5">villa</span>
+                    <div>
+                      <div class="font-semibold text-xs sm:text-sm">Villa Haut Standing</div>
+                      <div class="font-body-sm text-[11px] text-on-surface-variant">Résidences de prestige &amp; finitions luxe</div>
+                    </div>
+                  </button>
+                  <button type="button" data-type="immeuble" class="sim-type-btn p-3.5 rounded-lg border text-left transition-all duration-200 border-surface-container-high hover:border-primary/50 text-on-surface flex items-start gap-3">
+                    <span class="material-symbols-outlined text-secondary text-xl mt-0.5">apartment</span>
+                    <div>
+                      <div class="font-semibold text-xs sm:text-sm">Immeuble &amp; Résidentiel R+</div>
+                      <div class="font-body-sm text-[11px] text-on-surface-variant">Bâtiments collectifs &amp; tertiaires</div>
+                    </div>
+                  </button>
+                  <button type="button" data-type="industriel" class="sim-type-btn p-3.5 rounded-lg border text-left transition-all duration-200 border-surface-container-high hover:border-primary/50 text-on-surface flex items-start gap-3">
+                    <span class="material-symbols-outlined text-secondary text-xl mt-0.5">warehouse</span>
+                    <div>
+                      <div class="font-semibold text-xs sm:text-sm">Entrepôt &amp; Pôle Logistique</div>
+                      <div class="font-body-sm text-[11px] text-on-surface-variant">Dalles industrielles, hangars, charpentes</div>
+                    </div>
+                  </button>
+                  <button type="button" data-type="commercial" class="sim-type-btn p-3.5 rounded-lg border text-left transition-all duration-200 border-surface-container-high hover:border-primary/50 text-on-surface flex items-start gap-3">
+                    <span class="material-symbols-outlined text-secondary text-xl mt-0.5">storefront</span>
+                    <div>
+                      <div class="font-semibold text-xs sm:text-sm">Showroom &amp; Retail Commercial</div>
+                      <div class="font-body-sm text-[11px] text-on-surface-variant">Locaux ERP, commerces, franchises</div>
+                    </div>
+                  </button>
+                  <button type="button" data-type="renovation" class="sim-type-btn sm:col-span-2 p-3.5 rounded-lg border text-left transition-all duration-200 border-surface-container-high hover:border-primary/50 text-on-surface flex items-start gap-3">
+                    <span class="material-symbols-outlined text-secondary text-xl mt-0.5">construction</span>
+                    <div>
+                      <div class="font-semibold text-xs sm:text-sm">Rénovation Lourde &amp; Réhabilitation TCE</div>
+                      <div class="font-body-sm text-[11px] text-on-surface-variant">Restructuration structurelle, mise aux normes &amp; réaménagement</div>
+                    </div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Criterion 2: Surface Slider -->
+              <div class="space-y-3">
+                <div class="flex items-center justify-between">
+                  <label for="simSurfaceRange" class="font-headline-sm text-sm sm:text-base font-bold text-on-surface">
+                    2. Superficie estimée couverte
+                  </label>
+                  <div class="flex items-center gap-1.5 bg-surface-container px-3 py-1 rounded border border-surface-container-high">
+                    <input type="number" id="simSurfaceInput" min="80" max="25000" step="10" value="650" class="w-20 text-right font-headline-sm font-bold text-primary bg-transparent focus:outline-none text-base" />
+                    <span class="font-label-mono text-xs text-on-surface font-semibold">m²</span>
+                  </div>
+                </div>
+
+                <input type="range" id="simSurfaceRange" min="100" max="10000" step="50" value="650" class="w-full accent-[#006878] cursor-pointer h-2 bg-surface-container-highest rounded-lg appearance-none" />
+
+                <!-- Presets -->
+                <div class="flex flex-wrap gap-2 pt-1">
+                  <button type="button" class="sim-preset-btn px-2.5 py-1 text-xs rounded bg-surface-container border border-surface-container-high hover:border-primary text-on-surface transition-colors" data-val="250">250 m²</button>
+                  <button type="button" class="sim-preset-btn px-2.5 py-1 text-xs rounded bg-surface-container border border-surface-container-high hover:border-primary text-on-surface transition-colors" data-val="650">650 m²</button>
+                  <button type="button" class="sim-preset-btn px-2.5 py-1 text-xs rounded bg-surface-container border border-surface-container-high hover:border-primary text-on-surface transition-colors" data-val="1500">1 500 m²</button>
+                  <button type="button" class="sim-preset-btn px-2.5 py-1 text-xs rounded bg-surface-container border border-surface-container-high hover:border-primary text-on-surface transition-colors" data-val="3500">3 500 m²</button>
+                  <button type="button" class="sim-preset-btn px-2.5 py-1 text-xs rounded bg-surface-container border border-surface-container-high hover:border-primary text-on-surface transition-colors" data-val="8000">8 000 m²</button>
+                </div>
+              </div>
+
+              <!-- Criterion 3: Prestation & Lot -->
+              <div class="space-y-3">
+                <label class="block font-headline-sm text-sm sm:text-base font-bold text-on-surface">
+                  3. Périmètre de la mission
+                </label>
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-3" id="simPrestationGroup">
+                  <button type="button" data-prest="tce" class="sim-prest-btn p-3 rounded-lg border text-left transition-all duration-200 border-primary bg-primary-container/10 text-on-surface">
+                    <div class="font-semibold text-xs sm:text-sm">Tous Corps d'État (TCE)</div>
+                    <div class="font-body-sm text-[11px] text-on-surface-variant mt-0.5">Mission complète clé en main</div>
+                  </button>
+                  <button type="button" data-prest="go" class="sim-prest-btn p-3 rounded-lg border text-left transition-all duration-200 border-surface-container-high hover:border-primary/50 text-on-surface">
+                    <div class="font-semibold text-xs sm:text-sm">Gros Œuvre Seul</div>
+                    <div class="font-body-sm text-[11px] text-on-surface-variant mt-0.5">Fondations &amp; structure béton</div>
+                  </button>
+                  <button type="button" data-prest="so" class="sim-prest-btn p-3 rounded-lg border text-left transition-all duration-200 border-surface-container-high hover:border-primary/50 text-on-surface">
+                    <div class="font-semibold text-xs sm:text-sm">Second Œuvre</div>
+                    <div class="font-body-sm text-[11px] text-on-surface-variant mt-0.5">Lots techniques &amp; finitions</div>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Criterion 4: Region -->
+              <div class="space-y-3">
+                <label for="simRegion" class="block font-headline-sm text-sm sm:text-base font-bold text-on-surface">
+                  4. Localisation du chantier
+                </label>
+                <select id="simRegion" class="w-full px-3.5 py-2.5 border rounded-lg border-surface-container-high bg-surface-container-lowest text-on-surface focus:border-primary focus:ring-1 focus:ring-primary text-xs sm:text-sm">
+                  <option value="casa" selected>Grand Casablanca (Casablanca, Bouskoura, Dar Bouazza, Mohammedia)</option>
+                  <option value="rabat">Région Rabat - Salé - Kénitra</option>
+                  <option value="tanger">Tanger Med &amp; Zone Franche / Nord</option>
+                  <option value="marrakech">Marrakech &amp; Régions Sud</option>
+                  <option value="autre">Autre région du Maroc</option>
+                </select>
+              </div>
+
+            </div>
+
+            <!-- Dynamic Result Card (5 cols) -->
+            <div class="lg:col-span-5 sticky top-28 bg-inverse-surface text-inverse-on-surface p-7 sm:p-8 rounded-xl border border-surface-container-high shadow-2xl flex flex-col justify-between gap-6">
+              <div class="space-y-6">
+                <div class="flex items-center justify-between pb-4 border-b border-surface-container-highest/20">
+                  <span class="font-label-mono text-xs font-bold text-primary-fixed-dim uppercase tracking-wider flex items-center gap-1.5">
+                    <span class="w-2 h-2 rounded-full bg-primary-fixed-dim animate-pulse"></span>
+                    Estimation Immédiate
+                  </span>
+                  <span class="font-label-mono text-[11px] text-tertiary-fixed-dim">Référentiel Maroc 2026</span>
+                </div>
+
+                <!-- Price Box -->
+                <div>
+                  <span class="font-body-sm text-xs text-tertiary-fixed-dim block mb-1">Fourchette budgétaire prévisionnelle</span>
+                  <div class="font-display-xl-mobile sm:font-display-xl text-2xl sm:text-3xl font-extrabold text-surface-container-lowest tracking-tight" id="simPriceOutput">
+                    3 280 000 — 4 200 000 MAD
+                  </div>
+                  <span class="font-label-mono text-[11px] text-primary-fixed-dim block mt-1">Hors Taxes (HT) · Matériaux &amp; Main d'Œuvre qualifiée inclus</span>
+                </div>
+
+                <!-- Specs Breakdown -->
+                <div class="space-y-2.5 pt-4 border-t border-surface-container-highest/20 text-xs">
+                  <div class="flex items-center justify-between">
+                    <span class="text-tertiary-fixed-dim flex items-center gap-1.5">
+                      <span class="material-symbols-outlined text-[16px] text-primary-fixed-dim">schedule</span>
+                      Délai prévisionnel d'exécution
+                    </span>
+                    <span class="font-bold text-surface-container-lowest" id="simDelaiOutput">7 à 9 mois</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-tertiary-fixed-dim flex items-center gap-1.5">
+                      <span class="material-symbols-outlined text-[16px] text-primary-fixed-dim">verified</span>
+                      Garantie &amp; Contrôle
+                    </span>
+                    <span class="font-bold text-surface-container-lowest">Norme RPS2011 &amp; LPEE</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-tertiary-fixed-dim flex items-center gap-1.5">
+                      <span class="material-symbols-outlined text-[16px] text-primary-fixed-dim">engineering</span>
+                      Assistance technique
+                    </span>
+                    <span class="font-bold text-surface-container-lowest">Conducteur dédié 100%</span>
+                  </div>
+                </div>
+
+                <div class="p-3.5 rounded bg-surface-container-highest/10 border border-surface-container-highest/15 text-[11px] text-tertiary-fixed-dim leading-relaxed">
+                  ⓘ <em>Cette projection est une estimation d'ordre préliminaire. Notre bureau d'études établit un avant-métré contractuel sur plans d'architecte et études géotechniques.</em>
+                </div>
+              </div>
+
+              <!-- CTA Actions -->
+              <div class="space-y-3 pt-4 border-t border-surface-container-highest/20">
+                <a id="simSubmitDossierBtn" href="contact.html" class="w-full inline-flex items-center justify-center gap-2 bg-primary-container text-on-surface hover:brightness-110 font-bold py-3.5 px-5 rounded-lg text-xs uppercase tracking-wider shadow-lg transition-all text-center">
+                  <span>Transmettre ce dossier d'étude</span>
+                  <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+                </a>
+
+                <a id="simWhatsappBtn" href="https://wa.me/212618392328" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-surface-container-highest/20 text-surface-container-lowest hover:bg-surface-container-highest/30 font-semibold py-3 px-5 rounded-lg text-xs tracking-wider transition-all border border-surface-container-highest/30">
+                  <span class="material-symbols-outlined text-emerald-400 text-[18px]">chat</span>
+                  <span>Partager le chiffrage sur WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       <!-- 6. NOTRE ENGAGEMENT -->
       <section class="relative w-full bg-surface-container-lowest border-b border-surface-container-high">
         <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
@@ -929,6 +1181,131 @@
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 8b. PRÉSENCE RÉGIONALE & CARTE INTERACTIVE DES CHANTIERS -->
+      <section class="relative w-full bg-surface border-b border-surface-container-high overflow-hidden" id="chantiers-maroc">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 py-20">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+            <div class="flex flex-col gap-3 max-w-2xl">
+              <div class="flex items-center gap-2">
+                <span class="w-1.5 h-1.5 bg-primary-container rounded-sm"></span>
+                <span class="font-label-mono text-label-mono text-primary font-semibold uppercase tracking-wider">Rayonnement National</span>
+              </div>
+              <h2 class="font-headline-lg text-2xl sm:text-headline-lg text-on-surface font-bold">
+                Présence territoriale &amp; déploiement de chantiers
+              </h2>
+              <p class="font-body-md text-body-md text-on-surface-variant">
+                Ancrée au cœur économique de Casablanca, TG2D déploie ses équipes d'ingénieurs et ses moyens matériels à travers les principaux pôles d'activité du Royaume du Maroc.
+              </p>
+            </div>
+            
+            <!-- Filter Pills -->
+            <div class="flex flex-wrap gap-2 self-start md:self-end" id="mapPillGroup">
+              <button type="button" class="map-city-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-inverse-surface text-surface-container-lowest transition-all" data-city="casa">Casablanca &amp; Grand Casa</button>
+              <button type="button" class="map-city-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-surface-container hover:bg-surface-container-high text-on-surface transition-all" data-city="darbouazza">Dar Bouazza</button>
+              <button type="button" class="map-city-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-surface-container hover:bg-surface-container-high text-on-surface transition-all" data-city="bouskoura">Bouskoura</button>
+              <button type="button" class="map-city-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-surface-container hover:bg-surface-container-high text-on-surface transition-all" data-city="tanger">Tanger Med</button>
+              <button type="button" class="map-city-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-surface-container hover:bg-surface-container-high text-on-surface transition-all" data-city="rabat">Rabat</button>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <!-- Interactive Visual Map Card (7 cols) -->
+            <div class="lg:col-span-7 bg-surface-container-lowest p-6 sm:p-8 rounded-xl border border-surface-container-high shadow-sm relative overflow-hidden">
+              <div class="relative w-full h-[320px] sm:h-[400px] flex items-center justify-center bg-gradient-to-br from-[#0b1320] via-[#0f1b2f] to-[#070b14] rounded-lg border border-surface-container-high/40 overflow-hidden">
+                <!-- Morocco stylized interactive nodes SVG -->
+                <svg viewBox="0 0 500 420" class="w-full h-full max-h-[380px] select-none" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Abstract Moroccan coastline path -->
+                  <path d="M 230,30 Q 255,45 280,35 T 310,60 T 290,100 T 260,110 T 225,125 T 195,145 T 180,180 T 160,220 T 140,270 T 110,330 T 80,390" fill="none" stroke="#1d2e4a" stroke-width="2.5" stroke-dasharray="4,4" />
+                  
+                  <!-- Geographic polygon highlight (Morocco territory silhouette accent) -->
+                  <polygon points="275,36 305,58 290,95 240,115 200,140 180,175 160,225 140,280 120,330 150,340 180,320 220,290 270,260 330,220 370,180 380,110 320,60" fill="rgba(0,194,255,0.04)" stroke="rgba(0,194,255,0.15)" stroke-width="1.5" />
+
+                  <!-- City Node: Tanger Med (top) -->
+                  <g class="map-node cursor-pointer transition-all duration-300" data-city="tanger" transform="translate(278, 40)">
+                    <circle r="12" fill="rgba(0,194,255,0.2)" class="animate-ping" />
+                    <circle r="6" fill="#00c2ff" stroke="#ffffff" stroke-width="2" />
+                    <text x="12" y="4" fill="#ffffff" font-size="11" font-weight="600" font-family="Inter, sans-serif">Tanger Med</text>
+                  </g>
+
+                  <!-- City Node: Rabat -->
+                  <g class="map-node cursor-pointer transition-all duration-300" data-city="rabat" transform="translate(225, 125)">
+                    <circle r="5" fill="#46d7f4" stroke="#ffffff" stroke-width="1.5" />
+                    <text x="12" y="4" fill="#bac8d4" font-size="10" font-weight="600" font-family="Inter, sans-serif">Rabat</text>
+                  </g>
+
+                  <!-- City Node: Casablanca (HQ - Large Active Node) -->
+                  <g class="map-node cursor-pointer transition-all duration-300 active" data-city="casa" transform="translate(195, 145)">
+                    <circle r="18" fill="rgba(8,188,216,0.3)" class="animate-pulse" />
+                    <circle r="9" fill="#08bcd8" stroke="#ffffff" stroke-width="2.5" />
+                    <text x="-95" y="4" fill="#ffffff" font-size="12" font-weight="700" font-family="Inter, sans-serif">Casablanca ★</text>
+                  </g>
+
+                  <!-- City Node: Dar Bouazza -->
+                  <g class="map-node cursor-pointer transition-all duration-300" data-city="darbouazza" transform="translate(182, 160)">
+                    <circle r="5" fill="#46d7f4" stroke="#ffffff" stroke-width="1.5" />
+                    <text x="-80" y="16" fill="#bac8d4" font-size="10" font-family="Inter, sans-serif">Dar Bouazza</text>
+                  </g>
+
+                  <!-- City Node: Bouskoura -->
+                  <g class="map-node cursor-pointer transition-all duration-300" data-city="bouskoura" transform="translate(208, 168)">
+                    <circle r="5" fill="#46d7f4" stroke="#ffffff" stroke-width="1.5" />
+                    <text x="12" y="14" fill="#bac8d4" font-size="10" font-family="Inter, sans-serif">Bouskoura</text>
+                  </g>
+
+                  <!-- City Node: Marrakech -->
+                  <g class="map-node cursor-pointer transition-all duration-300" data-city="marrakech" transform="translate(185, 230)">
+                    <circle r="5" fill="#52606a" stroke="#ffffff" stroke-width="1.5" />
+                    <text x="12" y="4" fill="#bac8d4" font-size="10" font-family="Inter, sans-serif">Marrakech</text>
+                  </g>
+                </svg>
+
+                <div class="absolute bottom-4 left-4 bg-inverse-surface/85 backdrop-blur-md px-3 py-1.5 rounded text-[11px] font-label-mono text-tertiary-fixed-dim border border-surface-container-highest/20 flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                  <span>Chantiers &amp; Déploiements Actifs</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Dynamic City Detail Card (5 cols) -->
+            <div class="lg:col-span-5 bg-surface-container-lowest p-7 sm:p-8 rounded-xl border border-surface-container-high shadow-sm flex flex-col justify-between gap-6" id="cityDetailCard">
+              <div class="space-y-4">
+                <div class="flex items-center justify-between pb-3 border-b border-surface-container-high">
+                  <span class="font-label-mono text-xs font-bold text-primary uppercase tracking-wider" id="cityRegionTag">Pôle Économique Métropolitain</span>
+                  <span class="font-label-mono text-xs text-secondary" id="cityZipTag">Région Casablanca-Settat</span>
+                </div>
+                <h3 class="font-headline-lg text-2xl font-bold text-on-surface" id="cityName">
+                  Grand Casablanca &amp; Siège
+                </h3>
+                <p class="font-body-md text-sm text-on-surface-variant leading-relaxed" id="cityDesc">
+                  Cœur névralgique des opérations de TG2D. Conduite continue de chantiers résidentiels haut standing, réhabilitation de plateaux d'affaires et pilotage des équipes d'ingénierie centrale.
+                </p>
+
+                <!-- Project badges in this area -->
+                <div class="space-y-2 pt-2" id="cityKeyProjects">
+                  <div class="p-3 rounded bg-surface border border-surface-container-high flex items-center justify-between text-xs">
+                    <span class="font-semibold text-on-surface">Villas Haut Standing</span>
+                    <span class="font-label-mono text-primary font-bold">TCE Clé en main</span>
+                  </div>
+                  <div class="p-3 rounded bg-surface border border-surface-container-high flex items-center justify-between text-xs">
+                    <span class="font-semibold text-on-surface">Réhabilitation Sièges Sociaux</span>
+                    <span class="font-label-mono text-primary font-bold">Rénovation Lourde</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-4 border-t border-surface-container-high flex items-center justify-between">
+                <span class="font-label-mono text-xs text-secondary">Intervention rapide 24h</span>
+                <a href="contact.html" class="inline-flex items-center gap-1 font-label-md text-xs font-bold text-primary hover:underline">
+                  <span>Étudier un projet dans cette zone</span>
+                  <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
@@ -1336,6 +1713,418 @@
         });
         drawer.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMenu));
       }
+
+      // =========================================================================
+      // 1. COMPARATEUR AVANT / APRÈS (SLIDER INTERACTIF)
+      // =========================================================================
+      const baContainer = document.getElementById('baSliderContainer');
+      const baBeforeWrapper = document.getElementById('baBeforeWrapper');
+      const baBeforeImg = document.getElementById('baBeforeImg');
+      const baHandle = document.getElementById('baHandle');
+
+      if (baContainer && baBeforeWrapper && baHandle) {
+        let isSliding = false;
+
+        function updateSlider(x) {
+          const rect = baContainer.getBoundingClientRect();
+          let pos = (x - rect.left) / rect.width;
+          if (pos < 0.05) pos = 0.05;
+          if (pos > 0.95) pos = 0.95;
+          const pct = pos * 100;
+          baBeforeWrapper.style.width = pct + '%';
+          baHandle.style.left = pct + '%';
+          if (baBeforeImg) {
+            baBeforeImg.style.width = rect.width + 'px';
+            baBeforeImg.style.maxWidth = 'none';
+          }
+        }
+
+        function resizeBeforeImg() {
+          if (baBeforeImg && baContainer) {
+            baBeforeImg.style.width = baContainer.offsetWidth + 'px';
+            baBeforeImg.style.maxWidth = 'none';
+          }
+        }
+        window.addEventListener('resize', resizeBeforeImg);
+        resizeBeforeImg();
+
+        baContainer.addEventListener('mousedown', (e) => {
+          isSliding = true;
+          updateSlider(e.clientX);
+        });
+        window.addEventListener('mouseup', () => { isSliding = false; });
+        window.addEventListener('mousemove', (e) => {
+          if (!isSliding) return;
+          updateSlider(e.clientX);
+        });
+
+        baContainer.addEventListener('touchstart', (e) => {
+          isSliding = true;
+          if (e.touches && e.touches[0]) updateSlider(e.touches[0].clientX);
+        }, { passive: true });
+        window.addEventListener('touchend', () => { isSliding = false; });
+        window.addEventListener('touchmove', (e) => {
+          if (!isSliding) return;
+          if (e.touches && e.touches[0]) updateSlider(e.touches[0].clientX);
+        }, { passive: true });
+      }
+
+      // =========================================================================
+      // 2. SIMULATEUR DE DEVIS BTP & AVANT-MÉTRÉ
+      // =========================================================================
+      const simTypeBtns = document.querySelectorAll('.sim-type-btn');
+      const simSurfaceRange = document.getElementById('simSurfaceRange');
+      const simSurfaceInput = document.getElementById('simSurfaceInput');
+      const simPrestBtns = document.querySelectorAll('.sim-prest-btn');
+      const simRegionSelect = document.getElementById('simRegion');
+      const simPresetBtns = document.querySelectorAll('.sim-preset-btn');
+
+      const simPriceOutput = document.getElementById('simPriceOutput');
+      const simDelaiOutput = document.getElementById('simDelaiOutput');
+      const simSubmitDossierBtn = document.getElementById('simSubmitDossierBtn');
+      const simWhatsappBtn = document.getElementById('simWhatsappBtn');
+
+      let currentSimType = 'villa';
+      let currentSimPrest = 'tce';
+
+      const simBenchmarks = {
+        villa: { name: 'Villa Haut Standing', min: 4600, max: 6800, baseDelai: 8, besoin: 'tce' },
+        immeuble: { name: 'Immeuble & Résidentiel R+', min: 3600, max: 5200, baseDelai: 12, besoin: 'gros-oeuvre' },
+        industriel: { name: 'Entrepôt & Logistique', min: 2700, max: 4100, baseDelai: 7, besoin: 'industriel' },
+        commercial: { name: 'Showroom Commercial & Retail', min: 3200, max: 4800, baseDelai: 6, besoin: 'commercial' },
+        renovation: { name: 'Rénovation Lourde & Réhabilitation', min: 2200, max: 3900, baseDelai: 5, besoin: 'renovation' }
+      };
+
+      const prestCoeffs = {
+        tce: { name: "Tous Corps d'État Clé en Main", coef: 1.0 },
+        go: { name: "Gros Œuvre & Structure Seul", coef: 0.50 },
+        so: { name: "Second Œuvre & Finitions", coef: 0.55 }
+      };
+
+      const regionCoeffs = {
+        casa: { name: "Grand Casablanca", coef: 1.0 },
+        rabat: { name: "Rabat - Salé - Kénitra", coef: 1.02 },
+        tanger: { name: "Tanger Med / Nord", coef: 1.05 },
+        marrakech: { name: "Marrakech & Régions Sud", coef: 1.05 },
+        autre: { name: "Autre région du Maroc", coef: 1.08 }
+      };
+
+      function formatMAD(n) {
+        return Math.round(n).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+      }
+
+      function calculateSim() {
+        if (!simPriceOutput || !simSurfaceInput) return;
+        const surface = parseInt(simSurfaceInput.value, 10) || 650;
+        const typeConfig = simBenchmarks[currentSimType] || simBenchmarks.villa;
+        const prestConfig = prestCoeffs[currentSimPrest] || prestCoeffs.tce;
+        const regKey = simRegionSelect ? simRegionSelect.value : 'casa';
+        const regConfig = regionCoeffs[regKey] || regionCoeffs.casa;
+
+        const minTotal = surface * typeConfig.min * prestConfig.coef * regConfig.coef;
+        const maxTotal = surface * typeConfig.max * prestConfig.coef * regConfig.coef;
+
+        simPriceOutput.textContent = `${formatMAD(minTotal)} — ${formatMAD(maxTotal)} MAD`;
+
+        let delaiMonths = typeConfig.baseDelai;
+        if (surface > 5000) delaiMonths = Math.round(delaiMonths * 1.5);
+        else if (surface > 2000) delaiMonths = Math.round(delaiMonths * 1.25);
+        else if (surface < 300) delaiMonths = Math.max(4, Math.round(delaiMonths * 0.75));
+
+        if (currentSimPrest !== 'tce') delaiMonths = Math.max(3, Math.round(delaiMonths * 0.65));
+        if (simDelaiOutput) {
+          simDelaiOutput.textContent = `${Math.max(2, delaiMonths - 1)} à ${delaiMonths + 2} mois`;
+        }
+
+        const summaryMsg = `Demande d'étude préliminaire générée depuis le simulateur TG2D :\n- Typologie : ${typeConfig.name}\n- Superficie : ${surface} m²\n- Localisation : ${regConfig.name}\n- Périmètre : ${prestConfig.name}\n- Estimation indicative : ${formatMAD(minTotal)} à ${formatMAD(maxTotal)} MAD HT`;
+
+        if (simSubmitDossierBtn) {
+          simSubmitDossierBtn.href = `contact.html?besoin=${encodeURIComponent(typeConfig.besoin)}&msg=${encodeURIComponent(summaryMsg)}`;
+        }
+        if (simWhatsappBtn) {
+          simWhatsappBtn.href = `https://wa.me/212618392328?text=${encodeURIComponent('Bonjour TG2D,\n' + summaryMsg)}`;
+        }
+      }
+
+      simTypeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          simTypeBtns.forEach(b => {
+            b.classList.remove('border-primary', 'bg-primary-container/10');
+            b.classList.add('border-surface-container-high');
+            const icon = b.querySelector('.material-symbols-outlined');
+            if (icon) { icon.classList.remove('text-primary'); icon.classList.add('text-secondary'); }
+          });
+          btn.classList.add('border-primary', 'bg-primary-container/10');
+          btn.classList.remove('border-surface-container-high');
+          const actIcon = btn.querySelector('.material-symbols-outlined');
+          if (actIcon) { actIcon.classList.add('text-primary'); actIcon.classList.remove('text-secondary'); }
+          currentSimType = btn.getAttribute('data-type');
+          calculateSim();
+        });
+      });
+
+      simPrestBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          simPrestBtns.forEach(b => {
+            b.classList.remove('border-primary', 'bg-primary-container/10');
+            b.classList.add('border-surface-container-high');
+          });
+          btn.classList.add('border-primary', 'bg-primary-container/10');
+          btn.classList.remove('border-surface-container-high');
+          currentSimPrest = btn.getAttribute('data-prest');
+          calculateSim();
+        });
+      });
+
+      if (simSurfaceRange && simSurfaceInput) {
+        simSurfaceRange.addEventListener('input', () => {
+          simSurfaceInput.value = simSurfaceRange.value;
+          calculateSim();
+        });
+        simSurfaceInput.addEventListener('input', () => {
+          simSurfaceRange.value = simSurfaceInput.value;
+          calculateSim();
+        });
+      }
+
+      simPresetBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const v = btn.getAttribute('data-val');
+          if (simSurfaceRange && simSurfaceInput) {
+            simSurfaceRange.value = v;
+            simSurfaceInput.value = v;
+            calculateSim();
+          }
+        });
+      });
+
+      if (simRegionSelect) {
+        simRegionSelect.addEventListener('change', calculateSim);
+      }
+
+      calculateSim();
+
+      // =========================================================================
+      // 3. CARTE INTERACTIVE DES CHANTIERS AU MAROC
+      // =========================================================================
+      const cityData = {
+        casa: {
+          regionTag: "Pôle Économique Métropolitain",
+          zipTag: "Grand Casablanca",
+          name: "Grand Casablanca & Siège",
+          desc: "Cœur névralgique des opérations de TG2D. Conduite continue de chantiers résidentiels haut standing, réhabilitation de plateaux d'affaires et pilotage des équipes d'ingénierie centrale.",
+          projects: [
+            { name: "Villas Haut Standing", lot: "TCE Clé en main" },
+            { name: "Réhabilitation Sièges Sociaux", lot: "Rénovation Lourde" }
+          ]
+        },
+        darbouazza: {
+          regionTag: "Pôle Commercial & Résidentiel",
+          zipTag: "Province de Nouaceur",
+          name: "Dar Bouazza",
+          desc: "Réalisation emblématique du showroom commercial BRICOMA (bâtiment ERP) et travaux d'infrastructure, terrassement et second œuvre haut standing.",
+          projects: [
+            { name: "Showroom Commercial BRICOMA", lot: "Travaux Tous Corps d'État" },
+            { name: "Terrassements & VRD", lot: "Génie Civil" }
+          ]
+        },
+        bouskoura: {
+          regionTag: "Zone Industrielle & Logistique",
+          zipTag: "Pôle Industriel CFC",
+          name: "Bouskoura",
+          desc: "Construction et livraison d'un centre logistique majeur avec dalles industrielles haute résistance, charpentes grande portée et voiries lourdes.",
+          projects: [
+            { name: "Centre Logistique & Entrepôt", lot: "Génie Civil & Dalles" },
+            { name: "Bâtiments d'Exploitation", lot: "TCE Clé en Main" }
+          ]
+        },
+        tanger: {
+          regionTag: "Pôle Industriel & Portuaire",
+          zipTag: "Région Tanger-Tétouan-Al Hoceïma",
+          name: "Tanger Med & Zone Franche",
+          desc: "Capacité d'intervention rapide pour des bâtiments industriels, hangars sous douane et extensions logistiques conformes aux standards internationaux.",
+          projects: [
+            { name: "Plateformes Industrielles", lot: "Gros Œuvre & Charpente" },
+            { name: "Hangars Logistiques", lot: "Clôtures & VRD" }
+          ]
+        },
+        rabat: {
+          regionTag: "Capitale Administrative & Institutionnelle",
+          zipTag: "Région Rabat-Salé-Kénitra",
+          name: "Rabat - Salé - Kénitra",
+          desc: "Déploiement pour projets institutionnels, marchés tertiaires, aménagement d'espaces de travail et conformité aux normes parasismiques RPS2011.",
+          projects: [
+            { name: "Bâtiments Administratifs", lot: "Second Œuvre & Fluides" },
+            { name: "Ouvrages Tertiaires", lot: "TCE" }
+          ]
+        }
+      };
+
+      const mapNodes = document.querySelectorAll('.map-node');
+      const mapPills = document.querySelectorAll('.map-city-pill');
+      const cityRegionTag = document.getElementById('cityRegionTag');
+      const cityZipTag = document.getElementById('cityZipTag');
+      const cityName = document.getElementById('cityName');
+      const cityDesc = document.getElementById('cityDesc');
+      const cityKeyProjects = document.getElementById('cityKeyProjects');
+
+      function setCity(c) {
+        const data = cityData[c];
+        if (!data) return;
+
+        mapPills.forEach(p => {
+          if (p.getAttribute('data-city') === c) {
+            p.className = 'map-city-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-inverse-surface text-surface-container-lowest transition-all';
+          } else {
+            p.className = 'map-city-pill px-3 py-1.5 rounded-full text-xs font-semibold bg-surface-container hover:bg-surface-container-high text-on-surface transition-all';
+          }
+        });
+
+        mapNodes.forEach(node => {
+          if (node.getAttribute('data-city') === c) {
+            node.style.opacity = '1';
+            node.style.transform = node.getAttribute('transform') + ' scale(1.15)';
+          } else {
+            node.style.opacity = '0.65';
+            node.style.transform = node.getAttribute('transform');
+          }
+        });
+
+        if (cityRegionTag) cityRegionTag.textContent = data.regionTag;
+        if (cityZipTag) cityZipTag.textContent = data.zipTag;
+        if (cityName) cityName.textContent = data.name;
+        if (cityDesc) cityDesc.textContent = data.desc;
+        if (cityKeyProjects) {
+          cityKeyProjects.innerHTML = data.projects.map(p => `
+            <div class="p-3 rounded bg-surface border border-surface-container-high flex items-center justify-between text-xs">
+              <span class="font-semibold text-on-surface">${p.name}</span>
+              <span class="font-label-mono text-primary font-bold">${p.lot}</span>
+            </div>
+          `).join('');
+        }
+      }
+
+      mapPills.forEach(pill => {
+        pill.addEventListener('click', () => setCity(pill.getAttribute('data-city')));
+      });
+      mapNodes.forEach(node => {
+        node.addEventListener('click', () => setCity(node.getAttribute('data-city')));
+      });
+
+      // =========================================================================
+      // 4. FLOATING WHATSAPP QUICK ACTION FAB
+      // =========================================================================
+      const fabBtn = document.getElementById('fabWhatsAppBtn');
+      const fabMenu = document.getElementById('fabWhatsAppMenu');
+      const fabCloseBtn = document.getElementById('fabCloseBtn');
+
+      if (fabBtn && fabMenu) {
+        function toggleFab() {
+          const isHidden = fabMenu.classList.contains('hidden');
+          if (isHidden) {
+            fabMenu.classList.remove('hidden');
+            requestAnimationFrame(() => {
+              fabMenu.classList.remove('opacity-0', 'translate-y-4', 'scale-95');
+              fabMenu.classList.add('opacity-100', 'translate-y-0', 'scale-100');
+            });
+          } else {
+            fabMenu.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+            fabMenu.classList.add('opacity-0', 'translate-y-4', 'scale-95');
+            setTimeout(() => fabMenu.classList.add('hidden'), 250);
+          }
+        }
+
+        fabBtn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          toggleFab();
+        });
+
+        if (fabCloseBtn) {
+          fabCloseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            toggleFab();
+          });
+        }
+
+        document.addEventListener('click', (e) => {
+          if (!fabMenu.classList.contains('hidden') && !fabMenu.contains(e.target) && !fabBtn.contains(e.target)) {
+            fabMenu.classList.remove('opacity-100', 'translate-y-0', 'scale-100');
+            fabMenu.classList.add('opacity-0', 'translate-y-4', 'scale-95');
+            setTimeout(() => fabMenu.classList.add('hidden'), 250);
+          }
+        });
+      }
+    });
+  </script>
+
+  <!-- Floating WhatsApp Quick Action FAB Element -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end pointer-events-none" id="fabWhatsAppWrapper">
+    <!-- Popover Menu -->
+    <div id="fabWhatsAppMenu" class="pointer-events-auto opacity-0 translate-y-4 scale-95 transition-all duration-300 ease-out origin-bottom-right mb-3 w-[290px] sm:w-[320px] bg-surface-container-lowest rounded-2xl shadow-2xl border border-surface-container-high p-4 text-on-surface hidden">
+      <div class="flex items-center justify-between pb-3 border-b border-surface-container-high">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold">
+            <span class="material-symbols-outlined text-[20px]">chat</span>
+          </div>
+          <div>
+            <div class="font-bold text-xs text-on-surface">Équipe Technique TG2D</div>
+            <div class="text-[10px] text-emerald-600 flex items-center gap-1 font-medium">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+              En ligne · Réponse sous 15 min
+            </div>
+          </div>
+        </div>
+        <button id="fabCloseBtn" class="p-1 rounded-full text-secondary hover:text-on-surface transition-colors" aria-label="Fermer le menu WhatsApp">
+          <span class="material-symbols-outlined text-[18px]">close</span>
+        </button>
+      </div>
+
+      <div class="space-y-2 py-3 text-xs">
+        <a href="https://wa.me/212618392328?text=Bonjour%20TG2D,%20je%20souhaite%20%C3%A9changer%20avec%20un%20ing%C3%A9nieur%20travaux%20concernant%20un%20projet." target="_blank" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-surface-container transition-colors group">
+          <span class="material-symbols-outlined text-primary group-hover:scale-110 transition-transform text-[20px]">engineering</span>
+          <div class="flex-1">
+            <div class="font-semibold text-on-surface">Parler à un ingénieur travaux</div>
+            <div class="text-[10px] text-on-surface-variant">Conseil technique direct</div>
+          </div>
+        </a>
+
+        <a href="https://wa.me/212618392328?text=Bonjour%20TG2D,%20j'ai%20des%20plans%20(PDF/DWG)%20%C3%A0%20vous%20transmettre%20pour%20un%20chiffrage." target="_blank" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-surface-container transition-colors group">
+          <span class="material-symbols-outlined text-emerald-600 group-hover:scale-110 transition-transform text-[20px]">upload_file</span>
+          <div class="flex-1">
+            <div class="font-semibold text-on-surface">Transmettre des plans (PDF/DWG)</div>
+            <div class="text-[10px] text-on-surface-variant">Chiffrage sur métré existant</div>
+          </div>
+        </a>
+
+        <a href="#simulateur" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-surface-container transition-colors group" onclick="const m=document.getElementById('fabWhatsAppMenu');if(m)m.classList.add('hidden');">
+          <span class="material-symbols-outlined text-amber-500 group-hover:scale-110 transition-transform text-[20px]">calculate</span>
+          <div class="flex-1">
+            <div class="font-semibold text-on-surface">Simulateur de Devis en ligne</div>
+            <div class="text-[10px] text-on-surface-variant">Estimation immédiate en MAD</div>
+          </div>
+        </a>
+
+        <a href="tel:+212618392328" class="flex items-center gap-3 p-2.5 rounded-lg hover:bg-surface-container transition-colors group border-t border-surface-container-high pt-2">
+          <span class="material-symbols-outlined text-secondary group-hover:scale-110 transition-transform text-[20px]">call</span>
+          <div class="flex-1">
+            <div class="font-semibold text-on-surface">Appeler la Direction</div>
+            <div class="text-[10px] text-on-surface-variant">+212 618-392328</div>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- FAB Trigger Button -->
+    <button id="fabWhatsAppBtn" class="pointer-events-auto p-3.5 sm:p-4 rounded-full bg-[#006878] hover:bg-[#00525f] text-surface-container-lowest shadow-[0_8px_24px_rgba(0,104,120,0.45)] hover:scale-105 active:scale-95 transition-all flex items-center justify-center relative group" aria-label="Contacter TG2D sur WhatsApp">
+      <span class="absolute -top-1 -right-1 flex h-3.5 w-3.5">
+        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+        <span class="relative inline-flex rounded-full h-3.5 w-3.5 bg-emerald-500 border-2 border-white"></span>
+      </span>
+      <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+        <path d="M12.031 2C6.495 2 2 6.495 2 12.031c0 1.988.583 3.864 1.688 5.46L2 22l4.673-1.636a10.007 10.007 0 0 0 5.358 1.667h.005c5.536 0 10.031-4.495 10.031-10.031 0-2.68-1.043-5.2-2.936-7.094A9.972 9.972 0 0 0 12.031 2zm5.882 14.283c-.244.686-1.42 1.31-1.956 1.392-.515.08-1.18.115-1.91-.12a15.82 15.82 0 0 1-5.385-3.327 12.72 12.72 0 0 1-2.482-3.666c-.305-.59-.033-1.077.202-1.392.208-.278.472-.654.708-.942.235-.29.313-.494.47-.818.156-.328.078-.616-.04-.852-.117-.235-1.056-2.545-1.447-3.486-.381-.918-.771-.794-1.057-.808l-.9-.015c-.313 0-.82.117-1.25.586-.43.47-1.64 1.603-1.64 3.91 0 2.308 1.68 4.536 1.914 4.85.234.313 3.308 5.05 8.016 7.086 1.12.484 1.994.773 2.676.99.782.248 1.493.213 2.055.13.627-.094 1.928-.788 2.2-1.547.273-.76.273-1.41.192-1.547-.08-.137-.294-.216-.62-.379z"/>
+      </svg>
+    </button>
+  </div>
     });
   </script>
 </body>
